@@ -61,6 +61,11 @@ class AdminlinkcreateController extends Controller
      */
 
     //admin part
+    public function superadminDashboard()
+    {
+        return view('superadmin.index');
+    }
+
     public function adminDashboard()
     {
         return view('admin.index');

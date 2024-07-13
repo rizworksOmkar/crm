@@ -16,10 +16,10 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input id="email" type="email" class="form-control" name="email" tabindex="1">
+                                <label for="email">User Name</label>
+                                <input id="email" type="text" class="form-control" name="email" tabindex="1">
                                 <div class="invalid-feedback" id="invalid-feedback-email">
-                                    Please fill in your email
+                                    Please fill in your username
                                 </div>
                             </div>
                             <div class="form-group">
@@ -115,35 +115,35 @@
                     // toastr.error("Please enter email and password", "");
                     iziToast.error({
                         title: 'Error!',
-                        message: 'Please enter email and password',
+                        message: 'Please enter username and password',
                         position: 'topRight'
                     });
                     $('#email').addClass('error_input');
                     $('#password').addClass('error_input');
                     return false;
                 }
-                if (!email.trim()) {
-                    // toastrerr();
-                    // toastr.error('Please enter your email', '');
-                    iziToast.error({
-                        title: 'Error!',
-                        message: 'Please enter your email',
-                        position: 'topRight'
-                    });
-                    $('#email').addClass('error_input');
-                    return false;
-                }
-                if (!emailValid) {
-                    // toastrerr();
-                    // toastr.error("Please enter proper email");
-                    iziToast.error({
-                        title: 'Error!',
-                        message: 'Please enter proper email',
-                        position: 'topRight'
-                    });
-                    $('#email').addClass('error_input');
-                    return false;
-                }
+                // if (!email.trim()) {
+                //     // toastrerr();
+                //     // toastr.error('Please enter your email', '');
+                //     iziToast.error({
+                //         title: 'Error!',
+                //         message: 'Please enter your email',
+                //         position: 'topRight'
+                //     });
+                //     $('#email').addClass('error_input');
+                //     return false;
+                // }
+                // if (!emailValid) {
+                //     // toastrerr();
+                //     // toastr.error("Please enter proper email");
+                //     iziToast.error({
+                //         title: 'Error!',
+                //         message: 'Please enter proper email',
+                //         position: 'topRight'
+                //     });
+                //     $('#email').addClass('error_input');
+                //     return false;
+                // }
                 if (!password.trim()) {
                     // toastrerr();
                     // toastr.error("Please enter password");

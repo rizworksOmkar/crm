@@ -50,7 +50,9 @@ class LoginController extends Controller
 
     public function authenticated()
     {
-       if(auth()->user()->role_type == 'admin'){                     
+       if(auth()->user()->role_type == 'superadmin'){                     
+            return redirect('/Superadmin-landing-page');
+        }elseif(auth()->user()->role_type == 'admin'){                     
             return redirect('/landing-page');
         }else if (auth()->user()->role_type == 'user') {
             if (auth()->user()->email_verified_flag == 1) {

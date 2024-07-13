@@ -41,6 +41,9 @@ require __DIR__.'/auth.php';
 // Admin
 require __DIR__.'/admin.php';
 
+// Admin
+require __DIR__.'/superadmin.php';
+
 // Partner
 require __DIR__.'/partner.php';
 
@@ -55,4 +58,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::any('phonepe-response',[PaymentController::class,'response'])->name('response');
-Route::any('/phonepe-payment-response',[PaymentController::class,'responsetPayment'])->name('responsetPayment');
+// Route::any('/phonepe-payment-response',[PaymentController::class,'responsetPayment'])->name('responsetPayment');

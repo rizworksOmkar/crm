@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/style-example.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/jquery.Jcrop.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/bundles/pretty-checkbox/pretty-checkbox.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/admin/bundles/pretty-checkbox/pretty-checkbox.min.css') }}">
     <!-- End Croping Images -->
     @yield('styles')
 </head>
@@ -149,7 +150,7 @@
                                         class="dropdown-item-icon bg-primary text-white"> <i
                                             class="fas
 												fa-code"></i>
-                                    </span> <span class="dropdown-item-desc"> Travoriz update is
+                                    </span> <span class="dropdown-item-desc"> CRM update is
                                         available now! <span class="time">2 Min
                                             Ago</span>
                                     </span>
@@ -219,7 +220,7 @@
                     <div class="sidebar-brand">
                         <a href="javascript:void();"> <img alt="image"
                                 src="{{ asset('assets/admin/img/logo.png') }}" class="header-logo" /> <span
-                                class="logo-name">CRM Admin</span>
+                                class="logo-name">Super Admin</span>
                         </a>
                     </div>
                     <ul class="sidebar-menu">
@@ -431,7 +432,7 @@
                                     data-feather="calendar"></i><span>Package Itenary</span></a>
 
                         </li> --}}
-                        
+
                     </ul>
                 </aside>
             </div>

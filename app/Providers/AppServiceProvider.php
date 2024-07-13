@@ -22,10 +22,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        //
-        $comName = CompanyProfile::first();
-        view()->share('companyName', $comName);
-    }
+    // public function boot()
+    // {
+    //     //
+    //     $comName = CompanyProfile::first();
+    //     view()->share('companyName', $comName);
+    // }
 }
