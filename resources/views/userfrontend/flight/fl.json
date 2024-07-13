@@ -1,0 +1,300 @@
+{
+    "Response": {
+      "ResponseStatus": 1,
+      "Error": {
+        "ErrorCode": 0,
+        "ErrorMessage": ""
+      },
+      "TraceId": "e87c82c9-c1ee-4989-98ac-77b4f3251d6f",
+      "SeatDynamic": [
+        {
+          "SegmentSeat": [
+            {
+              "RowSeats": [
+                {
+                  "Seats": [
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 0,
+                      "Description": 2,
+                      "Code": "NoSeat",
+                      "RowNo": "0",
+                      "SeatNo": null,
+                      "SeatType": 0,
+                      "SeatWayType": 2,
+                      "Compartment": 0,
+                      "Deck": 0,
+                      "Currency": "INR",
+                      "Price": 0
+                    }
+                  ]
+                },
+                {
+                  "Seats": [
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 3,
+                      "Description": 2,
+                      "Code": "1A",
+                      "RowNo": "1",
+                      "SeatNo": "A",
+                      "SeatType": 1,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    },
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 1,
+                      "Description": 2,
+                      "Code": "1B",
+                      "RowNo": "1",
+                      "SeatNo": "B",
+                      "SeatType": 3,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    },
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 1,
+                      "Description": 2,
+                      "Code": "1C",
+                      "RowNo": "1",
+                      "SeatNo": "C",
+                      "SeatType": 2,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    },
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 1,
+                      "Description": 2,
+                      "Code": "1D",
+                      "RowNo": "1",
+                      "SeatNo": "D",
+                      "SeatType": 2,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    },
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 1,
+                      "Description": 2,
+                      "Code": "1E",
+                      "RowNo": "1",
+                      "SeatNo": "E",
+                      "SeatType": 3,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    },
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 1,
+                      "Description": 2,
+                      "Code": "1F",
+                      "RowNo": "1",
+                      "SeatNo": "F",
+                      "SeatType": 1,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    }
+                  ]
+                }
+
+              ]
+            }
+          ]
+        }
+      ],
+      "SeatDynamic1": [
+        {
+          "SegmentSeat": [
+            {
+              "RowSeats": [
+                {
+                  "Seats": [
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 0,
+                      "Description": 2,
+                      "Code": "NoSeat",
+                      "RowNo": "0",
+                      "SeatNo": "0",
+                      "SeatType": 0,
+                      "SeatWayType": 2,
+                      "Compartment": 0,
+                      "Deck": 0,
+                      "Currency": "INR",
+                      "Price": 0
+                    }
+                  ]
+                },
+                {
+                  "Seats": [
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 3,
+                      "Description": 2,
+                      "Code": "1A",
+                      "RowNo": "1",
+                      "SeatNo": "1",
+                      "SeatType": 1,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    },
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 1,
+                      "Description": 2,
+                      "Code": "1B",
+                      "RowNo": "1",
+                      "SeatNo": "2",
+                      "SeatType": 3,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    },
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 1,
+                      "Description": 2,
+                      "Code": "1C",
+                      "RowNo": "1",
+                      "SeatNo": "3",
+                      "SeatType": 2,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    },
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 1,
+                      "Description": 2,
+                      "Code": "1D",
+                      "RowNo": "1",
+                      "SeatNo": "4",
+                      "SeatType": 2,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    },
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 1,
+                      "Description": 2,
+                      "Code": "1E",
+                      "RowNo": "1",
+                      "SeatNo": "5",
+                      "SeatType": 3,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    },
+                    {
+                      "AirlineCode": "6E",
+                      "FlightNumber": "167",
+                      "CraftType": "A320",
+                      "Origin": "DEL",
+                      "Destination": "BOM",
+                      "AvailablityType": 1,
+                      "Description": 2,
+                      "Code": "1F",
+                      "RowNo": "1",
+                      "SeatNo": "6",
+                      "SeatType": 1,
+                      "SeatWayType": 2,
+                      "Compartment": 1,
+                      "Deck": 1,
+                      "Currency": "INR",
+                      "Price": 600
+                    }
+                  ]
+                }
+
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }

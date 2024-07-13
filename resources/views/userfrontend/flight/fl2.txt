@@ -1,0 +1,713 @@
+@extends('layouts.front')
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@endsection
+@section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <section id="common_banner">
+        <div class="container">
+            {{-- <div id="htlDtls_search">
+            <a href="#home">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+        </div> --}}
+        <div class="container">
+            <h1>Data</h1>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>TokenId</th>
+                        <td>{{ $tokenId }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Member ID</th>
+                        <td>{{ $memberId }}</td>
+                    </tr>
+                    <tr>
+                        <th>Agency ID</th>
+                        <td>{{ $agencyId }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cached</th>
+                        <td>{{ $isCached ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    @if (isset($data) && $data['Status'] === 1)
+                    <tr>
+                        <th>First Name</th>
+                        <td>{{ $data['FirstName'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last Name</th>
+                        <td>{{ $data['LastName'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ $data['Email'] }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Login Name</th>
+                        <td>{{ $data['LoginName'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Primary Agent</th>
+                        <td>{{ $data['isPrimaryAgent'] ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    @endif
+                </tbody>
+            </table>
+        </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="common_bannner_text">
+                        <h2>Flights</h2>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            {{-- <li><span><i class="fas fa-circle"></i></span> Hotel</li> --}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- Search Box --}}
+    <section>
+
+
+
+
+
+
+        <section>
+            <section id="theme_search_form">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="theme_search_form_area">
+                                <div class="theme_search_form_tabbtn active_psn">
+                                    <ul class="nav nav-tabs " role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="flights-tab" data-bs-toggle="tab"
+                                                data-bs-target="#flights" type="button" role="tab" aria-controls="flights"
+                                                aria-selected="true"><i class="fas fa-plane-departure"></i>Flights</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content res_tb_cnt" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="flights" role="tabpanel"
+                                        aria-labelledby="flights-tab">
+                                        <form id="search_form">
+                                            <div class="tab-content" id="myTabContent1">
+                                                <div class="tab-pane fade show active" id="oneway_flight" role="tabpanel"
+                                                    aria-labelledby="oneway-tab">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="oneway_search_form">
+
+                                                                    <div class="row">
+                                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                                                                            <div class="flight_Search_boxed flt_gos">
+                                                                                <p>From</p>
+
+                                                                                <input type="text" class="form-control" name="origin" id="origin" placeholder="Enter Source">
+
+
+
+                                                                                <div class="plan_icon_posation">
+                                                                                    <i class="fas fa-plane-departure"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                                                                            <div class="flight_Search_boxed flt_gos">
+                                                                                <p>To</p>
+
+                                                                                <input type="text" class="form-control" name="destination" id="destination" placeholder="Enter Destination">
+
+                                                                                <div class="plan_icon_posation">
+                                                                                    <i class="fas fa-plane-arrival"></i>
+                                                                                </div>
+
+                                                                                <div class="range_plan">
+                                                                                    <i class="fas fa-exchange-alt"></i>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="col-lg-2  col-md-6 col-sm-12 col-12">
+                                                                            <div class="form_search_date">
+                                                                                <div class="flight_Search_boxed date_flex_area">
+                                                                                    <div class="Journey_date">
+                                                                                        <p>Departure Date</p>
+                                                                                        <input name="preferredDepartureDate" id="preferredDepartureDate" type="date">
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-lg-2 col-md-6 col-sm-12 col-12">
+                                                                            <div class="flight_Search_boxed flt_gos">
+                                                                                <p>Flight Cabin Class</p>
+                                                                                <select class="form-select select2 slct_ct"
+                                                                                name="flightCabinClass" id="flightCabinClass">
+                                                                                    <option value="0">----- Select Cabin -----
+                                                                                    </option>
+                                                                                    <option value="1">All</option>
+                                                                                    <option value="2">Economy</option>
+                                                                                    <option value="3">Premium Economy</option>
+                                                                                    <option value="4">Business</option>
+                                                                                    <option value="5">Premium Business</option>
+                                                                                    <option value="6">First</option>
+
+                                                                                </select>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-2  col-md-6 col-sm-12 col-12 ">
+                                                                            <div class="flight_Search_boxed dropdown_passenger_area">
+                                                                                <p>Guests & Rooms</p>
+                                                                                <div class="dropdown">
+                                                                                    <button class="dropdown-toggle final-count acir_sz" data-toggle="dropdown" type="button"
+                                                                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                        0 Adults
+                                                                                    </button>
+                                                                                    <div class="dropdown-menu dropdown_passenger_info" aria-labelledby="dropdownMenuButton1">
+                                                                                        <div class="traveller-calulate-persons">
+                                                                                            <div class="passengers">
+                                                                                                <div class="passengers-types">
+                                                                                                    <div class="passengers-type">
+                                                                                                        <div class="text">
+                                                                                                            <div class="type-label d_flx">
+                                                                                                                <p class="mr-1">Adult</p>
+                                                                                                                <span>(12+ yrs)</span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="button-set guest_nom">
+                                                                                                            <button type="button" class="btn-add">
+                                                                                                                <i class="fas fa-plus"></i>
+                                                                                                            </button>
+                                                                                                            <span class="count pcount">0</span>
+                                                                                                            <button type="button" class="btn-subtract">
+                                                                                                                <i class="fas fa-minus"></i>
+                                                                                                            </button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                            <input type="hidden" id="adults" min="0" value="0">
+
+
+
+                                                                        </div>
+
+
+                                                                    </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {{-- </section> --}}
+        {{-- Search Box End --}}
+        {{-- flight body --}}
+        {{-- <section> --}}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+                    <div class="flight_filter">
+                        <div class="fltr_box">
+                            <p class="flight_header">Popular Filters</p>
+                            <div class="fltr_flight_ctgr">
+                                <div class="fltr_ctgr_right">
+                                    <input type="checkbox">
+                                    <p>Non Stop (16)</p>
+                                </div>
+                                <span class="flight_price">₹ 6,430</span>
+                            </div>
+                            <div class="fltr_flight_ctgr">
+                                <div class="fltr_ctgr_right">
+                                    <input type="checkbox">
+                                    <p>Prenoon Departure (80)</p>
+                                </div>
+                                <span class="flight_price">₹ 6,709</span>
+                            </div>
+                            <div class="fltr_flight_ctgr">
+                                <div class="fltr_ctgr_right">
+                                    <input type="checkbox">
+                                    <p>IndiGo (62)</p>
+                                </div>
+                                <span class="flight_price">₹ 6,709</span>
+                            </div>
+                            <div class="fltr_flight_ctgr">
+                                <div class="fltr_ctgr_right">
+                                    <input type="checkbox">
+                                    <p>Vistara (71)</p>
+                                </div>
+                                <span class="flight_price">₹ 6,713</span>
+                            </div>
+                            <div class="fltr_flight_ctgr">
+                                <div class="fltr_ctgr_right">
+                                    <input type="checkbox">
+                                    <p>Akasa Air (1)</p>
+                                </div>
+                                <span class="flight_price">₹ 6,430</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+                    <div class="flight_list">
+                        <p class="flght_header">Flights from Kolkata to Mumbai</p>
+                        <div class="flight_list_box">
+                            <div class="flight_ctgr_tab ">
+                                <div class="flight_tab">
+                                    <span class="rpc_icon"><i class="fa fa-inr" aria-hidden="true"></i></span>
+                                    <div class="flight_prc">
+                                        <p>Cheapest</p>
+                                        <span>₹ 6,357 ・</span><span>Duration: 04 h 35 m</span>
+                                    </div>
+                                </div>
+                                <div class="flight_tab">
+                                    <span class="rpc_icon"><i class="fa fa-assistive-listening-systems"
+                                            aria-hidden="true"></i></span>
+                                    <div class="flight_prc">
+                                        <p>Non Stop First</p>
+                                        <span>₹ 6,440 ・</span><span>Duration: 04 h 35 m</span>
+                                    </div>
+                                </div>
+                                <div class="flight_tab">
+                                    <span class="rpc_icon"><i class="fa fa-star" aria-hidden="true"></i></span>
+                                    <div class="flight_prc">
+                                        <p>You May Prefer</p>
+                                        <span>₹ 6,357 ・</span><span>Duration: 04 h 35 m</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flight_srtd">
+                                <p>Flights sorted by Popularity (based on price, duration & convenience)</p>
+                            </div>
+                            <div class="flight_listing">
+                                <div class="flight_list_chart">
+                                    <div class="flight_chrt">
+                                        <span class="flt_img"><img src="assets/user/img/flight/flight1.png"
+                                                alt=""></span>
+                                        <div class="flight_prc">
+                                            <p>IndiGo</p>
+                                            <span>I5 319, I5 338</span>
+                                        </div>
+                                    </div>
+                                    <div class="flght_dstns">
+                                        <div class="flight_prc">
+                                            <p>12:25</p>
+                                            <span>Kolkata</span>
+                                        </div>
+                                        <div class="flight_prc flght_prc_flx">
+                                            <span>02 h 30 m</span>
+                                            <span>------</span>
+                                            <span>Non stop</span>
+                                        </div>
+                                        <div class="flight_prc">
+                                            <p>01:55</p>
+                                            <span>Mumbai</span>
+                                        </div>
+                                    </div>
+                                    <div class="flight_prc">
+                                        <p>₹ 3,645</p>
+                                        <span>per adult</span>
+                                    </div>
+                                    <div class="booking_btn">
+                                        <a class="flght_btn flght_dtls_btn">VIEW DETAILS</a>
+                                        <a href="/flightBooking" class="flght_btn flght_dtls_bkng">BOOK NOW</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+    {{-- flight body end --}}
+@endsection
+@section('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('/assets/admin/bundles/select2/dist/js/select2.full.min.js') }}"></script>
+    <script>
+        // Get references to the HTML elements
+        const addButton = document.querySelector(".btn-add");
+        const subtractButton = document.querySelector(".btn-subtract");
+        const countElement = document.querySelector(".count");
+        const adultsInput = document.getElementById("adults");
+        const dropdownButton = document.querySelector(".final-count");
+
+        // Initialize the count
+        let adultCount = 0;
+
+        // Add event listeners to the buttons
+        addButton.addEventListener("click", () => {
+            adultCount++;
+            updateCount();
+        });
+
+        subtractButton.addEventListener("click", () => {
+            if (adultCount > 0) {
+                adultCount--;
+                updateCount();
+            }
+        });
+
+        // Function to update the count in the UI and dropdown button text
+        function updateCount() {
+            countElement.textContent = adultCount;
+            adultsInput.value = adultCount;
+            dropdownButton.textContent = adultCount + " Adult" + (adultCount > 1 ? "s" : "");
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Handle form submission
+            $("#search_form").submit(function(e) {
+                e.preventDefault(); // Prevent default form submission behavior
+
+                // Get the CSRF token from the meta tags
+                var csrfToken =
+                 $('meta[name="csrf-token"]').attr('content');
+
+                // Prepare the data to be sent
+                var formData = {
+                    "_token": csrfToken,
+
+                    "origin": $("#origin").val(),
+                    "destination": $("#destination").val(),
+                    "flightCabinClass": $("#flightCabinClass").val(),
+                    "preferredDepartureDate": $("#preferredDepartureDate").val(),
+                    "adultCount": $("#adults").val(),
+                };
+
+                //Send the AJAX request
+                $.ajax({
+                    type: "POST",
+                    url: "/flight-normal-search",
+                    data: formData,
+                    dataType: "json",
+                    success: function(response) {
+                        console.log('API response:', response); // Handle the successful response
+
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error); // Handle any errors that occur during the request
+                    }
+                });
+
+
+            });
+
+
+
+
+
+        });
+    </script>
+@endsection
+
+
+<script>
+        var participants = [];
+
+        var adultCount;
+        var childCount;
+        var infantCount;
+
+
+
+
+        // Function to create input fields
+        function createInputField(type, index, label) {
+            var inputDiv = document.createElement('div');
+            inputDiv.innerHTML = `
+            <div class="row">
+                <div><label >${label} ${index} </label></div>
+                <div class="form-group col-md-3">
+                <label for="${type}Title${index}"> Title:</label>
+                <select id="${type}Title${index}" name="${type}Title${index}" class="form-control">
+                    <option value="Mr">Mr.</option>
+                    <option value="Mrs">Mrs.</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="${type}FirstName${index}"> First Name:</label>
+                <input type="text" id="${type}FirstName${index}" name="${type}FirstName${index}" class="form-control" required>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="${type}LastName${index}"> Last Name:</label>
+                <input type="text" id="${type}LastName${index}" name="${type}LastName${index}" class="form-control" required>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="${type}Gender${index}"> Gender:</label>
+                <select id="${type}Gender${index}" name="${type}Gender${index}" class="form-control" required>
+                    <option value="1">MALE</option>
+                    <option value="2">FEMALE</option>
+                </select>
+            </div>
+            </div>
+            `;
+            return inputDiv;
+        }
+
+        // Function to collect information
+        function collectInformation() {
+            adultCount = parseInt(document.getElementById('adultCount').value);
+            childCount = parseInt(document.getElementById('childCount').value);
+            infantCount = parseInt(document.getElementById('infantCount').value);
+
+
+            // Collect information for adults
+            for (var i = 1; i <= adultCount; i++) {
+                var adultDiv = createInputField('adult', i, 'Adult');
+                document.getElementById('participantInfo').appendChild(adultDiv);
+            }
+
+            // Collect information for children
+            for (var j = 1; j <= childCount; j++) {
+                var childDiv = createInputField('child', j, 'Child');
+                document.getElementById('participantInfo').appendChild(childDiv);
+            }
+
+            // Collect information for infants
+            for (var k = 1; k <= infantCount; k++) {
+                var infantDiv = createInputField('infant', k, 'Infant');
+                document.getElementById('participantInfo').appendChild(infantDiv);
+            }
+        }
+
+        // Function to submit the form and collect information
+        function submitForm() {
+
+            // Collect information for adults
+            for (var i = 1; i <= adultCount; i++) {
+                participants.push({
+                    type: '1',
+                    title: document.getElementById(`adultTitle${i}`).value,
+                    firstName: document.getElementById(`adultFirstName${i}`).value,
+                    lastName: document.getElementById(`adultLastName${i}`).value,
+                    gender: document.getElementById(`adultGender${i}`).value,
+                    IsLeadPax: i === 1 ? true : false
+                });
+            }
+
+            // Collect information for children
+            for (var j = 1; j <= childCount; j++) {
+                participants.push({
+                    type: '2',
+                    title: document.getElementById(`childTitle${j}`).value,
+                    firstName: document.getElementById(`childFirstName${j}`).value,
+                    lastName: document.getElementById(`childLastName${j}`).value,
+                    gender: document.getElementById(`childGender${j}`).value,
+                    IsLeadPax: false
+                });
+            }
+
+            // Collect information for infants
+            for(var k = 1; k <= infantCount; k++) {
+                participants.push({
+                    type: '3',
+                    title: document.getElementById(`infantTitle${k}`).value,
+                    firstName: document.getElementById(`infantFirstName${k}`).value,
+                    lastName: document.getElementById(`infantLastName${k}`).value,
+                    gender: document.getElementById(`infantGender${k}`).value,
+                    IsLeadPax: false
+                });
+            }
+
+
+            // Display collected information
+            console.log(participants);
+        }
+
+        // Call the collectInformation function when the page loads
+        window.onload = collectInformation;
+
+        $(document).on('click', '.flght_book_cnfrm_btn', function() {
+
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+            var fareBreakdown = $('#allFare').val();
+            var passengersData = JSON.parse(fareBreakdown);
+
+            // console.log('Fare Breakdown:', fareClass);
+
+            var p1 = [];
+            var p2 = [];
+            var p3 = [];
+
+            for (var i = 0; i < passengersData.length; i++) {
+                var passenger = passengersData[i];
+
+                switch (passenger.PassengerType) {
+                    case 1:
+                        p1.push(passenger);
+                        break;
+                    case 2:
+                        p2.push(passenger);
+                        break;
+                    case 3:
+                        p3.push(passenger);
+                        break;
+                    // Add more cases if there are other passenger types
+                }
+            }
+
+            p1.passengerTypeExist = p1.length > 0 ? 1 : 0;
+            p2.passengerTypeExist = p2.length > 0 ? 1 : 0;
+            p3.passengerTypeExist = p3.length > 0 ? 1 : 0;
+
+            //console.log('Fare Breakdown:', participants);
+
+
+            var countryCode = $('#countryCode').val();
+            var mobileNo = $('#mobileNo').val();
+            var email = $('#email').val();
+
+            var resultIndex = $('#resultIndex').val();
+            var currency = $('#currency').val();
+            var baseFare = $('#baseFare').val();
+            var tax = $('#tax').val();
+            var yqTax = $('#yqTax').val();
+            var additionalTxnFeePub = $('#additionalTxnFeePub').val();
+            var additionalTxnFeeOfrd = $('#additionalTxnFeeOfrd').val();
+            var otherCharges = $('#otherCharges').val();
+            var discount = $('#discount').val();
+            var publishedFare = $('#publishedFare').val();
+            var offeredFare = $('#offeredFare').val();
+            var tdsOnCommission = $('#tdsOnCommission').val();
+            var tdsOnPLB = $('#tdsOnPLB').val();
+            var tdsOnIncentive = $('#tdsOnIncentive').val();
+            var serviceFee = $('#serviceFee').val();
+
+            // Create an array to store selected seat codes and descriptions
+            var selectedSeats = [];
+
+            // Iterate through selected seats and add their codes and descriptions to the array
+            $('.seat-checkbox:checked').each(function() {
+                var seatCode = $(this).data('seat-code');
+                var seatDescription = $(this).data('seat-description');
+                selectedSeats.push({
+                    code: seatCode,
+                    description: seatDescription
+                });
+            });
+
+
+            // Create a data object to send in the AJAX request
+            var requestData = {
+                "_token": csrfToken,
+                resultIndex: resultIndex,
+                selectedSeats: selectedSeats,
+                currency: currency,
+                baseFare: baseFare,
+                passengers: participants,
+                allFare: passengersData,
+                tax: tax,
+                yqTax: yqTax,
+                additionalTxnFeePub: additionalTxnFeePub,
+                additionalTxnFeeOfrd: additionalTxnFeeOfrd,
+                otherCharges: otherCharges,
+                discount: discount,
+                publishedFare: publishedFare,
+                offeredFare: offeredFare,
+                tdsOnCommission: tdsOnCommission,
+                tdsOnPLB: tdsOnPLB,
+                tdsOnIncentive: tdsOnIncentive,
+                serviceFee: serviceFee,
+                countryCode: countryCode,
+                mobileNo: mobileNo,
+                email: email
+            };
+
+            // Display the data object in the console
+            console.log('Request Data:', requestData);
+
+
+
+            //console.log('Selected Seats:', selectedSeats);
+
+
+
+            // Send an Ajax request here using the requestData
+            $.ajax({
+                url: '/flight-book-with-ssr', // Replace with your Ajax endpoint URL
+                method: 'POST', // Use POST or GET as needed
+                data: requestData, // Send the data object
+                success: function(response) {
+                    console.log('Received data:', response);
+                    window.location.href = '/flightticket?apiResponse=' + encodeURIComponent(JSON
+                            .stringify(response));
+
+
+                },
+                error: function(xhr, status, error) {
+                    // Handle any errors that occur during the request
+                    console.error('Error:', status, error);
+                }
+            });
+        });
+    </script>
+see participants array.
+Now, what we have to do, each participanty array has type, as 1, 2, 3.
+Now with each  passenger of type p1, p2 p3 wiill go if type is 1 , then p1, if type is 2 then p2 if type is 3 then p3 
