@@ -235,7 +235,7 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     {{-- <a href="{{ route('admin.country-index') }}" class="nav-link">Country</a> --}}
-                                    <a href="#" class="nav-link">Employee</a>
+                                    <a href="{{ route('admin-employee-index') }}" class="nav-link">Employee</a>
                                 </li>
                                 {{-- <li>
                                     <a href="{{ route('admin.state-index') }}" class="nav-link">State</a>

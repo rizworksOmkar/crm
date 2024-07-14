@@ -4,61 +4,62 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Country Master</h4>
+                    <h4>Employee</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('admin.country') }}" class="btn btn-primary">Add Country</a>
+                        <a href="{{ route('admin-create-employee') }}" class="btn btn-primary">Create Employee</a>
+                        
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover" style="width:100%;" id="tableCity">
+                        <table class="table table-striped table-hover" style="width:100%;" id="tableState">
                             <thead>
                                 <tr>
                                     <th>Sl no</th>
-                                    <th>Country Name</th>
-                                    <th>Country alias</th>
-                                    <th>Country Phone code</th>
-                                    <th>International or Domestic</th>
+                                    <th>Employee Type</th>
+                                    <th>User Name</th>
+                                    <th>Employee Name</th>
+                                    <th>Employee Email</th>
+                                    <th>Employee PhoneNo</th>
+                                    <th>Employee WhatsAppNo</th>
                                     <th>Action</th>
-
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $i=0; @endphp
-                                @foreach ($countries as $data)
+                                @foreach ($users as $us)
                                     @php $i++; @endphp
                                     <tr>
                                         <th>{{ $i }}</th>
-                                        <td>{{ getCountryName($data->id) }}</td>
-                                        <td>{{ $data->country_alias }}</td>
-                                        <td style="text-align: center">
-                                            @if ($data->country_code)
-                                                + {{ $data->country_code }}
-                                            @else
-                                            @endif
-                                        </td>
                                         <td>
-                                            @if ($data->d_i_f == 1)
-                                                <div class="badge badge-pill badge-info mb-1 float-center">Domestic</div>
+                                            @if ($us->role_type == 'admin')
+                                             Admin
                                             @else
-                                                <div class="badge badge-pill badge-success mb-1 float-center">International
-                                                </div>
+                                            User
                                             @endif
                                         </td>
+
+                                        <td>{{ $us->email }}</td>
+
+                                        <td>
+                                            {{ getEmplyeeName($us->id) }}
+                                        </td>
+
+                                        <td>{{ $us->usersemail }}</td>
+
+                                        <td>{{ $us->phonenumber }}</td>
+
+                                        <td>{{ $us->whatsappno }}</td>
                                         <td>
                                             <div class="buttons">
 
-                                                {{-- <a href="{{ url('/admin/user/edit/' . $data->id) }}"
-                                                class="btn btn-icon btn-sm btn-info" data-toggle="tooltip"
-                                                title="view and Edit Your User"><i class="far fa-eye"></i></a> --}}
 
                                                 <a href="#" class="btn btn-icon btn-sm btn-info" data-toggle="tooltip"
-                                                    title="view and Edit Your Country"><i class="far fa-eye"></i></a>
+                                                    title="view and Edit Your Employee"><i class="far fa-eye"></i></a>
 
-                                                <a submitid="{{ $data->id }}" class="btn btn-icon btn-sm btn-danger"
-                                                    data-toggle="tooltip" title="Delete your Country"
-                                                    href="javacript:void(0)" id="deleteCountry_{{ $data->id }}"><i
-                                                        class="fas fa-times"></i></a>
+                                                <a submitid="{{ $us->id }}" class="btn btn-icon btn-sm btn-danger"
+                                                    data-toggle="tooltip" title="Delete your City" href="javacript:void(0)"
+                                                    id="deleteCountry_{{ $us->id }}"><i class="fas fa-times"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -79,7 +80,6 @@
     <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
     </script>
     <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <!-- Page Specific JS File -->
     <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -95,14 +95,15 @@
                 // ]
             });
         });
+        
     </script>
-    @if ($countries)
-        @foreach ($countries as $data)
+        @if ($users)
+        @foreach ($users as $us)
             <script>
-                $('#deleteCountry_{{ $data->id }}').click(function() {
+                $('#deleteCountry_{{ $us->id }}').click(function() {
                     swal({
-                            title: "Do you want to delete your selected COUNTRY?",
-                            text: "Once deleted, you will never get this COUNTRY back. It will have to be rebuilt a new ",
+                            title: "Do you want to delete your selected Employee?",
+                            text: "Once deleted, you will never get this Employee back. It will have to be rebuilt a new ",
                             icon: "warning",
                             buttons: true,
                             showCancelButton: true,
@@ -121,7 +122,7 @@
                                     }
                                 });
                                 $.ajax({
-                                    url: "{{ route('admin.country.delete') }}",
+                                    url: "{{ route('admin-employee-delete') }}",
                                     method: 'post',
                                     data: {
                                         "_token": "{{ csrf_token() }}",
@@ -130,7 +131,7 @@
                                     success: function(response) {
                                         swal({
                                             icon: "success",
-                                            text: "Country deleted successfully",
+                                            text: "Employee deleted successfully",
                                         }).then((willconfirm) => {
                                             if (willconfirm) {
                                                 location.reload();

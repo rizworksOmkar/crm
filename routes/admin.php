@@ -5,29 +5,22 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\Country;
 use App\Models\Admin\State;
 use App\Models\Admin\City;
-use App\Http\Controllers\Admin\AdminlinkcreateController;
-use App\Http\Controllers\Admin\DataStoreController;
-use App\Http\Controllers\Admin\MasterDataController;
-use App\Http\Controllers\Admin\PackageSeasonController;
-use App\Http\Controllers\Admin\RuleEngineController;
-use App\Http\Controllers\Admin\HotelController;
-//pay controller
-use App\Http\Controllers\PhonepayController;
-
+use App\Http\Controllers\CRM\LinkController;
+use App\Http\Controllers\CRM\LeadController;
+use App\Http\Controllers\CRM\EmployeeController;
 
 
 Route::group(['middleware' => ['disabled_back_button']], function () {
 
     Route::group(['middleware' => ['Admin']], function () {
 
-        // Route::get('/admin/dashboard', function () {
-        //     return view('/adminlogin/admin-dashboard');
-        // });
-        Route::get('/landing-page', [AdminlinkcreateController::class, 'adminDashboard'])->name('Admin-dashboard');
+        Route::get('/landing-page', [LinkController::class, 'adminDashboard'])->name('Admin-dashboard');
+        Route::get('/emplyee', [LinkController::class, 'employeeindex'])->name('admin-employee-index');
+        Route::get('/createEmployee', [LinkController::class, 'createEmployee'])->name('admin-create-employee');
+        Route::post('/storeEmployee', [EmployeeController::class, 'storeEmployee'])->name('admin-employee-store');
+        Route::post('/deletEmployee', [EmployeeController::class, 'deleteEmployee'])->name('admin-employee-delete');
+
         //Store, Update, Delete Country Data and retrive
-        // Route::get('/country-index', [AdminlinkcreateController::class, 'indexCountry'])->name('admin.country-index');
-        // Route::get('/addcountry', [AdminlinkcreateController::class, 'addCountry'])->name('admin.country');
-        // Route::post('/storeCountry', [DataStoreController::class, 'countryStore'])->name('admin.country.store');
         // Route::post('/deleteCountry', [MasterDataController::class, 'countryDelete'])->name('admin.country.delete');
 
         // //Store, Update, Delete State Data and retrive
@@ -40,7 +33,7 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         // Route::get('/addcity', [AdminlinkcreateController::class, 'addCity'])->name('admin.city');
 
         // Route::post('/storeCity', [DataStoreController::class, 'cityStore'])->name('admin.city.store');
-        // Route::post('/deleteCity', [MasterDataController::class, 'cityDelete'])->name('admin.city.delete');
+        // 
 
         // Route::get('/check-country-DOMorINT', [MasterDataController::class, 'chkcountryDI'])->name('admin.chkcountryDI');
         // Route::get('/fetch-state', [MasterDataController::class, 'stateFetch'])->name('admin.state-fetch');

@@ -19,7 +19,7 @@
                                 <label for="email">User Name</label>
                                 <input id="email" type="text" class="form-control" name="email" tabindex="1">
                                 <div class="invalid-feedback" id="invalid-feedback-email">
-                                    Please fill in your username
+                                    Please fill in your User Name
                                 </div>
                             </div>
                             <div class="form-group">
