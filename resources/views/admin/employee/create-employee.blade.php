@@ -24,7 +24,7 @@
                             <input type="text" class="form-control" id="empLastName" name="empLastName"
                                 placeholder="Enter Last Name">
                         </div>
-                        
+
                     </div>
                     <div class="form-group">
                         <label for="empEmailid">Email Id</label>
@@ -40,7 +40,8 @@
                         <div class="form-group mt-4 col-md-4">
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="chkWhatsaappcheck" name="chkWhatsaappcheck" value="1">
+                                <input class="form-check-input" type="checkbox" id="chkWhatsaappcheck"
+                                    name="chkWhatsaappcheck" value="1">
                                 <label class="form-check-label" for="chkWhatsaappcheck">
                                     Check if same phone number is whatsapp number.
                                 </label>
@@ -59,7 +60,11 @@
                         <label for="empUserName">User Name</label>
                         <input type="text" class="form-control" id="empUserName" name="empUserName"
                             placeholder="Enter User Name">
+                        <span id="username-availability"></span>
                     </div>
+
+
+
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
@@ -85,23 +90,58 @@
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Create</button>
 
-                    <a href="/emplyee" class="btn btn-danger ml-5">Back To Main Menu</a>
+                    <a href="/employee" class="btn btn-danger ml-5">Back To Main Menu</a>
                 </div>
             </div>
         </form>
     </div>
 @endsection
+
 @section('scripts')
     <script>
         $(document).ready(function() {
+            const usernameInput = $('#empUserName');
+            const usernameAvailability = $('#username-availability');
+
+            usernameInput.blur(function() {
+                const username = usernameInput.val().trim();
+
+                if (username.length >= 3) {
+                    $.ajax({
+                        url: `/check-username/${username}`,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            usernameAvailability.text(data.available ? 'Username Available' :
+                                'Username Unavailable');
+                            usernameAvailability.addClass(data.available ? 'text-success' :
+                                'text-danger');
+                        },
+                        error: function(error) {
+                            console.error('Error checking username:', error);
+                            usernameAvailability.text('Error checking availability.');
+                            usernameAvailability.addClass('text-danger');
+                        }
+                    });
+                } else {
+                    usernameAvailability.text('');
+                    usernameAvailability.removeClass('text-success', 'text-danger');
+                }
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
             $('#chkWhatsaappcheck').change(function() {
-                var phonenumber=$("#empPhoneno").val();
+                var phonenumber = $("#empPhoneno").val();
                 if ($(this).is(":checked")) {
                     $("#empWhatsAppno").val(phonenumber);
-                }else{
+                } else {
                     $("#empWhatsAppno").val(" ");
                 }
-               
+
             });
             $('#add_employee_form').submit(function(event) {
                 event.preventDefault();
@@ -122,12 +162,12 @@
                             }).then((willconfirm) => {
                                 if (willconfirm) {
                                     swal({
-                                            title: "Are you want Create more Employee?",
+                                            title: "Do you want Create more Employee?",
                                             //text: "Once deleted, you will never get this CITY back. It will have to be rebuilt a new ",
                                             icon: "warning",
                                             // buttons: true,
                                             buttons: ["No ! Go to Main menu",
-                                                "Yes ! I want"
+                                                "Yes ! I want to"
                                             ],
                                             showCancelButton: true,
                                             dangerMode: true,
@@ -152,11 +192,12 @@
                                                 $('#empPassword').val('');
                                                 $('#empConPassword').val('');
                                                 $('#emptype').val(0);
-                                                $( '#chkWhatsaappcheck' ).prop( "checked", false );
+                                                $('#chkWhatsaappcheck').prop(
+                                                    "checked", false);
                                             } else {
                                                 // swal("Your file is safe!");
                                                 window.location.replace(
-                                                    "/emplyee")
+                                                    "/employee")
                                             }
                                         });
 

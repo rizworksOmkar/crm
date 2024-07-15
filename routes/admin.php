@@ -8,18 +8,29 @@ use App\Models\Admin\City;
 use App\Http\Controllers\CRM\LinkController;
 use App\Http\Controllers\CRM\LeadController;
 use App\Http\Controllers\CRM\EmployeeController;
-
+use App\Models\Lead;
 
 Route::group(['middleware' => ['disabled_back_button']], function () {
 
     Route::group(['middleware' => ['Admin']], function () {
 
         Route::get('/landing-page', [LinkController::class, 'adminDashboard'])->name('Admin-dashboard');
-        Route::get('/emplyee', [LinkController::class, 'employeeindex'])->name('admin-employee-index');
+        Route::get('/employee', [LinkController::class, 'employeeindex'])->name('admin-employee-index');
         Route::get('/createEmployee', [LinkController::class, 'createEmployee'])->name('admin-create-employee');
         Route::post('/storeEmployee', [EmployeeController::class, 'storeEmployee'])->name('admin-employee-store');
         Route::post('/deletEmployee', [EmployeeController::class, 'deleteEmployee'])->name('admin-employee-delete');
+        Route::get('/check-username/{username}', [EmployeeController::class, 'checkUsernameAvailability']);
 
+        //lead
+        Route::get('/leads', [LeadController::class, 'leadIndex'])->name('admin-lead-index');
+        Route::get('/createLead', [LeadController::class, 'createLead'])->name('admin-create-lead');
+        Route::post('/storeLead', [LeadController::class, 'storeLead'])->name('admin-lead-store');
+        Route::delete('/leads/{id}', [LeadController::class, 'deleteLead'])->name('leads.delete');
+        Route::get('/leads/{id}/edit', [LeadController::class, 'editLead'])->name('leads.edit');
+        Route::put('/leads/{id}', [LeadController::class, 'updateLead'])->name('leads.update');
+
+        // admin-contact-store
+        Route::post('/contactStore', [LeadController::class, 'storeContact'])->name('admin-contact-store');
         //Store, Update, Delete Country Data and retrive
         // Route::post('/deleteCountry', [MasterDataController::class, 'countryDelete'])->name('admin.country.delete');
 
@@ -33,7 +44,7 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         // Route::get('/addcity', [AdminlinkcreateController::class, 'addCity'])->name('admin.city');
 
         // Route::post('/storeCity', [DataStoreController::class, 'cityStore'])->name('admin.city.store');
-        // 
+        //
 
         // Route::get('/check-country-DOMorINT', [MasterDataController::class, 'chkcountryDI'])->name('admin.chkcountryDI');
         // Route::get('/fetch-state', [MasterDataController::class, 'stateFetch'])->name('admin.state-fetch');
@@ -201,7 +212,4 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         // //update
         // Route::get('/admin-company-edit/{id}', [App\Http\Controllers\Admin\CompanyController::class, 'edit'])->name('admin.company.edit');
     });
-
-
-   
 });

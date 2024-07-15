@@ -231,207 +231,28 @@
 
                         <li class="dropdown">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                    data-feather="home"></i><span>User Creation</span></a>
+                                    data-feather="home"></i><span>User Management</span></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     {{-- <a href="{{ route('admin.country-index') }}" class="nav-link">Country</a> --}}
                                     <a href="{{ route('admin-employee-index') }}" class="nav-link">Employee</a>
                                 </li>
-                                {{-- <li>
-                                    <a href="{{ route('admin.state-index') }}" class="nav-link">State</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('admin.city-index') }}" class="nav-link">City</a>
-
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="{{ route('admin-hotelproperty-index')}}">Create Proparty
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="{{ route('admin-hotelpropertyrules-index')}}">Create Property Rules
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="{{ route('admin-amenities-index')}}">Create Amenities
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('admin.sight.index') }}" class="nav-link">Sight Master</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('admin.transport.index') }}" class="nav-link">Transport</a>
-
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('admin-season-index') }}" class="nav-link">Season Master</a>
-                                </li> --}}
-
                             </ul>
                         </li>
 
-                        {{-- <li class="dropdown">
+                        <li class="dropdown">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                    data-feather="shopping-bag"></i><span>Company</span></a>
+                                    data-feather="home"></i><span>Lead & Management</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="{{ route('admin.company.index') }}">Company Profile
-                                    </a>
-                                </li>
                                 <li>
-                                    <a class="nav-link" href="{{ route('admin.company.company-details') }}">Company
-                                        Details
-                                    </a>
-
+                                    {{-- <a href="{{ route('admin.country-index') }}" class="nav-link">Country</a> --}}
+                                    <a href="{{ route('admin-lead-index') }}" class="nav-link">Leads</a>
                                 </li>
-                                <li>
-                                    <a class="nav-link" href="{{ route('admin.company.company-branch') }}">Company
-                                        Branch
-                                    </a>
-
-                                </li>
-
-                            </ul>
-                        </li> --}}
-
-
-                        {{-- Rule Engine --}}
-                        {{-- <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                    data-feather="shopping-bag"></i><span>Home Page Rule Engine</span></a>
-                            <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="{{ route('admin.aboutUs-page-create') }}">About Us
-                                    </a></li>
-                               
-                                <li><a class="nav-link" href="{{ route('admin.Sub-Services-index') }}">Services
-                                        Pages
-                                    </a></li>
-                                <li><a class="nav-link"
-                                        href="{{ route('admin.ruleengine.int.dest.tile') }}">International
-                                        Destination</a></li>
-                                <li><a class="nav-link"
-                                        href="{{ route('admin.ruleengine.domestic.dest.tile') }}">Domestic
-                                        Destination</a></li>
-
-                                <li><a class="nav-link" href="{{ route('admin.homepage-banner-set.get') }}">Home Page
-                                        Banner set
-                                    </a></li>
-
-
-                                <li><a class="nav-link"
-                                        href="{{ route('admin.homepage-INT-pacakages-set.get') }}">International
-                                        Pacakages set
-                                    </a></li>
-
-                                <li><a class="nav-link"
-                                        href="{{ route('admin.homepage-DOM-pacakages-set.get') }}">Domestic Pacakages
-                                        set
-                                    </a></li>
-
-
-
-                            </ul>
-                        </li> --}}
-                        {{-- Rule Engine --}}
-
-                        {{-- Activate Hhotel --}}
-                        {{-- <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                    data-feather="home"></i><span>Hotels</span></a>
-                            <ul class="dropdown-menu">
-
-                                <li>
-                                    <a class="nav-link" href="{{ route('admin.hotel.index') }}">Create Hotel
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="nav-link" href="{{route('admin-Facilities')}}">Create Facilities of Hotels
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="{{ route('admin-hotel-rooms') }}">Create Room
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="{{ route('admin-rooms-option') }}">Create Rooms Option
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="{{ route('admin-HotelPrices') }}">Costing By Season Type
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="{{ route('admin-HotelGallery') }}">Gallery
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="nav-link" href="#">Location
-                                    </a>
-                                </li>
-
                             </ul>
                         </li>
 
 
-                        <li class="dropdown">
-                            <a href="{{ route('admin.meal.index') }}" class="nav-link"><i
-                                    data-feather="slack"></i><span>Meal Type</span></a>
 
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="nav-link"><i
-                                    data-feather="slack"></i><span>Restaurant</span></a>
-
-                        </li>
-                        <li class="dropdown">
-                            <a href="{{ route('admin.destination.index') }}" class="nav-link"><i
-                                    data-feather="map-pin"></i><span>Destinations</span></a>
-
-                        </li>
-                        <li class="dropdown">
-                            <a href="{{ route('admin.packagetype.index') }}" class="nav-link"><i
-                                    data-feather="package"></i><span>Package Types</span></a>
-
-                        </li>
-                        <li class="dropdown">
-                            <a href="{{ route('admin.packageactivity.index') }}" class="nav-link"><i
-                                    data-feather="sunrise"></i><span>Package Activity</span></a>
-
-                        </li>
-
-
-
-                        <li class="dropdown">
-                            <a href="{{ route('admin.package-index') }}" class="nav-link"><i
-                                    data-feather="package"></i><span>Packages</span></a>
-
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="{{ route('admin.package.seasonadd') }}" class="nav-link"><i
-                                    data-feather="calendar"></i><span>Package Season</span></a>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="{{ route('admin.package-availability') }}" class="nav-link"><i
-                                    data-feather="package"></i><span>Packages Availability</span></a>
-
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="{{ route('admin.pacakage-gallery') }}" class="nav-link"><i
-                                    data-feather="camera"></i><span>Package Gallery</span></a>
-
-                        </li>
-                        <li class="dropdown">
-                            <a href="{{ route('admin.package.itinerary') }}" class="nav-link"><i
-                                    data-feather="calendar"></i><span>Package Itenary</span></a>
-
-                        </li> --}}
-                        
                     </ul>
                 </aside>
             </div>
