@@ -152,4 +152,51 @@ class LeadController extends Controller
         }
 
     }
+
+
+
+    //Empoloyee Side
+
+    public function empLeadIndex()
+    {
+        $myId = auth()->user()->id;
+
+        $leads = Lead::where('assigned_to', $myId)->get();
+        $contacts = Contact::all();
+        return view('admin.empLead.index', compact('leads', 'contacts'));
+    }
+    // chnageStatus
+
+    public function changeStatus($id)
+    {
+        $lead = Lead::findOrFail($id);
+        $contacts = Contact::all();
+        $employees = User::where('role_type', 'User')->get();
+
+        return view('admin.empLead.editLead', compact('lead', 'contacts', 'employees'));
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $lead = Lead::findOrFail($id);
+
+        $lead->update([
+            'contact_id' => $request->input('contact_id'),
+            'assigned_to' => $request->input('assigned_to'),
+            'description' => $request->input('description'),
+            'budget' => $request->input('budget'),
+            'expiry' => $request->input('expiry'),
+            'area_requirements' => $request->input('area_requirements'),
+            'property_type' => $request->input('property_type'),
+            'status' => $request->input('status'),
+        ]);
+
+        if ($lead) {
+
+            return response()->json(['success' => true, 'message' => 'success']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'error']);
+        }
+
+    }
 }

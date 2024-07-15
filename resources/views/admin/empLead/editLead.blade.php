@@ -1,4 +1,4 @@
-@extends('layouts.admin-front')
+@extends('layouts.user-dashboard-layout')
 @section('content')
     <div class="col-12 col-md-6 col-lg-6">
         <form id="edit_lead_form">
@@ -13,7 +13,7 @@
 
                     <div class="form-group">
                         <label for="contact_id">Contact</label>
-                        <select id="contact_id" class="form-control" name="contact_id">
+                        <select id="contact_id" class="form-control" name="contact_id" disabled style="pointer-events: none;>
                             <option value="">Select Contact</option>
                             @foreach ($contacts as $contact)
                                 <option value="{{ $contact->id }}" {{ $contact->id == $lead->contact_id ? 'selected' : '' }}>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label for="assigned_to">Assigned To</label>
-                        <select id="assigned_to" class="form-control" name="assigned_to">
+                        <select id="assigned_to" class="form-control" name="assigned_to" disabled style="pointer-events: none;>
                             <option value="">Select Employee</option>
                             @foreach ($employees as $employee)
                                 <option value="{{ $employee->id }}" {{ $employee->id == $lead->assigned_to ? 'selected' : '' }}>
@@ -39,19 +39,19 @@
                     </div>
                     <div class="form-group">
                         <label for="budget">Budget</label>
-                        <input type="number" class="form-control" id="budget" name="budget" value="{{ $lead->budget }}">
+                        <input type="number" class="form-control" id="budget" name="budget" value="{{ $lead->budget }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="expiry">Expiry Date</label>
-                        <input type="date" class="form-control" id="expiry" name="expiry" value="{{ $lead->expiry }}">
+                        <input type="date" class="form-control" id="expiry" name="expiry" value="{{ $lead->expiry }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="area_requirements">Area Requirements</label>
-                        <input type="text" class="form-control" id="area_requirements" name="area_requirements" value="{{ $lead->area_requirements }}">
+                        <input type="text" class="form-control" id="area_requirements" name="area_requirements" value="{{ $lead->area_requirements }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="property_type">Property Type</label>
-                        <input type="text" class="form-control" id="property_type" name="property_type" value="{{ $lead->property_type }}">
+                        <input type="text" class="form-control" id="property_type" name="property_type" value="{{ $lead->property_type }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Update Lead</button>
-                    <a href="/leads" class="btn btn-danger ml-5">Back To Leads</a>
+                    <a href="/myLeads" class="btn btn-danger ml-5">Back To Leads</a>
                 </div>
             </div>
         </form>
@@ -87,12 +87,12 @@
                 var leadId = $('#lead_id').val();
 
                 $.ajax({
-                    url: '/leads/' + leadId,
+                    url: '/myleads/' + leadId,
                     type: 'PUT',
                     data: formData,
                     success: function(response) {
                         alert('Lead updated successfully.');
-                        window.location.href = "/leads";
+                        window.location.href = "/user-dashboard";
                     },
                     error: function(error) {
                         console.error('Error updating lead:', error);

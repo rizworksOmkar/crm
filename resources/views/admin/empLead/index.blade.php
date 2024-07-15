@@ -1,4 +1,4 @@
-@extends('layouts.admin-front')
+@extends('layouts.user-dashboard-layout')
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -6,16 +6,9 @@
                 <div class="card-header">
                     <h4>Leads</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('admin-create-lead') }}" class="btn btn-primary">Add Lead</a>
+                        {{-- <a href="{{ route('admin-create-lead') }}" class="btn btn-primary">Add Lead</a> --}}
 
                     </div>
-                    <select id="status-filter" class="form-control">
-                        <option value="">All Statuses</option>
-                        <option value="new">New</option>
-                        <option value="in_progress">In Progress</option>
-                        <option value="closed_won">Closed & Won</option>
-                        <option value="closed_failed">Closed & Failed</option>
-                      </select>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -66,12 +59,12 @@
                                                 <a href="#" class="btn btn-icon btn-sm btn-info" data-toggle="tooltip"
                                                     title="view and Edit Your Employee"><i class="far fa-eye"></i></a>
 
-                                                <a submitid="{{ $lead->id }}"
+                                                {{-- <a submitid="{{ $lead->id }}"
                                                     class="btn btn-icon btn-sm btn-danger delete-lead-btn"
                                                     data-toggle="tooltip" title="Delete Lead" href="javascript:void(0)"
-                                                    id="deleteLead_{{ $lead->id }}"><i class="fas fa-times"></i></a>
+                                                    id="deleteLead_{{ $lead->id }}"><i class="fas fa-times"></i></a> --}}
 
-                                                <a href="{{ route('leads.edit', $lead->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                                <a href="{{ route('leads.changeStatus', $lead->id) }}" class="btn btn-sm btn-warning">Edit</a>
 
 
                                             </div>

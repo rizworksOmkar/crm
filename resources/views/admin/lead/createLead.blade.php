@@ -11,10 +11,10 @@
                 <div class="card-body">
                     {{-- Contact Selection with Modal Creation Option --}}
                     <div class="form-group">
-                        <label for="contact_id">Contact</label>
+                        <label for="contact_id">Customer</label>
                         <div class="input-group">
                             <select id="contact_id" class="form-control" name="contact_id">
-                                <option value="">Select Contact</option>
+                                <option value="">Select Customer</option>
                                 {{-- Loop through contacts to populate options --}}
                                 @foreach ($contacts as $contact)
                                     <option value="{{ $contact->id }}">{{ $contact->name }}</option>
@@ -26,12 +26,65 @@
                             </div>
                             <div class="input-group-append">
                                 <button type="button" class="btn btn-primary" id="add_new_contact_btn" data-toggle="modal"
-                                    data-target="#createContactModal">Add New Contact</button>
+                                    data-target="#createContactModal">Add New Customer</button>
                             </div>
                         </div>
                     </div>
 
+
                     {{-- Lead Details --}}
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label for="property_type">Requirement Type</label>
+
+                            <select class="form-control" id="requirement_type" name="reuirement_type">
+                                <option value="new" selected>Buy</option>
+                                <option value="in_progress">Rent</option>
+                                <option value="closed">Sell</option>
+                                <option value="closed">Lease</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="budget">Customer Business Tyoe</label>
+                            <input type="text" class="form-control" id="custBusinessType" name="custBusinessType"
+                                placeholder="Enter Customer Business Type">
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="property_type">Property Type</label>
+
+                            <select class="form-control" id="property_type" name="property_type">
+                                <option value="new" selected>Commercial Office Space</option>
+                                <option value="in_progress">Commercial Shop</option>
+                                <option value="closed">Showrooms</option>
+                                <option value="closed">Flat</option>
+                                <option value="closed">House/Villa</option>
+                                <option value="closed">Plot/Land</option>
+                                <option value="closed">Pg Accomodation</option>
+                                <option value="closed">Others</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="property_type">Property Specs</label>
+
+                            <select class="form-control" id="requirement_type" name="reuirement_type">
+                                <option value="new" selected>Co Working</option>
+                                <option value="in_progress">Exclusive Spcae</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                    </div>
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter description"></textarea>
@@ -44,7 +97,7 @@
                                 placeholder="Enter budget">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="expiry">Expiry Date</label>
+                            <label for="expiry">Possesion Due Date</label>
                             <input type="date" class="form-control" id="expiry" name="expiry">
                         </div>
                         <div class="form-group col-md-4">
@@ -57,8 +110,18 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="property_type">Property Type</label>
-                            <input type="text" class="form-control" id="property_type" name="property_type"
-                                placeholder="Enter property type">
+
+                            <select class="form-control" id="property_type" name="property_type">
+                                <option value="new" selected>Commercial Office Space</option>
+                                <option value="in_progress">Commercial Shop</option>
+                                <option value="closed">Showrooms</option>
+                                <option value="closed">Flat</option>
+                                <option value="closed">House/Villa</option>
+                                <option value="closed">Plot/Land</option>
+                                <option value="closed">Pg Accomodation</option>
+                                <option value="closed">Others</option>
+                            </select>
+
                         </div>
                         <div class="form-group col-md-6">
                             <label for="assigned_to">Assign To</label>
@@ -66,7 +129,8 @@
                                 <option value="">Select Employee</option>
                                 {{-- Loop through employees to populate options --}}
                                 @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
+                                    <option value="{{ $employee->id }}">{{ $employee->first_name }}
+                                        {{ $employee->last_name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -77,10 +141,13 @@
                         <select id="status" class="form-control" name="status">
                             <option value="new" selected>New</option>
                             <option value="in_progress">In Progress</option>
-                            <option value="closed">Closed</option>
+                            <option value="closed">Closed & Won</option>
+                            <option value="closed">Closed & Failed</option>
+
                         </select>
                     </div>
                 </div>
+                {{-- lead type and Source --}}
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Create</button>
                     <a href="/leads" class="btn btn-danger ml-5">Back To Main Menu</a>

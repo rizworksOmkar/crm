@@ -231,10 +231,10 @@
 
                         <li class="dropdown">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                    data-feather="home"></i><span>Lead Creation</span></a>
+                                    data-feather="home"></i><span>Leads</span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    {{-- <a href="{{ route('admin.country-index') }}" class="nav-link">Country</a> --}}
+                                    <a href="{{ route('my-lead-index') }}" class="nav-link">My Leads</a>
                                     {{-- <a href="{{ route('admin-employee-index') }}" class="nav-link">Employee</a> --}}
                                 </li>
                                 {{-- <li>
@@ -303,7 +303,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="{{ route('admin.aboutUs-page-create') }}">About Us
                                     </a></li>
-                               
+
                                 <li><a class="nav-link" href="{{ route('admin.Sub-Services-index') }}">Services
                                         Pages
                                     </a></li>
@@ -431,7 +431,7 @@
                                     data-feather="calendar"></i><span>Package Itenary</span></a>
 
                         </li> --}}
-                        
+
                     </ul>
                 </aside>
             </div>

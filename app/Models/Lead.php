@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use App\Models\LeadStatusLog;
+use Auth;
 
 class Lead extends Model
 {
@@ -26,7 +28,6 @@ class Lead extends Model
 
     protected $keyType = 'string';
 
-
     public $incrementing = false;
 
     protected static function boot()
@@ -34,6 +35,16 @@ class Lead extends Model
         parent::boot();
         static::creating(function ($model) {
             $model->id = Str::uuid(); // Generate UUID
+        });
+
+        static::updating(function ($model) {
+            if ($model->isDirty('status')) {
+                LeadStatusLog::create([
+                    'lead_id' => $model->id,
+                    'status' => $model->status,
+                    'changed_by' => Auth::id(),
+                ]);
+            }
         });
     }
 
@@ -51,4 +62,10 @@ class Lead extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    public function statusLogs()
+    {
+        return $this->hasMany(LeadStatusLog::class);
+    }
 }
+
