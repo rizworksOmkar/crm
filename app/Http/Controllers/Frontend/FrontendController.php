@@ -628,7 +628,7 @@ class FrontendController extends Controller
 
     public function adminlogin()
     {
-        return view('admin.admin-login');
+        return view('admin-login');
     }
 
     public function adminEmailPasswordCheck(Request $request)

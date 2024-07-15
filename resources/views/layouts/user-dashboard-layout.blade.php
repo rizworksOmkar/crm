@@ -1,783 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Title -->
-    <title>{{ isset($title) ? $title : $companyName->company_name }}</title>
-    {{-- <title>Dashboard - TRAVELHOSTONLINE </title> --}}
-    <!-- Bootstrap css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/bootstrap.min.css') }}" />
-    <!-- animate css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/animate.min.css') }}" />
-    <!-- Fontawesome css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/fontawesome.all.min.css') }}" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons%401.8.2/font/bootstrap-icons.css">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>CRM</title>
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/summernote/summernote-bs4.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-daterangepicker/daterangepicker.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/admin/bundles/select2/dist/css/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/admin/bundles/jquery-selectric/selectric.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/jquery-selectric/selectric.css') }}">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/datatables/datatables.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/components.css') }}">
 
-    <!-- Slick css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/slick.min.css') }}" />
-    <!--slick-theme.css-->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/slick-theme.min.css') }}" />
-    <!-- Rangeslider css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/nouislider.css') }}" />
-    <!-- owl.carousel css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/owl.carousel.min.css') }}" />
-    <!-- owl.theme.default css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/owl.theme.default.min.css') }}" />
-    <!-- navber css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/navber.css') }}" />
-    <!-- meanmenu css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/meanmenu.css') }}" />
-    <!-- Style css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}" />
-    <!-- Responsive css -->
-    <link rel="stylesheet" href="{{ asset('assets/user/css/responsive.css') }}" />
-    <!-- Favicon -->
-    {{-- <link rel="icon" type="image/png" href="{{ asset('assets/user/img/favicon.png') }}"> --}}
-    <link rel="icon" type="image/png" href="{{ asset('assets/user/img/common/travel-logo.jpg') }}">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/custom.css') }}">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" /> --}}
+
+    <link rel='shortcut icon' type='image/x-icon' href="{{ asset('assets/admin/img/favicon.ico') }}" />
+
+    <!-- Croping Images -->
+    {{-- <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/style-example.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/jquery.Jcrop.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/bundles/pretty-checkbox/pretty-checkbox.min.css') }}">
+    <!-- End Croping Images -->
     @yield('styles')
 </head>
 
 <body>
-    <!-- preloader Area -->
-    <div class="preloader">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="lds-spinner">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header Area -->
-    <header class="main_header_arae">
-        <!-- Top Bar -->
-        <div class="topbar-area">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6">
-                        <ul class="topbar-list">
-                            <li>
-                                <a href="#!"><i class="fab fa-facebook"></i></a>
-                                <a href="#!"><i class="fab fa-twitter-square"></i></a>
-                                <a href="#!"><i class="fab fa-instagram"></i></a>
-                                <a href="#!"><i class="fab fa-linkedin"></i></a>
-                            </li>
-                            <li>
-                                @if ($companyName->company_phone_number_1)
-                                    <a href="#!">
-                                        <span>{!! $companyName->company_phone_number_1 !!}</span>
-                                    </a>
-                                @else
-                                @endif
-
-                            </li>
-                            <li>
-                                @if ($companyName->company_email_id_1)
-                                    <a href="#!">
-                                        <span>{!! $companyName->company_email_id_1 !!}</span>
-                                    </a>
-                                @else
-                                @endif
-
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <ul class="topbar-others-options">
-                            {{-- @if (Auth::check())
-                            <li>
-                                <a href="javascript:void(0)" rolltype={{ Auth::User()->role_type }}
-                                    class="rolltype">Go to dashboard</a>                                
-                            </li>
-                            <li><a href="{{ route('logout') }}">Sign Out</a></li>                                  
-                            @else
-                                <li><a href="{{ route('user.login') }}">Login</a></li>
-                                <li><a href="{{ route('user.register') }}">Sign up</a></li>
-                            @endif --}}
-
-                            <li>
-                                <div class="dropdown language-option">
-                                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <span class="lang-name"></span>
+    <div class="loader"></div>
+    <div id="app">
+        <div class="main-wrapper main-wrapper-1">
+            <div class="navbar-bg"></div>
+            <nav class="navbar navbar-expand-lg main-navbar sticky">
+                <div class="form-inline mr-auto">
+                    <ul class="navbar-nav mr-3">
+                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
+									collapse-btn">
+                                <i data-feather="align-justify"></i></a></li>
+                        <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
+                                <i data-feather="maximize"></i>
+                            </a></li>
+                        <li>
+                            <form class="form-inline mr-auto">
+                                <div class="search-element">
+                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search"
+                                        data-width="200">
+                                    <button class="btn" type="submit">
+                                        <i class="fas fa-search"></i>
                                     </button>
-                                    <div class="dropdown-menu language-dropdown-menu">
-                                        <a class="dropdown-item" href="#">English</a>
-                                        <a class="dropdown-item" href="#">Arabic</a>
-                                        <a class="dropdown-item" href="#">French</a>
-                                    </div>
                                 </div>
-                            </li>
-                            <li>
-                                <div class="dropdown language-option">
-                                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <span class="lang-name"></span>
-                                    </button>
-                                    <div class="dropdown-menu language-dropdown-menu">
-                                        <a class="dropdown-item" href="#">INR</a>
-
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-
-        <!-- Navbar Bar -->
-        <div class="navbar-area">
-            <div class="main-responsive-nav">
-                <div class="container">
-                    <div class="main-responsive-menu">
-                        <div class="logo">
-                            <a class="travel-img" href="{{ route('user.home') }}">
-                                {{-- <h3>TRAVORIZ</h3> --}}
-                                @if ($companyName->company_logo_1)
-                                    <img src="/{{ $companyName->company_logo_1 }}"
-                                        alt="{{ $companyName->company_name }}">
-                                @else
-                                @endif
-
+                <ul class="navbar-nav navbar-right">
+                    <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+                            class="nav-link nav-link-lg message-toggle"><i data-feather="mail"></i>
+                            <span class="badge headerBadge1">
+                                6 </span> </a>
+                        <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
+                            <div class="dropdown-header">
+                                Messages
+                                <div class="float-right">
+                                    <a href="#">Mark All As Read</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-list-content dropdown-list-message">
+                                <a href="#" class="dropdown-item"> <span
+                                        class="dropdown-item-avatar
+											text-white"> <img alt="image"
+                                            src="assets/admin/img/users/user-1.png" class="rounded-circle">
+                                    </span> <span class="dropdown-item-desc"> <span class="message-user">John
+                                            Deo</span>
+                                        <span class="time messege-text">Please check your mail !!</span>
+                                        <span class="time">2 Min Ago</span>
+                                    </span>
+                                </a> <a href="#" class="dropdown-item"> <span
+                                        class="dropdown-item-avatar text-white">
+                                        <img alt="image" src="{{ asset('assets/admin/img/users/user-2.png') }}"
+                                            class="rounded-circle">
+                                    </span> <span class="dropdown-item-desc"> <span class="message-user">Sarah
+                                            Smith</span> <span class="time messege-text">Request for leave
+                                            application</span>
+                                        <span class="time">5 Min Ago</span>
+                                    </span>
+                                </a> <a href="#" class="dropdown-item"> <span
+                                        class="dropdown-item-avatar text-white">
+                                        <img alt="image" src="{{ asset('assets/admin/img/users/user-5.png') }}"
+                                            class="rounded-circle">
+                                    </span> <span class="dropdown-item-desc"> <span class="message-user">Jacob
+                                            Ryan</span> <span class="time messege-text">Your payment invoice is
+                                            generated.</span> <span class="time">12 Min Ago</span>
+                                    </span>
+                                </a> <a href="#" class="dropdown-item"> <span
+                                        class="dropdown-item-avatar text-white">
+                                        <img alt="image" src="{{ asset('assets/admin/img/users/user-4.png') }}"
+                                            class="rounded-circle">
+                                    </span> <span class="dropdown-item-desc"> <span class="message-user">Lina
+                                            Smith</span> <span class="time messege-text">hii John, I have upload
+                                            doc
+                                            related to task.</span> <span class="time">30
+                                            Min Ago</span>
+                                    </span>
+                                </a> <a href="#" class="dropdown-item"> <span
+                                        class="dropdown-item-avatar text-white">
+                                        <img alt="image" src="{{ asset('assets/admin/img/users/user-3.png') }}"
+                                            class="rounded-circle">
+                                    </span> <span class="dropdown-item-desc"> <span class="message-user">Jalpa
+                                            Joshi</span> <span class="time messege-text">Please do as specify.
+                                            Let me
+                                            know if you have any query.</span> <span class="time">1
+                                            Days Ago</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="dropdown-footer text-center">
+                                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+                            class="nav-link notification-toggle nav-link-lg"><i data-feather="bell"
+                                class="bell"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
+                            <div class="dropdown-header">
+                                Notifications
+                                <div class="float-right">
+                                    <a href="#">Mark All As Read</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-list-content dropdown-list-icons">
+                                <a href="#" class="dropdown-item dropdown-item-unread"> <span
+                                        class="dropdown-item-icon bg-primary text-white"> <i
+                                            class="fas
+												fa-code"></i>
+                                    </span> <span class="dropdown-item-desc"> Travoriz update is
+                                        available now! <span class="time">2 Min
+                                            Ago</span>
+                                    </span>
+                                </a> <a href="#" class="dropdown-item"> <span
+                                        class="dropdown-item-icon bg-info text-white"> <i
+                                            class="far
+												fa-user"></i>
+                                    </span> <span class="dropdown-item-desc"> <b>You</b> and <b>Dedik
+                                            Sugiharto</b> are now friends <span class="time">10 Hours
+                                            Ago</span>
+                                    </span>
+                                </a> <a href="#" class="dropdown-item"> <span
+                                        class="dropdown-item-icon bg-success text-white"> <i
+                                            class="fas
+												fa-check"></i>
+                                    </span> <span class="dropdown-item-desc"> <b>Kusnaedi</b> has
+                                        moved task <b>Fix bug header</b> to <b>Done</b> <span class="time">12
+                                            Hours
+                                            Ago</span>
+                                    </span>
+                                </a> <a href="#" class="dropdown-item"> <span
+                                        class="dropdown-item-icon bg-danger text-white"> <i
+                                            class="fas fa-exclamation-triangle"></i>
+                                    </span> <span class="dropdown-item-desc"> Low disk space. Let's
+                                        clean it! <span class="time">17 Hours Ago</span>
+                                    </span>
+                                </a> <a href="#" class="dropdown-item"> <span
+                                        class="dropdown-item-icon bg-info text-white"> <i
+                                            class="fas
+												fa-bell"></i>
+                                    </span> <span class="dropdown-item-desc"> Welcome to CRM! <span
+                                            class="time">Yesterday</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="dropdown-footer text-center">
+                                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown"><a href="#" data-toggle="dropdown"
+                            class="nav-link dropdown-toggle nav-link-lg nav-link-user"> <img alt="image"
+                                src="{{ asset('assets/admin/img/user.png') }}" class="user-img-radious-style"> <span
+                                class="d-sm-none d-lg-inline-block"></span></a>
+                        <div class="dropdown-menu dropdown-menu-right pullDown">
+                            <div class="dropdown-title">Hello {{ Auth::user()->first_name }}
+                                {{ Auth::user()->middle_name }} {{ Auth::user()->last_name }}</div>
+                            <a href="#" class="dropdown-item has-icon"> <i
+                                    class="far
+										fa-user"></i> Profile
+                            </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
+                                Activities
+                            </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
+                                Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"> <i
+                                    class="fas fa-sign-out-alt"></i>
+                                Logout
                             </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="main-navbar">
-                <div class="container">
-                    <nav class="navbar navbar-expand-md navbar-light">
-                        <a class="navbar-brand travel-img" href="{{ route('user.home') }}">
-                            {{-- <h3>TRAVORIZ</h3> --}}
-                            @if ($companyName->company_logo_1)
-                                <img src="/{{ $companyName->company_logo_1 }}" alt="{{ $companyName->company_name }}">
-                            @else
-                            @endif
+                    </li>
+                </ul>
+            </nav>
+            <div class="main-sidebar sidebar-style-2">
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand">
+                        <a href="javascript:void();"> <img alt="image"
+                                src="{{ asset('assets/admin/img/logo.png') }}" class="header-logo" /> <span
+                                class="logo-name">CRM USER</span>
                         </a>
-
-                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                            <ul class="navbar-nav">
-
-                                <li class="nav-item">
-                                    <a href="{{ route('user.home') }}" class="nav-link active">
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0);" class="nav-link">
-                                        Packages
-                                        <i class="fas fa-angle-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a href="{{ route('AllInternationalPacakages') }}"
-                                                class="nav-link">International</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ route('AllDomesticPacakages') }}"
-                                                class="nav-link">Domestic</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0);" class="nav-link">
-                                        Fixed Departure
-                                        <i class="fas fa-angle-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a href="{{ route('AllInternationalPacakagesFD') }}"
-                                                class="nav-link">International</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ route('AllDomesticPacakagesFD') }}"
-                                                class="nav-link">Domestic</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0)" class="nav-link">
-                                        Destinations
-                                        <i class="fas fa-angle-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a href="{{ route('AllInternationlaldestination') }}"
-                                                class="nav-link">International</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ route('AllDomesticdestination') }}"
-                                                class="nav-link">Domestic</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0)" class="nav-link">
-                                        Pages
-                                        <i class="fas fa-angle-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a href="{{ route('user.about') }}" class="nav-link">
-                                                About Us
-                                            </a>
-                                        </li>
-                                        {{-- <li class="nav-item">
-                                            <a href="{{ route('user.services') }}" class="nav-link">Services</a>
-                                        </li> --}}
-                                        <li class="nav-item">
-                                            <a href="{{ route('user-sub-services') }}" class="nav-link">Services</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ route('user.privacy&policy') }}" class="nav-link">Privacy &
-                                                Policy</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ route('user.terms&conditions') }}" class="nav-link">Terms &
-                                                Conditions</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="{{ route('user.refundPolicy') }}" class="nav-link">Refund
-                                                Policy</a>
-                                        </li>
-                                        {{-- <li class="nav-item">
-                                            <a href="/user/reviews" class="nav-link">Client's Review</a>
-                                        </li> --}}
-                                    </ul>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Blog</a>
-
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('user.contact') }}" class="nav-link">Contact </a>
-
-                                </li>
-                            </ul>
-                            <div class="others-options d-flex align-items-center">
-
-                                <ul class="navbar-nav">
-                                    <li class="nav-item aftr_ntf">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-bell" aria-hidden="true"></i>
-                                            {{-- Notifications --}}
-                                        </a>
-                                        <ul class=" dropdown-menu ntf_psn">
-                                            <li class="nav-item"><a href=""><p><i class="fas fa-bell" aria-hidden="true"></i> Notifications</p></a></li>
-                                        </ul>
-                                    </li>
-                                    <li class=" nav-item">
-                                        <a href="javascript:void(0)" rolltype={{ Auth::User()->role_type }}
-                                            class="rolltype nav-link d_flex">
-                                            <div class="usr_img ">
-                                                <img src="/assets/user/img/common/mane.png" alt="">
-                                            </div>
-                                            Hi ! {{ Auth::User()->first_name }}
-                                        </a>
-                                        <ul class=" dropdown-menu ps-right">
-                                            <p class="usr_wlcm">Welcome {{ Auth::User()->first_name }}
-                                                {{ Auth::User()->middle_name }} {{ Auth::User()->last_name }}</p>
-                                            {{-- <li class="nav-item">
-                                                <a class="nav-link" href="#">
-                                                    <i class="fa fa-cogs" aria-hidden="true"></i>
-                                                    Dashboard
-                                                </a>
-                                            </li> --}}
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#">
-                                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                                    My profile
-                                                </a>
-                                            </li>
-                                            {{-- <li class="nav-item usr_bking">
-                                                <a class="nav-link" onclick="usrSubMenuOpn()" href="#">
-                                                    <i class="fas fa-address-card" aria-hidden="true"></i>
-                                                    My bookings
-                                                    <span class="opn_mnu"> <a href="#"
-                                                            onclick="usrSubMenuCloss()">
-                                                            <i class="fas fa-angle-down"></i>
-                                                        </a>
-                                                    </span>
-
-                                                </a>
-                                                <ul class="usr_sub_menu" id="mySidenav">
-                                                    <li class="nav-item">
-                                                        <a class="rolltype nav-link" href="#"><i
-                                                                class="fas fa-hotel"></i>Hotel
-                                                            booking</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="rolltype nav-link" href="#"><i
-                                                                class="fas fa-paper-plane"></i>Flight
-                                                            booking</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="rolltype nav-link" href="#">
-                                                            <i class="fas fa-map"></i>Tour booking
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="rolltype nav-link" href="#">
-                                                            <i class="fas fa-history"></i>Booking history</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#">
-                                                    <i class="fas fa-wallet" aria-hidden="true"></i>
-                                                    Wallet
-                                                </a>
-                                            </li> --}}
-                                            {{-- <li class="nav-item">
-                                                <a class="nav-link" href="#">
-                                                    <i class="fas fa-bell" aria-hidden="true"></i>
-                                                    Notifications
-                                                </a>
-                                            </li> --}}
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#!" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal">
-                                                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
-                                                    Logout
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <div class="option-item">
-                                    <a href="#" class="search-box">
-                                        <i class="bi bi-search"></i>
-                                    </a>
-                                </div>
-                                {{-- <div class="option-item">
-                                    @if (Auth::check())                                    
-                                        <a href="javascript:void(0)" rolltype={{ Auth::User()->role_type }}
-                                            class="btn btn_navber rolltype ">Go to dashboard</a>                                                               
-                                    @else
-                                        <a href="{{ route('user.login') }}" class="btn  btn_navber">Sign In</a>
-                                    @endif
-                                    
-                                </div> --}}
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <div class="others-option-for-responsive">
-                <div class="container">
-                    <div class="dot-menu">
-                        <div class="inner">
-                            {{-- <div class="circle circle-one"></div>
-                            <div class="circle circle-two"></div>
-                            <div class="circle circle-three"></div> --}}
-                            <i class="fas fa-search"></i>
-                        </div>
                     </div>
-                    <div class="container">
-                        <div class="option-inner">
-                            <div class="others-options d-flex align-items-center">
-                                <div class="option-item">
-                                    <a href="#" class="search-box"><i class="fas fa-search"></i></a>
-                                </div>
-                                <div class="option-item">
-                                    <a href="{{ route('user.contact') }}" class="btn  btn_navber">Get free quote</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mob_collapse" id="">
-                        <ul class="navbar-nav">
-                            {{-- <li class="nav-item aftr_ntf">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-bell" aria-hidden="true"></i>
-                                        </a>
-                                        <ul class=" dropdown-menu ntf_psn">
-                                            <li class="nav-item"><a href=""><p><i class="fas fa-bell" aria-hidden="true"></i> Notifications</p></a></li>
-                                        </ul>
-                                    </li> --}}
-                            <li class=" nav-item">
-                                <a href="javascript:void(0)" rolltype={{ Auth::User()->role_type }}
-                                    class="rolltype nav-link d_flex mob_usr_right">
-                                    <div class="usr_img ">
-                                        <img src="/assets/user/img/common/mane.png" alt="">
-                                    </div>
-                                    Hi ! {{ Auth::User()->first_name }}
-                                </a>
-                                <ul class=" dropdown-menu mob__ps_right">
-                                    <p class="usr_wlcm">Welcome {{ Auth::User()->first_name }}
-                                        {{ Auth::User()->middle_name }} {{ Auth::User()->last_name }}</p>
-                                    {{-- <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <i class="fa fa-cogs" aria-hidden="true"></i>
-                                            Dashboard
-                                        </a>
-                                    </li> --}}
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                            My profile
-                                        </a>
-                                    </li>
-                                    {{-- <li class="nav-item usr_bking mob_usr_bking">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-address-card" aria-hidden="true"></i>
-                                            My bookings
-                                            <span class="mob_opn_mnu">
+                    <ul class="sidebar-menu">
+                        <li class="menu-header">Main</li>
+                        <li class="dropdown">
+                            <a href="{{ route('User-dashboard') }}" class="nav-link"><i
+                                    data-feather="monitor"></i><span>Home</span></a>
+                        </li>
 
-                                                <i class="fas fa-angle-down"></i>
-                                            </span>
-                                        </a>
-                                        <ul class="usr_sub_menu mob_usr_sub_menu" id="mySidenav">
-                                            <li class="nav-item">
-                                                <a class="rolltype nav-link" href="#"><i
-                                                        class="fas fa-hotel"></i>Hotel
-                                                    booking</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="rolltype nav-link" href="#"><i
-                                                        class="fas fa-paper-plane"></i>Flight
-                                                    booking</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="rolltype nav-link" href="#">
-                                                    <i class="fas fa-map"></i>Tour booking
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="rolltype nav-link" href="#">
-                                                    <i class="fas fa-history"></i>Booking history</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-wallet" aria-hidden="true"></i>
-                                            Wallet
-                                        </a>
-                                    </li> --}}
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <i class="fas fa-bell" aria-hidden="true"></i>
-                                            Notifications
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#!" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                            <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
-                                            Logout
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- search -->
-    <div class="search-overlay">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="search-overlay-layer"></div>
-                <div class="search-overlay-layer"></div>
-                <div class="search-overlay-layer"></div>
-                <div class="search-overlay-close">
-                    <span class="search-overlay-close-line"></span>
-                    <span class="search-overlay-close-line"></span>
-                </div>
-                <div class="search-overlay-form">
-                    <form>
-                        <input type="text" class="input-search" placeholder="Search here...">
-                        <button type="button"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Content Part-->
-    <!-- Common Banner Area -->
-    <section id="common_banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="common_bannner_text">
-                        <h2>Customer dashboard</h2>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><span><i class="fas fa-circle"></i></span>Customer dashboard</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Dashboard Area -->
-    <section id="dashboard_main_arae" class="section_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="dashboard_sidebar">
-                        <div class="dashboard_sidebar_user">
-                            <img src="{{ asset('assets/user/img/common/dashboard-user-blank.png') }}" alt="img">
-                            <h3> {{ Auth::user()->first_name }}
-                                {{ Auth::user()->middle_name }} {{ Auth::user()->last_name }}</h3>
-                            <p><a href="tel:{{ Auth::user()->phonenumber }}">{{ Auth::user()->phonenumber }}</a></p>
-                            <p><a href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }}</a></p>
-                        </div>
-                        <div class="dashboard_menu_area">
-                            <ul>
-                                <li><a href="{{ route('User-dashboard') }}" class="active"><i
-                                            class="fas fa-tachometer-alt"></i>Dashboard</a></li>
-                                {{-- <li><a href="#"><i class="fas fa-user-circle"></i>My profile</a></li> --}}
-                                <li class="dashboard_dropdown_button" id="dashboard_dropdowns"><i
-                                        class="fas fa-address-card"></i>My bookings
-                                    <span> <i class="fas fa-angle-down"></i></span>
-                                    <div class="booing_sidebar_dashboard" id="show_dropdown_item"
-                                        style="display: none;">
-                                        <ul>
-                                            <li><a href="#"><i class="fas fa-hotel"></i>Hotel
-                                                    booking</a></li>
-                                            <li><a href="#"><i class="fas fa-paper-plane"></i>Flight
-                                                    booking</a></li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fas fa-map"></i>Tour booking
-                                                </a>
-                                            </li>
-                                            <li><a href="#">
-                                                    <i class="fas fa-history"></i>Booking history</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-
-                                <li><a href="#"><i class="fas fa-wallet"></i>Wallet</a></li>
-                                <li><a href="/user/writReviews"><i class="fas fa-wallet"></i>Write Review</a></li>
-                                {{-- <li><a href="#"><i class="fas fa-bell"></i>Notifications</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                    data-feather="home"></i><span>Lead Creation</span></a>
+                            <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#!" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <i class="fas fa-sign-out-alt"></i>Logout
+                                    {{-- <a href="{{ route('admin.country-index') }}" class="nav-link">Country</a> --}}
+                                    {{-- <a href="{{ route('admin-employee-index') }}" class="nav-link">Employee</a> --}}
+                                </li>
+                                {{-- <li>
+                                    <a href="{{ route('admin.state-index') }}" class="nav-link">State</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.city-index') }}" class="nav-link">City</a>
+
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('admin-hotelproperty-index')}}">Create Proparty
                                     </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('admin-hotelpropertyrules-index')}}">Create Property Rules
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('admin-amenities-index')}}">Create Amenities
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('admin.sight.index') }}" class="nav-link">Sight Master</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.transport.index') }}" class="nav-link">Transport</a>
+
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('admin-season-index') }}" class="nav-link">Season Master</a>
                                 </li> --}}
+
                             </ul>
+                        </li>
+
+                        {{-- <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                    data-feather="shopping-bag"></i><span>Company</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{ route('admin.company.index') }}">Company Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('admin.company.company-details') }}">Company
+                                        Details
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('admin.company.company-branch') }}">Company
+                                        Branch
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li> --}}
+
+
+                        {{-- Rule Engine --}}
+                        {{-- <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                    data-feather="shopping-bag"></i><span>Home Page Rule Engine</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{ route('admin.aboutUs-page-create') }}">About Us
+                                    </a></li>
+                               
+                                <li><a class="nav-link" href="{{ route('admin.Sub-Services-index') }}">Services
+                                        Pages
+                                    </a></li>
+                                <li><a class="nav-link"
+                                        href="{{ route('admin.ruleengine.int.dest.tile') }}">International
+                                        Destination</a></li>
+                                <li><a class="nav-link"
+                                        href="{{ route('admin.ruleengine.domestic.dest.tile') }}">Domestic
+                                        Destination</a></li>
+
+                                <li><a class="nav-link" href="{{ route('admin.homepage-banner-set.get') }}">Home Page
+                                        Banner set
+                                    </a></li>
+
+
+                                <li><a class="nav-link"
+                                        href="{{ route('admin.homepage-INT-pacakages-set.get') }}">International
+                                        Pacakages set
+                                    </a></li>
+
+                                <li><a class="nav-link"
+                                        href="{{ route('admin.homepage-DOM-pacakages-set.get') }}">Domestic Pacakages
+                                        set
+                                    </a></li>
+
+
+
+                            </ul>
+                        </li> --}}
+                        {{-- Rule Engine --}}
+
+                        {{-- Activate Hhotel --}}
+                        {{-- <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                    data-feather="home"></i><span>Hotels</span></a>
+                            <ul class="dropdown-menu">
+
+                                <li>
+                                    <a class="nav-link" href="{{ route('admin.hotel.index') }}">Create Hotel
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="nav-link" href="{{route('admin-Facilities')}}">Create Facilities of Hotels
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('admin-hotel-rooms') }}">Create Room
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('admin-rooms-option') }}">Create Rooms Option
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('admin-HotelPrices') }}">Costing By Season Type
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ route('admin-HotelGallery') }}">Gallery
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="nav-link" href="#">Location
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown">
+                            <a href="{{ route('admin.meal.index') }}" class="nav-link"><i
+                                    data-feather="slack"></i><span>Meal Type</span></a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link"><i
+                                    data-feather="slack"></i><span>Restaurant</span></a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ route('admin.destination.index') }}" class="nav-link"><i
+                                    data-feather="map-pin"></i><span>Destinations</span></a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ route('admin.packagetype.index') }}" class="nav-link"><i
+                                    data-feather="package"></i><span>Package Types</span></a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ route('admin.packageactivity.index') }}" class="nav-link"><i
+                                    data-feather="sunrise"></i><span>Package Activity</span></a>
+
+                        </li>
+
+
+
+                        <li class="dropdown">
+                            <a href="{{ route('admin.package-index') }}" class="nav-link"><i
+                                    data-feather="package"></i><span>Packages</span></a>
+
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="{{ route('admin.package.seasonadd') }}" class="nav-link"><i
+                                    data-feather="calendar"></i><span>Package Season</span></a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="{{ route('admin.package-availability') }}" class="nav-link"><i
+                                    data-feather="package"></i><span>Packages Availability</span></a>
+
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="{{ route('admin.pacakage-gallery') }}" class="nav-link"><i
+                                    data-feather="camera"></i><span>Package Gallery</span></a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ route('admin.package.itinerary') }}" class="nav-link"><i
+                                    data-feather="calendar"></i><span>Package Itenary</span></a>
+
+                        </li> --}}
+                        
+                    </ul>
+                </aside>
+            </div>
+            <div class="main-content">
+
+                @yield('content')
+
+                <div class="settingSidebar">
+                    <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
+                    </a>
+                    <div class="settingSidebar-body ps-container ps-theme-default">
+                        <div class=" fade show active">
+                            <div class="setting-panel-header">Setting Panel
+                            </div>
+                            <div class="p-15 border-bottom">
+                                <h6 class="font-medium m-b-10">Select Layout</h6>
+                                <div class="selectgroup layout-color w-50">
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="value" value="1"
+                                            class="selectgroup-input-radio select-layout" checked>
+                                        <span class="selectgroup-button">Light</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="value" value="2"
+                                            class="selectgroup-input-radio select-layout">
+                                        <span class="selectgroup-button">Dark</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="p-15 border-bottom">
+                                <h6 class="font-medium m-b-10">Sidebar Color</h6>
+                                <div class="selectgroup selectgroup-pills sidebar-color">
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="icon-input" value="1"
+                                            class="selectgroup-input select-sidebar">
+                                        <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
+                                            data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="icon-input" value="2"
+                                            class="selectgroup-input select-sidebar" checked>
+                                        <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
+                                            data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="p-15 border-bottom">
+                                <h6 class="font-medium m-b-10">Color Theme</h6>
+                                <div class="theme-setting-options">
+                                    <ul class="choose-theme list-unstyled mb-0">
+                                        <li title="white" class="active">
+                                            <div class="white"></div>
+                                        </li>
+                                        <li title="cyan">
+                                            <div class="cyan"></div>
+                                        </li>
+                                        <li title="black">
+                                            <div class="black"></div>
+                                        </li>
+                                        <li title="purple">
+                                            <div class="purple"></div>
+                                        </li>
+                                        <li title="orange">
+                                            <div class="orange"></div>
+                                        </li>
+                                        <li title="green">
+                                            <div class="green"></div>
+                                        </li>
+                                        <li title="red">
+                                            <div class="red"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-15 border-bottom">
+                                <div class="theme-setting-options">
+                                    <label class="m-b-0">
+                                        <input type="checkbox" name="custom-switch-checkbox"
+                                            class="custom-switch-input" id="mini_sidebar_setting">
+                                        <span class="custom-switch-indicator"></span>
+                                        <span class="control-label p-l-10">Mini Sidebar</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="p-15 border-bottom">
+                                <div class="theme-setting-options">
+                                    <label class="m-b-0">
+                                        <input type="checkbox" name="custom-switch-checkbox"
+                                            class="custom-switch-input" id="sticky_header_setting">
+                                        <span class="custom-switch-indicator"></span>
+                                        <span class="control-label p-l-10">Sticky Header</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
+                                <a href="#" class="btn btn-icon icon-left btn-primary btn-restore-theme">
+                                    <i class="fas fa-undo"></i> Restore Default
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    @yield('content')
-                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Content Part-->
-
-    <!-- Footer  -->
-    <footer id="footer_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="footer_heading_area">
-                        <h5>Need any help?</h5>
-                    </div>
-                    <div class="footer_first_area">
-                        @if ($companyName->company_phone_number_1)
-                            <div class="footer_inquery_area">
-                                <h5>Call 24/7 for any help</h5>
-                                <h3> <a href="tel:{!! $companyName->company_phone_number_1 !!}">{!! $companyName->company_phone_number_1 !!}</a></h3>
-                            </div>
-                        @else
-                        @endif
-                        @if ($companyName->company_email_id_1)
-                            <div class="footer_inquery_area">
-                                <h5>Mail to our support team</h5>
-                                <h3><a href="mailto:{!! $companyName->company_email_id_1 !!}">{!! $companyName->company_email_id_1 !!}</a></h3>
-                            </div>
-                        @else
-                        @endif
-
-                        <div class="footer_inquery_area">
-                            <h5>Follow us on</h5>
-                            <ul class="soical_icon_footer">
-                                <li><a href="#!"><i class="fab fa-facebook"></i></a></li>
-                                <li><a href="#!"><i class="fab fa-twitter-square"></i></a></li>
-                                <li><a href="#!"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#!"><i class="fab fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
+            <footer class="main-footer">
+                <div class="footer-left">
+                    <a href="#">Riz Software Consultancy</a></a>
                 </div>
-                <div class="col-lg-2 offset-lg-1 col-md-6 col-sm-6 col-12">
-                    <div class="footer_heading_area">
-                        <h5>Company</h5>
-                    </div>
-                    <div class="footer_link_area">
-                        <ul>
-                            <li><a href="{{ route('user.about') }}">About Us</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                            <li><a href="#">Rewards</a></li>
-                            <li><a href="#">Work with Us</a></li>
-                            <li><a href="#">Meet the Team </a></li>
-                            <li><a href="#">Blog</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-right">
                 </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-                    <div class="footer_heading_area">
-                        <h5>Support</h5>
-                    </div>
-                    <div class="footer_link_area">
-                        <ul>
-                            <li><a href="#">Faq</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="{{ route('user.privacy&policy') }}">Privacy Policy</a></li>
-                            <li>
-                                <a href="{{ route('user.terms&conditions') }}">Terms & Conditions</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('user.refundPolicy') }}">Refund Policy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-                    <div class="footer_heading_area">
-                        <h5>Other Services</h5>
-                    </div>
-                    <div class="footer_link_area">
-                        <ul>
-                            <li><a href="#">Community program</a></li>
-                            <li><a href="#">Investor Relations</a></li>
-                            <li><a href="#">Rewards Program</a></li>
-                            <li><a href="#">PointsPLUS</a></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">List My Hotel</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-12">
-                    <div class="footer_heading_area">
-                        <h5>Top cities</h5>
-                    </div>
-                    <div class="footer_link_area">
-                        <ul>
-                            <li><a href="#">Chicago</a></li>
-                            <li><a href="#">New York</a></li>
-                            <li><a href="#">San Francisco</a></li>
-                            <li><a href="#">California</a></li>
-                            <li><a href="#">Ohio </a></li>
-                            <li><a href="#">Alaska</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <div class="copyright_area">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="co-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="copyright_left">
-                        @if ($companyName->company_name)
-                            © 2023 All Rights Reserved {!! $companyName->company_name !!}.
-                        @else
-                        @endif
-                    </div>
-                </div>
-                {{-- <div class="co-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="copyright_right">
-                        <img src="assets/user/img/common/cards.png" alt="img">
-                    </div>
-                </div> --}}
-                <div class="co-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="copyright_right">
-                        Design And Developed by riz software consultancy.
-                    </div>
-                </div>
-            </div>
+            </footer>
         </div>
     </div>
-    <div class="go-top">
-        <i class="fas fa-chevron-up"></i>
-        <i class="fas fa-chevron-up"></i>
-    </div>
-    <!-- Logout Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body logout_modal_content">
-                    <div class="btn_modal_closed">
-                        <button type="button" data-bs-dismiss="modal" aria-label="Close"><i
-                                class="fas fa-times"></i></button>
-                    </div>
-                    <h3>
-                        Are you sure? <br>
-                        you want to log out.
-                    </h3>
-                    <div class="logout_approve_button">
-                        <a href="{{ route('logout') }}" class="btn btn_theme btn_md">Yes Confirm</a>
-                        <button data-bs-dismiss="modal" class="btn btn_border btn_md">No Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="{{ asset('assets/user/js/jquery-3.6.0.min.js') }}"></script>
-    <!-- Bootstrap js -->
-    <script src="{{ asset('assets/user/js/bootstrap.bundle.js') }}"></script>
-    <!-- Meanu js -->
-    <script src="{{ asset('assets/user/js/jquery.meanmenu.js') }}"></script>
-    <!-- owl carousel js -->
-    <script src="{{ asset('assets/user/js/owl.carousel.min.js') }}"></script>
-    <!-- Slick js -->
-    <script src="{{ asset('assets/user/js/slick.min.js') }}"></script>
-    <script src="{{ asset('assets/user/js/slick-slider.js') }}"></script>
-    <!-- wow.js -->
-    <script src="{{ asset('assets/user/js/wow.min.js') }}"></script>
-    <!-- Custom js -->
-    <script src="{{ asset('assets/user/js/custom.js') }}"></script>
-    <script src="{{ asset('assets/user/js/add-form.js') }}"></script>
-    <script src="{{ asset('assets/user/js/form-dropdown.js') }}"></script>
 
-    <script src="https://code.tidio.co/jkmzvzqupiv8cfbq8g77qbrtpf4bknkz.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-    @yield('scripts')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 
+    {{-- <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script> --}}
+    <!-- General JS Scripts -->
+    <script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
+
+    <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/app.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/bundles/summernote/summernote-bs4.js') }}"></script>
+    <!-- JS Libraies -->
+    <script src="{{ asset('assets/admin/bundles/apexcharts/apexcharts.min.js') }}"></script>
+
+    {{-- <script src="{{ asset('assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/admin/bundles/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('assets/admin/js/page/index.js') }}"></script>
+    <!-- Template JS File -->
+    <script src="{{ asset('assets/admin/js/scripts.js') }}"></script>
+    <!-- Custom JS File -->
+    <script src="{{ asset('assets/admin/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/jquery.textareaCounter.plugin.js') }}"></script>
+    <!-- Cropring Iamges -->
+    <script type="text/javascript" src="{{ asset('assets/admin/croperimgages/scripts/jquery.Jcrop.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/admin/croperimgages/scripts/jquery.SimpleCropper.js') }} ">
+    </script>
     <script>
-        function usrSubMenuOpn() {
-            document.getElementById("mySidenav").style.display = "block";
-        }
-
-
-        function usrSubMenuCloss() {
-            document.getElementById("mySidenav").style.display = "none";
+        try {
+            fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", {
+                method: 'HEAD',
+                mode: 'no-cors'
+            })).then(function(response) {
+                return true;
+            }).catch(function(e) {
+                var carbonScript = document.createElement("script");
+                carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+                carbonScript.id = "_carbonads_js";
+                document.getElementById("carbon-block").appendChild(carbonScript);
+            });
+        } catch (error) {
+            console.log(error);
         }
     </script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
 
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+                '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Cropring Iamges -->
+
+    @yield('scripts')
 </body>
 
 </html>
