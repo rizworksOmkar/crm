@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
@@ -41,7 +42,10 @@ class LinkController extends Controller
 
     public function employeeindex()
     {
-        $users = User::where('role_type', '!=', 'superadmin')->orderByRaw('id DESC')->get();
+        $users = User::where('role_type', '!=', 'superadmin')
+        ->where('id', '!=', Auth::user()->id)
+        ->where('email', '!=','riz')
+        ->orderByRaw('id DESC')->get();
         return view('admin.employee.index', compact('users'));
     }
 
