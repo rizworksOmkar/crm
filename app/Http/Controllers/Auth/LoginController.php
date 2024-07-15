@@ -56,8 +56,9 @@ class LoginController extends Controller
             return redirect('/landing-page');
         }else if (auth()->user()->role_type == 'user') {
             if (auth()->user()->email_verified_flag == 1) {
+                return redirect('/user-dashboard');
                 //return '/user/dashboard';
-                return redirect()->back()->with('status','You are Loged in successfully');
+                //return redirect()->back()->with('status','You are Loged in successfully');
             } else {
                 Auth::logout();
                 return false;
