@@ -18,6 +18,10 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/myleads/{id}/edit', [LeadController::class, 'changeStatus'])->name('leads.changeStatus');
         Route::put('/myleads/{id}', [LeadController::class, 'updateStatus'])->name('leads.updateStatus');
 
+        //make a get route to fetch task of each lead - work for anish da resources are in resources/admin/..../emptask etc. you will know
 
+        Route::post('leads/{lead}/tasks', [LeadController::class, 'storeTask'])->name('leads.tasks.store');
+        Route::patch('leads/{lead}/tasks/{task}', [LeadController::class, 'updateTask'])->name('leads.tasks.update');
+        
     });
 });

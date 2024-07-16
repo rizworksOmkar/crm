@@ -7,6 +7,9 @@ use App\Models\Contact;
 use App\Models\Lead;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -200,4 +203,44 @@ class LeadController extends Controller
         }
 
     }
+
+    //task
+
+    public function storeTask(Request $request, $leadId)
+    {
+        $request->validate([
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'status' => 'required|string',
+            'mode' => 'required|string',
+        ]);
+
+        $task = new Task();
+        $task->lead_id = $leadId;
+        $task->description = $request->description;
+        $task->date = $request->date;
+        $task->status = $request->status;
+        $task->mode = $request->mode;
+        $task->created_by = Auth::id();
+        $task->save();
+
+        return redirect()->route('leads.show', $leadId)->with('success', 'Task created successfully.');
+    }
+
+    public function updateTask(Request $request, $leadId, $taskId)
+    {
+        $request->validate([
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'status' => 'required|string',
+            'mode' => 'required|string',
+        ]);
+
+        $task = Task::where('lead_id', $leadId)->findOrFail($taskId);
+        $task->update($request->all());
+
+        return redirect()->route('leads.show', $leadId)->with('success', 'Task updated successfully.');
+    }
+
+
 }

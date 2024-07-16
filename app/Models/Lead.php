@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use App\Models\LeadStatusLog;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class Lead extends Model
 {
@@ -34,7 +34,7 @@ class Lead extends Model
     {
         parent::boot();
         static::creating(function ($model) {
-            $model->id = Str::uuid(); // Generate UUID
+            $model->id = Str::uuid();
         });
 
         static::updating(function ($model) {
@@ -66,6 +66,11 @@ class Lead extends Model
     public function statusLogs()
     {
         return $this->hasMany(LeadStatusLog::class);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
     }
 }
 
