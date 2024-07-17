@@ -13,8 +13,8 @@
 
                     <div class="form-group">
                         <label for="contact_id">Contact</label>
-                        <select id="contact_id" class="form-control" name="contact_id" disabled style="pointer-events: none;>
-                            <option value="">Select Contact</option>
+                        <select id="contact_id" class="form-control" name="contact_id" readonly style="pointer-events: none;">
+                            <option value="null">Select Contact</option>
                             @foreach ($contacts as $contact)
                                 <option value="{{ $contact->id }}" {{ $contact->id == $lead->contact_id ? 'selected' : '' }}>
                                     {{ $contact->name }}
@@ -24,8 +24,8 @@
                     </div>
                     <div class="form-group">
                         <label for="assigned_to">Assigned To</label>
-                        <select id="assigned_to" class="form-control" name="assigned_to" disabled style="pointer-events: none;>
-                            <option value="">Select Employee</option>
+                        <select id="assigned_to" class="form-control" name="assigned_to" readonly style="pointer-events: none;">
+                            <option value="null">Select Employee</option>
                             @foreach ($employees as $employee)
                                 <option value="{{ $employee->id }}" {{ $employee->id == $lead->assigned_to ? 'selected' : '' }}>
                                     {{ $employee->first_name }} {{ $employee->last_name }}

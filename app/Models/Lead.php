@@ -16,6 +16,9 @@ class Lead extends Model
     protected $fillable = [
         'contact_id',
         'lead_num',
+        'requirement_type',
+        'property_specs',
+        'cust_business_type',
         'description',
         'budget',
         'expiry',

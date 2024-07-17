@@ -1,12 +1,53 @@
+{{-- @extends('layouts.user-dashboard-layout')
+
+@section('content')
+    <h1>Lead Details</h1>
+
+    <div>
+        <h2>Tasks</h2>
+        @if ($lead->tasks->isEmpty())
+            <p>No tasks available. Add a new task below.</p>
+        @else
+            <ul>
+                @foreach ($lead->tasks as $task)
+                    <li>{{ $task->description }} - {{ $task->mode }} - {{ $task->date }}</li>
+                @endforeach
+            </ul>
+        @endif
+
+        <h3>Add New Task</h3>
+        <form action="{{ route('leads.tasks.store', $id) }}" method="POST">
+            @csrf
+            <div>
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" required>
+            </div>
+            <div>
+                <label for="date">Date</label>
+                <input type="date" name="date" id="date" required>
+            </div>
+            <div>
+                <label for="status">Status</label>
+                <input type="text" name="status" id="status" required>
+            </div>
+            <div>
+                <label for="mode">Mode</label>
+                <input type="text" name="mode" id="mode" required>
+            </div>
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+@endsection --}}
 @extends('layouts.user-dashboard-layout')
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Leads</h4>
+                    <h4>Tasks</h4>
                     <div class="card-header-action">
                         {{-- <a href="{{ route('admin-create-lead') }}" class="btn btn-primary">Add Lead</a> --}}
+                        <a href="{{ route('view.addTasks', $lead->id) }}" class="btn btn-sm btn-warning"> Add Tasks</a>
 
                     </div>
                 </div>
@@ -16,37 +57,28 @@
                             <thead>
                                 <tr>
                                     <th>Sl no</th>
-                                    <th>Lead Id</th>
-                                    <th>Entity Name</th>
-                                    <th>Lead Number</th>
-                                    <th>Desc</th>
-                                    <th>Budget</th>
-                                    <th>Due Date</th>
-                                    <th>Area Req</th>
-                                    <th>Property Type</th>
+                                    <th>Task Id</th>
+                                    <th>Description</th>
+
+                                    <th>Mode</th>
+                                    <th>Date</th>
                                     <th>Status</th>
-                                    <th>Assigned to</th>
                                     <th>Created by</th>
-                                    <th>Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $i=0; @endphp
-                                @foreach ($leads as $lead)
+                                @foreach ($lead->tasks as $task)
                                     @php $i++; @endphp
                                     <tr>
                                         <th>{{ $i }}</th>
-                                        <th>{{ $lead->id }}</th>
-                                        <th>{{ $lead->contact_id }}</th>
-                                        <th>{{ $lead->lead_num }}</th>
-                                        <th>{{ $lead->description }}</th>
-                                        <th>{{ $lead->budget }}</th>
-                                        <th>{{ $lead->expiry }}</th>
-                                        <th>{{ $lead->area_requirements }}</th>
-                                        <th>{{ $lead->property_type }}</th>
-                                        <th>{{ $lead->status }}</th>
-                                        <th>{{ $lead->assigned_to }}</th>
-                                        <th>{{ $lead->created_by }}</th>
+                                        <th>{{ $task->id }}</th>
+                                        <th>{{ $task->description }}</th>
+                                        <th>{{ $task->mode }}</th>
+                                        <th>{{ $task->date }}</th>
+                                        <th>{{ $task->status }}</th>
+                                        <th>{{ $task->created_by }}</th>
 
 
 
@@ -54,18 +86,6 @@
 
                                         <td>
                                             <div class="buttons">
-
-
-                                                <a href="#" class="btn btn-icon btn-sm btn-info" data-toggle="tooltip"
-                                                    title="view and Edit Your Employee"><i class="far fa-eye"></i></a>
-
-                                                {{-- <a submitid="{{ $lead->id }}"
-                                                    class="btn btn-icon btn-sm btn-danger delete-lead-btn"
-                                                    data-toggle="tooltip" title="Delete Lead" href="javascript:void(0)"
-                                                    id="deleteLead_{{ $lead->id }}"><i class="fas fa-times"></i></a> --}}
-
-                                                <a href="{{ route('leads.changeStatus', $lead->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                                <a href="{{ route('view.showTasks', $lead->id) }}" class="btn btn-sm btn-warning">Tasks</a>
 
                                             </div>
                                         </td>
@@ -103,7 +123,7 @@
             });
         });
     </script>
-    @if ($leads)
+    {{-- @if ($leads)
         @foreach ($leads as $lead)
             <script>
                 $(document).on('click', '.delete-lead-btn', function() {
@@ -128,5 +148,5 @@
                 });
             </script>
         @endforeach
-    @endif
+    @endif --}}
 @endsection

@@ -11,7 +11,6 @@ use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 class LeadController extends Controller
 {
@@ -78,12 +77,15 @@ class LeadController extends Controller
         $lead = new Lead();
         $lead->contact_id = $request->input('contact_id');
         $lead->lead_num = $leadNumber;
+        $lead->requirement_type = $request->input('requirement_type');
+        $lead->property_specs = $request->input('property_specs');
+        $lead->cust_business_type = $request->input('cust_business_type');
         $lead->description = $request->input('description');
         $lead->budget = $request->input('budget');
         $lead->expiry = $request->input('expiry');
         $lead->area_requirements = $request->input('area_requirements');
         $lead->property_type = $request->input('property_type');
-        $lead->status = 'new';
+        $lead->status = $request->input('status');
         $lead->assigned_to = $request->input('assigned_to');
         $lead->created_by = auth()->user()->id;
         $lead->save();
@@ -206,7 +208,13 @@ class LeadController extends Controller
 
     //task
 
-    public function storeTask(Request $request, $leadId)
+    public function showTask($id)
+    {
+        $lead = Lead::with('tasks')->findOrFail($id);
+        return view('admin.empTask.showTask', compact('lead', 'id'));
+    }
+
+    public function storeLeadTask(Request $request, $leadId)
     {
         $request->validate([
             'description' => 'required|string',
@@ -224,10 +232,10 @@ class LeadController extends Controller
         $task->created_by = Auth::id();
         $task->save();
 
-        return redirect()->route('leads.show', $leadId)->with('success', 'Task created successfully.');
+        return redirect()->route('view.showTasks', $leadId)->with('success', 'Task created successfully.');
     }
 
-    public function updateTask(Request $request, $leadId, $taskId)
+    public function updateLeadTask(Request $request, $leadId, $taskId)
     {
         $request->validate([
             'description' => 'required|string',
@@ -239,8 +247,13 @@ class LeadController extends Controller
         $task = Task::where('lead_id', $leadId)->findOrFail($taskId);
         $task->update($request->all());
 
-        return redirect()->route('leads.show', $leadId)->with('success', 'Task updated successfully.');
+        return redirect()->route('view.showTasks', $leadId)->with('success', 'Task updated successfully.');
     }
 
+    public function addTask($id)
+    {
+
+        return view('admin.empTask.addTask', compact( 'id'));
+    }
 
 }

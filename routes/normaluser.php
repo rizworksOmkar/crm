@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CRM\UserController;
 use App\Http\Controllers\CRM\UserMenuLinkController;
+use App\Http\Controllers\CRM\TaskController;
 
 
 Route::group(['middleware' => ['disabled_back_button']], function () {
@@ -18,10 +19,12 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/myleads/{id}/edit', [LeadController::class, 'changeStatus'])->name('leads.changeStatus');
         Route::put('/myleads/{id}', [LeadController::class, 'updateStatus'])->name('leads.updateStatus');
 
-        //make a get route to fetch task of each lead - work for anish da resources are in resources/admin/..../emptask etc. you will know
+        Route::get('/myTasks/{id}', [LeadController::class, 'showTask'])->name('view.showTasks');
+        Route::get('/addMyTasks/{id}', [LeadController::class, 'addTask'])->name('view.addTasks');
 
-        Route::post('leads/{lead}/tasks', [LeadController::class, 'storeTask'])->name('leads.tasks.store');
-        Route::patch('leads/{lead}/tasks/{task}', [LeadController::class, 'updateTask'])->name('leads.tasks.update');
-        
+        Route::post('leads/{lead}/tasks', [LeadController::class, 'storeleadTask'])->name('leads.tasks.store');
+        Route::patch('leads/{lead}/tasks/{task}', [LeadController::class, 'updateLeadTask'])->name('leads.tasks.update');
+
+
     });
 });
