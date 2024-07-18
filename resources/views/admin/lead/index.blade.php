@@ -7,27 +7,28 @@
                     <h4>Leads</h4>
                     <div class="card-header-action">
                         <a href="{{ route('admin-create-lead') }}" class="btn btn-primary">Add Lead</a>
-
                     </div>
                     <div class="card-header-action">
+
                         <select id="status-filter" class="form-control">
-                            <option value="">Filter By Statuses</option>
+                            <option value="">All Statuses</option>
                             <option value="new">New</option>
                             <option value="in_progress">In Progress</option>
                             <option value="closed_won">Closed & Won</option>
                             <option value="closed_failed">Closed & Failed</option>
                         </select>
-
                     </div>
+                    <div class="card-header-action">
 
+                        <button id="clear-filter-btn" class="btn btn-danger ml-2">Clear Filter</button>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover" style="width:100%;" id="tableState">
+                        <table class="table table-striped table-hover" style="width:100%;" id="tableLead">
                             <thead>
                                 <tr>
                                     <th>Sl no</th>
-                                    {{-- <th>Lead Id</th> --}}
                                     <th>Entity Name</th>
                                     <th>Lead Number</th>
                                     <th>Desc</th>
@@ -93,19 +94,26 @@
     <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#tableCity').DataTable({
+            var table = $('#tableLead').DataTable({
                 "scrollX": true,
                 stateSave: true,
                 "paging": true,
-                "ordering": false,
-                "info": false,
-                // dom: 'Bfrtip',
-                // buttons: [
-                //     'excel', 'pdf'
-                // ]
+                "ordering": true,
+                "info": true,
+                dom: 'Bfrtip',
+            });
+
+            $('#status-filter').on('change', function() {
+                var status = $(this).val();
+                table.columns(8).search(status).draw();
+            });
+
+            $('#clear-filter-btn').click(function() {
+                table.search('').columns().search('').draw(); 
             });
         });
     </script>
+
     @if ($leads)
         @foreach ($leads as $lead)
             <script>
