@@ -1,4 +1,4 @@
-@extends('layouts.user-dashboard-layout')
+@extends('layouts.admin-front')
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -7,7 +7,7 @@
                     <h4>Tasks</h4>
                     <div class="card-header-action">
                         {{-- <a href="{{ route('admin-create-lead') }}" class="btn btn-primary">Add Lead</a> --}}
-                        <a href="{{ route('view.addTasks', $lead->id) }}" class="btn btn-sm btn-warning"> Add Tasks</a>
+                        {{-- <a href="{{ route('view.addTasks', $lead->id) }}" class="btn btn-sm btn-warning"> Add Tasks</a> --}}
 
                     </div>
                 </div>
@@ -17,13 +17,12 @@
                             <thead>
                                 <tr>
                                     <th>Sl no</th>
-                                    <th>Task Id</th>
+                                    {{-- <th>Task Id</th> --}}
                                     <th>Description</th>
                                     <th>Mode</th>
                                     <th>Date</th>
-                                    <th>Status</th>
                                     <th>Created by</th>
-
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,19 +31,18 @@
                                     @php $i++; @endphp
                                     <tr>
                                         <th>{{ $i }}</th>
-                                        <th>{{ $task->id }}</th>
+                                        {{-- <th>{{ $task->id }}</th> --}}
                                         <th>{{ $task->description }}</th>
                                         <th>{{ $task->mode }}</th>
                                         <th>{{ \Carbon\Carbon::parse($task->date)->format('Y-m-d') }}</th>
-                                        <th>{{ $task->status }}</th>
                                         <th>
                                             @if ($task->createdBy->role_type == 'user')
-                                                Self
+                                                Employee
                                             @else
                                                 Admin
                                             @endif
-
                                         </th>
+                                        <th>{{ $task->status }}</th>
                                     </tr>
                                 @endforeach
 
@@ -79,30 +77,4 @@
             });
         });
     </script>
-    {{-- @if ($leads)
-        @foreach ($leads as $lead)
-            <script>
-                $(document).on('click', '.delete-lead-btn', function() {
-                    var leadId = $(this).attr('submitid');
-                    if (confirm('Are you sure you want to delete this lead?')) {
-                        $.ajax({
-                            url: '/leads/' + leadId,
-                            type: 'DELETE',
-                            data: {
-                                "_token": "{{ csrf_token() }}",
-                            },
-                            success: function(response) {
-                                alert(response.message);
-                                location.reload();
-                            },
-                            error: function(error) {
-                                console.error('Error deleting lead:', error);
-                                alert('Error: Unable to delete lead.');
-                            }
-                        });
-                    }
-                });
-            </script>
-        @endforeach
-    @endif --}}
 @endsection

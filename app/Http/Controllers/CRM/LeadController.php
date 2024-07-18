@@ -208,6 +208,11 @@ class LeadController extends Controller
 
     //task
 
+    public function showEmpTask($id)
+    {
+        $lead = Lead::with('tasks')->findOrFail($id);
+        return view('admin.lead.tasks', compact('lead', 'id'));
+    }
     public function showTask($id)
     {
         $lead = Lead::with('tasks')->findOrFail($id);

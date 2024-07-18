@@ -29,6 +29,8 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/leads/{id}/edit', [LeadController::class, 'editLead'])->name('leads.edit');
         Route::put('/leads/{id}', [LeadController::class, 'updateLead'])->name('leads.update');
 
+        Route::get('/myEmpTasks/{id}', [LeadController::class, 'showEmpTask'])->name('view.showEmpTasks');
+
         // admin-contact-store
         Route::post('/contactStore', [LeadController::class, 'storeContact'])->name('admin-contact-store');
         //Store, Update, Delete Country Data and retrive

@@ -9,13 +9,17 @@
                         <a href="{{ route('admin-create-lead') }}" class="btn btn-primary">Add Lead</a>
 
                     </div>
-                    <select id="status-filter" class="form-control">
-                        <option value="">All Statuses</option>
-                        <option value="new">New</option>
-                        <option value="in_progress">In Progress</option>
-                        <option value="closed_won">Closed & Won</option>
-                        <option value="closed_failed">Closed & Failed</option>
-                      </select>
+                    <div class="card-header-action">
+                        <select id="status-filter" class="form-control">
+                            <option value="">Filter By Statuses</option>
+                            <option value="new">New</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="closed_won">Closed & Won</option>
+                            <option value="closed_failed">Closed & Failed</option>
+                        </select>
+
+                    </div>
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -23,7 +27,7 @@
                             <thead>
                                 <tr>
                                     <th>Sl no</th>
-                                    <th>Lead Id</th>
+                                    {{-- <th>Lead Id</th> --}}
                                     <th>Entity Name</th>
                                     <th>Lead Number</th>
                                     <th>Desc</th>
@@ -43,8 +47,8 @@
                                     @php $i++; @endphp
                                     <tr>
                                         <th>{{ $i }}</th>
-                                        <th>{{ $lead->id }}</th>
-                                        <th>{{ $lead->contact_id }}</th>
+                                        {{-- <th>{{ $lead->id }}</th> --}}
+                                        <th>{{ $lead->contact->name }}</th>
                                         <th>{{ $lead->lead_num }}</th>
                                         <th>{{ $lead->description }}</th>
                                         <th>{{ $lead->budget }}</th>
@@ -52,28 +56,20 @@
                                         <th>{{ $lead->area_requirements }}</th>
                                         <th>{{ $lead->property_type }}</th>
                                         <th>{{ $lead->status }}</th>
-                                        <th>{{ $lead->assigned_to }}</th>
-                                        <th>{{ $lead->created_by }}</th>
-
-
-
-
-
+                                        <th>{{ $lead->assignedTo->first_name }} {{ $lead->assignedTo->last_name }}</th>
+                                        <th>{{ $lead->createdBy->role_type === 'user' ? 'Employee' : 'Admin' }}</th>
                                         <td>
                                             <div class="buttons">
-
-
-                                                <a href="#" class="btn btn-icon btn-sm btn-info" data-toggle="tooltip"
-                                                    title="view and Edit Your Employee"><i class="far fa-eye"></i></a>
-
                                                 <a submitid="{{ $lead->id }}"
                                                     class="btn btn-icon btn-sm btn-danger delete-lead-btn"
                                                     data-toggle="tooltip" title="Delete Lead" href="javascript:void(0)"
                                                     id="deleteLead_{{ $lead->id }}"><i class="fas fa-times"></i></a>
 
-                                                <a href="{{ route('leads.edit', $lead->id) }}" class="btn btn-sm btn-warning">Edit</a>
-
-
+                                                <a href="{{ route('leads.edit', $lead->id) }}"
+                                                    class="btn btn-sm btn-warning">Edit</a>
+                                                <a href="{{ route('view.showEmpTasks', $lead->id) }}"class="btn btn-icon btn-sm btn-info"
+                                                    data-toggle="tooltip" title="View employee Task"><i
+                                                        class="far fa-eye"></i></a>
                                             </div>
                                         </td>
                                     </tr>
