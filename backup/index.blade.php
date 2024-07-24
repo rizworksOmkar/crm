@@ -8,40 +8,48 @@
                     <div class="card-header-action">
                         <a href="{{ route('admin-create-lead') }}" class="btn btn-primary">Add Lead</a>
                     </div>
+                    <div class="card-header-action">
 
+                        <select id="status-filter" class="form-control">
+                            <option value="">All Statuses</option>
+                            <option value="new">New</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="Closed & Won">Closed & Won</option>
+                            <option value="closed_failed">Closed & Failed</option>
+
+                        </select>
+                        <select id="assignment-filter" class="form-control">
+                            <option value="">All</option>
+                            <option value="Unassigned">Unassigned</option>
+                        </select>
+
+                    </div>
+                    <div class="card-header-action">
+
+                        <button id="clear-filter-btn" class="btn btn-danger ml-2">Clear Filter</button>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <div class="col-12 mb-3">
-                        <div class="form-inline">
-                            <select id="column-select" class="form-control mr-2">
-                                <option value="">Select Column</option>
-                                <option value="1">Lead Source</option>
-                                <option value="2">Lead Number</option>
-                                <option value="3">Customer Name</option>
-                                <option value="4">Lead Date</option>
-                                <option value="5">Property Type</option>
-                                <option value="6">Specific Location</option>
-                                <option value="7">Max Budget</option>
-                                <option value="8">Max Area (Sq ft)</option>
-                            </select>
-                            <input type="text" id="column-search" class="form-control mr-2" placeholder="Search term">
-                            <button id="search-btn" class="btn btn-primary">Search</button>
-                            <button id="clear-search-btn" class="btn btn-secondary ml-2">Clear</button>
-                        </div>
-                    </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover" style="width:100%;" id="tableLead">
                             <thead>
                                 <tr>
                                     <th>Sl no</th>
-                                    <th>Lead Source</th>
-                                    <th>Lead No.</th>
                                     <th>Customer Name</th>
-                                    <th>Lead Date</th>
-                                    <th>Property Type</th>
+                                    <th>Lead Number</th>
                                     <th>Specific Location</th>
+                                    <th>Specific Area</th>
+                                    <th>Preffered Landmark</th>
+                                    <th>Desc</th>
+                                    <th>Min Budget</th>
                                     <th>Max Budget</th>
-                                    <th>Max Area (Sq ft)</th>
+                                    <th>Due Date</th>
+                                    <th>Min Area</th>
+                                    <th>Max Area</th>
+                                    <th>Property Type</th>
+                                    <th>Status</th>
+                                    <th>Assigned to</th>
+                                    <th>Created by</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -51,16 +59,22 @@
                                     @php $i++; @endphp
                                     <tr>
                                         <th>{{ $i }}</th>
-                                        <th>{{ $lead->lead_source }}</th>
-                                        <th>{{ $lead->lead_num }}</th>
+                                        {{-- <th>{{ $lead->id }}</th> --}}
                                         <th>{{ $lead->contact->name }}</th>
-                                        <th> {{ \Carbon\Carbon::parse($lead->created_at)->format('Y-m-d') }}</th>
-                                        <th>{{ $lead->property_type }}</th>
+                                        <th>{{ $lead->lead_num }}</th>
                                         <th>{{ $lead->specific_location }}</th>
+                                        <th>{{ $lead->place }}</th>
+                                        <th>{{ $lead->preferred_landmark }}</th>
+                                        <th>{{ $lead->description }}</th>
+                                        <th>{{ $lead->min_budget }}</th>
                                         <th>{{ $lead->max_budget }}</th>
-
+                                        <th>{{ $lead->expiry }}</th>
+                                        <th>{{ $lead->min_area }}</th>
                                         <th>{{ $lead->max_area }}</th>
-
+                                        <th>{{ $lead->property_type }}</th>
+                                        <th>{{ $lead->status }}</th>
+                                        <th>{{ $lead->assignedTo ? $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name : 'Unassigned' }}</th>
+                                        <th>{{ $lead->createdBy->role_type === 'user' ? 'Employee' : 'Admin' }}</th>
                                         <td>
                                             <div class="buttons">
                                                 <a submitid="{{ $lead->id }}"
@@ -101,28 +115,23 @@
                 "paging": true,
                 "ordering": true,
                 "info": true,
-                // dom: 'Bfrtip',
+                dom: 'Bfrtip',
             });
 
 
-                    // Column search functionality
-        $('#search-btn').click(function() {
-            var column = $('#column-select').val();
-            var searchTerm = $('#column-search').val();
+            $('#status-filter').on('change', function() {
+                var status = $(this).val();
+                table.columns(8).search(status).draw();
+            });
 
-            if (column !== '') {
-                table.column(column).search(searchTerm).draw();
-            } else {
-                table.search(searchTerm).draw();
-            }
-        });
+            $('#assignment-filter').on('change', function() {
+                var status = $(this).val();
+                table.columns(9).search(status).draw();
+            });
 
-        // Clear search filters
-        $('#clear-search-btn').click(function() {
-            $('#column-select').val('');
-            $('#column-search').val('');
-            table.search('').columns().search('').draw();
-        });
+            $('#clear-filter-btn').click(function() {
+                table.search('').columns().search('').draw();
+            });
 
 
         });
@@ -155,3 +164,23 @@
         @endforeach
     @endif
 @endsection
+
+
+{{-- //assign lead filters --}}
+
+
+{{-- <div class="card-header-action">
+                            <select id="status-filter" class="form-control">
+                                <option value="">Customer Name</option>
+                                <option value="new">Specific Location</option>
+                                <option value="in_progress">Area(Broad )</option>
+                                <option value="in_progress">Property Type</option>
+
+                            </select>
+                            <select id="assignment-filter" class="form-control">
+                                <option value="">All</option>
+                                <option value="Unassigned">Unassigned</option>
+                            </select>
+                        </div> --}}
+                                                    {{-- <button id="clear-filter-btn" class="btn btn-danger ml-2">Clear Filter</button> --}}
+

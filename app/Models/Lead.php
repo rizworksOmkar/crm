@@ -20,13 +20,20 @@ class Lead extends Model
         'property_specs',
         'cust_business_type',
         'description',
-        'budget',
+        'min_budget',
+        'max_budegt',
+        'min_area',
+        'max_area',
+        'specific_location',
+        'place',
+        'preferred_landmark',
+        'lead_source',
         'expiry',
-        'area_requirements',
         'property_type',
         'status',
         'assigned_to',
         'created_by',
+        'reference_description'
     ];
 
     protected $keyType = 'string';
@@ -53,7 +60,7 @@ class Lead extends Model
 
     public function contact()
     {
-        return $this->belongsTo(Contact::class);
+        return $this->belongsTo(Contact::class, 'contact_id');
     }
 
     public function assignedTo()

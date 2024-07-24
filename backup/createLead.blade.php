@@ -28,16 +28,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="phone">Phone Number</label>
-                            <input type="text" class="form-control" id="phone" name="phone" readonly>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="whatsapp_ph">Whatsapp Number</label>
-                            <input type="text" class="form-control" id="whatsapp_ph" name="whatsapp_ph" readonly>
-                        </div>
-                    </div>
+
 
                     {{-- Lead Details --}}
                     <div class="form-row">
@@ -79,7 +70,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="description">Lead Description (Requirement of client/customer)</label>
+                        <label for="description">Description</label>
                         <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter description"></textarea>
                     </div>
                     <div class="form-row">
@@ -96,12 +87,12 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="min_area">Min Area (Sq.ft)</label>
+                            <label for="min_area">Min Area</label>
                             <input type="text" class="form-control" id="min_area" name="min_area"
                                 placeholder="Enter min area">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="max_area">Max Area (Sq.ft)</label>
+                            <label for="max_area">Max Area</label>
                             <input type="text" class="form-control" id="max_area" name="max_area"
                                 placeholder="Enter max area">
                         </div>
@@ -112,8 +103,9 @@
                             placeholder="Enter specific location">
                     </div>
                     <div class="form-group">
-                        <label for="place">Area (Broad Level)</label>
-                        <input type="text" class="form-control" id="place" name="place">
+                        <label for="place">Place</label>
+                        <input type="text" class="form-control" id="place" name="place"
+                            placeholder="Enter place">
                     </div>
                     <div class="form-group">
                         <label for="preferred_landmark">Preferred Landmark</label>
@@ -126,26 +118,6 @@
                             <input type="date" class="form-control" id="expiry" name="expiry">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="lead_source">Lead Source</label>
-                            <select class="form-control" id="lead_source" name="lead_source">
-                                <option value="" selected>Select Lead Source</option>
-                                <option value="99acres">99acres</option>
-                                <option value="Magicbricks">Magicbricks</option>
-                                <option value="Housing.com">Housing.com</option>
-                                <option value="Makaan.com">Makaan.com</option>
-                                <option value="PropTigers">PropTigers</option>
-                                <option value="Square Yards">Square Yards</option>
-                                <option value="Other Websites">Other Websites</option>
-                                <option value="Social Media">Social Media</option>
-                                <option value="Referral">Referral</option>
-                                <option value="Advertisement">Advertisement</option>
-                                <option value="Cold Call">Cold Call</option>
-                                {{-- <option value="Email Campaign">Email Campaign</option> --}}
-                                <option value="Event / Fair">Event / Fair</option>
-                                <option value="Others">Others</option>
-                            </select>
-                        </div>
-                        {{-- <div class="form-group col-md-6">
                             <label for="assigned_to">Assign To</label>
                             <select id="assigned_to" class="form-control" name="assigned_to">
                                 <option value="">Select Employee</option>
@@ -154,26 +126,33 @@
                                         {{ $employee->last_name }}</option>
                                 @endforeach
                             </select>
-                        </div> --}}
-                    </div>
-                    <div class="form-group">
-                        <label for="refrence_description">Refrence Description</label>
-                        <input type="text" class="form-control" id="refrence_description" name="refrence_description">
+                        </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="status">Status</label>
                             <select id="status" class="form-control" name="status">
-                                <option value="Open" selected>Open</option>
-
-                                <option value="New">New</option>
+                                <option value="New" selected>New</option>
                                 <option value="In Progress">In Progress</option>
                                 <option value="Closed & Won">Closed & Won</option>
                                 <option value="Closed & Failed">Closed & Failed</option>
                             </select>
 
                         </div>
-
+                        <div class="form-group col-md-6">
+                            <label for="lead_source">Lead Source</label>
+                            <select class="form-control" id="lead_source" name="lead_source">
+                                <option value="" selected>Select Lead Source</option>
+                                <option value="Website">Website</option>
+                                <option value="Social Media">Social Media</option>
+                                <option value="Referral">Referral</option>
+                                <option value="Advertisement">Advertisement</option>
+                                <option value="Cold Call">Cold Call</option>
+                                <option value="Email Campaign">Email Campaign</option>
+                                <option value="Event">Event</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
                     </div>
 
                 </div>
@@ -236,27 +215,6 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-
-            $('#contact_id').change(function() {
-                var contactId = $(this).val();
-                if (contactId) {
-                    $.ajax({
-                        url: '/get-contact-details/' + contactId,
-                        type: 'GET',
-                        success: function(response) {
-                            $('#phone').val(response.phone);
-                            $('#whatsapp_ph').val(response.whatsapp_ph);
-                        },
-                        error: function(error) {
-                            console.error('Error fetching contact details:', error);
-                        }
-                    });
-                } else {
-                    $('#phone_number').val('');
-                    $('#whatsapp_number').val('');
-                }
-            });
-
             $('#add_new_contact_btn').click(function() {
                 $('#new_contact_name').val('');
                 $('#new_contact_email').val('');
@@ -284,8 +242,6 @@
                             $('#contact_id').append('<option value="' + response.contact_id +
                                 '">' + response.contact_name + '</option>');
                             $('#contact_id').val(response.contact_id);
-                            $('#phone').val(response.new_contact_phone);
-                            $('#whatsapp_ph').val(response.new_contact_whatsapp_ph);
                         } else {
                             alert('Error: Unable to create contact.');
                         }

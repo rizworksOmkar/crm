@@ -230,28 +230,61 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                    data-feather="home"></i><span>User Management</span></a>
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="users"></i><span>Master Management</span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    {{-- <a href="{{ route('admin.country-index') }}" class="nav-link">Country</a> --}}
-                                    <a href="{{ route('admin-employee-index') }}" class="nav-link">Employee</a>
+                                    <a href="{{ route('admin-employee-index') }}" class="nav-link">Employee / User</a>
+                                    <a href="#" class="nav-link">Customer / Client</a>
+                                    <a href="{{ route('get-all-roles') }}" class="nav-link">Role Master</a>
+                                    <a href="#" class="nav-link">Property Type</a>
+                                    <a href="#" class="nav-link">Property Specs</a>
+
+
                                 </li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
-                                    data-feather="home"></i><span>Lead & Management</span></a>
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="clipboard"></i><span>Lead & Management</span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    {{-- <a href="{{ route('admin.country-index') }}" class="nav-link">Country</a> --}}
-                                    <a href="{{ route('admin-lead-index') }}" class="nav-link">Leads</a>
+                                    <a href="{{ route('get-all-sources') }}" class="nav-link">Lead Source</a>
+                                    <a href="{{ route('get-all-sources') }}" class="nav-link">Lead Status Creation</a>
+
+                                    <a href="{{ route('admin-lead-index') }}" class="nav-link">Leads Creation (One)</a>
+                                    <a href="{{ route('lead.upload') }}" class="nav-link">Lead Mass Import</a>
+                                    <a href="{{ route('admin-assignlead-index') }}" class="nav-link">Lead Assignment</a>
+                                    <a href="{{ route('admin-reassignlead-index') }}" class="nav-link">Lead Re-Assignment</a>
+                                    <a href="#" class="nav-link">Lead Activity</a>
+                                    <a href="#" class="nav-link">Lead Completion</a>
+
                                 </li>
                             </ul>
                         </li>
-
-
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="bar-chart-2"></i><span>Reports</span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#" class="nav-link">My Assigned Lead Monitoring</a>
+                                    <a href="#" class="nav-link">Lead Monitoring</a>
+                                    <a href="{{ route('admin-employee-monitor') }}" class="nav-link">Employee Monitoring</a>
+                                    <a href="#" class="nav-link">Customer Lead</a>
+                                    <a href="#" class="nav-link">Customer Bill Details</a>
+                                    <a href="#" class="nav-link">Customer Payment Details</a>
+                                    <a href="#" class="nav-link">Unpaid Bills</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="credit-card"></i><span>Accounts</span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#" class="nav-link">Bill Raise</a>
+                                    <a href="#" class="nav-link">Payment Reciept</a>
+                                    <a href="#" class="nav-link">Payment Dispute</a>
+                                </li>
+                            </ul>
+                        </li>
 
                     </ul>
                 </aside>

@@ -4,10 +4,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Leads</h4>
+                    <h4>Roles</h4>
                     <div class="card-header-action">
-                        {{-- <a href="{{ route('admin-create-lead') }}" class="btn btn-primary">Add Lead</a> --}}
-
+                        <a href="{{ route('admin-create-role') }}" class="btn btn-primary">Add role</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -16,60 +15,30 @@
                             <thead>
                                 <tr>
                                     <th>Sl no</th>
-                                    {{-- <th>Lead Id</th> --}}
-                                    <th>Entity Name</th>
-                                    <th>Lead Number</th>
-                                    <th>Desc</th>
-                                    <th>Budget</th>
-                                    <th>Due Date</th>
-                                    <th>Area Req</th>
-                                    <th>Property Type</th>
-                                    <th>Status</th>
-                                    {{-- <th>Assigned to</th> --}}
-                                    <th>Created by</th>
-                                    <th>Action</th>
+
+                                    <th>Role Types</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $i=0; @endphp
-                                @foreach ($leads as $lead)
-                                    @php $i++; @endphp
-                                    <tr>
+
+                                    {{-- <tr>
                                         <th>{{ $i }}</th>
-                                        {{-- <th>{{ $lead->id }}</th> --}}
-                                        <th>{{ $lead->contact->name }}</th>
-                                        <th>{{ $lead->lead_num }}</th>
-                                        <th>{{ $lead->description }}</th>
-                                        <th>{{ $lead->budget }}</th>
-                                        <th>{{ $lead->expiry }}</th>
-                                        <th>{{ $lead->area_requirements }}</th>
-                                        <th>{{ $lead->property_type }}</th>
-                                        <th>{{ $lead->status }}</th>
-                                        {{-- <th>{{ $lead->assignedTo->first_name }} {{ $lead->assignedTo->last_name }}</th> --}}
-                                        <th>{{ $lead->createdBy->role_type === 'user' ? 'Employee' : 'Admin' }}</th>
-
-
-
-
+                                        <th>{{ $role->role }}</th>
                                         <td>
                                             <div class="buttons">
 
 
-                                                <a href="#" class="btn btn-icon btn-sm btn-info" data-toggle="tooltip"
-                                                    title="view and Edit Your Employee"><i class="far fa-eye"></i></a>
-
-                                                {{-- <a submitid="{{ $lead->id }}"
+                                                <a submitid="{{ $lead->id }}"
                                                     class="btn btn-icon btn-sm btn-danger delete-lead-btn"
                                                     data-toggle="tooltip" title="Delete Lead" href="javascript:void(0)"
-                                                    id="deleteLead_{{ $lead->id }}"><i class="fas fa-times"></i></a> --}}
+                                                    id="deleteLead_{{ $lead->id }}"><i class="fas fa-times"></i></a>
 
-                                                <a href="{{ route('leads.changeStatus', $lead->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                                <a href="{{ route('view.showTasks', $lead->id) }}" class="btn btn-sm btn-warning">Tasks</a>
+
 
                                             </div>
                                         </td>
-                                    </tr>
-                                @endforeach
+                                    </tr> --}}
+
 
                             </tbody>
                         </table>
@@ -102,7 +71,7 @@
             });
         });
     </script>
-    @if ($leads)
+    {{-- @if ($leads)
         @foreach ($leads as $lead)
             <script>
                 $(document).on('click', '.delete-lead-btn', function() {
@@ -127,5 +96,5 @@
                 });
             </script>
         @endforeach
-    @endif
+    @endif --}}
 @endsection

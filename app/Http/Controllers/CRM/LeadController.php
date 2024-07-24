@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Support\Facades\DB;
 
@@ -18,8 +19,19 @@ class LeadController extends Controller
     public function leadIndex()
     {
         $leads = Lead::all();
+        //dd($leads);
         $contacts = Contact::all();
+        // dd($contacts);
         return view('admin.lead.index', compact('leads', 'contacts'));
+    }
+
+    public function getContactDetails($id)
+    {
+        $contact = Contact::findOrFail($id);
+        return response()->json([
+            'phone' => $contact->phone,
+            'whatsapp_ph' => $contact->whatsapp_ph
+        ]);
     }
 
     public function createLead()
@@ -65,11 +77,9 @@ class LeadController extends Controller
         $request->validate([
             'contact_id' => 'required|exists:contacts,id',
             'description' => 'required|string',
-            'budget' => 'required|numeric',
             'expiry' => 'required|date',
-            'area_requirements' => 'required|string',
             'property_type' => 'required|string',
-            'assigned_to' => 'required|exists:users,id',
+
         ]);
 
         $leadNumber = $this->generateUniqueLeadNumber();
@@ -81,10 +91,17 @@ class LeadController extends Controller
         $lead->property_specs = $request->input('property_specs');
         $lead->cust_business_type = $request->input('cust_business_type');
         $lead->description = $request->input('description');
-        $lead->budget = $request->input('budget');
+        $lead->min_budget = $request->input('min_budget');
+        $lead->max_budget = $request->input('max_budget');
         $lead->expiry = $request->input('expiry');
-        $lead->area_requirements = $request->input('area_requirements');
+        $lead->min_area = $request->input('max_area');
+        $lead->max_area = $request->input('max_area');
+        $lead->specific_location = $request->input('specific_location');
+        $lead->place = $request->input('place');
+        $lead->preferred_landmark = $request->input('preferred_landmark');
+        $lead->lead_source = $request->input('lead_source');
         $lead->property_type = $request->input('property_type');
+        $lead->lead_description = $request->input('reference_description');
         $lead->status = $request->input('status');
         $lead->assigned_to = $request->input('assigned_to');
         $lead->created_by = auth()->user()->id;
@@ -98,16 +115,16 @@ class LeadController extends Controller
         }
     }
 
-    // Method to generate a unique lead number
     private function generateUniqueLeadNumber()
     {
-        // Example of generating a unique lead number using a timestamp
-        $leadNumber = 'LEAD-' . date('Y') . '-' . uniqid();
+        $year = date('Y');
+        $month = date('m');
 
-        // Ensure the lead number is unique in the database
-        while (Lead::where('lead_num', $leadNumber)->exists()) {
-            $leadNumber = 'LEAD-' . date('Y') . '-' . uniqid();
-        }
+        do {
+            $uniqueNumber = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+
+            $leadNumber = 'LD-' . $year . '-' . $month . '-' . $uniqueNumber;
+        } while (Lead::where('lead_num', $leadNumber)->exists());
 
         return $leadNumber;
     }
@@ -156,7 +173,6 @@ class LeadController extends Controller
         } else {
             return response()->json(['success' => false, 'message' => 'error']);
         }
-
     }
 
 
@@ -203,7 +219,6 @@ class LeadController extends Controller
         } else {
             return response()->json(['success' => false, 'message' => 'error']);
         }
-
     }
 
     //task
@@ -213,9 +228,10 @@ class LeadController extends Controller
         $lead = Lead::with('tasks')->findOrFail($id);
         return view('admin.lead.tasks', compact('lead', 'id'));
     }
+
     public function showTask($id)
     {
-        $lead = Lead::with('tasks')->findOrFail($id);
+        $lead = Lead::with(['tasks', 'contact'])->findOrFail($id);
         return view('admin.empTask.showTask', compact('lead', 'id'));
     }
 
@@ -258,7 +274,163 @@ class LeadController extends Controller
     public function addTask($id)
     {
 
-        return view('admin.empTask.addTask', compact( 'id'));
+        return view('admin.empTask.addTask', compact('id'));
     }
 
+
+    public function showUploadForm()
+    {
+        return view('admin.lead.importLeads');
+    }
+
+
+    public function preview(Request $request)
+    {
+        $request->validate([
+            'lead_file' => 'required|file|mimes:csv,xlsx',
+        ]);
+
+        $data = Excel::toArray([], $request->file('lead_file'))[0];
+        $header = array_shift($data);
+
+        $customerData = [];
+        $leadData = [];
+
+        foreach ($data as $row) {
+            $rowData = array_combine($header, $row);
+            $customerData[] = $this->formatCustomerData($rowData);
+            $leadData[] = $this->formatLeadData($rowData);
+        }
+
+        session(['import_data' => $data, 'import_header' => $header]);
+
+        return view('admin.lead.lead-preview', [
+            'customerHeader' => array_keys($customerData[0]),
+            'customerData' => $customerData,
+            'leadHeader' => array_keys($leadData[0]),
+            'leadData' => $leadData,
+        ]);
+    }
+
+    private function formatCustomerData($rowData): array
+    {
+        return [
+            'Customer Name' => $rowData['Customer Name'] ?? '',
+            'Customer Phone' => $rowData['Customer Phone'] ?? '',
+            'Customer Whatsapp Number' => $rowData['Customer Whatsapp Number'] ?? $rowData['Customer Phone'] ?? '',
+            'Customer Address' => $rowData['Customer Address'] ?? '',
+            'Customer Email' => $rowData['Customer Email'] ?? '',
+        ];
+    }
+
+    private function formatLeadData($rowData): array
+    {
+        return [
+            'Customer Phone' => $rowData['Customer Phone'] ?? '', // Linking field
+            'Lead Number' => $rowData['Lead Number'] ?? ('LEAD-' . date('Y') . '-' . uniqid()),
+            'Specific Location' => $rowData['Specific Location'] ?? '',
+            'Specific Area' => $rowData['Specific Area'] ?? '',
+            'Preffered Landmark' => $rowData['Preffered Landmark'] ?? '',
+            'Desc' => $rowData['Desc'] ?? '',
+            'Min Budget' => $rowData['Min Budget'] ?? '',
+            'Max Budget' => $rowData['Max Budget'] ?? '',
+            'Due Date' => $rowData['Due Date'] ?? '',
+            'Min Area' => $rowData['Min Area'] ?? '',
+            'Max Area' => $rowData['Max Area'] ?? '',
+            'Property Type' => $rowData['Property Type'] ?? '',
+            'Status' => $rowData['Status'] ?? 'new',
+            'Assigned to' => $rowData['Assigned to'] ?? '',
+            'Created by' => $rowData['Created by'] ?? 'System Import',
+        ];
+    }
+
+    public function imports()
+    {
+        $data = session('import_data');
+        // dd($data);
+        $header = session('import_header');
+        // dd($header);
+        if (!$data || !$header) {
+            return redirect()->back()->with('error', 'No import data found. Please upload a file first.');
+        }
+
+        DB::beginTransaction();
+
+        try {
+            foreach ($data as $row) {
+                $rowData = array_combine($header, $row);
+
+                // Create or update contact
+                $contact = Contact::updateOrCreate(
+                    ['phone' => $rowData['Customer Phone']],
+                    [
+                        'name' => $rowData['Customer Name'],
+                        'email' => $rowData['Customer Email'] ?? null,
+                        'whatsapp_ph' => $rowData['Customer Whatsapp Number'] ?? $rowData['Customer Phone'],
+                        'address' => $rowData['Customer Address'] ?? null,
+                    ]
+                );
+
+                // Create lead
+                Lead::create([
+                    'contact_id' => $contact->id,
+                    'lead_num' => $rowData['Lead Number'] ?? ('LEAD-' . date('Y') . '-' . uniqid()),
+                    'specific_location' => $rowData['Specific Location'] ?? null,
+                    'specific_area' => $rowData['Specific Area'] ?? null,
+                    'preferred_landmark' => $rowData['Preffered Landmark'] ?? null,
+                    'description' => $rowData['Desc'] ?? null,
+                    'min_budget' => $rowData['Min Budget'] ?? null,
+                    'max_budget' => $rowData['Max Budget'] ?? null,
+                    'due_date' => $rowData['Due Date'] ?? null,
+                    'min_area' => $rowData['Min Area'] ?? null,
+                    'max_area' => $rowData['Max Area'] ?? null,
+                    'property_type' => $rowData['Property Type'] ?? null,
+                    'status' => $rowData['Status'] ?? 'new',
+                    'created_by' => auth()->id(),
+                ]);
+            }
+
+            DB::commit();
+            session()->forget(['import_data', 'import_header']);
+            return response()->json(['success' => true, 'message' => 'Leads imported successfully.']);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['success' => false, 'message' => 'Error importing leads: ' . $e->getMessage()]);
+        }
+    }
+
+
+
+
+    //reports
+    public function employeeReportIndex()
+    {
+        $users = User::where('role_type', '!=', 'superadmin')
+            ->where('id', '!=', Auth::user()->id)
+            ->where('email', '!=', 'riz')
+            ->orderByRaw('id DESC')->get();
+        return view('admin.reports.employee-monitoring', compact('users'));
+    }
+
+
+
+    //roles
+    public function getRoles()
+    {
+        return view('admin.masters.role-type.role-master-index');
+    }
+    public function createRoles()
+    {
+        return view('admin.masters.role-type.create-role');
+    }
+
+    //source
+    public function getSource()
+    {
+        return view('admin.masters.sources.source');
+    }
+    public function createSources()
+    {
+        return view('admin.masters.sources.create-source');
+    }
 }
