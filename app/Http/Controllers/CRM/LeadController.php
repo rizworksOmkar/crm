@@ -8,6 +8,8 @@ use App\Models\Lead;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Task;
+use App\Models\Source;
+
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -462,5 +464,81 @@ class LeadController extends Controller
     public function createSources()
     {
         return view('admin.masters.sources.create-source');
+    }
+
+
+    //report part starts
+    public function monitorReport()
+    {
+        return view('admin.reports.monitor');
+    }
+
+    public function getFilterValues($filterType)
+    {
+        switch ($filterType) {
+            case 'customer':
+                $values = Contact::select('id', 'name')->get();
+                break;
+            case 'employee':
+                $values = User::select('id', 'first_name', 'last_name')->get()->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'name' => $user->first_name . ' ' . $user->last_name
+                    ];
+                });
+                break;
+            case 'leadSource':
+                $values = Source::select('id', 'name')->get();
+                break;
+            default:
+                $values = [];
+        }
+        return response()->json($values);
+    }
+
+    public function getLeads($filterType, $filterValue)
+    {
+        switch ($filterType) {
+            case 'customer':
+                $leads = Lead::where('contact_id', $filterValue)->with('contact', 'assignedTo')->get();
+                break;
+            case 'employee':
+                $leads = Lead::where('assigned_to', $filterValue)->with('contact', 'assignedTo')->get();
+                break;
+            case 'leadSource':
+                $leads = Lead::where('lead_source', $filterValue)->with('contact', 'assignedTo')->get();
+                break;
+            default:
+                $leads = [];
+        }
+        return response()->json($leads);
+    }
+
+    public function getTasks($leadId)
+    {
+        $tasks = Task::where('lead_id', $leadId)->get();
+        return response()->json($tasks);
+    }
+
+
+    // EmployeeController.php
+
+    public function indexEmployeeMonitor()
+    {
+        $employees = User::where('role_type', 'User')->get();
+        return view('admin.reports.employee-lead-by-monitor', compact('employees'));
+    }
+
+    public function fetchLeadsByEmp($employeeId)
+    {
+        $employee = User::findOrFail($employeeId);
+        $leads = $employee->leads;
+        return response()->json($leads);
+    }
+
+    public function fetchLeadDetailsPerEmp($leadId)
+    {
+        $lead = Lead::with(['contact', 'tasks'])->findOrFail($leadId);
+        return response()->json($lead);
     }
 }

@@ -141,4 +141,6 @@ class EmployeeController extends Controller
         $leads = Lead::where('assigned_to', $employeeId)->with('contact', 'tasks')->get();
         return view('partials.lead-details', compact('leads'));
     }
+
+    
 }
