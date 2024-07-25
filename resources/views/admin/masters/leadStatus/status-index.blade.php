@@ -4,9 +4,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Sources</h4>
+                    <h4>Status</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('admin-create-source') }}" class="btn btn-primary">Add Source</a>
+                        <a href="{{ route('admin-create-status') }}" class="btn btn-primary">Add Status</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -15,61 +15,53 @@
                             <thead>
                                 <tr>
                                     <th>Sl no</th>
-                                    <th>Lead Sources</th>
+                                    <th>Status Types</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th>1</th>
-                                    <td>99acres</td>
+                                    <td>No response</td>
                                 </tr>
                                 <tr>
                                     <th>2</th>
-                                    <td>Magicbricks</td>
+                                    <td>Contact & Response</td>
                                 </tr>
                                 <tr>
                                     <th>3</th>
-                                    <td>(link unavailable)</td>
+                                    <td>Site Visit Done</td>
                                 </tr>
                                 <tr>
                                     <th>4</th>
-                                    <td>(link unavailable)</td>
+                                    <td>Site Visit Requested</td>
                                 </tr>
                                 <tr>
                                     <th>5</th>
-                                    <td>PropTigers</td>
+                                    <td>Visit Postponed</td>
                                 </tr>
                                 <tr>
                                     <th>6</th>
-                                    <td>Square Yards</td>
+                                    <td>Follow up needed</td>
                                 </tr>
                                 <tr>
                                     <th>7</th>
-                                    <td>Other Websites</td>
+                                    <td>Follow up done</td>
                                 </tr>
                                 <tr>
                                     <th>8</th>
-                                    <td>Social Media</td>
+                                    <td>Not Interested</td>
                                 </tr>
                                 <tr>
                                     <th>9</th>
-                                    <td>Referral</td>
+                                    <td>Closed Successfully</td>
                                 </tr>
                                 <tr>
                                     <th>10</th>
-                                    <td>Advertisement</td>
+                                    <td>Closed with Failure</td>
                                 </tr>
                                 <tr>
                                     <th>11</th>
-                                    <td>Cold Call</td>
-                                </tr>
-                                <tr>
-                                    <th>12</th>
-                                    <td>Event / Fair</td>
-                                </tr>
-                                <tr>
-                                    <th>13</th>
-                                    <td>Others</td>
+                                    <td>Invalid Contact Details</td>
                                 </tr>
                             </tbody>
                         </table>

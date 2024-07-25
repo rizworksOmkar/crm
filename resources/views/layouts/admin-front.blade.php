@@ -249,7 +249,7 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="{{ route('get-all-sources') }}" class="nav-link">Lead Source</a>
-                                    <a href="{{ route('get-all-sources') }}" class="nav-link">Lead Status Creation</a>
+                                    <a href="{{ route('get-all-status') }}" class="nav-link">Lead Status Creation</a>
 
                                     <a href="{{ route('admin-lead-index') }}" class="nav-link">Leads Creation (One)</a>
                                     <a href="{{ route('lead.upload') }}" class="nav-link">Lead Mass Import</a>
@@ -261,20 +261,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="bar-chart-2"></i><span>Reports</span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#" class="nav-link">My Assigned Lead Monitoring</a>
-                                    <a href="#" class="nav-link">Lead Monitoring</a>
-                                    <a href="{{ route('admin-employee-monitor') }}" class="nav-link">Employee Monitoring</a>
-                                    <a href="#" class="nav-link">Customer Lead</a>
-                                    <a href="#" class="nav-link">Customer Bill Details</a>
-                                    <a href="#" class="nav-link">Customer Payment Details</a>
-                                    <a href="#" class="nav-link">Unpaid Bills</a>
-                                </li>
-                            </ul>
-                        </li>
+
                         <li class="dropdown">
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="credit-card"></i><span>Accounts</span></a>
                             <ul class="dropdown-menu">
@@ -282,6 +269,27 @@
                                     <a href="#" class="nav-link">Bill Raise</a>
                                     <a href="#" class="nav-link">Payment Reciept</a>
                                     <a href="#" class="nav-link">Payment Dispute</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="bar-chart-2"></i><span>Reports</span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    {{-- <a href="#" class="nav-link">My Assigned Lead Monitoring</a> --}}
+                                    <a href="{{ route('lead-report') }}" class="nav-link">Lead Monitoring</a>
+                                    <a href="{{ route('emp-report') }}" class="nav-link">Employee Monitoring</a>
+                                    <a href="#" class="nav-link">Client Monitoring</a>
+                                    <a href="#" class="nav-link">Specific Client Monitoring</a>
+                                    <a href="#" class="nav-link">Unbilled Lead Report</a>
+                                    <a href="#" class="nav-link">All Bill Report</a>
+                                    <a href="#" class="nav-link">Unpaid Bill Report</a>
+
+                                    {{-- <a href="#" class="nav-link">Customer Lead</a>
+                                    <a href="#" class="nav-link">Customer Bill Details</a>
+                                    <a href="#" class="nav-link">Customer Payment Details</a>
+                                    <a href="#" class="nav-link">Unpaid Bills</a> --}}
                                 </li>
                             </ul>
                         </li>

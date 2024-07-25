@@ -24,7 +24,7 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
 
         Route::post('leads/{lead}/tasks', [LeadController::class, 'storeleadTask'])->name('leads.tasks.store');
         Route::patch('leads/{lead}/tasks/{task}', [LeadController::class, 'updateLeadTask'])->name('leads.tasks.update');
-
-
+        Route::get('/get-contact-phone/{id}', [LeadController::class, 'getContactPhone']);
+        Route::get('/get-lead-info/{id}', [LeadController::class, 'getLeadInfo']);
     });
 });

@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Lead;
 
 
 class EmployeeController extends Controller
@@ -79,7 +80,65 @@ class EmployeeController extends Controller
         $user = User::where('email', $username)->first();
 
         return response()->json([
-            'available' => !$user, 
+            'available' => !$user,
         ]);
+    }
+
+    public function getLeadReport()
+    {
+        // Fetch all employees with their lead and task data
+        $employees = User::with(['leads', 'tasks'])->get();
+
+        $employeeReports = $employees->map(function ($employee) {
+            $totalLeads = $employee->leads->count();
+            $totalClosedSuccessfully = $employee->leads->where('status', 'closed_successfully')->count();
+            $totalClosedWithFailure = $employee->leads->where('status', 'closed_with_failure')->count();
+            $latestTaskStatus = $employee->tasks->sortByDesc('date')->first();
+
+            return [
+                'employee' => $employee,
+                'totalLeads' => $totalLeads,
+                'totalClosedSuccessfully' => $totalClosedSuccessfully,
+                'totalClosedWithFailure' => $totalClosedWithFailure,
+                'latestTaskStatus' => $latestTaskStatus ? $latestTaskStatus->status : 'No tasks',
+            ];
+        });
+
+        return view('admin.reports.employee-monitoring', compact('employeeReports'));
+    }
+
+    public function getEmpReport()
+    {
+        $employees = User::with(['leads.contact', 'leads.tasks'])->get();
+
+        $employeeReports = $employees->map(function ($employee) {
+            $leadReports = $employee->leads->map(function ($lead) {
+                $totalTasks = $lead->tasks->count();
+                $latestTask = $lead->tasks->sortByDesc('date')->first();
+                $latestTaskStatus = $latestTask ? $latestTask->status : 'No tasks';
+                $latestTaskDate = $latestTask ? $latestTask->date : 'N/A';
+
+                return [
+                    'lead_date' => $lead->created_at->format('Y-m-d'),
+                    'customer_name' => $lead->contact->name,
+                    'phone' => $lead->contact->phone,
+                    'total_tasks' => $totalTasks,
+                    'latest_task_date' => $latestTaskDate,
+                    'latest_task_status' => $latestTaskStatus,
+                ];
+            });
+
+            return [
+                'employee' => $employee,
+                'leadReports' => $leadReports,
+            ];
+        });
+
+        return view('admin.reports.lead-report', compact('employeeReports'));
+    }
+    public function getEmployeeLeadDetails($employeeId)
+    {
+        $leads = Lead::where('assigned_to', $employeeId)->with('contact', 'tasks')->get();
+        return view('partials.lead-details', compact('leads'));
     }
 }

@@ -57,9 +57,19 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         //roles
         Route::get('/roles', [LeadController::class, 'getRoles'] )->name('get-all-roles');
         Route::get('/roles/create', [LeadController::class, 'createRoles'] )->name('admin-create-role');
+
+        //status
+        Route::get('/status', [LeadController::class, 'getStatus'] )->name('get-all-status');
+        Route::get('/status/create', [LeadController::class, 'createStatus'] )->name('admin-create-status');
         //source
         Route::get('/sources', [LeadController::class, 'getSource'] )->name('get-all-sources');
         Route::get('/source/create', [LeadController::class, 'createSources'] )->name('admin-create-source');
+
+        //report
+        Route::get('/emp-report', [EmployeeController::class, 'getLeadReport'])->name('emp-report');
+        Route::get('/lead-report', [EmployeeController::class, 'getEmpReport'])->name('lead-report');
+
+        Route::get('/get-employee-lead-details/{employeeId}', [EmployeeController::class, 'getEmployeeLeadDetails']);
 
         //Store, Update, Delete Country Data and retrive
         // Route::post('/deleteCountry', [MasterDataController::class, 'countryDelete'])->name('admin.country.delete');

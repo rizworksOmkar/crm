@@ -38,6 +38,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function leads()
+    {
+        return $this->hasMany(Lead::class, 'assigned_to');
+    }
     public function tasks()
     {
         return $this->hasMany(Task::class, 'created_by');

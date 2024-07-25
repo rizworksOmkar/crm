@@ -1,4 +1,4 @@
-@extends('layouts.user-dashboard-layout')
+@extends('layouts.admin-front')
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -21,23 +21,15 @@
                             </thead>
                             <tbody>
 
-                                    {{-- <tr>
-                                        <th>{{ $i }}</th>
-                                        <th>{{ $role->role }}</th>
-                                        <td>
-                                            <div class="buttons">
+                                    <tr>
+                                        <th>1</th>
+                                        <th>Admmin</th>
 
-
-                                                <a submitid="{{ $lead->id }}"
-                                                    class="btn btn-icon btn-sm btn-danger delete-lead-btn"
-                                                    data-toggle="tooltip" title="Delete Lead" href="javascript:void(0)"
-                                                    id="deleteLead_{{ $lead->id }}"><i class="fas fa-times"></i></a>
-
-
-
-                                            </div>
-                                        </td>
-                                    </tr> --}}
+                                    </tr>
+                                    <tr>
+                                        <th>2</th>
+                                        <th>User / Employee</th>
+                                    </tr>
 
 
                             </tbody>

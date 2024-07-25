@@ -34,6 +34,12 @@ class LeadController extends Controller
         ]);
     }
 
+    public function getContactPhone($id)
+    {
+        $contact = Contact::findOrFail($id);
+        return response()->json(['phone' => $contact->phone]);
+    }
+
     public function createLead()
     {
 
@@ -235,6 +241,7 @@ class LeadController extends Controller
         return view('admin.empTask.showTask', compact('lead', 'id'));
     }
 
+
     public function storeLeadTask(Request $request, $leadId)
     {
         $request->validate([
@@ -274,7 +281,20 @@ class LeadController extends Controller
     public function addTask($id)
     {
 
-        return view('admin.empTask.addTask', compact('id'));
+        $lead = Lead::with(['tasks', 'contact'])->findOrFail($id);
+        $user = auth()->user();
+        $userLeads = Lead::where('assigned_to', $user->id)->get();
+        $contacts = Contact::all(); // Fetch all contacts
+
+        return view('admin.empTask.addTask', compact('lead', 'id', 'userLeads', 'contacts'));
+    }
+    public function getLeadInfo($id)
+    {
+        $lead = Lead::with('contact')->findOrFail($id);
+        return response()->json([
+            'contact_id' => $lead->contact_id,
+            'phone' => $lead->contact->phone
+        ]);
     }
 
 
@@ -422,6 +442,16 @@ class LeadController extends Controller
     public function createRoles()
     {
         return view('admin.masters.role-type.create-role');
+    }
+
+    //status
+    public function getStatus()
+    {
+        return view('admin.masters.leadStatus.status-index');
+    }
+    public function createStatus()
+    {
+        return view('admin.masters.leadStatus.add-status');
     }
 
     //source

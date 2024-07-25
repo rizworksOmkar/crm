@@ -4,7 +4,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Tasks</h4>
+                    <h4>Activities</h4>
                     <div class="card-header-action">
                         {{-- <a href="{{ route('admin-create-lead') }}" class="btn btn-primary">Add Lead</a> --}}
                         <a href="{{ route('view.addTasks', $lead->id) }}" class="btn btn-sm btn-warning"> Add Tasks</a>
@@ -18,10 +18,10 @@
                                 <tr>
                                     <th>Sl no</th>
                                     <th>Task Id</th>
-                                    <th>Description</th>
+                                    <th>Update</th>
                                     <th>Mode</th>
                                     <th>Date</th>
-                                    <th>Status</th>
+                                    <th>Lead Status</th>
                                     <th>Created by</th>
 
                                 </tr>

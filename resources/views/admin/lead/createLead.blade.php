@@ -140,7 +140,6 @@
                                 <option value="Referral">Referral</option>
                                 <option value="Advertisement">Advertisement</option>
                                 <option value="Cold Call">Cold Call</option>
-                                {{-- <option value="Email Campaign">Email Campaign</option> --}}
                                 <option value="Event / Fair">Event / Fair</option>
                                 <option value="Others">Others</option>
                             </select>
