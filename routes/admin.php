@@ -11,7 +11,11 @@ use App\Http\Controllers\CRM\EmployeeController;
 use App\Http\Controllers\CRM\AssignLeadController;
 use App\Http\Controllers\CRM\LeadImportController;
 
-
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PropertyTypeController;
+use App\Http\Controllers\PropertySpecController;
+use App\Http\Controllers\LeadSourceController;
+use App\Http\Controllers\LeadStatusController;
 
 use App\Models\Lead;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
@@ -82,5 +86,11 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('leads/{lead}/details', [LeadController::class, 'fetchLeadDetailsPerEmp']);
 
 
+
+        Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
+        Route::post('/property-types', [PropertyTypeController::class, 'store'])->name('property-types.store');
+        Route::post('/property-specs', [PropertySpecController::class, 'store'])->name('property-specs.store');
+        Route::post('/lead-sources', [LeadSourceController::class, 'store'])->name('lead-sources.store');
+        Route::post('/lead-statuses', [LeadStatusController::class, 'store'])->name('lead-statuses.store');
     });
 });
