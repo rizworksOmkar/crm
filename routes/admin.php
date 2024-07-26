@@ -77,7 +77,7 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
 
         Route::get('/monitor-report', [LeadController::class, 'monitorReport'])->name('monitor-report');
         Route::get('/get-filter-values/{filterType}', [LeadController::class, 'getFilterValues']);
-        Route::get('/get-leads/{filterType}/{filterValue}', [LeadController::class, 'getLeads']);
+        Route::get('/get-leads/{filterType}/{filterValue}/{startDate?}/{endDate?}', [LeadController::class, 'getLeads']);
         Route::get('/get-tasks/{leadId}', [LeadController::class, 'getTasks']);
 
 
@@ -92,5 +92,10 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::post('/property-specs', [PropertySpecController::class, 'store'])->name('property-specs.store');
         Route::post('/lead-sources', [LeadSourceController::class, 'store'])->name('lead-sources.store');
         Route::post('/lead-statuses', [LeadStatusController::class, 'store'])->name('lead-statuses.store');
+
+
+        Route::get('/date-range-report', [LeadController::class, 'dateRangeReport'])->name('date-range-report');
+        Route::get('/get-tasks-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getTasksByDateRange']);
+        Route::get('/get-leads-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getLeadsByDateRange']);
     });
 });

@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Source;
-
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -496,21 +496,48 @@ class LeadController extends Controller
         return response()->json($values);
     }
 
-    public function getLeads($filterType, $filterValue)
+
+    public function getLeads($filterType, $filterValue, $startDate = null, $endDate = null)
     {
+        Log::debug('getLeads parameters', [
+            'filterType' => $filterType,
+            'filterValue' => $filterValue,
+            'startDate' => $startDate,
+            'endDate' => $endDate
+        ]);
+
+        $query = Lead::query();
+
         switch ($filterType) {
             case 'customer':
-                $leads = Lead::where('contact_id', $filterValue)->with('contact', 'assignedTo')->get();
+                $query->where('contact_id', $filterValue);
                 break;
             case 'employee':
-                $leads = Lead::where('assigned_to', $filterValue)->with('contact', 'assignedTo')->get();
+                $query->where('assigned_to', $filterValue);
                 break;
             case 'leadSource':
-                $leads = Lead::where('lead_source', $filterValue)->with('contact', 'assignedTo')->get();
+                $query->where('lead_source', $filterValue);
                 break;
             default:
-                $leads = [];
+                return response()->json([]);
         }
+
+        if ($startDate && $endDate) {
+            $query->whereDate('created_at', '>=', $startDate)
+                ->whereDate('created_at', '<=', $endDate);
+        }
+
+        Log::debug('Generated SQL', [
+            'sql' => $query->toSql(),
+            'bindings' => $query->getBindings()
+        ]);
+
+        $leads = $query->with('contact', 'assignedTo')->get();
+
+        Log::debug('Query result', [
+            'count' => $leads->count()
+        ]);
+
         return response()->json($leads);
     }
 
@@ -540,5 +567,28 @@ class LeadController extends Controller
     {
         $lead = Lead::with(['contact', 'tasks'])->findOrFail($leadId);
         return response()->json($lead);
+    }
+
+    public function dateRangeReport()
+    {
+        return view('admin.reports.task-lead-date');
+    }
+
+    public function getTasksByDateRange($startDate, $endDate)
+    {
+        $tasks = Task::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
+            ->orderBy('created_at', 'desc')
+            ->with('createdBy')
+            ->get();
+        return response()->json($tasks);
+    }
+
+    public function getLeadsByDateRange($startDate, $endDate)
+    {
+        $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
+            ->orderBy('created_at', 'desc')
+            ->with(['contact', 'assignedTo'])
+            ->get();
+        return response()->json($leads);
     }
 }
