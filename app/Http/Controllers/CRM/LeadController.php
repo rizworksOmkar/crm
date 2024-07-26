@@ -109,7 +109,7 @@ class LeadController extends Controller
         $lead->preferred_landmark = $request->input('preferred_landmark');
         $lead->lead_source = $request->input('lead_source');
         $lead->property_type = $request->input('property_type');
-        $lead->lead_description = $request->input('reference_description');
+        $lead->reference_description = $request->input('reference_description');
         $lead->status = $request->input('status');
         $lead->assigned_to = $request->input('assigned_to');
         $lead->created_by = auth()->user()->id;

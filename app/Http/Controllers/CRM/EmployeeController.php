@@ -87,7 +87,7 @@ class EmployeeController extends Controller
     public function getLeadReport()
     {
         // Fetch all employees with their lead and task data
-        $employees = User::with(['leads', 'tasks'])->get();
+        $employees = User::with(['leads', 'tasks'])->where('role_type', '!=', 'superadmin')->where('role_type', '!=', 'admin')->get();
 
         $employeeReports = $employees->map(function ($employee) {
             $totalLeads = $employee->leads->count();
