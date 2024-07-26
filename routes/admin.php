@@ -77,11 +77,11 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
 
         Route::get('/monitor-report', [LeadController::class, 'monitorReport'])->name('monitor-report');
         Route::get('/get-filter-values/{filterType}', [LeadController::class, 'getFilterValues']);
-        Route::get('/get-leads/{filterType}/{filterValue}/{startDate?}/{endDate?}', [LeadController::class, 'getLeads']);
+        Route::post('/get-leads', [LeadController::class, 'getLeads']);
         Route::get('/get-tasks/{leadId}', [LeadController::class, 'getTasks']);
 
 
-        Route::get('employees-monitor', [LeadController::class, 'indexEmployeeMonitor']);
+        Route::get('/employees-monitor', [LeadController::class, 'indexEmployeeMonitor'])->name('employees-monitor');
         Route::get('employees/{employee}/leads', [LeadController::class, 'fetchLeadsByEmp']);
         Route::get('leads/{lead}/details', [LeadController::class, 'fetchLeadDetailsPerEmp']);
 

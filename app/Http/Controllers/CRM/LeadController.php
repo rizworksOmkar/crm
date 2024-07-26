@@ -12,6 +12,9 @@ use App\Models\Source;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
+
+
 
 use Illuminate\Support\Facades\DB;
 
@@ -470,7 +473,7 @@ class LeadController extends Controller
     //report part starts
     public function monitorReport()
     {
-        return view('admin.reports.monitor');
+        return view('admin.reports.lead-activity-report');
     }
 
     public function getFilterValues($filterType)
@@ -497,8 +500,13 @@ class LeadController extends Controller
     }
 
 
-    public function getLeads($filterType, $filterValue, $startDate = null, $endDate = null)
+    public function getLeads(Request $request)
     {
+        $filterType = $request->input('filterType');
+        $filterValue = $request->input('filterValue');
+        $startDate = $request->input('startDate');
+        $endDate = $request->input('endDate');
+
         Log::debug('getLeads parameters', [
             'filterType' => $filterType,
             'filterValue' => $filterValue,
@@ -506,44 +514,47 @@ class LeadController extends Controller
             'endDate' => $endDate
         ]);
 
-        $query = Lead::query();
-
         switch ($filterType) {
             case 'customer':
-                $query->where('contact_id', $filterValue);
+                $leads = Lead::orderBy('created_at', 'desc')
+                              ->with(['contact', 'assignedTo'])
+                              ->get();
+                if ($leads->isNotEmpty()) {
+                    $leads = $leads->where('contact_id', $filterValue);
+                }
                 break;
             case 'employee':
-                $query->where('assigned_to', $filterValue);
+                $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
+                              ->orderBy('created_at', 'desc')
+                              ->with(['contact', 'assignedTo'])
+                              ->get();
+                if ($leads->isNotEmpty()) {
+                    $leads = $leads->where('assigned_to', $filterValue);
+                }
                 break;
             case 'leadSource':
-                $query->where('lead_source', $filterValue);
+                $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
+                              ->orderBy('created_at', 'desc')
+                              ->with(['contact', 'assignedTo'])
+                              ->get();
+                if ($leads->isNotEmpty()) {
+                    $leads = $leads->where('lead_source', $filterValue);
+                }
                 break;
             default:
-                return response()->json([]);
+                $leads = [];
         }
-
-        if ($startDate && $endDate) {
-            $query->whereDate('created_at', '>=', $startDate)
-                ->whereDate('created_at', '<=', $endDate);
-        }
-
-        Log::debug('Generated SQL', [
-            'sql' => $query->toSql(),
-            'bindings' => $query->getBindings()
-        ]);
-
-        $leads = $query->with('contact', 'assignedTo')->get();
-
-        Log::debug('Query result', [
-            'count' => $leads->count()
-        ]);
 
         return response()->json($leads);
     }
 
+
+
+
+
     public function getTasks($leadId)
     {
-        $tasks = Task::where('lead_id', $leadId)->get();
+        $tasks = Task::where('lead_id', $leadId)->orderBy('created_at', 'desc')->get();
         return response()->json($tasks);
     }
 
@@ -559,7 +570,7 @@ class LeadController extends Controller
     public function fetchLeadsByEmp($employeeId)
     {
         $employee = User::findOrFail($employeeId);
-        $leads = $employee->leads;
+        $leads = $employee->leads()->with('contact')->get();
         return response()->json($leads);
     }
 

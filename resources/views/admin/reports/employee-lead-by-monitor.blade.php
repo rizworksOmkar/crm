@@ -115,7 +115,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <div class="card">
                 <div class="card-header">
                     <h4>Employees</h4>
@@ -129,7 +129,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-7">
             <div class="card" id="leads-container" style="display:none;">
                 <div class="card-header">
                     <h4>Lead Report</h4>
@@ -140,9 +140,9 @@
                             <thead>
                                 <tr>
                                     <th>Lead Number</th>
-                                    <th>Description</th>
                                     <th>Property Type</th>
-                                    <th>Budget</th>
+                                    <th>Customer Name</th>
+                                    <th>Customer Contact</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -154,7 +154,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <div class="card" id="lead-details-container" style="display:none;">
                 <div class="card-header">
                     <h4>Lead Details</h4>
@@ -211,9 +211,9 @@
                 leads.forEach(function(lead) {
                     var row = '<tr>' +
                         '<td>' + lead.lead_num + '</td>' +
-                        '<td>' + lead.description + '</td>' +
                         '<td>' + lead.property_type + '</td>' +
-                        '<td>' + lead.max_budget + '</td>' +
+                        '<td>' + lead.contact.name + '</td>' +
+                        '<td>' + lead.contact.phone + '</td>' +
                         '<td><button class="btn btn-info btn-sm view-lead-details" data-id="' + lead.id +
                         '">View Details</button></td>' +
                         '</tr>';
@@ -325,17 +325,4 @@
         });
     </script>
 @endsection
-{{-- function populateTasksTable(tasks) {
-    var tasksTbody = $('#tasks-table tbody');
-    tasksTbody.empty();
 
-    tasks.forEach(function(task) {
-        var taskRow = '<tr>' +
-            '<td>' + task.description + '</td>' +
-            '<td>' + task.date + '</td>' +
-            '<td>' + task.status + '</td>' +
-            '<td>' + task.mode + '</td>' +
-            '</tr>';
-        tasksTbody.append(taskRow);
-    });
-} --}}

@@ -1,10 +1,11 @@
 @extends('layouts.admin-front')
 @section('content')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Lead Filters</h4>
+                    <h4>Lead Activity Report</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
@@ -16,9 +17,9 @@
                             <option value="leadSource">Lead Source</option>
                         </select>
                     </div>
-                    <div class="form-group" id="filterValueContainer" style="display:none;">
+                    <div class="form-group " id="filterValueContainer" style="display:none;">
                         <label for="filterValue">Select Value</label>
-                        <select class="form-control" id="filterValue">
+                        <select class="js-example-basic-single" id="filterValue">
                             <option value="">Select Value</option>
                         </select>
                     </div>
@@ -27,6 +28,7 @@
                         <input type="date" class="form-control" id="startDate">
                         <label for="endDate">End Date</label>
                         <input type="date" class="form-control" id="endDate">
+                        <button id="searchButton" class="btn btn-primary mt-3">Search</button>
                     </div>
                     <div class="table-responsive mt-4">
                         <table class="table table-striped table-hover" style="width:100%;" id="leadsTable">
@@ -34,7 +36,6 @@
                                 <tr>
                                     <th>Lead Number</th>
                                     <th>Customer Name</th>
-                                    <th>Description</th>
                                     <th>Assigned To</th>
                                     <th>Lead Source</th>
                                     <th>
@@ -84,6 +85,11 @@
     <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+
+            $(document).ready(function() {
+                $('.js-example-basic-single').select2();
+            });
+
             $('#leadsTable').DataTable({
                 "scrollX": true,
                 stateSave: true,
@@ -108,7 +114,7 @@
                 }
             });
 
-            $('#filterValue, #startDate, #endDate').change(function() {
+            $('#searchButton').click(function() {
                 var filterType = $('#filterType').val();
                 var filterValue = $('#filterValue').val();
                 var startDate = $('#startDate').val();
@@ -124,6 +130,7 @@
                     url: '/get-filter-values/' + filterType,
                     method: 'GET',
                     success: function(response) {
+                        console.log(response);
                         var options = '<option value="">Select Value</option>';
                         $.each(response, function(index, value) {
                             options += '<option value="' + value.id + '">' + value.name +
@@ -139,25 +146,32 @@
             }
 
             function fetchLeads(filterType, filterValue, startDate, endDate) {
-                var url = '/get-leads/' + filterType + '/' + filterValue;
-                if (startDate && endDate) {
-                    url += '/' + startDate + '/' + endDate;
-                }
-                console.log(url);
+                var data = {
+                    filterType: filterType,
+                    filterValue: filterValue,
+                    startDate: startDate,
+                    endDate: endDate
+                };
+                console.log(data);
                 $.ajax({
-                    url: '/get-leads/' + filterType + '/' + filterValue,
-
-                    method: 'GET',
+                    url: '/get-leads',
+                    method: 'POST',
+                    data: data,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     success: function(response) {
+                        console.log(response);
                         var rows = '';
                         $.each(response, function(index, lead) {
+
                             rows += '<tr>' +
                                 '<td>' + lead.lead_num + '</td>' +
                                 '<td>' + lead.contact.name + '</td>' +
-                                '<td>' + lead.description + '</td>' +
                                 '<td>' + (lead.assigned_to ? lead.assigned_to.first_name + ' ' +
                                     lead.assigned_to.last_name : 'N/A') + '</td>' +
                                 '<td>' + lead.lead_source + '</td>' +
+                                '<td>' + lead.created_at + '</td>' +
                                 '<td><button class="btn btn-sm btn-primary view-tasks-btn" data-lead-id="' +
                                 lead.id + '">View Tasks</button></td>' +
                                 '</tr>';

@@ -255,7 +255,7 @@
                                     <a href="{{ route('lead.upload') }}" class="nav-link">Lead Mass Import</a>
                                     <a href="{{ route('admin-assignlead-index') }}" class="nav-link">Lead Assignment</a>
                                     <a href="{{ route('admin-reassignlead-index') }}" class="nav-link">Lead Re-Assignment</a>
-                                    <a href="#" class="nav-link">Lead Activity</a>
+                                    <a href="{{ route('monitor-report') }}" class="nav-link">Lead Activity</a>
                                     <a href="#" class="nav-link">Lead Completion</a>
 
                                 </li>
@@ -278,8 +278,9 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     {{-- <a href="#" class="nav-link">My Assigned Lead Monitoring</a> --}}
-                                    <a href="{{ route('lead-report') }}" class="nav-link">Lead Monitoring</a>
-                                    <a href="{{ route('emp-report') }}" class="nav-link">Employee Monitoring</a>
+                                    <a href="{{ route('monitor-report') }}" class="nav-link">Lead Monitoring</a>
+                                    <a href="{{ route('employees-monitor') }}" class="nav-link">Employee Monitoring</a>
+                                    <a href="{{ route('date-range-report') }}" class="nav-link">Dated Monitoring Reports</a>
                                     <a href="#" class="nav-link">Client Monitoring</a>
                                     <a href="#" class="nav-link">Specific Client Monitoring</a>
                                     <a href="#" class="nav-link">Unbilled Lead Report</a>
