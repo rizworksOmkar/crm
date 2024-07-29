@@ -9,7 +9,7 @@ class LeadStatus extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['status_type'];
+    protected $fillable = ['status_type','state_status'];
 
 }
 

@@ -1,5 +1,6 @@
 @extends('layouts.admin-front')
 @section('content')
+    <meta name="csrf_token" content="{{ csrf_token() }}" />
     <div class="row">
         <div class="col-12 col-md-6 col-lg-6">
             <form id="add_lead_status_form" action="{{ route('lead-statuses.store') }}" method="POST">
@@ -11,7 +12,8 @@
                     <div class="card-body">
                         <div class="form-group col-md-6">
                             <label for="status_type">Add Lead Status</label>
-                            <input type="text" class="form-control" id="status_type" name="status_type" placeholder="Enter Lead Status">
+                            <input type="text" class="form-control" id="status_type" name="status_type"
+                                placeholder="Enter Lead Status">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -37,25 +39,43 @@
                                 <tr>
                                     <th>Sl no</th>
                                     <th>Status Types</th>
+                                    <th>State</th>
+                                    <th>Change State</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($statuses as $status)
-                                <tr>
-                                  <th>{{ $loop->iteration }}</th>
-                                  <th>{{ $status->status_type }}</th>
-                                  <td>
+                                    <tr>
+                                        <th>{{ $loop->iteration }}</th>
+                                        <th>{{ $status->status_type }}</th>
+                                        <th>
+                                            @if ($status->state_status == 1)
+                                                <span class="badge badge-success">Active</span>
+                                            @else
+                                                <span class="badge badge-danger">InActive</span>
+                                            @endif
+                                        </th>
+                                        <th>
 
-                                    <form style="display: inline-block;" method="POST" action="{{ route('lead-status.destroy', $status->id) }}">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this property type?')">Delete</button>
-                                    </form>
-                                  </td>
-                                </tr>
-                              @endforeach
-                                
+                                            <button id="toggle-status" data-status-id="{{ $status->id }}"
+                                                class="btn btn-primary toggle-status">Changes
+                                                Status</button>
+
+                                        </th>
+                                        <td>
+
+                                            <form style="display: inline-block;" method="POST"
+                                                action="{{ route('lead-status.destroy', $status->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Are you sure you want to delete this property type?')">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -86,7 +106,24 @@
                 // ]
             });
         });
+
+        $('.toggle-status').click(function() {
+            var statusid = $(this).data('status-id');
+            $.ajax({
+                url: '/leadstatuschange/' + statusid + '/toggle-status',
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                },
+                success: function(response) {
+
+                    alert(response.message);
+                    location.reload();
+                }
+            });
+        });
     </script>
+
     {{-- @if ($leads)
         @foreach ($leads as $lead)
             <script>

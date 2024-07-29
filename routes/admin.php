@@ -17,6 +17,8 @@ use App\Http\Controllers\PropertySpecController;
 use App\Http\Controllers\LeadSourceController;
 use App\Http\Controllers\LeadStatusController;
 
+use App\Http\Controllers\CRM\EntityStatusController;
+
 use App\Models\Lead;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 
@@ -113,5 +115,7 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/date-range-report', [LeadController::class, 'dateRangeReport'])->name('date-range-report');
         Route::get('/get-tasks-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getTasksByDateRange']);
         Route::get('/get-leads-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getLeadsByDateRange']);
+
+        Route::post('/leadstatuschange/{id}/toggle-status', [EntityStatusController::class, 'toggleleadStatuschange']);
     });
 });

@@ -21,6 +21,7 @@ class LeadStatusController extends Controller
 
         LeadStatus::create([
             'status_type' => $request->status_type,
+            'state_status' => 1,
         ]);
 
         return redirect()->back()->with('success', 'Lead Status created successfully!');
