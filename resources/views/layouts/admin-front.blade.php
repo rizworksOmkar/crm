@@ -236,7 +236,7 @@
                                     <a href="{{ route('admin-employee-index') }}" class="nav-link">Employee / User</a>
                                     <a href="#" class="nav-link">Customer / Client</a>
                                     <a href="{{ route('get-all-roles') }}" class="nav-link">Role Master</a>
-                                    <a href="#" class="nav-link">Property Type</a>
+                                    <a href="{{ route('property-types.view') }}" class="nav-link">Property Type</a>
                                     <a href="#" class="nav-link">Property Specs</a>
 
 

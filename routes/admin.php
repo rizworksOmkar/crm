@@ -88,7 +88,13 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
 
 
         Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
+
+        Route::get('/property-types-view', [PropertyTypeController::class, 'view'])->name('property-types.view');
         Route::post('/property-types', [PropertyTypeController::class, 'store'])->name('property-types.store');
+        // Route::get('/property-types/{propertyType}/edit', [PropertyTypeController::class, 'edit'])->name('property-types.edit');
+        Route::delete('/property-types/{propertyType}', [PropertyTypeController::class, 'destroy'])->name('property-types.destroy');
+
+
         Route::post('/property-specs', [PropertySpecController::class, 'store'])->name('property-specs.store');
         Route::post('/lead-sources', [LeadSourceController::class, 'store'])->name('lead-sources.store');
         Route::post('/lead-statuses', [LeadStatusController::class, 'store'])->name('lead-statuses.store');

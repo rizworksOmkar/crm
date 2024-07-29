@@ -7,6 +7,10 @@ use App\Models\PropertyType;
 
 class PropertyTypeController extends Controller
 {
+    public function view(){
+        $property = PropertyType::all();
+        return view('admin.masters.property-type.index', compact('property'));
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -18,6 +22,11 @@ class PropertyTypeController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Property Type created successfully!');
+    }
+    public function destroy(PropertyType $propertyType)
+    {
+        $propertyType->delete();
+        return redirect()->route('property-types.view')->with('success', 'Property Type deleted successfully!');
     }
 }
 

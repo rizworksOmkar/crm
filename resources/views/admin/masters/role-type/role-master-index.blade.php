@@ -13,27 +13,29 @@
                     <div class="table-responsive">
                         <table class="table table-striped table-hover" style="width:100%;" id="tableState">
                             <thead>
-                                <tr>
-                                    <th>Sl no</th>
-
-                                    <th>Role Types</th>
-                                </tr>
+                              <tr>
+                                <th>Sl no</th>
+                                <th>Role Types</th>
+                                <th>Actions</th>
+                              </tr>
                             </thead>
                             <tbody>
+                              @foreach ($roles as $role)
+                                <tr>
+                                  <th>{{ $loop->iteration }}</th>
+                                  <th>{{ $role->role_type }}</th>
+                                  <td>
 
-                                    <tr>
-                                        <th>1</th>
-                                        <th>Admmin</th>
-
-                                    </tr>
-                                    <tr>
-                                        <th>2</th>
-                                        <th>User / Employee</th>
-                                    </tr>
-
-
+                                    <form style="display: inline-block;" method="POST" action="{{ route('property-types.destroy', $proptype->id) }}">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this property type?')">Delete</button>
+                                    </form>
+                                  </td>
+                                </tr>
+                              @endforeach
                             </tbody>
-                        </table>
+                          </table>
                     </div>
                 </div>
             </div>
