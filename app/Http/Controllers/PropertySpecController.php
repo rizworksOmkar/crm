@@ -7,6 +7,10 @@ use App\Models\PropertySpec;
 
 class PropertySpecController extends Controller
 {
+    public function view(){
+        $propertySpecs = PropertySpec::all();
+        return view('admin.masters.property-spec.index', compact('propertySpecs'));
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -18,6 +22,11 @@ class PropertySpecController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Property Spec created successfully!');
+    }
+    public function destroy(PropertySpec $propertySpec)
+    {
+        $propertySpec->delete();
+        return redirect()->route('property-specs.view')->with('success', 'Property Type deleted successfully!');
     }
 }
 

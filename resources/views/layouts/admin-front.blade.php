@@ -237,7 +237,7 @@
                                     <a href="#" class="nav-link">Customer / Client</a>
                                     <a href="{{ route('get-all-roles') }}" class="nav-link">Role Master</a>
                                     <a href="{{ route('property-types.view') }}" class="nav-link">Property Type</a>
-                                    <a href="#" class="nav-link">Property Specs</a>
+                                    <a href="{{ route('property-specs.view') }}" class="nav-link">Property Specs</a>
 
 
                                 </li>
@@ -248,15 +248,15 @@
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="clipboard"></i><span>Lead & Management</span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ route('get-all-sources') }}" class="nav-link">Lead Source</a>
-                                    <a href="{{ route('get-all-status') }}" class="nav-link">Lead Status Creation</a>
+                                    <a href="{{ route('lead-sources.view') }}" class="nav-link">Lead Source</a>
+                                    <a href="{{ route('lead-status.view') }}" class="nav-link">Lead Status Creation</a>
 
                                     <a href="{{ route('admin-lead-index') }}" class="nav-link">Leads Creation (One)</a>
                                     <a href="{{ route('lead.upload') }}" class="nav-link">Lead Mass Import</a>
                                     <a href="{{ route('admin-assignlead-index') }}" class="nav-link">Lead Assignment</a>
                                     <a href="{{ route('admin-reassignlead-index') }}" class="nav-link">Lead Re-Assignment</a>
                                     <a href="{{ route('monitor-report') }}" class="nav-link">Lead Activity</a>
-                                    <a href="#" class="nav-link">Lead Completion</a>
+                                    <a href="{{ route('lead-completion-filter.view') }}" class="nav-link">Lead Completion</a>
 
                                 </li>
                             </ul>

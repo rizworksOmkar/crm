@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
+use App\Models\LeadStatus;
 
 
 
@@ -24,9 +25,7 @@ class LeadController extends Controller
     public function leadIndex()
     {
         $leads = Lead::all();
-        //dd($leads);
         $contacts = Contact::all();
-        // dd($contacts);
         return view('admin.lead.index', compact('leads', 'contacts'));
     }
 
@@ -50,8 +49,9 @@ class LeadController extends Controller
 
         $contacts = Contact::all();
         $employees = User::where('role_type', 'User')->get();
+        $statuses = LeadStatus::all();
 
-        return view('admin.lead.createLead', compact('contacts', 'employees'));
+        return view('admin.lead.createLead', compact('contacts', 'employees', 'statuses'));
     }
 
     public function storeContact(Request $request)

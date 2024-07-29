@@ -7,6 +7,10 @@ use App\Models\LeadSource;
 
 class LeadSourceController extends Controller
 {
+    public function view(){
+        $sources = LeadSource::all();
+        return view('admin.masters.sources.source', compact('sources'));
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -19,5 +23,11 @@ class LeadSourceController extends Controller
 
         return redirect()->back()->with('success', 'Lead Source created successfully!');
     }
+    public function destroy(LeadSource $source)
+    {
+        $source->delete();
+        return redirect()->route('lead-sources.view')->with('success', 'Property Type deleted successfully!');
+    }
+
 }
 

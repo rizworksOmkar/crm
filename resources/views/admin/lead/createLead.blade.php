@@ -163,16 +163,11 @@
                         <div class="form-group col-md-12">
                             <label for="status">Status</label>
                             <select id="status" class="form-control" name="status">
-                                <option value="Open" selected>Open</option>
-
-                                <option value="New">New</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="Closed & Won">Closed & Won</option>
-                                <option value="Closed & Failed">Closed & Failed</option>
+                                @foreach($statuses as $status)
+                                    <option value="{{ $status->status_type }}">{{ $status->status_type }}</option>
+                                @endforeach
                             </select>
-
                         </div>
-
                     </div>
 
                 </div>

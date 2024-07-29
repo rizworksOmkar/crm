@@ -59,8 +59,6 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         //reports employeeReportIndex
         Route::get('/employee/monitoring', [LeadController::class, 'employeeReportIndex'])->name('admin-employee-monitor');
         //roles
-        Route::get('/roles', [LeadController::class, 'getRoles'])->name('get-all-roles');
-        Route::get('/roles/create', [LeadController::class, 'createRoles'])->name('admin-create-role');
 
         //status
         Route::get('/status', [LeadController::class, 'getStatus'])->name('get-all-status');
@@ -86,18 +84,30 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('leads/{lead}/details', [LeadController::class, 'fetchLeadDetailsPerEmp']);
 
 
-
+        Route::get('/roles-view', [RoleController::class, 'view'])->name('get-all-roles');
         Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
+        Route::delete('/role-types/{role}', [RoleController::class, 'destroy'])->name('role-types.destroy');
 
         Route::get('/property-types-view', [PropertyTypeController::class, 'view'])->name('property-types.view');
         Route::post('/property-types', [PropertyTypeController::class, 'store'])->name('property-types.store');
         // Route::get('/property-types/{propertyType}/edit', [PropertyTypeController::class, 'edit'])->name('property-types.edit');
         Route::delete('/property-types/{propertyType}', [PropertyTypeController::class, 'destroy'])->name('property-types.destroy');
 
-
+        Route::get('/property-specs-view', [PropertySpecController::class, 'view'])->name('property-specs.view');
         Route::post('/property-specs', [PropertySpecController::class, 'store'])->name('property-specs.store');
+        Route::delete('/property-specs/{propertySpec}', [PropertySpecController::class, 'destroy'])->name('property-specs.destroy');
+
+        Route::get('/lead-sources-view', [LeadSourceController::class, 'view'])->name('lead-sources.view');
         Route::post('/lead-sources', [LeadSourceController::class, 'store'])->name('lead-sources.store');
+        Route::delete('/lead-sources/{source}', [LeadSourceController::class, 'destroy'])->name('lead-sources.destroy');
+
+        Route::get('/lead-status-view', [LeadStatusController::class, 'view'])->name('lead-status.view');
         Route::post('/lead-statuses', [LeadStatusController::class, 'store'])->name('lead-statuses.store');
+        Route::delete('/lead-status/{status}', [LeadStatusController::class, 'destroy'])->name('lead-status.destroy');
+
+        Route::get('/lead-completion-filter-view', [LeadStatusController::class, 'completionView'])->name('lead-completion-filter.view');
+        Route::get('/leads/closed-successfully', [LeadStatusController::class, 'fetchClosedSuccessfullyLeads']);
+        Route::get('/leads/closed-with-failure', [LeadStatusController ::class, 'fetchClosedWithFailureLeads']);
 
 
         Route::get('/date-range-report', [LeadController::class, 'dateRangeReport'])->name('date-range-report');

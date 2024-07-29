@@ -6,6 +6,10 @@ use App\Models\Role;
 
 class RoleController extends Controller
 {
+    public function view(){
+        $roles = Role::all();
+        return view('admin.masters.role-type.role-master-index', compact('roles'));
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -17,5 +21,10 @@ class RoleController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Role created successfully!');
+    }
+    public function destroy(Role $role)
+    {
+        $role->delete();
+        return redirect()->route('property-types.view')->with('success', 'Property Type deleted successfully!');
     }
 }

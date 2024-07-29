@@ -1,68 +1,61 @@
 @extends('layouts.admin-front')
 @section('content')
     <div class="row">
+        <div class="col-12 col-md-6 col-lg-6">
+            <form id="add_lead_status_form" action="{{ route('lead-statuses.store') }}" method="POST">
+                {{ csrf_field() }}
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Create Lead Status</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group col-md-6">
+                            <label for="status_type">Add Lead Status</label>
+                            <input type="text" class="form-control" id="status_type" name="status_type" placeholder="Enter Lead Status">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <a href="/source" class="btn btn-danger ml-5">Back To Main Menu</a>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h4>Status</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('admin-create-status') }}" class="btn btn-primary">Add Status</a>
+                        <a href="#" class="btn btn-primary">Add Status</a>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-hover" style="width:100%;" id="tableState">
                             <thead>
+
                                 <tr>
                                     <th>Sl no</th>
                                     <th>Status Types</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($statuses as $status)
                                 <tr>
-                                    <th>1</th>
-                                    <td>No response</td>
+                                  <th>{{ $loop->iteration }}</th>
+                                  <th>{{ $status->status_type }}</th>
+                                  <td>
+
+                                    <form style="display: inline-block;" method="POST" action="{{ route('lead-status.destroy', $status->id) }}">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this property type?')">Delete</button>
+                                    </form>
+                                  </td>
                                 </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <td>Contact & Response</td>
-                                </tr>
-                                <tr>
-                                    <th>3</th>
-                                    <td>Site Visit Done</td>
-                                </tr>
-                                <tr>
-                                    <th>4</th>
-                                    <td>Site Visit Requested</td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>Visit Postponed</td>
-                                </tr>
-                                <tr>
-                                    <th>6</th>
-                                    <td>Follow up needed</td>
-                                </tr>
-                                <tr>
-                                    <th>7</th>
-                                    <td>Follow up done</td>
-                                </tr>
-                                <tr>
-                                    <th>8</th>
-                                    <td>Not Interested</td>
-                                </tr>
-                                <tr>
-                                    <th>9</th>
-                                    <td>Closed Successfully</td>
-                                </tr>
-                                <tr>
-                                    <th>10</th>
-                                    <td>Closed with Failure</td>
-                                </tr>
-                                <tr>
-                                    <th>11</th>
-                                    <td>Invalid Contact Details</td>
-                                </tr>
+                              @endforeach
+                                
                             </tbody>
                         </table>
                     </div>

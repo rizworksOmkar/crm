@@ -1,6 +1,26 @@
 @extends('layouts.admin-front')
 @section('content')
     <div class="row">
+        <div class="col-12 col-md-6 col-lg-6">
+        <form id="add_lead_source_form" action="{{ route('lead-sources.store') }}" method="POST">
+            {{ csrf_field() }}
+            <div class="card">
+                <div class="card-header">
+                    <h4>Create Lead Source</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-group col-md-6">
+                        <label for="lead_source">Add Lead Source</label>
+                        <input type="text" class="form-control" id="lead_source" name="lead_source" placeholder="Enter Lead Source">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <a href="/source" class="btn btn-danger ml-5">Back To Main Menu</a>
+                </div>
+            </div>
+        </form>
+    </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
@@ -16,61 +36,24 @@
                                 <tr>
                                     <th>Sl no</th>
                                     <th>Lead Sources</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($sources as $source)
                                 <tr>
-                                    <th>1</th>
-                                    <td>99acres</td>
+                                  <th>{{ $loop->iteration }}</th>
+                                  <th>{{ $source->lead_source }}</th>
+                                  <td>
+
+                                    <form style="display: inline-block;" method="POST" action="{{ route('lead-sources.destroy', $source->id) }}">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this property type?')">Delete</button>
+                                    </form>
+                                  </td>
                                 </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <td>Magicbricks</td>
-                                </tr>
-                                <tr>
-                                    <th>3</th>
-                                    <td>(link unavailable)</td>
-                                </tr>
-                                <tr>
-                                    <th>4</th>
-                                    <td>(link unavailable)</td>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <td>PropTigers</td>
-                                </tr>
-                                <tr>
-                                    <th>6</th>
-                                    <td>Square Yards</td>
-                                </tr>
-                                <tr>
-                                    <th>7</th>
-                                    <td>Other Websites</td>
-                                </tr>
-                                <tr>
-                                    <th>8</th>
-                                    <td>Social Media</td>
-                                </tr>
-                                <tr>
-                                    <th>9</th>
-                                    <td>Referral</td>
-                                </tr>
-                                <tr>
-                                    <th>10</th>
-                                    <td>Advertisement</td>
-                                </tr>
-                                <tr>
-                                    <th>11</th>
-                                    <td>Cold Call</td>
-                                </tr>
-                                <tr>
-                                    <th>12</th>
-                                    <td>Event / Fair</td>
-                                </tr>
-                                <tr>
-                                    <th>13</th>
-                                    <td>Others</td>
-                                </tr>
+                              @endforeach
                             </tbody>
                         </table>
                     </div>
