@@ -19,6 +19,7 @@ class LeadSourceController extends Controller
 
         LeadSource::create([
             'lead_source' => $request->lead_source,
+            'state_lead_source' => 1,
         ]);
 
         return redirect()->back()->with('success', 'Lead Source created successfully!');

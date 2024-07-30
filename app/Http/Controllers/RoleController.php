@@ -18,6 +18,7 @@ class RoleController extends Controller
 
         Role::create([
             'role_type' => $request->role_type,
+            'state_role_type'=> 1
         ]);
 
         return redirect()->back()->with('success', 'Role created successfully!');

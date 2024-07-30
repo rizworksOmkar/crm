@@ -9,6 +9,6 @@ class PropertySpec extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['property_spec'];
+    protected $fillable = ['property_spec','state_property_spec'];
 
 }

@@ -117,5 +117,9 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/get-leads-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getLeadsByDateRange']);
 
         Route::post('/leadstatuschange/{id}/toggle-status', [EntityStatusController::class, 'toggleleadStatuschange']);
+        Route::post('/leadsourcechange/{id}/toggle-status', [EntityStatusController::class, 'toggleleadSourcechange']);
+        Route::post('/propertytypestatusechange/{id}/toggle-status', [EntityStatusController::class, 'toggleProptypeStatuschange']);
+        Route::post('/propspecstatuschange/{id}/toggle-status', [EntityStatusController::class, 'togglePropSpecStatuschange']);
+        Route::post('/rolestatuschange/{id}/toggle-status', [EntityStatusController::class, 'toggleRoleStatuschange']);
     });
 });

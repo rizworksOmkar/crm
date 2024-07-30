@@ -19,6 +19,7 @@ class PropertyTypeController extends Controller
 
         PropertyType::create([
             'property_type' => $request->property_type,
+            'state_property_type' => 1,
         ]);
 
         return redirect()->back()->with('success', 'Property Type created successfully!');

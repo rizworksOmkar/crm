@@ -9,5 +9,5 @@ class PropertyType extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['property_type'];
+    protected $fillable = ['property_type','state_property_type'];
 }

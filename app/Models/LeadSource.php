@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class LeadSource extends Model
 {
     use HasFactory;
-    protected $fillable = ['lead_source'];
+    protected $fillable = ['lead_source','state_lead_source'];
 
 }

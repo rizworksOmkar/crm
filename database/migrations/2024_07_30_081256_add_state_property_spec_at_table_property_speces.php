@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatepropertyTypeColumnAfterPropertTypeToPropertyTypesTable extends Migration
+class AddStatePropertySpecAtTablePropertySpeces extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddStatepropertyTypeColumnAfterPropertTypeToPropertyTypesTable extends Mig
      */
     public function up()
     {
-        Schema::table('property_types', function (Blueprint $table) {
-            $table->integer('state_property_type')->nullable()->after('property_type');
+        Schema::table('property_specs', function (Blueprint $table) {
+            $table->integer('state_property_spec')->after('property_spec');
         });
     }
 
@@ -25,8 +25,8 @@ class AddStatepropertyTypeColumnAfterPropertTypeToPropertyTypesTable extends Mig
      */
     public function down()
     {
-        Schema::table('property_types', function (Blueprint $table) {
-            $table->dropColumn('state_property_type');
+        Schema::table('property_specs', function (Blueprint $table) {
+            $table->dropColumn('state_property_spec');
         });
     }
 }

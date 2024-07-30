@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatestatusColumnAfterStatustypeToLeadStatusesTable extends Migration
+class AddStateLeadSourcesAtTableLeadSources extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddStatestatusColumnAfterStatustypeToLeadStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::table('lead_statuses', function (Blueprint $table) {
-            $table->integer('state_status')->nullable()->after('status_type');
+        Schema::table('lead_sources', function (Blueprint $table) {
+            $table->integer('state_lead_source')->after('lead_source');
         });
     }
 
@@ -25,8 +25,8 @@ class AddStatestatusColumnAfterStatustypeToLeadStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::table('lead_statuses', function (Blueprint $table) {
-            $table->dropColumn('state_status');
+        Schema::table('lead_sources', function (Blueprint $table) {
+            $table->dropColumn('state_lead_source');
         });
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAgainStateleadsourceColumnAfterLeadSourceToLeadSourcesTable extends Migration
+class AddStatePropertyTypeAtTablePropertyTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddAgainStateleadsourceColumnAfterLeadSourceToLeadSourcesTable extends Mig
      */
     public function up()
     {
-        Schema::table('lead_sources', function (Blueprint $table) {
-            $table->integer('state_lead_source')->nullable()->after('lead_source');
+        Schema::table('property_types', function (Blueprint $table) {
+            $table->integer('state_property_type')->after('property_type');
         });
     }
 
@@ -25,8 +25,8 @@ class AddAgainStateleadsourceColumnAfterLeadSourceToLeadSourcesTable extends Mig
      */
     public function down()
     {
-        Schema::table('lead_sources', function (Blueprint $table) {
-            $table->dropColumn('state_lead_source');
+        Schema::table('property_types', function (Blueprint $table) {
+            $table->dropColumn('state_property_type');
         });
     }
 }

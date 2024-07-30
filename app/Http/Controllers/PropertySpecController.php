@@ -19,6 +19,7 @@ class PropertySpecController extends Controller
 
         PropertySpec::create([
             'property_spec' => $request->property_spec,
+            'state_property_spec' => 1
         ]);
 
         return redirect()->back()->with('success', 'Property Spec created successfully!');

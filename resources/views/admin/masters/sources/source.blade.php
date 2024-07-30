@@ -36,6 +36,8 @@
                                 <tr>
                                     <th>Sl no</th>
                                     <th>Lead Sources</th>
+                                    <th>State</th>
+                                    <th>Change State</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -44,6 +46,20 @@
                                 <tr>
                                   <th>{{ $loop->iteration }}</th>
                                   <th>{{ $source->lead_source }}</th>
+                                  <th>
+                                    @if ($source->state_lead_source == 1)
+                                        <span class="badge badge-success">Active</span>
+                                    @else
+                                        <span class="badge badge-danger">InActive</span>
+                                    @endif
+                                </th>
+                                <th>
+
+                                    <button id="toggle-status" data-status-id="{{ $source->id }}"
+                                        class="btn btn-primary toggle-status">Changes
+                                        Status</button>
+
+                                </th>
                                   <td>
 
                                     <form style="display: inline-block;" method="POST" action="{{ route('lead-sources.destroy', $source->id) }}">
@@ -82,6 +98,22 @@
                 // buttons: [
                 //     'excel', 'pdf'
                 // ]
+            });
+        });
+
+        $('.toggle-status').click(function() {
+            var statusid = $(this).data('status-id');
+            $.ajax({
+                url: '/leadsourcechange/' + statusid + '/toggle-status',
+                type: 'POST',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                },
+                success: function(response) {
+
+                    alert(response.message);
+                    location.reload();
+                }
             });
         });
     </script>
