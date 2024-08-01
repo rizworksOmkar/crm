@@ -10,6 +10,8 @@ use App\Http\Controllers\CRM\LeadController;
 use App\Http\Controllers\CRM\EmployeeController;
 use App\Http\Controllers\CRM\AssignLeadController;
 use App\Http\Controllers\CRM\LeadImportController;
+use App\Http\Controllers\BillingController;
+
 
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PropertyTypeController;
@@ -109,7 +111,7 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
 
         Route::get('/lead-completion-filter-view', [LeadStatusController::class, 'completionView'])->name('lead-completion-filter.view');
         Route::get('/leads/closed-successfully', [LeadStatusController::class, 'fetchClosedSuccessfullyLeads']);
-        Route::get('/leads/closed-with-failure', [LeadStatusController ::class, 'fetchClosedWithFailureLeads']);
+        Route::get('/leads/closed-with-failure', [LeadStatusController::class, 'fetchClosedWithFailureLeads']);
 
 
         Route::get('/date-range-report', [LeadController::class, 'dateRangeReport'])->name('date-range-report');
@@ -121,5 +123,15 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::post('/propertytypestatusechange/{id}/toggle-status', [EntityStatusController::class, 'toggleProptypeStatuschange']);
         Route::post('/propspecstatuschange/{id}/toggle-status', [EntityStatusController::class, 'togglePropSpecStatuschange']);
         Route::post('/rolestatuschange/{id}/toggle-status', [EntityStatusController::class, 'toggleRoleStatuschange']);
+
+
+        Route::get('billing', [BillingController::class, 'index'])->name('billing.index');
+        Route::get('billing/raise/{leadId}', [BillingController::class, 'raiseBill'])->name('billing.raise');
+        Route::post('billing/store/{leadId}', [BillingController::class, 'storeBill'])->name('billing.store');
+        Route::get('billing/payment-receipt/{leadId}', [BillingController::class, 'paymentReceipt'])->name('billing.paymentReceipt');
+        Route::post('billing/record-payment/{leadId}', [BillingController::class, 'recordPayment'])->name('billing.recordPayment');
+        Route::post('billing/raise-dispute/{leadId}', [BillingController::class, 'raiseDispute'])->name('billing.raiseDispute');
+        Route::patch('billing/{billing}/fixDispute', [BillingController::class, 'fixDispute'])->name('billing.fixDispute');
+
     });
 });

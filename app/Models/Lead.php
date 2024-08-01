@@ -82,5 +82,10 @@ class Lead extends Model
     {
         return $this->hasMany(Task::class);
     }
+
+    public function billing()
+    {
+        return $this->hasOne(LeadBilling::class, 'lead_id');
+    }
 }
 

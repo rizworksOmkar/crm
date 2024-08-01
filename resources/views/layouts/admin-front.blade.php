@@ -266,7 +266,7 @@
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="credit-card"></i><span>Accounts</span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#" class="nav-link">Bill Raise</a>
+                                    <a href="{{ route('billing.index') }}" class="nav-link">Bill Raise</a>
                                     <a href="#" class="nav-link">Payment Reciept</a>
                                     <a href="#" class="nav-link">Payment Dispute</a>
                                 </li>

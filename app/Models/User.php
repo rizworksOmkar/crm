@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'role_type','first_name','middle_name', 'last_name' ,'email', 'usersemail','phonenumber','whatsapp_no_flag','whatsappno','password', 'email_verified_flag',
+        'role_type', 'first_name', 'middle_name', 'last_name', 'email', 'usersemail', 'phonenumber', 'whatsapp_no_flag', 'whatsappno', 'password', 'email_verified_flag',
     ];
 
     /**
@@ -45,5 +45,10 @@ class User extends Authenticatable
     public function tasks()
     {
         return $this->hasMany(Task::class, 'created_by');
+    }
+
+    public function billing()
+    {
+        return $this->hasOne(LeadBilling::class, 'lead_id');
     }
 }
