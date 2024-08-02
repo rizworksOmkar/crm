@@ -2,40 +2,39 @@
 @section('content')
     <meta name="csrf_token" content="{{ csrf_token() }}" />
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-6">
-            <form id="add_lead_status_form" action="{{ route('lead-statuses.store') }}" method="POST">
-                {{ csrf_field() }}
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Create Lead Status</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group col-md-6">
-                            <label for="status_type">Add Lead Status</label>
-                            <input type="text" class="form-control" id="status_type" name="status_type"
-                                placeholder="Enter Lead Status">
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Create</button>
-                        <a href="/source" class="btn btn-danger ml-5">Back To Main Menu</a>
-                    </div>
-                </div>
-            </form>
-        </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h4>Status</h4>
                     <div class="card-header-action">
-                        <a href="#" class="btn btn-primary">Add Status</a>
+                        <a href="#" class="btn btn-primary" id="addStatusBtn">Add Status</a>
                     </div>
                 </div>
                 <div class="card-body">
+                    <div id="addLeadStatusForm" style="display: none;">
+                        <form id="add_lead_status_form" action="{{ route('lead-statuses.store') }}" method="POST">
+                            {{ csrf_field() }}
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Create Lead Status</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group col-md-6">
+                                        <label for="status_type">Add Lead Status</label>
+                                        <input type="text" class="form-control" id="status_type" name="status_type"
+                                            placeholder="Enter Lead Status">
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Create</button>
+                                    <a href="/source" class="btn btn-danger ml-5">Back To Main Menu</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover" style="width:100%;" id="tableState">
                             <thead>
-
                                 <tr>
                                     <th>Sl no</th>
                                     <th>Status Types</th>
@@ -57,14 +56,11 @@
                                             @endif
                                         </th>
                                         <th>
-
                                             <button id="toggle-status" data-status-id="{{ $status->id }}"
-                                                class="btn btn-primary toggle-status">Changes
+                                                class="btn btn-primary toggle-status">Change
                                                 Status</button>
-
                                         </th>
                                         <td>
-
                                             <form style="display: inline-block;" method="POST"
                                                 action="{{ route('lead-status.destroy', $status->id) }}">
                                                 @csrf
@@ -75,7 +71,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>
@@ -105,49 +100,25 @@
                 //     'excel', 'pdf'
                 // ]
             });
-        });
 
-        $('.toggle-status').click(function() {
-            var statusid = $(this).data('status-id');
-            $.ajax({
-                url: '/leadstatuschange/' + statusid + '/toggle-status',
-                type: 'POST',
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                },
-                success: function(response) {
+            $('#addStatusBtn').click(function() {
+                $('#addLeadStatusForm').toggle();
+            });
 
-                    alert(response.message);
-                    location.reload();
-                }
+            $('.toggle-status').click(function() {
+                var statusid = $(this).data('status-id');
+                $.ajax({
+                    url: '/leadstatuschange/' + statusid + '/toggle-status',
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                    success: function(response) {
+                        alert(response.message);
+                        location.reload();
+                    }
+                });
             });
         });
     </script>
-
-    {{-- @if ($leads)
-        @foreach ($leads as $lead)
-            <script>
-                $(document).on('click', '.delete-lead-btn', function() {
-                    var leadId = $(this).attr('submitid');
-                    if (confirm('Are you sure you want to delete this lead?')) {
-                        $.ajax({
-                            url: '/leads/' + leadId,
-                            type: 'DELETE',
-                            data: {
-                                "_token": "{{ csrf_token() }}",
-                            },
-                            success: function(response) {
-                                alert(response.message);
-                                location.reload();
-                            },
-                            error: function(error) {
-                                console.error('Error deleting lead:', error);
-                                alert('Error: Unable to delete lead.');
-                            }
-                        });
-                    }
-                });
-            </script>
-        @endforeach
-    @endif --}}
 @endsection
