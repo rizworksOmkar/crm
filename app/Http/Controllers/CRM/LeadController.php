@@ -8,16 +8,16 @@ use App\Models\Lead;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Task;
-use App\Models\Source;
+use App\Models\LeadSource;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 use App\Models\LeadStatus;
-
-
-
+use App\Models\PropertySpec;
+use App\Models\PropertyType;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Builder\Property;
 
 class LeadController extends Controller
 {
@@ -50,8 +50,14 @@ class LeadController extends Controller
         $contacts = Contact::all();
         $employees = User::where('role_type', 'User')->get();
         $statuses = LeadStatus::all();
+        $sources = LeadSource::all();
+        $propertySpecs = PropertySpec::all();
+        $propertyTypes = PropertyType::all();
 
-        return view('admin.lead.createLead', compact('contacts', 'employees', 'statuses'));
+
+
+
+        return view('admin.lead.createLead', compact('contacts', 'employees', 'statuses', 'sources', 'propertySpecs', 'propertyTypes'));
     }
 
     public function storeContact(Request $request)
@@ -491,7 +497,7 @@ class LeadController extends Controller
                 });
                 break;
             case 'leadSource':
-                $values = Source::select('id', 'name')->get();
+                $values = LeadSource::select('id', 'name')->get();
                 break;
             default:
                 $values = [];

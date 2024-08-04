@@ -60,21 +60,22 @@
                         <div class="form-group col-md-6">
                             <label for="property_type">Property Type</label>
                             <select class="form-control" id="property_type" name="property_type">
-                                <option value="Commercial Office Space" selected>Commercial Office Space</option>
-                                <option value="Commercial Shop">Commercial Shop</option>
-                                <option value="Showrooms">Showrooms</option>
-                                <option value="Flat">Flat</option>
-                                <option value="House/Villa">House/Villa</option>
-                                <option value="Plot/Land">Plot/Land</option>
-                                <option value="Pg Accomodation">Pg Accomodation</option>
-                                <option value="Others">Others</option>
+
+                                @foreach ($propertyTypes as $propertyType)
+                                    <option value="{{ $propertyType->property_type }}">{{ $propertyType->property_type }}
+                                    </option>
+
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="property_specs">Property Specs</label>
                             <select class="form-control" id="property_specs" name="property_specs">
-                                <option value="Co-Working" selected>Co-Working</option>
-                                <option value="Exclusive Space">Exclusive Space</option>
+                                @foreach ($propertySpecs as $propertySpec)
+                                    <option value="{{ $propertySpec->property_spec }}">{{ $propertySpec->property_spec }}
+                                    </option>
+
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -129,19 +130,10 @@
                             <label for="lead_source">Lead Source</label>
                             <select class="form-control" id="lead_source" name="lead_source">
                                 <option value="" selected>Select Lead Source</option>
-                                <option value="99acres">99acres</option>
-                                <option value="Magicbricks">Magicbricks</option>
-                                <option value="Housing.com">Housing.com</option>
-                                <option value="Makaan.com">Makaan.com</option>
-                                <option value="PropTigers">PropTigers</option>
-                                <option value="Square Yards">Square Yards</option>
-                                <option value="Other Websites">Other Websites</option>
-                                <option value="Social Media">Social Media</option>
-                                <option value="Referral">Referral</option>
-                                <option value="Advertisement">Advertisement</option>
-                                <option value="Cold Call">Cold Call</option>
-                                <option value="Event / Fair">Event / Fair</option>
-                                <option value="Others">Others</option>
+
+                                @foreach ($sources as $source)
+                                    <option value="{{ $source->lead_source }}">{{ $source->lead_source }}</option>
+                                @endforeach
                             </select>
                         </div>
                         {{-- <div class="form-group col-md-6">
@@ -157,13 +149,14 @@
                     </div>
                     <div class="form-group">
                         <label for="refrence_description">Refrence Description</label>
-                        <input type="text" class="form-control" id="refrence_description" name="refrence_description">
+                        <input type="text" class="form-control" id="refrence_description"
+                            name="refrence_description">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="status">Status</label>
                             <select id="status" class="form-control" name="status">
-                                @foreach($statuses as $status)
+                                @foreach ($statuses as $status)
                                     <option value="{{ $status->status_type }}">{{ $status->status_type }}</option>
                                 @endforeach
                             </select>
