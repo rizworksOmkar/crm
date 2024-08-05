@@ -64,7 +64,6 @@
                                 @foreach ($propertyTypes as $propertyType)
                                     <option value="{{ $propertyType->property_type }}">{{ $propertyType->property_type }}
                                     </option>
-
                                 @endforeach
                             </select>
                         </div>
@@ -74,7 +73,6 @@
                                 @foreach ($propertySpecs as $propertySpec)
                                     <option value="{{ $propertySpec->property_spec }}">{{ $propertySpec->property_spec }}
                                     </option>
-
                                 @endforeach
                             </select>
                         </div>
