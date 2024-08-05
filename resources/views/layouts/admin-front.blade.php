@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>CRM</title>
     <!-- General CSS Files -->
+    <link rel="stylesheet" href="{{ asset('assets/user/assets/css/tailwind.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/bundles/summernote/summernote-bs4.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-daterangepicker/daterangepicker.css') }}">
@@ -218,7 +219,7 @@
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
                         <a href="javascript:void();"> <img alt="image"
-                                src="{{ asset('assets/admin/img/logo.png') }}" class="header-logo" /> <span
+                                src="{{ asset('assets/admin/img/logo.png') }}" class="header-logo" style="display: inline-block;" /> <span
                                 class="logo-name">CRM Admin</span>
                         </a>
                     </div>
@@ -408,6 +409,19 @@
             </footer>
         </div>
     </div>
+
+    {{-- tailwick --}}
+    <script src="{{ asset('assets/user/assets/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+    <script src="{{ asset('assets/user/assets/assets/libs/@popperjs/core/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/user/assets/libs/tippy.js/tippy-bundle.umd.min.js') }}"></script>
+    <script src="{{ asset('assets/user/assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/user/assets/libs/prismjs/prism.js') }}"></script>
+    <script src="{{ asset('assets/user/assets/libs/lucide/umd/lucide.js') }}"></script>
+    <script src="{{ asset('assets/user/assets/js/tailwick.bundle.js') }}"></script>
+    <script src="{{ asset('assets/user/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/user/assets/js/pages/dashboards-ecommerce.init.js') }}"></script>
+    <script src="{{ asset('assets/user/assets/js/app.js') }}"></script>
+    {{-- tailwick end --}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
