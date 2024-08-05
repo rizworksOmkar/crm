@@ -489,7 +489,10 @@ class LeadController extends Controller
                 $values = Contact::select('id', 'name')->get();
                 break;
             case 'employee':
-                $values = User::select('id', 'first_name', 'last_name')->get()->map(function ($user) {
+                $values = User::select('id', 'first_name', 'last_name')
+                ->where('role_type', '!=', 'superadmin')
+                ->where('role_type', '!=', 'admin')
+                ->get()->map(function ($user) {
                     return [
                         'id' => $user->id,
                         'name' => $user->first_name . ' ' . $user->last_name

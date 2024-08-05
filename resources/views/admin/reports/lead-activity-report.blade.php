@@ -1,90 +1,93 @@
 @extends('layouts.admin-front')
 @section('content')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Lead Activity Report</h4>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<div class="row">
+    <div class="col-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Lead Activity Report</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="filterType">Filter By</label>
+                    <select class="form-control  col-lg-6" id="filterType">
+                        <option value="">Select Filter</option>
+                        <option value="customer">Customer Name</option>
+                        <option value="employee">Employee Name</option>
+                        <option value="leadSource">Lead Source</option>
+                    </select>
                 </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="filterType">Filter By</label>
-                        <select class="form-control" id="filterType">
-                            <option value="">Select Filter</option>
-                            <option value="customer">Customer Name</option>
-                            <option value="employee">Employee Name</option>
-                            <option value="leadSource">Lead Source</option>
-                        </select>
-                    </div>
-                    <div class="form-group " id="filterValueContainer" style="display:none;">
-                        <label for="filterValue">Select Value</label>
-                        <select class="js-example-basic-single" id="filterValue">
-                            <option value="">Select Value</option>
-                        </select>
-                    </div>
-                    <div class="form-group" id="dateRangeContainer" style="display:none;">
+                <div class="form-group " id="filterValueContainer" style="display:none;">
+                    <label for="filterValue">Select Value</label>
+                    <select class="form-control select2 " id="filterValue">
+                        <option value="">Select Value</option>
+                    </select>
+                </div>
+                <div class="form-row" id="dateRangeContainer" style="display:none;">
+                    <div class="form-group col-md-6">
                         <label for="startDate">Start Date</label>
                         <input type="date" class="form-control" id="startDate">
+                    </div>
+                    <div class="form-group col-md-6">
                         <label for="endDate">End Date</label>
                         <input type="date" class="form-control" id="endDate">
-                        <button id="searchButton" class="btn btn-primary mt-3">Search</button>
                     </div>
-                    <div class="table-responsive mt-4">
-                        <table class="table table-striped table-hover" style="width:100%;" id="leadsTable">
-                            <thead>
-                                <tr>
-                                    <th>Lead Number</th>
-                                    <th>Customer Name</th>
-                                    <th>Assigned To</th>
-                                    <th>Lead Source</th>
-                                    <th>
-                                        Lead Date
-                                    </th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Leads will be dynamically inserted here -->
-                            </tbody>
-                        </table>
-                    </div>
+                    <button id="searchButton" class="btn btn-primary mt-3">Search</button>
+                </div>
+                <div class="table-responsive mt-4">
+                    <table class="table table-striped table-hover" style="width:100%;" id="leadsTable">
+                        <thead>
+                            <tr>
+                                <th>Lead Number</th>
+                                <th>Customer Name</th>
+                                <th>Assigned To</th>
+                                <th>Lead Source</th>
+                                <th>
+                                    Lead Date
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Leads will be dynamically inserted here -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Modal for Task Details -->
-    <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="taskModalLabel">Task Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Task details will be dynamically inserted here -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+<!-- Modal for Task Details -->
+<div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="taskModalLabel">Task Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Task details will be dynamically inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @section('scripts')
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+</script>
+<script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
 
             $(document).ready(function() {
                 $('.js-example-basic-single').select2();
@@ -102,7 +105,7 @@
                 var filterType = $(this).val();
                 if (filterType) {
                     fetchFilterValues(filterType);
-                    if (filterType === 'employee' || filterType === 'leadSource') {
+                    if (filterType === 'employee' || filterType === 'leadSource' || filterType === 'customer' ) {
                         $('#dateRangeContainer').show();
                     } else {
                         $('#dateRangeContainer').hide();
@@ -208,5 +211,5 @@
                 });
             }
         });
-    </script>
+</script>
 @endsection
