@@ -1,621 +1,1349 @@
 @extends('layouts.admin-front')
 @section('content')
-<section class="section">
-    <div class="row ">
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="card">
-          <div class="card-statistic-4">
-            <div class="align-items-center justify-content-between">
-              <div class="row ">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                  <div class="card-content">
-                    <h5 class="font-15">New Booking</h5>
-                    <h2 class="mb-3 font-18">258</h2>
-                    <p class="mb-0"><span class="col-green">10%</span> Increase</p>
-                  </div>
+    <div
+        class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+        <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+            <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+                <div class="grow">
+                    <h5 class="text-16">Ecommerce</h5>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                  <div class="banner-img">
-                    <img src="assets/admin/img/banner/1.png" alt="">
-                  </div>
-                </div>
-              </div>
+                <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+                    <li
+                        class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1 before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                        <a href="#!" class="text-slate-400 dark:text-zink-200">Dashboards</a>
+                    </li>
+                    <li class="text-slate-700 dark:text-zink-100">Ecommerce</li>
+                </ul>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="card">
-          <div class="card-statistic-4">
-            <div class="align-items-center justify-content-between">
-              <div class="row ">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                  <div class="card-content">
-                    <h5 class="font-15"> Customers</h5>
-                    <h2 class="mb-3 font-18">1,287</h2>
-                    <p class="mb-0"><span class="col-orange">09%</span> Decrease</p>
-                  </div>
+            <div class="grid grid-cols-12 2xl:grid-cols-12 gap-x-5">
+                <div class="relative col-span-12 overflow-hidden card 2xl:col-span-12 bg-slate-900">
+                    <div class="absolute inset-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="size-100" version="1.1"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1440"
+                            height="560" preserveAspectRatio="none" viewBox="0 0 1440 560">
+                            <g mask='url("#SvgjsMask1000")' fill="none">
+                                <use xlink:href="#SvgjsSymbol1007" x="0" y="0"></use>
+                                <use xlink:href="#SvgjsSymbol1007" x="720" y="0"></use>
+                            </g>
+                            <defs>
+                                <mask id="SvgjsMask1000">
+                                    <rect width="1440" height="560" fill="#ffffff"></rect>
+                                </mask>
+                                <path d="M-1 0 a1 1 0 1 0 2 0 a1 1 0 1 0 -2 0z" id="SvgjsPath1003"></path>
+                                <path d="M-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0z" id="SvgjsPath1004"></path>
+                                <path d="M-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0z" id="SvgjsPath1001"></path>
+                                <path d="M2 -2 L-2 2z" id="SvgjsPath1005"></path>
+                                <path d="M6 -6 L-6 6z" id="SvgjsPath1002"></path>
+                                <path d="M30 -30 L-30 30z" id="SvgjsPath1006"></path>
+                            </defs>
+                            <symbol id="SvgjsSymbol1007">
+                                <use xlink:href="#SvgjsPath1001" x="30" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="30" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="30" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1003" x="30" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="30" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="30" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="30" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1003" x="30" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="30" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="30" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="90" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1003" x="90" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="90" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="90" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1004" x="90" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1003" x="90" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="90" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="90" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="90" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="90" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="150" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="150" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="150" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="150" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="150" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="150" y="330" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1004" x="150" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="150" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="150" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="150" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="210" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="210" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="210" y="150" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1002" x="210" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="210" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="210" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="210" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="210" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="210" y="510" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1003" x="210" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="270" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="270" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="270" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="270" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="270" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="270" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="270" y="390" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1002" x="270" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="270" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="270" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="330" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="330" y="90" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1002" x="330" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="330" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="330" y="270" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1001" x="330" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="330" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="330" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1003" x="330" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="330" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1004" x="390" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="390" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="390" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="390" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="390" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="390" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="390" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1003" x="390" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="390" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="390" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="450" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1004" x="450" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="450" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="450" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="450" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="450" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="450" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="450" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="450" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="450" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="510" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1003" x="510" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="510" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="510" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="510" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1004" x="510" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="510" y="390" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1001" x="510" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="510" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="510" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="570" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="570" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="570" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="570" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="570" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="570" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="570" y="390" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1005" x="570" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="570" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="570" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="630" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="630" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="630" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="630" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="630" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="630" y="330" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1002" x="630" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="630" y="450" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1001" x="630" y="510" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="630" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="690" y="30" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="690" y="90" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="690" y="150" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1002" x="690" y="210" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1005" x="690" y="270" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1001" x="690" y="330" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1003" x="690" y="390" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1003" x="690" y="450" stroke="rgba(32, 43, 61, 1)"></use>
+                                <use xlink:href="#SvgjsPath1006" x="690" y="510" stroke="rgba(32, 43, 61, 1)"
+                                    stroke-width="3"></use>
+                                <use xlink:href="#SvgjsPath1003" x="690" y="570" stroke="rgba(32, 43, 61, 1)"></use>
+                            </symbol>
+                        </svg>
+                    </div>
+                    <div class="relative card-body">
+                        <div class="grid items-center grid-cols-12">
+                            <div class="col-span-12 lg:col-span-8 2xl:col-span-7">
+                                <h5 class="mb-3 font-normal tracking-wide text-slate-200">
+                                    Welcome Paula Keenan 🎉
+                                </h5>
+                                <p class="mb-5 text-slate-400">
+                                    An ecommerce dashboard has just that purpose. It
+                                    provides your ecommerce team with a clear overview of
+                                    key financial and website KPIs at any time.
+                                </p>
+                                <button type="button"
+                                    class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-500/20 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-500/20 dark:ring-custom-400/20">
+                                    Take a Product
+                                </button>
+                            </div>
+                            <div
+                                class="hidden col-span-12 2xl:col-span-3 lg:col-span-2 lg:col-start-11 2xl:col-start-10 lg:block">
+                                <img src="./assets/images/dashboard.png" alt=""
+                                    class="h-40 ltr:2xl:ml-auto rtl:2xl:mr-auto" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                  <div class="banner-img">
-                    <img src="assets/admin/img/banner/2.png" alt="">
-                  </div>
+                <!--end col-->
+                <div class="col-span-12 card 2xl:col-span-4 2xl:row-span-2">
+                    <div class="card-body">
+                        <div class="flex items-center mb-3">
+                            <h6 class="grow text-15">Leads Statistics</h6>
+                            <div class="relative">
+                                <a href="#!"
+                                    class="underline transition-all duration-200 ease-linear text-custom-500 hover:text-custom-600">View
+                                    All
+                                    <i data-lucide="move-right"
+                                        class="inline-block align-middle size-4 ltr:ml-1 rtl:mr-1"></i></a>
+                            </div>
+                        </div>
+                        <div id="orderStatisticsChart" class="apex-charts"
+                            data-chart-colors='["bg-purple-500", "bg-sky-500"]' dir="ltr"></div>
+                    </div>
                 </div>
-              </div>
+                <!--end col-->
+                <div class="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2">
+                    <div class="text-center card-body">
+                        <div
+                            class="flex items-center justify-center mx-auto rounded-full size-14 bg-custom-100 text-custom-500 dark:bg-custom-500/20">
+                            <i data-lucide="wallet-2"></i>
+                        </div>
+                        <h5 class="mt-4 mb-2">
+                            $<span class="counter-value" data-target="236.18">0</span>k
+                        </h5>
+                        <p class="text-slate-500 dark:text-zink-200">Total Revenue</p>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2">
+                    <div class="text-center card-body">
+                        <div
+                            class="flex items-center justify-center mx-auto text-purple-500 bg-purple-100 rounded-full size-14 dark:bg-purple-500/20">
+                            <i data-lucide="package"></i>
+                        </div>
+                        <h5 class="mt-4 mb-2">
+                            <span class="counter-value" data-target="13461">0</span>
+                        </h5>
+                        <p class="text-slate-500 dark:text-zink-200">Total Leads</p>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2">
+                    <div class="text-center card-body">
+                        <div
+                            class="flex items-center justify-center mx-auto text-green-500 bg-green-100 rounded-full size-14 dark:bg-green-500/20">
+                            <i data-lucide="truck"></i>
+                        </div>
+                        <h5 class="mt-4 mb-2">
+                            <span class="counter-value" data-target="17150">0</span>
+                        </h5>
+                        <p class="text-slate-500 dark:text-zink-200">Total Converted Leads</p>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2">
+                    <div class="text-center card-body">
+                        <div
+                            class="flex items-center justify-center mx-auto text-red-500 bg-red-100 rounded-full size-14 dark:bg-red-500/20">
+                            <i data-lucide="package-x"></i>
+                        </div>
+                        <h5 class="mt-4 mb-2">
+                            <span class="counter-value" data-target="3519">0</span>
+                        </h5>
+                        <p class="text-slate-500 dark:text-zink-200">Leads With Failures</p>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-span-12 card 2xl:col-span-8">
+                    <div class="card-body">
+                        <div class="flex flex-col gap-4 mb-4 md:mb-3 md:items-center md:flex-row">
+                            <h6 class="grow text-15">Leads Overview</h6>
+                            <div class="relative">
+                                <i data-lucide="calendar-range"
+                                    class="absolute size-4 ltr:left-3 rtl:right-3 top-3 text-slate-500 dark:text-zink-200"></i>
+                                <input type="text"
+                                    class="ltr:pl-10 rtl:pr-10 form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    data-provider="flatpickr" data-date-format="d M, Y" data-range-date="true"
+                                    readonly="readonly" placeholder="Select Date" />
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-4 mb-3">
+                            <div class="col-span-12 md:col-span-6 lg:col-span-3">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="flex items-center justify-center rounded-md size-12 text-sky-500 bg-sky-50 shrink-0 dark:bg-sky-500/10">
+                                        <i data-lucide="bar-chart"></i>
+                                    </div>
+                                    <div class="grow">
+                                        <p class="mb-1 text-slate-500 dark:text-zink-200">
+                                            Total Sales
+                                        </p>
+                                        <h5 class="text-15">
+                                            $<span class="counter-value" data-target="1517.36">0</span>k
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 lg:col-span-3">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="flex items-center justify-center text-green-500 rounded-md size-12 bg-green-50 shrink-0 dark:bg-green-500/10">
+                                        <i data-lucide="trending-up"></i>
+                                    </div>
+                                    <div class="grow">
+                                        <p class="mb-1 text-slate-500 dark:text-zink-200">
+                                            Total Profit
+                                        </p>
+                                        <h5 class="text-15">
+                                            $<span class="counter-value" data-target="746.84">0</span>k
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="salesRevenueOverview" class="apex-charts"
+                            data-chart-colors='["bg-custom-500", "bg-custom-400", "bg-custom-300"]' dir="ltr"></div>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-span-12 2xl:col-span-4">
+                    <div class="grid grid-cols-12 gap-x-5 d-none">
+                        <div class="col-span-12 card lg:col-span-6 2xl:col-span-12">
+                            <div class="card-body">
+                                <div class="flex items-center mb-3">
+                                    <h6 class="grow text-15">Traffic Resources</h6>
+                                    <div class="relative">
+                                        <a href="#!"
+                                            class="transition-all duration-300 ease-linear text-custom-500 hover:text-custom-700">View
+                                            Status
+                                            <i data-lucide="move-right"
+                                                class="inline-block align-middle size-4 ltr:ml-1 rtl:mr-1"></i></a>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-12">
+                                    <div class="col-span-12 md:col-span-6 2xl:col-span-7">
+                                        <div id="trafficResourcesChart" class="apex-charts"
+                                            data-chart-colors='["bg-sky-500", "bg-purple-500", "bg-green-500", "bg-yellow-500"]'
+                                            dir="ltr"></div>
+                                    </div>
+                                    <div class="col-span-12 md:col-span-6 2xl:col-span-5">
+                                        <ul class="flex flex-col gap-3">
+                                            <li class="flex items-center gap-2">
+                                                <div class="bg-green-500 size-3 shrink-0 clip-triangle"></div>
+                                                <p class="text-green-500">Search Engine (22%)</p>
+                                            </li>
+                                            <li class="flex items-center gap-2">
+                                                <div class="bg-purple-500 size-3 shrink-0 clip-triangle"></div>
+                                                <p class="text-purple-500">Referral (34%)</p>
+                                            </li>
+                                            <li class="flex items-center gap-2">
+                                                <div class="size-3 bg-sky-500 shrink-0 clip-triangle"></div>
+                                                <p class="text-sky-500">Direct (44%)</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-span-12 card lg:col-span-6 2xl:col-span-12">
+                            <div class="card-body">
+                                <div class="flex items-center mb-2">
+                                    <h5 class="grow">
+                                        <span class="counter-value" data-target="1596">0</span>
+                                    </h5>
+                                    <span
+                                        class="px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-white border-red-100 text-red-500 dark:bg-zink-700 dark:border-red-900"><i
+                                            data-lucide="trending-down" class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                        6.8%</span>
+                                </div>
+                                <h6 class="mb-0">Monthly Orders Goal (20000+)</h6>
+                                <div>
+                                    <div class="flex items-center justify-between mt-5 mb-2">
+                                        <p class="text-slate-500 dark:text-zink-200">
+                                            Total Orders
+                                        </p>
+                                        <h6 class="mb-0 text-custom-500">85%</h6>
+                                    </div>
+                                    <div class="w-full bg-slate-200 rounded-full h-2.54 dark:bg-zink-600">
+                                        <div class="bg-custom-500 h-2.5 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end grid-->
+                </div>
+                <!--end col-->
+                <div class="col-span-12 card 2xl:col-span-12">
+                    <div class="card-body">
+                        <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
+                            <div class="2xl:col-span-3">
+                                <h6 class="text-15">Hot Leads</h6>
+                            </div>
+                            <!--end col-->
+                            <div class="2xl:col-span-3 2xl:col-start-10">
+                                <div class="flex gap-3">
+                                    <div class="relative grow">
+                                        <input type="text"
+                                            class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            placeholder="Search for ..." autocomplete="off" />
+                                        <i data-lucide="search"
+                                            class="inline-block size-4 absolute ltr:left-2.5 rtl:right-2.5 top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600"></i>
+                                    </div>
+                                    <button type="button"
+                                        class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                        <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i>
+                                        Export
+                                    </button>
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end grid-->
+                        <div class="overflow-x-auto">
+                            <table class="w-full whitespace-nowrap">
+                                <thead
+                                    class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                                    <tr>
+                                        <th
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                            Sl. No
+                                        </th>
+                                        <th
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                            Lead ID
+                                        </th>
+                                        <th
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                            Customer Name
+                                        </th>
+                                        <th
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                            Area
+                                        </th>
+                                        <th
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                            Lead Date
+                                        </th>
+                                        <th
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                            Assigned To
+                                        </th>
+                                        <th
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                            Status
+                                        </th>
+                                        <th
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                            Max. Area
+                                        </th>
+                                        <th
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                            Max. Budget
+                                        </th>
+                                        
+                                        <th
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            01
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <a href="apps-ecommerce-order-overview.html">#TWT5015100365</a>
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Marie Prohaska
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Germany
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            08 Jun, 2023
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Credit Card
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            05
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $146.99
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $749.95
+                                        </td>
+                                        
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <div class="relative dropdown">
+                                                <button id="orderAction1" data-bs-toggle="dropdown"
+                                                    class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+                                                    <i data-lucide="more-horizontal" class="size-3"></i>
+                                                </button>
+                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
+                                                    aria-labelledby="orderAction1">
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="apps-ecommerce-order-overview.html"><i data-lucide="eye"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Overview</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="file-edit"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Edit</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="trash-2"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Delete</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            02
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <a href="apps-ecommerce-order-overview.html">#TWT5015100366</a>
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Jaqueline Hammes
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            France
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            11 July, 2023
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Paypal
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            02
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $450.00
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $900.00
+                                        </td>
+                                        <td
+                                        class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                        <div class="relative dropdown">
+                                            <button id="orderAction3" data-bs-toggle="dropdown"
+                                                class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+                                                <i data-lucide="more-horizontal" class="size-3"></i>
+                                            </button>
+                                            <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
+                                                aria-labelledby="orderAction3">
+                                                <li>
+                                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                        href="apps-ecommerce-order-overview.html"><i data-lucide="eye"
+                                                            class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                        <span class="align-middle">Overview</span></a>
+                                                </li>
+                                                <li>
+                                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                        href="#!"><i data-lucide="file-edit"
+                                                            class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                        <span class="align-middle">Edit</span></a>
+                                                </li>
+                                                <li>
+                                                    <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                        href="#!"><i data-lucide="trash-2"
+                                                            class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                        <span class="align-middle">Delete</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                       
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            03
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <a href="apps-ecommerce-order-overview.html">#TWT5015100367</a>
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Marlene Hirthe
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Argentina
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            21 Aug, 2023
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Visa Card
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            03
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $147.23
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $294.46
+                                        </td>
+                                        
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <div class="relative dropdown">
+                                                <button id="orderAction3" data-bs-toggle="dropdown"
+                                                    class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+                                                    <i data-lucide="more-horizontal" class="size-3"></i>
+                                                </button>
+                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
+                                                    aria-labelledby="orderAction3">
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="apps-ecommerce-order-overview.html"><i data-lucide="eye"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Overview</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="file-edit"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Edit</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="trash-2"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Delete</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            04
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <a href="apps-ecommerce-order-overview.html">#TWT5015100368</a>
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Reagan Larson
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Belgium
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            28 Nov, 2023
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            American Express
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            01
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $579.12
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $579.12
+                                        </td>
+                                       
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <div class="relative dropdown">
+                                                <button id="orderAction4" data-bs-toggle="dropdown"
+                                                    class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+                                                    <i data-lucide="more-horizontal" class="size-3"></i>
+                                                </button>
+                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
+                                                    aria-labelledby="orderAction4">
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="apps-ecommerce-order-overview.html"><i data-lucide="eye"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Overview</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="file-edit"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Edit</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="trash-2"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Delete</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            05
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <a href="apps-ecommerce-order-overview.html">#TWT5015100369</a>
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Glennie Langosh
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Australia
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            11 Oct, 2023
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            American Express
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            01
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $349.00
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $349.00
+                                        </td>
+                                       
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <div class="relative dropdown">
+                                                <button id="orderAction5" data-bs-toggle="dropdown"
+                                                    class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+                                                    <i data-lucide="more-horizontal" class="size-3"></i>
+                                                </button>
+                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
+                                                    aria-labelledby="orderAction5">
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="apps-ecommerce-order-overview.html"><i data-lucide="eye"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Overview</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="file-edit"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Edit</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="trash-2"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Delete</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            06
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <a href="apps-ecommerce-order-overview.html">#TWT5015100370</a>
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Rickie Cremin
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            United States
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            16 Feb, 2023
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            COD
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            03
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $89.49
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $268.47
+                                        </td>
+                                        
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <div class="relative dropdown">
+                                                <button id="orderAction6" data-bs-toggle="dropdown"
+                                                    class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+                                                    <i data-lucide="more-horizontal" class="size-3"></i>
+                                                </button>
+                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
+                                                    aria-labelledby="orderAction6">
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="apps-ecommerce-order-overview.html"><i data-lucide="eye"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Overview</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="file-edit"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Edit</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="trash-2"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Delete</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            07
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <a href="apps-ecommerce-order-overview.html">#TWT5015100371</a>
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Domenic Tromp
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            Afghanistan
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            21 Jan, 2024
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            PayPal
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            02
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $739.79
+                                        </td>
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            $1,479.58
+                                        </td>
+                                        
+                                        <td
+                                            class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                            <div class="relative dropdown">
+                                                <button id="orderAction6" data-bs-toggle="dropdown"
+                                                    class="flex items-center justify-center size-[30px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20">
+                                                    <i data-lucide="more-horizontal" class="size-3"></i>
+                                                </button>
+                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
+                                                    aria-labelledby="orderAction6">
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="apps-ecommerce-order-overview.html"><i data-lucide="eye"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Overview</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="file-edit"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Edit</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                                            href="#!"><i data-lucide="trash-2"
+                                                                class="inline-block size-3 ltr:mr-1 rtl:ml-1"></i>
+                                                            <span class="align-middle">Delete</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="flex flex-col items-center mt-5 md:flex-row">
+                            <div class="mb-4 grow md:mb-0">
+                                <p class="text-slate-500 dark:text-zink-200">
+                                    Showing <b>07</b> of <b>19</b> Results
+                                </p>
+                            </div>
+                            <ul class="flex flex-wrap items-center gap-2 shrink-0">
+                                <li>
+                                    <a href="#!"
+                                        class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto"><i
+                                            class="mr-1 size-4 rtl:rotate-180" data-lucide="chevron-left"></i>
+                                        Prev</a>
+                                </li>
+                                <li>
+                                    <a href="#!"
+                                        class="inline-flex items-center justify-center bg-white dark:bg-zink-700 w-8 h-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">1</a>
+                                </li>
+                                <li>
+                                    <a href="#!"
+                                        class="inline-flex items-center justify-center bg-white dark:bg-zink-700 w-8 h-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto active">2</a>
+                                </li>
+                                <li>
+                                    <a href="#!"
+                                        class="inline-flex items-center justify-center bg-white dark:bg-zink-700 w-8 h-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">3</a>
+                                </li>
+                                <li>
+                                    <a href="#!"
+                                        class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">Next
+                                        <i class="ml-1 size-4 rtl:rotate-180" data-lucide="chevron-right"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
+                    <div class="card-body">
+                        <div class="flex items-center mb-3">
+                            <h6 class="grow text-15">Agents</h6>
+                            <div class="relative dropdown shrink-0">
+                                <button type="button"
+                                    class="flex items-center justify-center size-[30px] p-0 bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-700 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10 dropdown-toggle"
+                                    id="customServiceDropdown" data-bs-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="inline-block size-4"></i>
+                                </button>
+
+                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
+                                    aria-labelledby="customServiceDropdown">
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">1 Weekly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">1 Monthly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">3 Monthly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">6 Monthly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">This Yearly</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-center justify-between mt-5 mb-2">
+                                <p class="text-slate-500 dark:text-zink-200">
+                                    28% of the Goal Reached ($25k)
+                                </p>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-200 dark:bg-zink-600">
+                                <div class="h-2 bg-green-500 rounded-full" style="width: 28%"></div>
+                            </div>
+                            <div class="grid mt-3 xl:grid-cols-2">
+                                <div class="flex items-center gap-2">
+                                    <div class="shrink-0">
+                                        <i data-lucide="calendar-days" class="inline-block mb-1 align-middle size-4"></i>
+                                    </div>
+                                    <p class="mb-0 text-slate-500 dark:text-zink-200">
+                                        This Month:
+                                        <span class="font-medium text-slate-800 dark:text-zink-50">$13,741</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="mt-4 mb-3">Top Customer</h6>
+                        <ul class="divide-y divide-slate-200 dark:divide-zink-500">
+                            <li class="flex items-center gap-3 py-2 first:pt-0 last:pb-0">
+                                <div class="w-8 h-8 rounded-full shrink-0 bg-slate-100 dark:bg-zink-600">
+                                    <img src="./assets/images/avatar-2.png" alt=""
+                                        class="w-8 h-8 rounded-full" />
+                                </div>
+                                <div class="grow">
+                                    <h6 class="font-medium">Urrie Arthur</h6>
+                                    <p class="text-slate-500 dark:text-zink-200">
+                                        arthur@tailwick.com
+                                    </p>
+                                </div>
+                                <div class="shrink-0">
+                                    <h6>$2,452</h6>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-3 py-2 first:pt-0 last:pb-0">
+                                <div class="w-8 h-8 rounded-full shrink-0 bg-slate-100 dark:bg-zink-600">
+                                    <img src="./assets/images/avatar-3.png" alt=""
+                                        class="w-8 h-8 rounded-full" />
+                                </div>
+                                <div class="grow">
+                                    <h6 class="font-medium">Natalie Christy</h6>
+                                    <p class="text-slate-500 dark:text-zink-200">
+                                        natalie@tailwick.com
+                                    </p>
+                                </div>
+                                <div class="shrink-0">
+                                    <h6>$1,893</h6>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-3 py-2 first:pt-0 last:pb-0">
+                                <div class="w-8 h-8 rounded-full shrink-0 bg-slate-100 dark:bg-zink-600">
+                                    <img src="./assets/images/avatar-4.png" alt=""
+                                        class="w-8 h-8 rounded-full" />
+                                </div>
+                                <div class="grow">
+                                    <h6 class="font-medium">Laurie Jackson</h6>
+                                    <p class="text-slate-500 dark:text-zink-200">
+                                        jackson@tailwick.com
+                                    </p>
+                                </div>
+                                <div class="shrink-0">
+                                    <h6>$1,196</h6>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-3 py-2 first:pt-0 last:pb-0">
+                                <div class="w-8 h-8 rounded-full shrink-0 bg-slate-100 dark:bg-zink-600">
+                                    <img src="./assets/images/avatar-5.png" alt=""
+                                        class="w-8 h-8 rounded-full" />
+                                </div>
+                                <div class="grow">
+                                    <h6 class="font-medium">Michael Torres</h6>
+                                    <p class="text-slate-500 dark:text-zink-200">
+                                        torres@tailwick.com
+                                    </p>
+                                </div>
+                                <div class="shrink-0">
+                                    <h6>$976</h6>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
+                    <div class="card-body">
+                        <div class="flex items-center mb-3">
+                            <h6 class="grow text-15">Sales This Month</h6>
+                            <div class="relative dropdown shrink-0">
+                                <button type="button"
+                                    class="flex items-center justify-center size-[30px] p-0 bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-700 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10 dropdown-toggle"
+                                    id="sellingProductDropdown" data-bs-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="inline-block size-4"></i>
+                                </button>
+
+                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
+                                    aria-labelledby="sellingProductDropdown">
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">1 Weekly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">1 Monthly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">3 Monthly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">6 Monthly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">This Yearly</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 my-3">
+                            <div
+                                class="flex items-center justify-center text-green-500 rounded-md size-12 bg-green-50 shrink-0 dark:bg-green-500/10">
+                                <i data-lucide="trending-up"></i>
+                            </div>
+                            <div class="grow">
+                                <p class="mb-1 text-slate-500 dark:text-zink-200">
+                                    Total Profit
+                                </p>
+                                <h5 class="text-15">
+                                    $<span class="counter-value" data-target="746.84">0</span>k
+                                </h5>
+                            </div>
+                        </div>
+                        <div id="salesThisMonthChart" class="apex-charts"
+                            data-chart-colors='["bg-sky-100", "bg-orange-100", "bg-sky-500", "bg-orange-500"]'
+                            dir="ltr"></div>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
+                    <div class="card-body">
+                        <div class="flex items-center mb-3">
+                            <h6 class="grow text-15">Gross Leads Areas</h6>
+                            <div class="relative dropdown shrink-0">
+                                <button type="button"
+                                    class="flex items-center justify-center size-[30px] p-0 bg-white text-slate-500 btn hover:text-slate-500 hover:bg-slate-100 focus:text-slate-500 focus:bg-slate-100 active:text-slate-500 active:bg-slate-100 dark:bg-zink-700 dark:hover:bg-slate-500/10 dark:focus:bg-slate-500/10 dark:active:bg-slate-500/10 dropdown-toggle"
+                                    id="sellingProductDropdown" data-bs-toggle="dropdown">
+                                    <i data-lucide="more-vertical" class="inline-block size-4"></i>
+                                </button>
+
+                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
+                                    aria-labelledby="sellingProductDropdown">
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">1 Weekly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">1 Monthly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">3 Monthly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">6 Monthly</a>
+                                    </li>
+                                    <li>
+                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
+                                            href="#!">This Yearly</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <ul class="flex flex-col gap-5">
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-md bg-slate-100 dark:bg-zink-600">
+                                    <img src="./assets/images/img-02.png" alt="" class="h-6" />
+                                </div>
+                                <div class="overflow-hidden grow">
+                                    <h6 class="truncate">Mesh Ergonomic Black Chair</h6>
+                                    <div class="text-yellow-500">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                                <h6 class="shrink-0">
+                                    <i data-lucide="shopping-cart"
+                                        class="inline-block align-middle size-4 text-slate-500 dark:text-zink-200 ltr:mr-1 rtl:ml-1"></i>
+                                    798
+                                </h6>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-md bg-slate-100 dark:bg-zink-600">
+                                    <img src="./assets/images/img-03.png" alt="" class="h-6" />
+                                </div>
+                                <div class="overflow-hidden grow">
+                                    <h6 class="truncate">Fastcolors Typography Men</h6>
+                                    <div class="text-yellow-500">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                                <h6 class="shrink-0">
+                                    <i data-lucide="shopping-cart"
+                                        class="inline-block align-middle size-4 text-slate-500 dark:text-zink-200 ltr:mr-1 rtl:ml-1"></i>
+                                    695
+                                </h6>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-md bg-slate-100 dark:bg-zink-600">
+                                    <img src="./assets/images/img-04.png" alt="" class="h-6" />
+                                </div>
+                                <div class="overflow-hidden grow">
+                                    <h6 class="truncate">Mesh Ergonomic Green Chair</h6>
+                                    <div class="text-yellow-500">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                                <h6 class="shrink-0">
+                                    <i data-lucide="shopping-cart"
+                                        class="inline-block align-middle size-4 text-slate-500 dark:text-zink-200 ltr:mr-1 rtl:ml-1"></i>
+                                    985
+                                </h6>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-md bg-slate-100 dark:bg-zink-600">
+                                    <img src="./assets/images/img-05.png" alt="" class="h-6" />
+                                </div>
+                                <div class="overflow-hidden grow">
+                                    <h6 class="truncate">
+                                        Techel Black Bluetooth Soundbar
+                                    </h6>
+                                    <div class="text-yellow-500">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                                <h6 class="shrink-0">
+                                    <i data-lucide="shopping-cart"
+                                        class="inline-block align-middle size-4 text-slate-500 dark:text-zink-200 ltr:mr-1 rtl:ml-1"></i>
+                                    813
+                                </h6>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-md bg-slate-100 dark:bg-zink-600">
+                                    <img src="./assets/images/img-06.png" alt="" class="h-6" />
+                                </div>
+                                <div class="overflow-hidden grow">
+                                    <h6 class="truncate">Bovet Fleurier AIFSQ029</h6>
+                                    <div class="text-yellow-500">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                                <h6 class="shrink-0">
+                                    <i data-lucide="shopping-cart"
+                                        class="inline-block align-middle size-4 text-slate-500 dark:text-zink-200 ltr:mr-1 rtl:ml-1"></i>
+                                    915
+                                </h6>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-md bg-slate-100 dark:bg-zink-600">
+                                    <img src="./assets/images/img-03.png" alt="" class="h-6" />
+                                </div>
+                                <div class="overflow-hidden grow">
+                                    <h6 class="truncate">Fastcolors Typography Men</h6>
+                                    <div class="text-yellow-500">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-fill"></i>
+                                    </div>
+                                </div>
+                                <h6 class="shrink-0">
+                                    <i data-lucide="shopping-cart"
+                                        class="inline-block align-middle size-4 text-slate-500 dark:text-zink-200 ltr:mr-1 rtl:ml-1"></i>
+                                    785
+                                </h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--end col-->
+                <div class="col-span-12 card lg:col-span-6 2xl:col-span-3">
+                    <div class="card-body">
+                        <h6 class="relative mb-3 grow text-15">Audience</h6>
+                        <div id="audienceChart" class="-mt-9 apex-charts"
+                            data-chart-colors='["bg-sky-500", "bg-orange-400", "bg-green-500", "bg-yellow-500"]'
+                            dir="ltr"></div>
+                    </div>
+                </div>
+                <!--end col-->
             </div>
-          </div>
+            <!--end grid-->
         </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="card">
-          <div class="card-statistic-4">
-            <div class="align-items-center justify-content-between">
-              <div class="row ">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                  <div class="card-content">
-                    <h5 class="font-15">New Project</h5>
-                    <h2 class="mb-3 font-18">128</h2>
-                    <p class="mb-0"><span class="col-green">18%</span>
-                      Increase</p>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                  <div class="banner-img">
-                    <img src="assets/admin/img/banner/3.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="card">
-          <div class="card-statistic-4">
-            <div class="align-items-center justify-content-between">
-              <div class="row ">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
-                  <div class="card-content">
-                    <h5 class="font-15">Revenue</h5>
-                    <h2 class="mb-3 font-18">$48,697</h2>
-                    <p class="mb-0"><span class="col-green">42%</span> Increase</p>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
-                  <div class="banner-img">
-                    <img src="assets/admin/img/banner/4.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <!-- container-fluid -->
     </div>
-    <div class="row">
-      <div class="col-12 col-sm-12 col-lg-12">
-        <div class="card ">
-          <div class="card-header">
-            <h4>Revenue chart</h4>
-            <div class="card-header-action">
-              <div class="dropdown">
-                <a href="#" data-toggle="dropdown" class="btn btn-warning dropdown-toggle">Options</a>
-                <div class="dropdown-menu">
-                  <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                  <a href="#" class="dropdown-item has-icon"><i class="far fa-edit"></i> Edit</a>
-                  <div class="dropdown-divider"></div>
-                  <a href="#" class="dropdown-item has-icon text-danger"><i class="far fa-trash-alt"></i>
-                    Delete</a>
-                </div>
-              </div>
-              <a href="#" class="btn btn-primary">View All</a>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-lg-9">
-                <div id="chart1"></div>
-                <div class="row mb-0">
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <div class="list-inline text-center">
-                      <div class="list-inline-item p-r-30"><i data-feather="arrow-up-circle"
-                          class="col-green"></i>
-                        <h5 class="m-b-0">$675</h5>
-                        <p class="text-muted font-14 m-b-0">Weekly Earnings</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <div class="list-inline text-center">
-                      <div class="list-inline-item p-r-30"><i data-feather="arrow-down-circle"
-                          class="col-orange"></i>
-                        <h5 class="m-b-0">$1,587</h5>
-                        <p class="text-muted font-14 m-b-0">Monthly Earnings</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                    <div class="list-inline text-center">
-                      <div class="list-inline-item p-r-30"><i data-feather="arrow-up-circle"
-                          class="col-green"></i>
-                        <h5 class="mb-0 m-b-0">$45,965</h5>
-                        <p class="text-muted font-14 m-b-0">Yearly Earnings</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="row mt-5">
-                  <div class="col-7 col-xl-7 mb-3">Total customers</div>
-                  <div class="col-5 col-xl-5 mb-3">
-                    <span class="text-big">8,257</span>
-                    <sup class="col-green">+09%</sup>
-                  </div>
-                  <div class="col-7 col-xl-7 mb-3">Total Income</div>
-                  <div class="col-5 col-xl-5 mb-3">
-                    <span class="text-big">$9,857</span>
-                    <sup class="text-danger">-18%</sup>
-                  </div>
-                  <div class="col-7 col-xl-7 mb-3">Project completed</div>
-                  <div class="col-5 col-xl-5 mb-3">
-                    <span class="text-big">28</span>
-                    <sup class="col-green">+16%</sup>
-                  </div>
-                  <div class="col-7 col-xl-7 mb-3">Total expense</div>
-                  <div class="col-5 col-xl-5 mb-3">
-                    <span class="text-big">$6,287</span>
-                    <sup class="col-green">+09%</sup>
-                  </div>
-                  <div class="col-7 col-xl-7 mb-3">New Customers</div>
-                  <div class="col-5 col-xl-5 mb-3">
-                    <span class="text-big">684</span>
-                    <sup class="col-green">+22%</sup>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 col-sm-12 col-lg-4">
-        <div class="card">
-          <div class="card-header">
-            <h4>Chart</h4>
-          </div>
-          <div class="card-body">
-            <div id="chart4" class="chartsh"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-12 col-lg-4">
-        <div class="card">
-          <div class="card-header">
-            <h4>Chart</h4>
-          </div>
-          <div class="card-body">
-            <div class="summary">
-              <div class="summary-chart active" data-tab-group="summary-tab" id="summary-chart">
-                <div id="chart3" class="chartsh"></div>
-              </div>
-              <div data-tab-group="summary-tab" id="summary-text">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-12 col-lg-4">
-        <div class="card">
-          <div class="card-header">
-            <h4>Chart</h4>
-          </div>
-          <div class="card-body">
-            <div id="chart2" class="chartsh"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h4>Assign Task Table</h4>
-            <div class="card-header-form">
-              <form>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search">
-                  <div class="input-group-btn">
-                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="card-body p-0">
-            <div class="table-responsive">
-              <table class="table table-striped">
-                <tr>
-                  <th class="text-center">
-                    <div class="custom-checkbox custom-checkbox-table custom-control">
-                      <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad"
-                        class="custom-control-input" id="checkbox-all">
-                      <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
-                    </div>
-                  </th>
-                  <th>Task Name</th>
-                  <th>Members</th>
-                  <th>Task Status</th>
-                  <th>Assigh Date</th>
-                  <th>Due Date</th>
-                  <th>Priority</th>
-                  <th>Action</th>
-                </tr>
-                <tr>
-                  <td class="p-0 text-center">
-                    <div class="custom-checkbox custom-control">
-                      <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                        id="checkbox-1">
-                      <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
-                    </div>
-                  </td>
-                  <td>Create a mobile app</td>
-                  <td class="text-truncate">
-                    <ul class="list-unstyled order-list m-b-0 m-b-0">
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-8.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="Wildan Ahdian"></li>
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-9.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="John Deo"></li>
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-10.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="Sarah Smith"></li>
-                      <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                    </ul>
-                  </td>
-                  <td class="align-middle">
-                    <div class="progress-text">50%</div>
-                    <div class="progress" data-height="6">
-                      <div class="progress-bar bg-success" data-width="50%"></div>
-                    </div>
-                  </td>
-                  <td>2018-01-20</td>
-                  <td>2019-05-28</td>
-                  <td>
-                    <div class="badge badge-success">Low</div>
-                  </td>
-                  <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                </tr>
-                <tr>
-                  <td class="p-0 text-center">
-                    <div class="custom-checkbox custom-control">
-                      <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                        id="checkbox-2">
-                      <label for="checkbox-2" class="custom-control-label">&nbsp;</label>
-                    </div>
-                  </td>
-                  <td>Redesign homepage</td>
-                  <td class="text-truncate">
-                    <ul class="list-unstyled order-list m-b-0 m-b-0">
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-1.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="Wildan Ahdian"></li>
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-2.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="John Deo"></li>
-                      <li class="avatar avatar-sm"><span class="badge badge-primary">+2</span></li>
-                    </ul>
-                  </td>
-                  <td class="align-middle">
-                    <div class="progress-text">40%</div>
-                    <div class="progress" data-height="6">
-                      <div class="progress-bar bg-danger" data-width="40%"></div>
-                    </div>
-                  </td>
-                  <td>2017-07-14</td>
-                  <td>2018-07-21</td>
-                  <td>
-                    <div class="badge badge-danger">High</div>
-                  </td>
-                  <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                </tr>
-                <tr>
-                  <td class="p-0 text-center">
-                    <div class="custom-checkbox custom-control">
-                      <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                        id="checkbox-3">
-                      <label for="checkbox-3" class="custom-control-label">&nbsp;</label>
-                    </div>
-                  </td>
-                  <td>Backup database</td>
-                  <td class="text-truncate">
-                    <ul class="list-unstyled order-list m-b-0 m-b-0">
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-3.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="Wildan Ahdian"></li>
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-4.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="John Deo"></li>
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-5.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="Sarah Smith"></li>
-                      <li class="avatar avatar-sm"><span class="badge badge-primary">+3</span></li>
-                    </ul>
-                  </td>
-                  <td class="align-middle">
-                    <div class="progress-text">55%</div>
-                    <div class="progress" data-height="6">
-                      <div class="progress-bar bg-purple" data-width="55%"></div>
-                    </div>
-                  </td>
-                  <td>2019-07-25</td>
-                  <td>2019-08-17</td>
-                  <td>
-                    <div class="badge badge-info">Average</div>
-                  </td>
-                  <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                </tr>
-                <tr>
-                  <td class="p-0 text-center">
-                    <div class="custom-checkbox custom-control">
-                      <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                        id="checkbox-4">
-                      <label for="checkbox-4" class="custom-control-label">&nbsp;</label>
-                    </div>
-                  </td>
-                  <td>Android App</td>
-                  <td class="text-truncate">
-                    <ul class="list-unstyled order-list m-b-0 m-b-0">
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-7.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="John Deo"></li>
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-8.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="Sarah Smith"></li>
-                      <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                    </ul>
-                  </td>
-                  <td class="align-middle">
-                    <div class="progress-text">70%</div>
-                    <div class="progress" data-height="6">
-                      <div class="progress-bar" data-width="70%"></div>
-                    </div>
-                  </td>
-                  <td>2018-04-15</td>
-                  <td>2019-07-19</td>
-                  <td>
-                    <div class="badge badge-success">Low</div>
-                  </td>
-                  <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                </tr>
-                <tr>
-                  <td class="p-0 text-center">
-                    <div class="custom-checkbox custom-control">
-                      <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                        id="checkbox-5">
-                      <label for="checkbox-5" class="custom-control-label">&nbsp;</label>
-                    </div>
-                  </td>
-                  <td>Logo Design</td>
-                  <td class="text-truncate">
-                    <ul class="list-unstyled order-list m-b-0 m-b-0">
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-9.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="Wildan Ahdian"></li>
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-10.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="John Deo"></li>
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-2.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="Sarah Smith"></li>
-                      <li class="avatar avatar-sm"><span class="badge badge-primary">+2</span></li>
-                    </ul>
-                  </td>
-                  <td class="align-middle">
-                    <div class="progress-text">45%</div>
-                    <div class="progress" data-height="6">
-                      <div class="progress-bar bg-cyan" data-width="45%"></div>
-                    </div>
-                  </td>
-                  <td>2017-02-24</td>
-                  <td>2018-09-06</td>
-                  <td>
-                    <div class="badge badge-danger">High</div>
-                  </td>
-                  <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                </tr>
-                <tr>
-                  <td class="p-0 text-center">
-                    <div class="custom-checkbox custom-control">
-                      <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                        id="checkbox-6">
-                      <label for="checkbox-6" class="custom-control-label">&nbsp;</label>
-                    </div>
-                  </td>
-                  <td>Ecommerce website</td>
-                  <td class="text-truncate">
-                    <ul class="list-unstyled order-list m-b-0 m-b-0">
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-8.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="Wildan Ahdian"></li>
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-9.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="John Deo"></li>
-                      <li class="team-member team-member-sm"><img class="rounded-circle"
-                          src="assets/admin/img/users/user-10.png" alt="user" data-toggle="tooltip" title=""
-                          data-original-title="Sarah Smith"></li>
-                      <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                    </ul>
-                  </td>
-                  <td class="align-middle">
-                    <div class="progress-text">30%</div>
-                    <div class="progress" data-height="6">
-                      <div class="progress-bar bg-orange" data-width="30%"></div>
-                    </div>
-                  </td>
-                  <td>2018-01-20</td>
-                  <td>2019-05-28</td>
-                  <td>
-                    <div class="badge badge-info">Average</div>
-                  </td>
-                  <td><a href="#" class="btn btn-outline-primary">Detail</a></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-lg-12 col-xl-6">
-        <!-- Support tickets -->
-        <div class="card">
-          <div class="card-header">
-            <h4>Support Ticket</h4>
-            <form class="card-header-form">
-              <input type="text" name="search" class="form-control" placeholder="Search">
-            </form>
-          </div>
-          <div class="card-body">
-            <div class="support-ticket media pb-1 mb-3">
-              <img src="assets/admin/img/users/user-1.png" class="user-img mr-2" alt="">
-              <div class="media-body ml-3">
-                <div class="badge badge-pill badge-success mb-1 float-right">Feature</div>
-                <span class="font-weight-bold">#89754</span>
-                <a href="javascript:void(0)">Please add advance table</a>
-                <p class="my-1">Hi, can you please add new table for advan...</p>
-                <small class="text-muted">Created by <span class="font-weight-bold font-13">John
-                    Deo</span>
-                  &nbsp;&nbsp; - 1 day ago</small>
-              </div>
-            </div>
-            <div class="support-ticket media pb-1 mb-3">
-              <img src="assets/admin/img/users/user-2.png" class="user-img mr-2" alt="">
-              <div class="media-body ml-3">
-                <div class="badge badge-pill badge-warning mb-1 float-right">Bug</div>
-                <span class="font-weight-bold">#57854</span>
-                <a href="javascript:void(0)">Select item not working</a>
-                <p class="my-1">please check select item in advance form not work...</p>
-                <small class="text-muted">Created by <span class="font-weight-bold font-13">Sarah
-                    Smith</span>
-                  &nbsp;&nbsp; - 2 day ago</small>
-              </div>
-            </div>
-            <div class="support-ticket media pb-1 mb-3">
-              <img src="assets/admin/img/users/user-3.png" class="user-img mr-2" alt="">
-              <div class="media-body ml-3">
-                <div class="badge badge-pill badge-primary mb-1 float-right">Query</div>
-                <span class="font-weight-bold">#85784</span>
-                <a href="javascript:void(0)">Are you provide template in Angular?</a>
-                <p class="my-1">can you provide template in latest angular 8.</p>
-                <small class="text-muted">Created by <span class="font-weight-bold font-13">Ashton Cox</span>
-                  &nbsp;&nbsp; -2 day ago</small>
-              </div>
-            </div>
-            <div class="support-ticket media pb-1 mb-3">
-              <img src="assets/admin/img/users/user-6.png" class="user-img mr-2" alt="">
-              <div class="media-body ml-3">
-                <div class="badge badge-pill badge-info mb-1 float-right">Enhancement</div>
-                <span class="font-weight-bold">#25874</span>
-                <a href="javascript:void(0)">About template page load speed</a>
-                <p class="my-1">Hi, John, can you work on increase page speed of template...</p>
-                <small class="text-muted">Created by <span class="font-weight-bold font-13">Hasan
-                    Basri</span>
-                  &nbsp;&nbsp; -3 day ago</small>
-              </div>
-            </div>
-          </div>
-          <a href="javascript:void(0)" class="card-footer card-link text-center small ">View
-            All</a>
-        </div>
-        <!-- Support tickets -->
-      </div>
-      <div class="col-md-6 col-lg-12 col-xl-6">
-        <div class="card">
-          <div class="card-header">
-            <h4>Projects Payments</h4>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-hover mb-0">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Client Name</th>
-                    <th>Date</th>
-                    <th>Payment Method</th>
-                    <th>Amount</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>John Doe </td>
-                    <td>11-08-2018</td>
-                    <td>NEFT</td>
-                    <td>$258</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Cara Stevens
-                    </td>
-                    <td>15-07-2018</td>
-                    <td>PayPal</td>
-                    <td>$125</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>
-                      Airi Satou
-                    </td>
-                    <td>25-08-2018</td>
-                    <td>RTGS</td>
-                    <td>$287</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>
-                      Angelica Ramos
-                    </td>
-                    <td>01-05-2018</td>
-                    <td>CASH</td>
-                    <td>$170</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>
-                      Ashton Cox
-                    </td>
-                    <td>18-04-2018</td>
-                    <td>NEFT</td>
-                    <td>$970</td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>
-                      John Deo
-                    </td>
-                    <td>22-11-2018</td>
-                    <td>PayPal</td>
-                    <td>$854</td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>
-                      Hasan Basri
-                    </td>
-                    <td>07-09-2018</td>
-                    <td>Cash</td>
-                    <td>$128</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-</section>
 @endsection
