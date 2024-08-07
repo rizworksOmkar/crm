@@ -3,77 +3,115 @@
 @section('styles')
 @endsection
 @section('content')
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h4>CRM Login</h4>
-                    </div>
-                    <div class="card-body">
-                        {{-- <form method="POST" action="#" class="needs-validation" novalidate=""> --}}
-                        <form id="login_form" autocomplete="off" action="/login" method="post">
-                            @csrf
+    <div
+        class="flex items-center justify-center min-h-screen py-16 lg:py-10 bg-slate-50 dark:bg-zink-800 dark:text-zink-100 font-public">
+        <div class="relative">
+            <div class="mb-0 w-screen lg:mx-auto lg:w-[500px] card shadow-lg border-none shadow-slate-100 relative">
+                <div class="!px-10 !py-12 card-body">
+                    {{-- <a href="#!">
+                        <img src="./assets/images/logo-light.png" alt="" class="hidden h-6 mx-auto dark:block">
+                        <img src="./assets/images/logo-dark.png" alt="" class="block h-6 mx-auto dark:hidden">
+                    </a> --}}
 
-                            <div class="form-group">
-                                <label for="email">User Name</label>
-                                <input id="email" type="text" class="form-control" name="email" tabindex="1">
-                                <div class="invalid-feedback" id="invalid-feedback-email">
-                                    Please fill in your User Name
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="d-block">
-                                    <label for="password" class="control-label">Password</label>
-                                    {{-- <div class="float-right">
-                                        <a href="auth-forgot-password.html" class="text-small">
-                                            Forgot Password?
-                                        </a>
-                                    </div> --}}
-                                </div>
-                                <div class="pass-icon">
-                                    <input id="password" type="password" class="form-control" name="password"
-                                        tabindex="2">
-                                    <i class="fa fa-eye" aria-hidden="true" id="toggle-password" toggle="#password"></i>
-                                </div>
-                                <div class="invalid-feedback" id="invalid-feedback-pass">
-                                    please fill in your password
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="remember" class="custom-control-input" tabindex="3"
-                                        id="remember-me">
-                                    <label class="custom-control-label" for="remember-me">Remember Me</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4"
-                                    id="loginbutton">
-                                    Login
-                                </button>
-                            </div>
-                        </form>
-                        {{-- <div class="text-center mt-4 mb-3">
-                            <div class="text-job text-muted">Login With Social</div>
-                        </div>
-                        <div class="row sm-gutters">
-                            <div class="col-6">
-                                <a class="btn btn-block btn-social btn-facebook">
-                                    <span class="fab fa-facebook"></span> Facebook
-                                </a>
-                            </div>
-                            <div class="col-6">
-                                <a class="btn btn-block btn-social btn-twitter">
-                                    <span class="fab fa-twitter"></span> Twitter
-                                </a>
-                            </div>
-                        </div> --}}
+                    <div class="mt-8 text-center">
+                        <h4 class="mb-1 text-custom-500 dark:text-custom-500">CRM Login</h4>
+                        {{-- <p class="text-slate-500 dark:text-zink-200">Sign in to continue to CRM.</p> --}}
                     </div>
+
+                    <form class="mt-10" id="login_form" autocomplete="off" action="/login" method="post">
+                        @csrf
+                        {{-- <div class="hidden px-4 py-3 mb-3 text-sm text-green-500 border border-green-200 rounded-md bg-green-50 dark:bg-green-400/20 dark:border-green-500/50"
+                            id="successAlert">
+                            You have <b>successfully</b> signed in.
+                        </div> --}}
+                        <div class="mb-3">
+                            <label for="email" class="inline-block mb-2 
+                            text-base font-medium">User Name</label>
+                            <input id="email" type="text" name="email" tabindex="1"
+                                class="form-input border-slate-200 dark:border-zink-500
+                                 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                placeholder="Enter username or email">
+                            <div id="invalid-feedback-email" class="hidden mt-1 text-sm text-red-500">Please fill in your
+                                User Name</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="inline-block mb-2 text-base
+                             font-medium">Password</label>
+                            <input type="password" id="password"
+                                class="form-input border-slate-200
+                                 dark:border-zink-500 focus:outline-none 
+                                 focus:border-custom-500 disabled:bg-slate-100 
+                                 dark:disabled:bg-zink-600 disabled:border-slate-300 
+                                 dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
+                                 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                 dark:placeholder:text-zink-200"
+                                placeholder="Enter password" name="password" tabindex="2">
+                            <div id="invalid-feedback-pass" class="hidden mt-1 text-sm text-red-500">Password must be at least 8
+                                please fill in your password</div>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <input id="remember-me"
+                                 name="remember" tabindex="3"
+                                    class="border rounded-sm appearance-none size-4 
+                                    bg-slate-100 border-slate-200 dark:bg-zink-600 
+                                    dark:border-zink-500 checked:bg-custom-500 
+                                    checked:border-custom-500 dark:checked:bg-custom-500
+                                     dark:checked:border-custom-500 checked:disabled:bg-custom-400 
+                                     checked:disabled:border-custom-400"
+                                    type="checkbox" value="">
+                                <label for="remember-me"
+                                    class="inline-block text-base font-medium 
+                                    align-middle cursor-pointer">Remember
+                                    me</label>
+                            </div>
+                            {{-- <div id="remember-error" class="hidden mt-1 text-sm text-red-500">Please check the "Remember me"
+                                before submitting the form.</div> --}}
+                        </div>
+                        <div class="mt-10">
+                            <button type="submit" id="loginbutton" tabindex="4"
+                                class="w-full text-white btn bg-custom-500 
+                                border-custom-500 hover:text-white 
+                                hover:bg-custom-600 hover:border-custom-600 
+                                focus:text-white focus:bg-custom-600 
+                                focus:border-custom-600 focus:ring 
+                                focus:ring-custom-100 active:text-white 
+                                active:bg-custom-600 active:border-custom-600 
+                                active:ring active:ring-custom-100 
+                                dark:ring-custom-400/20">Login</button>
+                        </div>
+
+                        <div
+                            class="relative text-center my-9 before:absolute before:top-3 before:left-0 before:right-0 before:border-t before:border-t-slate-200 dark:before:border-t-zink-500">
+                            <h5
+                                class="inline-block px-2 py-0.5 text-sm bg-white text-slate-500 dark:bg-zink-600 dark:text-zink-200 rounded relative">
+                                Sign In with</h5>
+                        </div>
+
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <button type="button"
+                                class="flex items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 active:text-white active:bg-custom-600 active:border-custom-600"><i
+                                    data-lucide="facebook" class="size-4"></i></button>
+                            <button type="button"
+                                class="flex items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-white btn bg-orange-500 border-orange-500 hover:text-white hover:bg-orange-600 hover:border-orange-600 focus:text-white focus:bg-orange-600 focus:border-orange-600 active:text-white active:bg-orange-600 active:border-orange-600"><i
+                                    data-lucide="mail" class="size-4"></i></button>
+                            <button type="button"
+                                class="flex items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-white btn bg-sky-500 border-sky-500 hover:text-white hover:bg-sky-600 hover:border-sky-600 focus:text-white focus:bg-sky-600 focus:border-sky-600 active:text-white active:bg-sky-600 active:border-sky-600"><i
+                                    data-lucide="twitter" class="size-4"></i></button>
+                            <button type="button"
+                                class="flex items-center justify-center size-[37.5px] transition-all duration-200 ease-linear p-0 text-white btn bg-slate-500 border-slate-500 hover:text-white hover:bg-slate-600 hover:border-slate-600 focus:text-white focus:bg-slate-600 focus:border-slate-600 active:text-white active:bg-slate-600 active:border-slate-600"><i
+                                    data-lucide="github" class="size-4"></i></button>
+                        </div>
+
+                        <div class="mt-10 text-center">
+                            <p class="mb-0 text-slate-500 dark:text-zink-200">Don't have an account ? <a
+                                    href="auth-register-basic.html"
+                                    class="font-semibold underline transition-all duration-150 ease-linear text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500">
+                                    SignUp</a> </p>
+                        </div>
+                    </form>
                 </div>
-                {{-- <div class="mt-5 text-muted text-center">
-                    Don't have an account? <a href="auth-register.html">Create One</a>
-                </div> --}}
             </div>
         </div>
     </div>
@@ -190,12 +228,12 @@
             });
 
             $("#toggle-password").click(function() {
-                
+
                 $(this).toggleClass("fa-eye fa-eye-slash");
                 var input = $($(this).attr("toggle"));
-               
+
                 if (input.attr("type") == "password") {
-                    
+
                     input.attr("type", "text");
                 } else {
                     input.attr("type", "password");
