@@ -13,37 +13,19 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/tailwind2.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    {{--
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/app.min.css') }}"> --}}
-    {{--
-    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/summernote/summernote-bs4.css') }}"> --}}
-    {{--
-    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-daterangepicker/daterangepicker.css') }}">
-    --}}
-    {{--
-    <link rel="stylesheet"
-        href="{{ asset('assets/admin/bundles/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}"> --}}
-    {{--
-    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/select2/dist/css/select2.min.css') }}"> --}}
-    {{--
-    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/jquery-selectric/selectric.css') }}"> --}}
-    {{--
-    <link rel="stylesheet"
-        href="{{ asset('assets/admin/bundles/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}"> --}}
-    {{--
-    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
-    --}}
-    {{--
-    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/select2/dist/css/select2.min.css') }}"> --}}
-    {{--
-    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/jquery-selectric/selectric.css') }}"> --}}
-    {{--
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
-    {{--
-    <link rel="stylesheet" href="{{ asset('assets/admin/bundles/datatables/datatables.min.css') }}"> --}}
-    {{--
-    <link rel="stylesheet"
-        href="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/admin/OldAssets/css/app.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/summernote/summernote-bs4.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-daterangepicker/daterangepicker.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/select2/dist/css/select2.min.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/jquery-selectric/selectric.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/admin/OldAssets/bundles/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/OldAssets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/select2/dist/css/select2.min.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/jquery-selectric/selectric.css') }}"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/datatables/datatables.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     <!-- Template CSS -->
     {{--
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}"> --}}
@@ -55,6 +37,8 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/custom.css') }}"> --}}
     {{--
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" /> --}}
+    <link rel="stylesheet" href="{{ asset('assets/admin/OldAssets/css/custom.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
     {{--
     <link rel='shortcut icon' type='image/x-icon' href="{{ asset('assets/admin/img/favicon.ico') }}" /> --}}
@@ -73,6 +57,11 @@
     {{--
     <link rel="stylesheet" type="text/css"
         href="{{ asset('assets/admin/bundles/pretty-checkbox/pretty-checkbox.min.css') }}"> --}}
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/style.css') }}"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/style-example.css') }}" /> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/jquery.Jcrop.min.css') }}" /> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/bundles/pretty-checkbox/pretty-checkbox.min.css') }}"> --}}
     <!-- End Croping Images -->
     @yield('styles')
 </head>
@@ -1410,6 +1399,23 @@
                             </label>
                             <h5 class="mt-2 text-center text-15">Default</h5>
                         </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="{{ asset('assets/admin/js/layout.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/@popperjs/core/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/tippy.js/tippy-bundle.umd.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/prismjs/prism.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/lucide/umd/lucide.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/tailwick.bundle.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="https://apexcharts.com/samples/assets/stock-prices.js"></script>
+    <script src="{{ asset('assets/admin/js/pages/dashboards-ecommerce.init.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/app.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    {{-- tailwick end --}}
 
                         <div class="relative">
                             <input id="layoutSkitTwo" name="dataLayoutSkin"
@@ -1646,6 +1652,36 @@
         </script> --}}
         <script>
             try {
+    {{-- <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script> --}}
+    <!-- General JS Scripts -->
+    {{-- <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script> --}}
+
+     {{-- <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+     </script> --}}
+     {{-- <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script> --}}
+    <!-- Page Specific JS File -->
+     <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
+     <script src="{{ asset('assets/admin/OldAssets/js/app.min.js') }}"></script>
+     <script src="{{ asset('assets/admin/OldAssets/bundles/summernote/summernote-bs4.js') }}"></script>
+    <!-- JS Libraies -->
+     <script src="{{ asset('assets/admin/OldAssets/bundles/apexcharts/apexcharts.min.js') }}"></script>
+
+     <script src="{{ asset('assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+     <script src="{{ asset('assets/admin/OldAssets/bundles/select2/dist/js/select2.full.min.js') }}"></script>
+     <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
+    <!-- Page Specific JS File -->
+     <script src="{{ asset('assets/admin/OldAssets/js/page/index.js') }}"></script>
+    <!-- Template JS File -->
+     <script src="{{ asset('assets/admin/OldAssets/js/scripts.js') }}"></script>
+    <!-- Custom JS File -->
+    <script src="{{ asset('assets/admin/OldAssets/OldAssets/js/custom.js') }}"></script>
+     <script src="{{ asset('assets/admin/OldAssets/js/jquery.textareaCounter.plugin.js') }}"></script>
+    <!-- Cropring Iamges -->
+     <script type="text/javascript" src="{{ asset('assets/admin/OldAssets/croperimgages/scripts/jquery.Jcrop.js') }}"></script>
+     <script type="text/javascript" src="{{ asset('assets/admin/OldAssets/croperimgages/scripts/jquery.SimpleCropper.js') }} ">
+     </script> --}}
+    <script>
+        try {
             fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", {
                 method: 'HEAD',
                 mode: 'no-cors'

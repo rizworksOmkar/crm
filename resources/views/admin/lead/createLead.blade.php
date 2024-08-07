@@ -17,11 +17,20 @@
                         {{ csrf_field() }}
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3">
                             <div class="mb-4">
-                                <label for="firstNameInput2" class="inline-block mb-2 text-base font-medium">Customer <span
-                                        class="text-red-500">*</span></label>
+                                <label for="contact_id"
+                                    class="inline-block mb-2 text-base
+                                      font-medium">Customer
+                                    <span class="text-red-500">*</span></label>
                                 <select
-                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="stateInput" required>
+                                    class="form-select border-slate-200 
+                                    dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 
+                                    dark:disabled:bg-zink-600 disabled:border-slate-300 
+                                    dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
+                                    dark:focus:border-custom-800 placeholder:text-slate-400 
+                                    dark:placeholder:text-zink-200"
+                                    id="contact_id" name="contact_id" required>
                                     <option value="">Select Customer</option>
                                     @foreach ($contacts as $contact)
                                         <option value="{{ $contact->id }}">{{ $contact->name }}</option>
@@ -29,11 +38,18 @@
                                 </select>
                             </div>
                             <div class="mb-4 cstrm_add">
-                                <label for="firstNameInput2" class="inline-block mb-2 text-base font-medium">Or <span
+                                <label for="firstNameInput2" class="inline-block mb-2 text-base
+                                 font-medium">Or <span
                                         class="text-red-500">*</span></label>
                                 <button type="button" data-modal-target="showModal"
-                                    class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 add-btn"
-                                    data-bs-toggle="modal" id="add_new_contact_btn" data-bs-target="#createContactModal"><i
+                                    class="text-white  bg-custom-500 btn border-custom-500 
+                                    hover:text-white hover:bg-custom-600 hover:border-custom-600
+                                     focus:text-white focus:bg-custom-600 focus:border-custom-600
+                                      focus:ring focus:ring-custom-100 active:text-white 
+                                      active:bg-custom-600 active:border-custom-600 active:ring 
+                                      active:ring-custom-100 dark:ring-custom-400/20 add-btn"
+                                    data-toggle="modal" id="add_new_contact_btn"
+                                     data-target="#createContactModal"><i
                                         class="align-bottom ri-add-line me-1"></i> Add New Customer</button>
                             </div>
                         </div>
@@ -254,7 +270,7 @@
                     </form>
                 </div>
             </div>
-            {{-- <div class="modal fade" id="createContactModal" tabindex="-1" role="dialog"
+            <div class="modal fade" id="createContactModal" tabindex="-1" role="dialog"
                 aria-labelledby="createContactModalLabel" aria-hidden="true">
                 <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="modal-dialog" role="document">
@@ -300,7 +316,7 @@
                         </form>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 @endsection

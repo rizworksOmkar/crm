@@ -21847,7 +21847,7 @@ div.flatpickr-day.dataTables_scrollBody
 }
 .bg-custom-500 {
     --tw-bg-opacity: 1;
-    background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+    background-color: rgb(59 130 246 / var(--tw-bg-opacity)) !important;
 }
 .bg-custom-500\/10 {
     background-color: #3b82f61a;
