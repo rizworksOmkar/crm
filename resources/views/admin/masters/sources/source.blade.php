@@ -35,9 +35,10 @@
                                 <!--end col-->
                             </div>
 
-                            <div id="addLeadSourceForm" style="display: none">
+                            {{-- <div id="addLeadSourceForm" style="display: none">
                                 <div class="col-12 col-md-6 col-lg-6">
-                                    <form id="add_lead_source_form" action="{{ route('lead-sources.store') }}" method="POST">
+                                    <form id="add_lead_source_form" action="{{ route('lead-sources.store') }}"
+                                        method="POST">
                                         {{ csrf_field() }}
                                         <div class="card">
                                             <div class="card-header">
@@ -46,8 +47,8 @@
                                             <div class="card-body">
                                                 <div class="form-group col-md-6">
                                                     <label for="lead_source">Add Lead Source</label>
-                                                    <input type="text" class="form-control" id="lead_source" name="lead_source"
-                                                        placeholder="Enter Lead Source">
+                                                    <input type="text" class="form-control" id="lead_source"
+                                                        name="lead_source" placeholder="Enter Lead Source">
                                                 </div>
                                             </div>
                                             <div class="card-footer">
@@ -56,6 +57,46 @@
                                             </div>
                                         </div>
                                     </form>
+                                </div>
+                            </div> --}}
+                            <div id="addLeadSourceForm" style="display: none">
+                                <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-3 mt-2">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <form id="add_lead_source_form" action="{{ route('lead-sources.store') }}"
+                                                method="POST">
+                                                {{ csrf_field() }}
+                                                <div class="card-header mb-3">
+                                                    <h4>Create Lead Source</h4>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="inline-block mb-2 text-base font-medium"
+                                                        for="lead_source">Add Lead Source <span
+                                                            class="text-red-500">*</span></label>
+                                                    <input type="password" id="lead_source" name="lead_source"
+                                                        placeholder="Enter Lead Source"
+                                                        class="form-input border-slate-200 dark:border-zink-500 
+                                                        focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
+                                                        dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 
+                                                        dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
+                                                        dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                                        dark:placeholder:text-zink-200"
+                                                        required="">
+                                                </div>
+                                                <div class="lead_sourc_btn">
+                                                    <button type="submit"
+                                                        class="text-white btn bg-custom-500 border-custom-500 hover:text-white 
+                                                    hover:bg-custom-600 hover:border-custom-600 focus:text-white 
+                                                    focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100
+                                                     active:text-white active:bg-custom-600 active:border-custom-600 active:ring
+                                                      active:ring-custom-100 dark:ring-custom-400/20">Create</button>
+                                                    <a href="/source"
+                                                        class="btn btn-sm btn-danger bg-red-500 text-white ml-2">Back To
+                                                        Main Menu</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!--end grid-->
@@ -107,7 +148,7 @@
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
 
                                                     <button id="toggle-status" data-status-id="{{ $source->id }}"
-                                                        class="btn btn-primary toggle-status">Changes
+                                                        class="btn btn-primary toggle-status text-white bg-custom-800">Changes
                                                         Status</button>
 
                                                 </td>
@@ -118,7 +159,8 @@
                                                         action="{{ route('lead-sources.destroy', $source->id) }}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-danger bg-red-500 text-white"
                                                             onclick="return confirm('Are you sure you want to delete this property type?')">Delete</button>
                                                     </form>
                                                 </td>

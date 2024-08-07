@@ -1585,8 +1585,18 @@
     <script src="{{ asset('assets/admin/libs/apexcharts/apexcharts.min.js') }}"></script>
     <script src="https://apexcharts.com/samples/assets/stock-prices.js"></script>
     <script src="{{ asset('assets/admin/js/pages/dashboards-ecommerce.init.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/app.js') }}"></script>
     
+    <script src="{{ asset('assets/admin/js/datatables/jquery-3.7.0.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatables/data-tables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatables/data-tables.tailwindcss.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatables/datatables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatables/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/datatables/datatables.init.js') }}"></script>
+    
+    <script src="{{ asset('assets/admin/js/app.js') }}"></script>
 
     {{-- tailwick end --}}
 

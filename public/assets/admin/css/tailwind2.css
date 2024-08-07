@@ -32614,3 +32614,40 @@ td.gridjs-td:last-child {
 }
 
 /* modal style end  */
+
+
+.card .card-header {
+    border-bottom-color: #f9f9f9;
+    line-height: 30px;
+    -ms-grid-row-align: center;
+    align-self: center;
+    width: 100%;
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+    /* border-bottom: 1px solid rgba(0, 0, 0, .125); */
+}
+
+.lead_sourc_btn {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.upld_head {
+    display: block;
+    clear: both;
+    font-family: arial;
+    font-size: 25px;
+    color: #39acac;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.srchButton{
+    margin-top: 30px;
+}
