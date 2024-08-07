@@ -38,9 +38,10 @@
                                 </select>
                             </div>
                             <div class="mb-4 cstrm_add">
-                                <label for="firstNameInput2" class="inline-block mb-2 text-base
-                                 font-medium">Or <span
-                                        class="text-red-500">*</span></label>
+                                <label for="firstNameInput2"
+                                    class="inline-block mb-2 text-base
+                                 font-medium">Or
+                                    <span class="text-red-500">*</span></label>
                                 <button type="button" data-modal-target="showModal"
                                     class="text-white  bg-custom-500 btn border-custom-500 
                                     hover:text-white hover:bg-custom-600 hover:border-custom-600
@@ -48,8 +49,7 @@
                                       focus:ring focus:ring-custom-100 active:text-white 
                                       active:bg-custom-600 active:border-custom-600 active:ring 
                                       active:ring-custom-100 dark:ring-custom-400/20 add-btn"
-                                    data-toggle="modal" id="add_new_contact_btn"
-                                     data-target="#createContactModal"><i
+                                    data-toggle="modal" id="add_new_contact_btn" data-target="#createContactModal"><i
                                         class="align-bottom ri-add-line me-1"></i> Add New Customer</button>
                             </div>
                         </div>
@@ -282,35 +282,44 @@
                             </button>
                         </div>
                         <form id="create_contact_form">
-                            <div class="modal-body">
-                                <div class="form-group">
+                            <div class="modal-body grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-12">
+                                <div class="xl:col-span-12">
                                     <label for="new_contact_name">Name</label>
-                                    <input type="text" class="form-control" id="new_contact_name"
-                                        name="new_contact_name" placeholder="Enter Contact Name">
+                                    <input type="text"
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="new_contact_name" name="new_contact_name" placeholder="Enter Contact Name">
                                 </div>
-                                <div class="form-group">
+                                <div class="xl:col-span-12">
                                     <label for="new_contact_email">Email</label>
-                                    <input type="email" class="form-control" id="new_contact_email"
-                                        name="new_contact_email" placeholder="Enter Contact Email">
+                                    <input type="email"
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="new_contact_email" name="new_contact_email"
+                                        placeholder="Enter Contact Email">
                                 </div>
-                                <div class="form-group">
+                                <div class="xl:col-span-12">
                                     <label for="new_contact_phone">Phone</label>
-                                    <input type="text" class="form-control" id="new_contact_phone"
-                                        name="new_contact_phone" placeholder="Enter Phone Number">
+                                    <input type="text"
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="new_contact_phone" name="new_contact_phone" placeholder="Enter Phone Number">
                                 </div>
-                                <div class="form-group">
+                                <div class="xl:col-span-12">
                                     <label for="new_contact_whatsapp_ph">WhatsApp Phone</label>
-                                    <input type="text" class="form-control" id="new_contact_whatsapp_ph"
-                                        name="new_contact_whatsapp_ph" placeholder="Enter WhatsApp Phone Number">
+                                    <input type="text"
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="new_contact_whatsapp_ph" name="new_contact_whatsapp_ph"
+                                        placeholder="Enter WhatsApp Phone Number">
                                 </div>
-                                <div class="form-group">
+                                <div class="xl:col-span-12">
                                     <label for="new_contact_address">Address</label>
-                                    <textarea class="form-control" id="new_contact_address" name="new_contact_address" placeholder="Enter Address"></textarea>
+                                    <textarea
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" id="save_contact_btn">Save
+                                <button type="button" class="btn btn-secondary text-white btn bg-custom-800 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20" data-dismiss="modal">Close</button>
+                                <button type="button"
+                                    class="btn btn-primary text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
+                                    id="save_contact_btn">Save
                                     Contact</button>
                             </div>
                         </form>
