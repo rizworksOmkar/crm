@@ -30679,6 +30679,15 @@ td.gridjs-td:last-child {
     .xl\:w-80 {
         width: 20rem;
     }
+
+    .xl\:w-90 {
+        width: 25rem;
+    }
+
+    .xl\:w-100 {
+        width: 30rem;
+    }
+
     .xl\:w-\[35rem\] {
         width: 35rem;
     }
@@ -30838,6 +30847,9 @@ td.gridjs-td:last-child {
     }
     .\32xl\:w-20 {
         width: 5rem;
+    }
+    .\32xl\:w-30 {
+        width: 12rem;
     }
     .\32xl\:max-w-\[87\.5rem\] {
         max-width: 87.5rem;
@@ -32650,4 +32662,41 @@ td.gridjs-td:last-child {
 
 .srchButton{
     margin-top: 30px;
+}
+
+.w_100{
+    width: 100%;
+}
+
+.hight_100{
+    height: 100%;
+}
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+.pr-0{
+    padding-right: 0 !important;
+}
+
+.pt-0{
+    padding-top: 0 !important;
+}
+
+.pb-0{
+    padding-bottom: 0 !important;
+}
+
+.lead_prsnl_dtls{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px 30px;
+}
+
+.lead_dtls .timeline-item .timeline-content h3 {
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

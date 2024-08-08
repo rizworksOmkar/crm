@@ -54,12 +54,11 @@
                                         <option value="leadSource">Lead Source</option>
                                     </select>
                                 </div>
-                                <div class="mb-4">
+                                {{-- <div class="mb-4">
                                     <label for="filterValue"
                                         class="inline-block mb-2 text-base
                                       font-medium">Select
                                         Value
-                                        {{-- <span class="text-red-500">*</span> --}}
                                     </label>
                                     <select id="filterValue"
                                         class="form-select border-slate-200 
@@ -72,7 +71,7 @@
                                        dark:placeholder:text-zink-200">
                                         <option value="">Select Value</option>
                                     </select>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 
                                    xl:grid-cols-3 mb-4"
