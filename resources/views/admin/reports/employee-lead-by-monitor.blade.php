@@ -11,98 +11,7 @@
             height: 100vh;
             margin: 0;
         } */
-        .lead_activity .card {
-            font-family: Arial, sans-serif;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 95%;
-            margin: 20px;
-            margin-left: 0;
-        }
-
-        .lead_activity .card h2 {
-            margin-top: 0;
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .lead_activity .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-
-        .lead_activity .timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #e0e0e0;
-        }
-
-        .lead_activity .timeline-item {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .lead_activity .timeline-icon {
-            position: absolute;
-            left: -30px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            color: white;
-            font-size: 14px;
-        }
-
-        .lead_activity .timeline-content {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .lead_activity .timeline-content h3 {
-            margin: 0;
-            font-size: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .lead_activity .timeline-content p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .lead_activity .status {
-            font-size: 12px;
-            padding: 2px 8px;
-            border-radius: 12px;
-            color: white;
-        }
-
-        .lead_activity .status-done {
-            background-color: #00c853;
-        }
-
-        .lead_activity .status-running {
-            background-color: #2196f3;
-        }
-
-        .lead_activity .status-pending {
-            background-color: #ffc107;
-        }
-
-        .lead_activity .status-not-start {
-            background-color: #f44336;
-        }
+       
     </style>
     <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
         <div
@@ -311,469 +220,78 @@
                                         <div class="hidden tab-pane" id="contactList">
                                             <div class="card-body">
                                                 <div class="flex items-center gap-3">
-                                                    <button
+                                                    {{-- <button
                                                         class="inline-flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 shrink-0 bg-slate-100 text-slate-500 dark:bg-zink-600 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500"><i
-                                                            data-lucide="chevrons-left" class="mx-auto size-4"></i></button>
-                                                    <h6 class="text-15 grow">Contacts</h6>
-                                                    <button data-modal-target="addContactModal"
+                                                            data-lucide="chevrons-left" class="mx-auto size-4"></i></button> --}}
+                                                    <h6 class="text-15 grow">Lead Report</h6>
+                                                    {{-- <button data-modal-target="addContactModal"
                                                         class="inline-flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 shrink-0 bg-slate-100 text-slate-500 dark:bg-zink-600 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500"><i
-                                                            data-lucide="plus" class="mx-auto size-4"></i></button>
+                                                            data-lucide="plus" class="mx-auto size-4"></i></button> --}}
                                                 </div>
-                                                <div class="relative mt-5">
+                                                {{-- <div class="relative mt-5">
                                                     <input type="text"
                                                         class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                                         placeholder="Search for ..." autocomplete="off">
                                                     <i data-lucide="search"
                                                         class="inline-block size-4 absolute ltr:left-2.5 rtl:right-2.5 top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600"></i>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <div data-simplebar
-                                                class="max-h-[calc(100vh_-_390px)] xl:max-h-[calc(100vh_-_300px)]">
-                                                <ul class="flex flex-col gap-1">
-                                                    <li class="px-5">
-                                                        <p class="mb-1 text-slate-500 dark:text-zink-200">Contact List
-                                                        </p>
-                                                    </li>
+                                                class="max-h-[calc(100vh_-_380px)] xl:max-h-[calc(100vh_-_300px)]">
+                                                <ul class="flex flex-col gap-1" id="chatList">
+
                                                     <li>
                                                         <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
+                                                            class="flex items-center gap-3 px-5 py-2 [&amp;.active]:bg-slate-50 group/item dark:[&amp;.active]:bg-zink-600 offline">
                                                             <div
                                                                 class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                <img src="./assets/images/user-2.jpg" alt=""
+                                                                <img src="./assets/admin/images/avatar-7.png" alt=""
                                                                     class="rounded-full h-9">
                                                                 <span
                                                                     class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
                                                             </div>
                                                             <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">Aurore Maggio</h6>
+                                                                <h6 class="mb-1">Sheikh Shaimul Rana</h6>
                                                                 <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    React Developer</p>
+                                                                    class="text-sm truncate text-slate-700 dark:text-zink-200">
+                                                                    LD-2024-07-403599</p>
+                                                                <p
+                                                                    class="text-sm truncate text-slate-700 dark:text-zink-200">
+                                                                    House/Villa</p>
                                                             </a>
                                                             <div class="relative dropdown shrink-0">
                                                                 <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
+                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><svg
+                                                                        xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
                                                                         data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
+                                                                        class="lucide lucide-more-vertical inline-block ml-1 size-4">
+                                                                        <circle cx="12" cy="12" r="1">
+                                                                        </circle>
+                                                                        <circle cx="12" cy="5" r="1">
+                                                                        </circle>
+                                                                        <circle cx="12" cy="19" r="1">
+                                                                        </circle>
+                                                                    </svg></button>
 
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
+                                                                {{-- <ul class="absolute z-50 py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600 hidden" aria-labelledby="contactListDropdown1" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(656px, 289px);">
                                                                     <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
+                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">Send Message</a>
                                                                     </li>
                                                                     <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
+                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">Edit</a>
                                                                     </li>
                                                                     <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
+                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" href="#!">Delete</a>
                                                                     </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
-                                                            <div
-                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                LP
-                                                                <span
-                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                            </div>
-                                                            <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">Mark Walton</h6>
-                                                                <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    UI / UX Designer</p>
-                                                            </a>
-                                                            <div class="relative dropdown shrink-0">
-                                                                <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
-                                                                        data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
-
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
-                                                            <div
-                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                <img src="./assets/images/avatar-5.png" alt=""
-                                                                    class="rounded-full h-9">
-                                                                <span
-                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                            </div>
-                                                            <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">Daniel Miller</h6>
-                                                                <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    ASP.Net Developer</p>
-                                                            </a>
-                                                            <div class="relative dropdown shrink-0">
-                                                                <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
-                                                                        data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
-
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
-                                                            <div
-                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                <img src="./assets/images/user-3.jpg" alt=""
-                                                                    class="rounded-full h-9">
-                                                                <span
-                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                            </div>
-                                                            <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">Jaqueline Hammes</h6>
-                                                                <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    Angular Developer</p>
-                                                            </a>
-                                                            <div class="relative dropdown shrink-0">
-                                                                <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
-                                                                        data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
-
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
-                                                            <div
-                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                <img src="./assets/images/avatar-8.png" alt=""
-                                                                    class="rounded-full h-9">
-                                                                <span
-                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                            </div>
-                                                            <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">Andrea Pesina</h6>
-                                                                <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    Laravel Developer</p>
-                                                            </a>
-                                                            <div class="relative dropdown shrink-0">
-                                                                <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
-                                                                        data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
-
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
-                                                            <div
-                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                <img src="./assets/images/avatar-10.png" alt=""
-                                                                    class="rounded-full h-9">
-                                                                <span
-                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                            </div>
-                                                            <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">Bernard Pereira</h6>
-                                                                <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    Web Designer</p>
-                                                            </a>
-                                                            <div class="relative dropdown shrink-0">
-                                                                <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
-                                                                        data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
-
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
-                                                            <div
-                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                <img src="./assets/images/user-4.jpg" alt=""
-                                                                    class="rounded-full h-9">
-                                                                <span
-                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                            </div>
-                                                            <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">William Jones</h6>
-                                                                <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    Project Manager</p>
-                                                            </a>
-                                                            <div class="relative dropdown shrink-0">
-                                                                <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
-                                                                        data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
-
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
-                                                            <div
-                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                <img src="./assets/images/avatar-8.png" alt=""
-                                                                    class="rounded-full h-9">
-                                                                <span
-                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                            </div>
-                                                            <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">Andrea Pesina</h6>
-                                                                <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    Laravel Developer</p>
-                                                            </a>
-                                                            <div class="relative dropdown shrink-0">
-                                                                <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
-                                                                        data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
-
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
-                                                            <div
-                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                <img src="./assets/images/avatar-10.png" alt=""
-                                                                    class="rounded-full h-9">
-                                                                <span
-                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                            </div>
-                                                            <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">Bernard Pereira</h6>
-                                                                <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    Web Designer</p>
-                                                            </a>
-                                                            <div class="relative dropdown shrink-0">
-                                                                <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
-                                                                        data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
-
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
-                                                            <div
-                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                <img src="./assets/images/user-4.jpg" alt=""
-                                                                    class="rounded-full h-9">
-                                                                <span
-                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                            </div>
-                                                            <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">Mary Segura</h6>
-                                                                <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    NodeJS Developer</p>
-                                                            </a>
-                                                            <div class="relative dropdown shrink-0">
-                                                                <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
-                                                                        data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
-
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div
-                                                            class="flex items-center gap-3 px-5 py-2 [&.active]:bg-slate-50 group/item dark:[&.active]:bg-zink-600 offline">
-                                                            <div
-                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                                PJ
-                                                                <span
-                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                            </div>
-                                                            <a href="#!" class="overflow-hidden grow">
-                                                                <h6 class="mb-1">Pearl Johnson</h6>
-                                                                <p
-                                                                    class="text-xs truncate text-slate-500 dark:text-zink-200">
-                                                                    Team Leader</p>
-                                                            </a>
-                                                            <div class="relative dropdown shrink-0">
-                                                                <button type="button" class="dropdown-toggle"
-                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><i
-                                                                        data-lucide="more-vertical"
-                                                                        class="inline-block ml-1 size-4"></i></button>
-
-                                                                <ul class="absolute z-50 hidden py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600"
-                                                                    aria-labelledby="contactListDropdown1">
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Send Message</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Edit</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a class="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200"
-                                                                            href="#!">Delete</a>
-                                                                    </li>
-                                                                </ul>
+                                                                </ul> --}}
                                                             </div>
                                                         </div>
                                                     </li>
                                                 </ul>
-                                            </div>
+                                            </div>  
                                         </div>
                                         {{-- profile  --}}
                                         {{-- <div class="hidden tab-pane" id="profile">
@@ -921,7 +439,7 @@
                                                 </div>
                                                 <div class="timeline-item">
                                                     <div class="timeline-icon" style="background-color: #2196f3;">
-                                                        <i class="fas fa-rocket"></i>
+                                                        {{-- <i class="fas fa-rocket"></i> --}}
                                                     </div>
                                                     <div class="timeline-content">
                                                         <h3>
@@ -933,7 +451,7 @@
                                                 </div>
                                                 <div class="timeline-item">
                                                     <div class="timeline-icon" style="background-color: #2196f3;">
-                                                        <i class="fas fa-hand-paper"></i>
+                                                        {{-- <i class="fas fa-hand-paper"></i> --}}
                                                     </div>
                                                     <div class="timeline-content">
                                                         <h3>

@@ -32671,6 +32671,98 @@ td.gridjs-td:last-child {
 .hight_100{
     height: 100%;
 }
+.lead_activity .card {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 95%;
+    margin: 20px;
+    margin-left: 0;
+}
+
+.lead_activity .card h2 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.lead_activity .timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.lead_activity .timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e0e0e0;
+}
+
+.lead_activity .timeline-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.lead_activity .timeline-icon {
+    position: absolute;
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 14px;
+}
+
+.lead_activity .timeline-content {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.lead_activity .timeline-content h3 {
+    margin: 0;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lead_activity .timeline-content p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.lead_activity .status {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    color: white;
+}
+
+.lead_activity .status-done {
+    background-color: #00c853;
+}
+
+.lead_activity .status-running {
+    background-color: #2196f3;
+}
+
+.lead_activity .status-pending {
+    background-color: #ffc107;
+}
+
+.lead_activity .status-not-start {
+    background-color: #f44336;
+}
 
 .pl-0 {
     padding-left: 0 !important;
@@ -32699,4 +32791,17 @@ td.gridjs-td:last-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+
+.lead_dtls .timeline-icon {
+    position: absolute;
+    left: -19px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 14px;
 }
