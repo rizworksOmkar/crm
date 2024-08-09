@@ -25,7 +25,7 @@
     {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/jquery-selectric/selectric.css') }}"> --}}
     {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
     {{-- <link rel="stylesheet" href="{{ asset('assets/admin/bundles/datatables/datatables.min.css') }}"> --}}
-    {{-- <link rel="stylesheet" href="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
     <!-- Template CSS -->
     {{--
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}"> --}}
@@ -1583,7 +1583,7 @@
     <script src="{{ asset('assets/admin/libs/prismjs/prism.js') }}"></script>
     <script src="{{ asset('assets/admin/libs/lucide/umd/lucide.js') }}"></script>
     <script src="{{ asset('assets/admin/js/tailwick.bundle.js') }}"></script>
-    <script src="{{ asset('assets/admin/libs/apexcharts/apexcharts.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/admin/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
     <script src="https://apexcharts.com/samples/assets/stock-prices.js"></script>
     <script src="{{ asset('assets/admin/js/pages/dashboards-ecommerce.init.js') }}"></script>
     
@@ -1608,30 +1608,30 @@
     <!-- General JS Scripts -->
     {{-- <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script> --}}
 
-     {{-- <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
-     </script> --}}
+     <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+     </script>
      {{-- <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script> --}}
     <!-- Page Specific JS File -->
-    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
+    {{-- <script src="{{ asset('assets/admin/OldAssets/js/page/d    atatables.js') }}"></script> --}}
     <script src="{{ asset('assets/admin/OldAssets/js/app.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/OldAssets/bundles/summernote/summernote-bs4.js') }}"></script>
+    {{-- <script src="{{ asset('assets/admin/OldAssets/bundles/summernote/summernote-bs4.js') }}"></script> --}}
    <!-- JS Libraies -->
-    <script src="{{ asset('assets/admin/OldAssets/bundles/apexcharts/apexcharts.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/admin/OldAssets/bundles/apexcharts/apexcharts.min.js') }}"></script> --}}
 
-    <script src="{{ asset('assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/OldAssets/bundles/select2/dist/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('assets/admin/OldAssets/bundles/select2/dist/js/select2.full.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script> --}}
    <!-- Page Specific JS File -->
-    <script src="{{ asset('assets/admin/OldAssets/js/page/index.js') }}"></script>
+    {{-- <script src="{{ asset('assets/admin/OldAssets/js/page/index.js') }}"></script> --}}
    <!-- Template JS File -->
-    <script src="{{ asset('assets/admin/OldAssets/js/scripts.js') }}"></script>
+    {{-- <script src="{{ asset('assets/admin/OldAssets/js/scripts.js') }}"></script> --}}
    <!-- Custom JS File -->
-   <script src="{{ asset('assets/admin/OldAssets/OldAssets/js/custom.js') }}"></script>
-    <script src="{{ asset('assets/admin/OldAssets/js/jquery.textareaCounter.plugin.js') }}"></script>
+   {{-- <script src="{{ asset('assets/admin/OldAssets/OldAssets/js/custom.js') }}"></script> --}}
+    {{-- <script src="{{ asset('assets/admin/OldAssets/js/jquery.textareaCounter.plugin.js') }}"></script> --}}
    <!-- Cropring Iamges -->
-    <script type="text/javascript" src="{{ asset('assets/admin/OldAssets/croperimgages/scripts/jquery.Jcrop.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/admin/OldAssets/croperimgages/scripts/jquery.SimpleCropper.js') }} ">
-    </script>
+    {{-- <script type="text/javascript" src="{{ asset('assets/admin/OldAssets/croperimgages/scripts/jquery.Jcrop.js') }}"></script> --}}
+    {{-- <script type="text/javascript" src="{{ asset('assets/admin/OldAssets/croperimgages/scripts/jquery.SimpleCropper.js') }} ">
+    </script> --}}
     <script>
         try {
             fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", {

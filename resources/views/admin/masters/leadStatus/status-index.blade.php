@@ -11,8 +11,7 @@
              group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl 
              group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto 
              group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] 
-             group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]"
-             >
+             group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
             <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
                 <div class="grid grid-cols-12 2xl:grid-cols-12 gap-x-5">
                     <!--end col-->
@@ -57,8 +56,7 @@
                                 <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-2 mt-2">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form id="add_lead_status_form" 
-                                            action="{{ route('lead-statuses.store') }}"
+                                            <form id="add_lead_status_form" action="{{ route('lead-statuses.store') }}"
                                                 method="POST">
                                                 {{ csrf_field() }}
                                                 <div class="card-header mb-3">
@@ -66,9 +64,10 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="inline-block mb-2 text-base font-medium"
-                                                        for="status_type">Add Lead Status <span
-                                                            class="text-red-500">*</span></label>
-                                                    <input type="password" id="status_type" name="status_type"
+                                                        for="status_type">Add Lead Status
+                                                         {{-- <span class="text-red-500">*</span> --}}
+                                                        </label>
+                                                    <input type="text" id="status_type" name="status_type"
                                                         placeholder="Enter Lead Status"
                                                         class="form-input border-slate-200 dark:border-zink-500 
                                                         focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
@@ -135,9 +134,18 @@
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     @if ($status->state_status == 1)
-                                                        <span class="badge badge-success">Active</span>
+                                                        <span
+                                                            class="py-1 text-xs text-white btn bg-custom-800 border-custom-500 
+                                                            hover:text-white hover:bg-custom-600 hover:border-custom-600 
+                                                            focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
+                                                            focus:ring-custom-100 active:text-white
+                                                             active:bg-custom-600 active:border-custom-600 active:ring 
+                                                             active:ring-custom-100 
+                                                             dark:ring-custom-400/20 edit-item-btn">Active</span>
                                                     @else
-                                                        <span class="badge badge-danger">InActive</span>
+                                                        <span class="toggle-status py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
+                                                             active:border-red-600 active:ring active:ring-red-100
+                                                              dark:ring-custom-400/20 remove-item-btn">InActive</span>
                                                     @endif
                                                 </td>
                                                 <td
@@ -152,7 +160,7 @@
                                                     </div>
                                                 </td>
                                                 <td
-                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    class="text-center px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     <div class="buttons">
                                                         <form style="display: inline-block;" method="POST"
                                                             action="{{ route('lead-status.destroy', $status->id) }}">
@@ -165,8 +173,8 @@
                                                             focus:ring-custom-100 active:text-white
                                                              active:bg-custom-600 active:border-custom-600 active:ring 
                                                              active:ring-custom-100 
-                                                             dark:ring-custom-400/20 edit-item-btn" 
-                                                             onclick="return confirm('Are you sure you want to delete this
+                                                             dark:ring-custom-400/20 edit-item-btn"
+                                                                onclick="return confirm('Are you sure you want to delete this
                                                               property type?')">Delete</button>
                                                         </form>
                                                     </div>
@@ -177,7 +185,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                           
+
                         </div>
                     </div>
                     <!--end col-->
@@ -190,7 +198,8 @@
 @section('scripts')
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    <script
+        src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
     </script>
     <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>

@@ -84,7 +84,7 @@
                                 <h6 class="text-15">Employee</h6>
                             </div>
                             <!--end col-->
-                            <div class="xl:col-span-4 xl:col-end-12">
+                            <div class="xl:col-span-5 xl:col-start-12">
                                 <div class="flex gap-3">
                                     {{-- <div class="relative grow">
                                         <input type="text"
@@ -93,8 +93,8 @@
                                         <i data-lucide="search"
                                             class="inline-block size-4 absolute ltr:left-2.5 rtl:right-2.5 top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600"></i>
                                     </div> --}}
-                                    <a href="{{ route('admin-create-employee') }}" class="btn btn-primary "><i
-                                            class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i> Create
+                                    <a href="{{ route('admin-create-employee') }}" class="btn text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 
+                                    active:ring active:ring-custom-100 dark:ring-custom-400/20"> Create
                                         Employee</a>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                         </div>
                         <!--end grid-->
 
-                        <div class="-mx-5 overflow-x-auto">
+                        <div class="overflow-x-auto">
                             <table class="w-full whitespace-nowrap">
                                 <thead
                                     class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
@@ -185,13 +185,15 @@
                                             <div class="buttons">
 
 
-                                                <a href="#" class="btn btn-icon btn-sm btn-info" data-toggle="tooltip"
-                                                    title="view and Edit Your Employee"><i class="far fa-eye"></i></a>
+                                                <a href="#" class="py-1 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white
+                                                             active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 edit-item-btn" data-toggle="tooltip"
+                                                    title="view and Edit Your Employee"><i class="fa fa-eye"></i></a>
 
-                                                <a submitid="{{ $us->id }}" class="btn btn-icon btn-sm btn-danger"
+                                                <a submitid="{{ $us->id }}" class="py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
+                                                             active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20 remove-item-btn"
                                                     data-toggle="tooltip" title="Delete your City"
                                                     href="javacript:void(0)" id="deleteCountry_{{ $us->id }}"><i
-                                                        class="fas fa-times"></i></a>
+                                                        class="fa fa-times"></i></a>
                                             </div>
                                         </td>
                                     </tr>
