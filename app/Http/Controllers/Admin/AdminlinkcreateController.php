@@ -40,6 +40,7 @@ use App\Models\Admin\HotelCostByRoomTypes;
 use App\Models\Admin\HotelRoomDetailsPrices;
 use App\Models\Admin\HotelRoomOptions;
 use Illuminate\Support\Facades\DB;
+use App\Models\Contact;
 
 class AdminlinkcreateController extends Controller
 {
@@ -380,5 +381,16 @@ class AdminlinkcreateController extends Controller
         $packages = Package::where('groupdepartureflag',1)->get();
         //$seasonpackages = Season::orderByRaw('id ASC')->get(); 
         return view('admin.add-packageAvailability', compact('packages'));
+    }
+
+    public function customerIndex()
+    {
+        $cus = Contact::orderByRaw('id DESC')->get();
+        return view('admin.masters.customer.index', compact('cus'));
+    }
+
+    public function customerCreate()
+    {
+        return view('admin.masters.customer.createCustomer');
     }
 }

@@ -12,7 +12,7 @@ use App\Http\Controllers\CRM\AssignLeadController;
 use App\Http\Controllers\CRM\LeadImportController;
 use App\Http\Controllers\BillingController;
 
-
+use App\Http\Controllers\Admin\AdminlinkcreateController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\PropertySpecController;
@@ -132,6 +132,9 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::post('billing/record-payment/{leadId}', [BillingController::class, 'recordPayment'])->name('billing.recordPayment');
         Route::post('billing/raise-dispute/{leadId}', [BillingController::class, 'raiseDispute'])->name('billing.raiseDispute');
         Route::patch('billing/{billing}/fixDispute', [BillingController::class, 'fixDispute'])->name('billing.fixDispute');
+
+        Route::get('customer', [AdminlinkcreateController::class, 'customerIndex'])->name('admin.customer.index');
+        Route::get('customercreate', [AdminlinkcreateController::class, 'customerCreate'])->name('admin.customer.create');
 
     });
 });
