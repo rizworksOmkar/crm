@@ -6,13 +6,57 @@ use Illuminate\Http\Request;
 use App\Models\Lead;
 use App\Models\LeadBilling;
 use App\Models\User;
+use App\Models\Billing;
+use App\Models\PaymentReceipt;
+use App\Models\Transaction;
+
 
 class BillingController extends Controller
 {
     public function index()
     {
-        $leads = Lead::with(['contact', 'billing'])->where('status', 'Closed Successfully')->get();
-        return view('admin.billing.index', compact('leads'));
+        $leadsWithoutBills = Lead::with(['contact', 'assignedTo'])
+            ->where('status', 'Closed Successfully')
+            ->doesntHave('billing')
+            ->get();
+
+        $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
+            ->where('status', 'Closed Successfully')
+            ->has('billing')
+            ->get();
+
+        return view('admin.billing.index', compact('leadsWithoutBills', 'leadsWithBills'));
+    }
+
+    public function getReceipts(Billing $billing)
+    {
+        $receipts = $billing->receipts()->orderBy('date', 'desc')->get();
+        return response()->json(['receipts' => $receipts]);
+    }
+
+    public function getTransactions(Billing $billing)
+    {
+        $transactions = $billing->transactions()->orderBy('created_at', 'desc')->get();
+        return response()->json(['transactions' => $transactions]);
+    }
+
+    public function store(Request $request, $leadId)
+    {
+        $lead = Lead::findOrFail($leadId);
+        $validatedData = $request->validate([
+            'expected_amount' => 'required|numeric',
+            'to_pay' => 'required|numeric',
+            'date' => 'required|date',
+            'agent_id' => 'required|exists:users,id',
+        ]);
+
+        $billing = new Billing($validatedData);
+        $billing->customerWillPay = $billing->to_pay;
+        $billing->lead_num = $lead->lead_num;
+        $billing->bill_num = 'BILL-' . uniqid();
+        $billing->save();
+
+        return response()->json(['success' => true, 'message' => 'Bill created successfully']);
     }
 
     public function raiseBill($leadId)
@@ -111,6 +155,42 @@ class BillingController extends Controller
         ]);
 
         return redirect()->route('billing.index')->with('success', 'Dispute fixed and billing details updated.');
+    }
+
+
+
+    public function makePayment(Request $request, $billId)
+    {
+        $billing = Billing::findOrFail($billId);
+
+        $validatedData = $request->validate([
+            'payment_amount' => 'required|numeric|max:' . $billing->to_pay,
+            'payment_mode' => 'required|in:cash,card,bank_transfer',
+        ]);
+
+        $receipt = new PaymentReceipt([
+            'bill_num' => $billing->bill_num,
+            'lead_num' => $billing->lead_num,
+            'amount_paid' => $validatedData['payment_amount'],
+            'date' => now(),
+            'payment_receipt_num' => 'RCPT-' . uniqid(),
+        ]);
+        $receipt->save();
+
+        $transaction = new Transaction([
+            'bill_num' => $billing->bill_num,
+            'receipt_num' => $receipt->payment_receipt_num,
+            'transaction_num' => 'TXN-' . uniqid(),
+            'mode' => $validatedData['payment_mode'],
+            'payment_amount' => $validatedData['payment_amount'],
+            'status' => 'completed',
+        ]);
+        $transaction->save();
+
+        $billing->to_pay -= $validatedData['payment_amount'];
+        $billing->save();
+
+        return response()->json(['success' => true, 'message' => 'Payment processed successfully']);
     }
 
 
