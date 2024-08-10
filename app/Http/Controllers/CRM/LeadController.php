@@ -202,7 +202,8 @@ class LeadController extends Controller
 
         $leads = Lead::where('assigned_to', $myId)->get();
         $contacts = Contact::all();
-        return view('admin.empLead.index', compact('leads', 'contacts'));
+        $status = LeadStatus::all();
+        return view('admin.empLead.index', compact('leads', 'contacts', 'status'));
     }
     // chnageStatus
 
@@ -490,17 +491,23 @@ class LeadController extends Controller
                 break;
             case 'employee':
                 $values = User::select('id', 'first_name', 'last_name')
-                ->where('role_type', '!=', 'superadmin')
-                ->where('role_type', '!=', 'admin')
-                ->get()->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'name' => $user->first_name . ' ' . $user->last_name
-                    ];
-                });
+                    ->where('role_type', '!=', 'superadmin')
+                    ->where('role_type', '!=', 'admin')
+                    ->get()->map(function ($user) {
+                        return [
+                            'id' => $user->id,
+                            'name' => $user->first_name . ' ' . $user->last_name
+                        ];
+                    });
                 break;
             case 'leadSource':
-                $values = LeadSource::select('id', 'name')->get();
+                $values = LeadSource::select('id', 'lead_source')->get()->map(function ($source) {
+                    return [
+                        'id' => $source->id,
+                        'name' => $source->lead_source
+                    ];
+                });
+
                 break;
             default:
                 $values = [];
@@ -526,26 +533,26 @@ class LeadController extends Controller
         switch ($filterType) {
             case 'customer':
                 $leads = Lead::orderBy('created_at', 'desc')
-                              ->with(['contact', 'assignedTo'])
-                              ->get();
+                    ->with(['contact', 'assignedTo'])
+                    ->get();
                 if ($leads->isNotEmpty()) {
                     $leads = $leads->where('contact_id', $filterValue);
                 }
                 break;
             case 'employee':
                 $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
-                              ->orderBy('created_at', 'desc')
-                              ->with(['contact', 'assignedTo'])
-                              ->get();
+                    ->orderBy('created_at', 'desc')
+                    ->with(['contact', 'assignedTo'])
+                    ->get();
                 if ($leads->isNotEmpty()) {
                     $leads = $leads->where('assigned_to', $filterValue);
                 }
                 break;
             case 'leadSource':
                 $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
-                              ->orderBy('created_at', 'desc')
-                              ->with(['contact', 'assignedTo'])
-                              ->get();
+                    ->orderBy('created_at', 'desc')
+                    ->with(['contact', 'assignedTo'])
+                    ->get();
                 if ($leads->isNotEmpty()) {
                     $leads = $leads->where('lead_source', $filterValue);
                 }
@@ -567,6 +574,24 @@ class LeadController extends Controller
         return response()->json($tasks);
     }
 
+    public function getDetails($id)
+    {
+        $lead = Lead::with('contact')->findOrFail($id);
+        return response()->json([
+            'phone' => $lead->contact->phone,
+            'whatsapp' => $lead->contact->whatsapp_ph,
+        ]);
+    }
+
+    public function timeline($id)
+    {
+        $lead = Lead::findOrFail($id);
+        $tasks = $lead->tasks()->latest()->get();
+
+        return response()->json(['tasks' => $tasks]);
+    }
+
+
 
     // EmployeeController.php
 
@@ -580,6 +605,7 @@ class LeadController extends Controller
     {
         $employee = User::findOrFail($employeeId);
         $leads = $employee->leads()->with('contact')->get();
+
         return response()->json($leads);
     }
 
@@ -610,5 +636,30 @@ class LeadController extends Controller
             ->with(['contact', 'assignedTo'])
             ->get();
         return response()->json($leads);
+    }
+
+
+    public function storeTaskByEmployee(Request $request)
+    {
+        $validatedData = $request->validate([
+            'lead_id' => 'required|exists:leads,id',
+            'client_activity' => 'required|string',
+            'user_activity' => 'required|string',
+            'mode' => 'required|string',
+            'date' => 'required|date',
+            'status' => 'required|string',
+        ]);
+
+        $task = Task::create([
+            'lead_id' => $validatedData['lead_id'],
+            'customer_description' => $validatedData['client_activity'],
+            'user_description' => $validatedData['user_activity'],
+            'date' => $validatedData['date'],
+            'status' => $validatedData['status'],
+            'mode' => $validatedData['mode'],
+            'created_by' => Auth::id(),
+        ]);
+
+        return response()->json(['message' => 'Task created successfully', 'task' => $task]);
     }
 }

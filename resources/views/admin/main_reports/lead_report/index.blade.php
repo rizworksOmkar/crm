@@ -1,4 +1,4 @@
-@extends('layouts.user-dashboard-layout')
+@extends('layouts.admin-front')
 @section('content')
     <style>
         .card-timeline {
@@ -144,6 +144,9 @@
                                     <th>Customer Name</th>
                                     <th>Lead Number</th>
                                     <th>Lead Date</th>
+                                    <th>
+                                        Assigned To
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -158,6 +161,13 @@
                                         <td>{{ $lead->contact->name }}</td>
                                         <td>{{ $lead->lead_num }}</td>
                                         <td>{{ $lead->created_at }}</td>
+                                        <td>
+                                            @if ($lead->assignedTo == null)
+                                                Not Assigned
+                                            @else
+                                                {{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -166,64 +176,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="lead-details" id="lead-details" style="display: none;">
-                        <form class="lead-form">
-                            @csrf
-                            <div class="row">
-                                {{-- <div class="col-md-12">
-                                    <h5>Customer Details</h5>
-                                    <div class="form-group">
-                                        <label>Customer Name</label>
-                                        <input type="text" class="form-control" id="customer-name" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="text" class="form-control" id="customer-phone" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>WhatsApp Number</label>
-                                        <input type="text" class="form-control" id="customer-whatsapp" readonly>
-                                    </div>
-                                </div> --}}
-                                <div class="col-md-12">
-                                    <h5>Task Details</h5>
-                                    <div class="form-group">
-                                        <label>Update Activity by Clients</label>
-                                        <textarea class="form-control" name="client_activity"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Update Activity by User</label>
-                                        <textarea class="form-control" name="user_activity"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Mode</label>
-                                        <input type="text" class="form-control" name="mode">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Date</label>
-                                        <input type="date" class="form-control" name="date">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Status</label>
-                                        <select class="form-control" name="status">
-                                            @foreach ($status as $leadSatatus)
-                                                <option value="{{ $leadSatatus->status_type }}">
-                                                    {{ $leadSatatus->status_type }}</option>
-                                            @endforeach
 
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="col-md-4">
             <div class="card card-timeline">
                 <div class="card-header">
@@ -238,70 +191,11 @@
     </div>
 @endsection
 
-{{-- @section('scripts')
-    <script>
-        $(document).ready(function() {
-            $('.lead-checkbox').on('change', function() {
-                $('.lead-checkbox').not(this).prop('checked', false);
-                $('.lead-details').hide();
-
-                if ($(this).is(':checked')) {
-                    var leadId = $(this).data('lead-id');
-                    $('#lead-details-' + leadId).show();
-                    loadLeadTimeline(leadId);
-                } else {
-                    $('#lead-timeline').empty();
-                }
-            });
-
-            $('.lead-form').on('submit', function(e) {
-                e.preventDefault();
-                var leadId = $(this).data('lead-id');
-                var formData = $(this).serialize();
-
-                $.ajax({
-                    url: '/tasks',
-                    method: 'POST',
-                    data: formData + '&lead_id=' + leadId,
-                    success: function(response) {
-                        alert('Task added successfully');
-                        loadLeadTimeline(leadId);
-                    },
-                    error: function(error) {
-                        console.error('Error adding task:', error);
-                        alert('Error: Unable to add task.');
-                    }
-                });
-            });
-
-            function loadLeadTimeline(leadId) {
-                $.ajax({
-                    url: '/leads/' + leadId + '/timeline',
-                    method: 'GET',
-                    success: function(response) {
-                        var timeline = $('#lead-timeline');
-                        timeline.empty();
-
-                        response.tasks.forEach(function(task) {
-                            var item = $('<li>').addClass('timeline-item');
-                            item.append($('<strong>').text(task.date));
-                            item.append($('<p>').text(task.description));
-                            item.append($('<p>').text('Status: ' + task.status));
-                            item.append($('<p>').text('Mode: ' + task.mode));
-                            timeline.append(item);
-                        });
-                    },
-                    error: function(error) {
-                        console.error('Error loading timeline:', error);
-                    }
-                });
-            }
-        });
-    </script>
-@endsection --}}
 @section('scripts')
     <script>
         $(document).ready(function() {
+
+            
             $('.lead-checkbox').on('change', function() {
                 $('.lead-checkbox').not(this).prop('checked', false);
 
@@ -316,7 +210,7 @@
                     $('.lead-form').data('lead-id', leadId);
 
                     $.ajax({
-                        url: '/leads/' + leadId + '/details',
+                        url: '/leads/' + leadId + '/detail',
                         method: 'GET',
                         success: function(response) {
                             $('#customer-phone').val(response.phone);
@@ -357,7 +251,7 @@
 
             function loadLeadTimeline(leadId) {
                 $.ajax({
-                    url: '/leads/' + leadId + '/timeline',
+                    url: '/leads/' + leadId + '/timelines',
                     method: 'GET',
                     success: function(response) {
                         var timeline = $('#lead-timeline');

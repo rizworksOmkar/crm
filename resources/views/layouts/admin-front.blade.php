@@ -35,7 +35,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/style-example.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/croperimgages/css/jquery.Jcrop.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/bundles/pretty-checkbox/pretty-checkbox.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/admin/bundles/pretty-checkbox/pretty-checkbox.min.css') }}">
     <!-- End Croping Images -->
     @yield('styles')
 </head>
@@ -197,9 +198,9 @@
                         <div class="dropdown-menu dropdown-menu-right pullDown">
                             <div class="dropdown-title">Hello {{ Auth::user()->first_name }}
                                 {{ Auth::user()->middle_name }} {{ Auth::user()->last_name }}</div>
-                            <a href="#" class="dropdown-item has-icon"> <i
-                                    class="far
-										fa-user"></i> Profile
+                            <a href="#" class="dropdown-item has-icon"> <i class="far
+										fa-user"></i>
+                                Profile
                             </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                                 Activities
                             </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
@@ -230,10 +231,12 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="users"></i><span>Master Management</span></a>
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                    data-feather="users"></i><span>Master Management</span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ route('admin-employee-index') }}" class="nav-link">Employee / User</a>
+                                    <a href="{{ route('admin-employee-index') }}" class="nav-link">Employee /
+                                        User</a>
                                     <a href="#" class="nav-link">Customer / Client</a>
                                     <a href="{{ route('get-all-roles') }}" class="nav-link">Role Master</a>
                                     <a href="{{ route('property-types.view') }}" class="nav-link">Property Type</a>
@@ -245,42 +248,70 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="clipboard"></i><span>Lead & Management</span></a>
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                    data-feather="clipboard"></i><span>Lead & Management</span></a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="{{ route('lead-sources.view') }}" class="nav-link">Lead Source</a>
-                                    <a href="{{ route('lead-status.view') }}" class="nav-link">Lead Status Creation</a>
+                                    <a href="{{ route('lead-status.view') }}" class="nav-link">Lead Status
+                                        Creation</a>
 
-                                    <a href="{{ route('admin-lead-index') }}" class="nav-link">Leads Creation (One)</a>
+                                    <a href="{{ route('admin-lead-index') }}" class="nav-link">Leads Creation
+                                        (One)</a>
                                     <a href="{{ route('lead.upload') }}" class="nav-link">Lead Mass Import</a>
-                                    <a href="{{ route('admin-assignlead-index') }}" class="nav-link">Lead Assignment</a>
-                                    <a href="{{ route('admin-reassignlead-index') }}" class="nav-link">Lead Re-Assignment</a>
+                                    <a href="{{ route('admin-assignlead-index') }}" class="nav-link">Lead
+                                        Assignment</a>
+                                    <a href="{{ route('admin-reassignlead-index') }}" class="nav-link">Lead
+                                        Re-Assignment</a>
                                     <a href="{{ route('monitor-report') }}" class="nav-link">Lead Activity</a>
-                                    <a href="{{ route('lead-completion-filter.view') }}" class="nav-link">Lead Completion</a>
+                                    <a href="{{ route('lead-completion-filter.view') }}" class="nav-link">Lead
+                                        Completion</a>
 
                                 </li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="credit-card"></i><span>Accounts</span></a>
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                    data-feather="credit-card"></i><span>Accounts</span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ route('billing.index') }}" class="nav-link">Bill Raise</a>
-                                    <a href="#" class="nav-link">Payment Reciept</a>
-                                    <a href="#" class="nav-link">Payment Dispute</a>
+                                    <a href="{{ route('billing.index') }}" class="nav-link">Bill Management</a>
+                                    {{-- <a href="#" class="nav-link">Payment Reciept</a>
+                                    <a href="#" class="nav-link">Payment Dispute</a> --}}
                                 </li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="bar-chart-2"></i><span>Reports</span></a>
+                            <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                                    data-feather="bar-chart-2"></i><span>Reports</span></a>
                             <ul class="dropdown-menu">
                                 <li>
+
+                                    <a href="{{ route('lead-report-main') }}" class="nav-link">Lead Report</a>
+                                    <a href="{{ route('unassigned-leads') }}" class="nav-link">Unassigned Lead
+                                        Report</a>
+                                    <a href="{{ route('assigned-leads') }}" class="nav-link">Assigned Lead Report</a>
+                                    <a href="{{ route('unbilled-leads') }}" class="nav-link">Unbilled Leads
+                                        Report</a>
+                                    <a href="{{ route('billed-leads') }}" class="nav-link">Unpaid Bill Leads Report</a>
+                                    <a href="{{ route('paid-leads') }}" class="nav-link">Paid Bill Leads
+                                        Report</a>
+
+                                    <a>------------------------</a>
+
+
+
+
+
+
                                     {{-- <a href="#" class="nav-link">My Assigned Lead Monitoring</a> --}}
                                     <a href="{{ route('monitor-report') }}" class="nav-link">Lead Monitoring</a>
-                                    <a href="{{ route('employees-monitor') }}" class="nav-link">Employee Monitoring</a>
-                                    <a href="{{ route('date-range-report') }}" class="nav-link">Dated Monitoring Reports</a>
+                                    <a href="{{ route('employees-monitor') }}" class="nav-link">Employee
+                                        Monitoring</a>
+                                    <a href="{{ route('date-range-report') }}" class="nav-link">Dated Monitoring
+                                        Reports</a>
                                     <a href="#" class="nav-link">Client Monitoring</a>
                                     <a href="#" class="nav-link">Specific Client Monitoring</a>
                                     <a href="#" class="nav-link">Unbilled Lead Report</a>
@@ -291,6 +322,8 @@
                                     <a href="#" class="nav-link">Customer Bill Details</a>
                                     <a href="#" class="nav-link">Customer Payment Details</a>
                                     <a href="#" class="nav-link">Unpaid Bills</a> --}}
+
+
                                 </li>
                             </ul>
                         </li>

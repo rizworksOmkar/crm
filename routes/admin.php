@@ -18,6 +18,7 @@ use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\PropertySpecController;
 use App\Http\Controllers\LeadSourceController;
 use App\Http\Controllers\LeadStatusController;
+use App\Http\Controllers\ReportController;
 
 use App\Http\Controllers\CRM\EntityStatusController;
 
@@ -83,9 +84,11 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/get-tasks/{leadId}', [LeadController::class, 'getTasks']);
 
 
+
         Route::get('/employees-monitor', [LeadController::class, 'indexEmployeeMonitor'])->name('employees-monitor');
         Route::get('employees/{employee}/leads', [LeadController::class, 'fetchLeadsByEmp']);
-        Route::get('leads/{lead}/details', [LeadController::class, 'fetchLeadDetailsPerEmp']);
+        // Route::get('leads/{lead}/details', [LeadController::class, 'fetchLeadDetailsPerEmp']);
+        Route::get('/leads/{id}/timeline', [LeadController::class, 'timeline'])->name('leads.timeline');
 
 
         Route::get('/roles-view', [RoleController::class, 'view'])->name('get-all-roles');
@@ -125,13 +128,32 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::post('/rolestatuschange/{id}/toggle-status', [EntityStatusController::class, 'toggleRoleStatuschange']);
 
 
-        Route::get('billing', [BillingController::class, 'index'])->name('billing.index');
-        Route::get('billing/raise/{leadId}', [BillingController::class, 'raiseBill'])->name('billing.raise');
-        Route::post('billing/store/{leadId}', [BillingController::class, 'storeBill'])->name('billing.store');
-        Route::get('billing/payment-receipt/{leadId}', [BillingController::class, 'paymentReceipt'])->name('billing.paymentReceipt');
-        Route::post('billing/record-payment/{leadId}', [BillingController::class, 'recordPayment'])->name('billing.recordPayment');
-        Route::post('billing/raise-dispute/{leadId}', [BillingController::class, 'raiseDispute'])->name('billing.raiseDispute');
-        Route::patch('billing/{billing}/fixDispute', [BillingController::class, 'fixDispute'])->name('billing.fixDispute');
+            Route::get('/billing', [BillingController::class, 'index'])->name('billing.index');
+            Route::get('/billing/create/{lead}', [BillingController::class, 'create'])->name('billing.create');
+            Route::post('/billing/{lead}', [BillingController::class, 'store'])->name('billing.store');
+            Route::get('/billing/{billing}', [BillingController::class, 'show'])->name('billing.show');
 
+            // Route::get('/payment/{billing}', [BillingController::class, 'create'])->name('payment.create');
+            // Route::post('/payment/{billing}', [BillingController::class, 'store'])->name('payment.store');
+            Route::post('/billing/payment/{billId}', [BillingController::class, 'makePayment'])->name('billing.payment');
+            Route::get('/billing/{billing}/transactions', [BillingController::class, 'getTransactions'])->name('billing.transactions');
+
+
+        //main reports
+        //unassigned leads
+        Route::get('/unassigned-leads', [ReportController::class, 'unassignedLeads'])->name('unassigned-leads');
+        //assigned leads
+        Route::get('/assigned-leads', [ReportController::class, 'assignedLeads'])->name('assigned-leads');
+        //lead report
+        Route::get('/main-lead-report', [ReportController::class, 'leadReport'])->name('lead-report-main');
+        Route::get('/leads/{id}/detail', [ReportController::class, 'getDetailsOfLeads'])->name('leads.details');
+        Route::get('/leads/{id}/timelines', [ReportController::class, 'timelineOfActivity'])->name('leads.timeline');
+        // storeTaskByAdminToEmployee
+        Route::post('/tasks', [LeadController::class, 'storeTaskByEmployee'])->name('tasks.store');
+
+        //billing report
+        Route::get('/unbilled-leads', [ReportController::class, 'getUnbilledLeads'])->name('unbilled-leads');
+        Route::get('/billed-leads', [ReportController::class, 'getBilledLeads'])->name('billed-leads');
+        Route::get('/paid-leads', [ReportController::class, 'getPaidLeads'])->name('paid-leads');
     });
 });

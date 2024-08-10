@@ -1,4 +1,5 @@
 @extends('layouts.admin-front')
+
 @section('content')
 <div class="row">
     <div class="col-12">
@@ -26,8 +27,12 @@
                         <input type="number" name="expected_amount" id="expected_amount" class="form-control" value="{{ $lead->max_budget }}" readonly>
                     </div>
                     <div class="form-group">
-                        <label for="paid_amount">Amount Paid by Customer</label>
-                        <input type="number" name="paid_amount" id="paid_amount" class="form-control" required>
+                        <label for="to_pay">To Pay</label>
+                        <input type="number" name="to_pay" id="to_pay" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" name="date" id="date" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="customer_settled">Customer Settled</label>

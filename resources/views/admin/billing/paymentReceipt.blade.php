@@ -15,7 +15,7 @@
                             <input type="number" class="form-control" name="paid_amount" required value="{{ $billing->paid_amount }}" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="payment_date_to_agent">Payment Date to agent</label>
+                            <label for="payment_date_to_agent">Payment Date to Agent</label>
                             <input type="date" class="form-control" name="payment_date_to_agent" required>
                         </div>
                         <div class="form-group">
@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label for="agent_received_payment">Agent Received Payment</label>
-                            <select class="form-control" name="agent_received_payment">
+                            <select class="form-control" name="agent_received_payment" required>
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
