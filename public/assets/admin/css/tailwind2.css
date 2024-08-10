@@ -32671,6 +32671,9 @@ td.gridjs-td:last-child {
 .hight_100{
     height: 100%;
 }
+
+
+
 .lead_activity .card {
     font-family: Arial, sans-serif;
     background-color: white;
@@ -32780,22 +32783,43 @@ td.gridjs-td:last-child {
     padding-bottom: 0 !important;
 }
 
+.ml-0{
+    margin-left: 0;
+}
+
+.mr-0{
+    margin-right: 0;
+}
+
+.mt-0{
+    margin-top: 0;
+}
+
+.mb-0{
+    margin-bottom: 0;
+}
+
 .lead_prsnl_dtls{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 20px 30px;
 }
 
-.lead_dtls .timeline-item .timeline-content h3 {
+/* .lead_dtls .timeline-item .timeline-content h3 {
     margin: 0;
     font-size: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+} */
+
+.lead_dtls .timeline-item {
+    margin-bottom: 20px;
+    position: relative;
 }
 
 
 .lead_dtls .timeline-icon {
-    position: absolute;
+    /* position: absolute; */
     left: -19px;
     width: 10px;
     height: 10px;
@@ -32804,6 +32828,40 @@ td.gridjs-td:last-child {
     line-height: 30px;
     color: white;
     font-size: 14px;
+    margin-right: 10px;
+}
+
+.lead_dtls .timeline-content {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.lead_dtls .card h2 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    /* text-decoration: underline; */
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 10px;
+}
+
+.lead_dtls .timeline-content h3 {
+    margin: 0;
+    font-size: 15px;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.lead_dtls .timeline-content p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+    text-align: justify;
 }
 
 .select2-container .select2-selection--single {
@@ -32828,6 +32886,24 @@ td.gridjs-td:last-child {
     color: #444;
     line-height: 40px;
 }
+
+.lead_dtls .card {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    margin: 20px;
+    margin-left: 0;
+}
+
+.lead_dtls .timeline {
+    position: relative;
+    padding-left: 0px;
+}
+
+
 
 .mt_40{
     margin-top: 40px;

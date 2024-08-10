@@ -3,112 +3,45 @@
 @section('content')
     <style>
         /* body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        } */
-       
+                            font-family: Arial, sans-serif;
+                            background-color: #f0f0f0;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            margin: 0;
+                        } */
     </style>
     <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
         <div
             class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
             <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
-                <div class="grid grid-cols-12 2xl:grid-cols-12 gap-x-5">
+                {{-- <div class="grid grid-cols-12 2xl:grid-cols-12 gap-x-5">
 
                     <div class="col-span-12 card 2xl:col-span-12">
                         <div class="card-body">
-                            <div class="grid items-center grid-cols-1 gap-3 
-                    mb-5 2xl:grid-cols-1">
+                            <div
+                                class="grid items-center grid-cols-1 gap-3 
+                                        mb-5 2xl:grid-cols-1">
                                 <h4 class="mb-4 text-18">Employees Report</h4>
-                                <!--end col-->
-                                {{-- <div class="xl:col-span-3 xl:col-start-10">
-                            <div class="flex gap-3">
-                                <div class="relative grow">
-                                    <input type="text"
-                                        class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        placeholder="Search for ..." autocomplete="off" />
-                                    <i data-lucide="search"
-                                        class="inline-block size-4 absolute 
+                                <div class="xl:col-span-3 xl:col-start-10">
+                                    <div class="flex gap-3">
+                                        <div class="relative grow">
+                                            <input type="text"
+                                                class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                                placeholder="Search for ..." autocomplete="off" />
+                                            <i data-lucide="search"
+                                                class="inline-block size-4 absolute 
                                         ltr:left-2.5 rtl:right-2.5 top-2.5
                                          text-slate-500 dark:text-zink-200 
                                          fill-slate-100 dark:fill-zink-600"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                                
-                            </div>
-                        </div> --}}
-                                <!--end col-->
-                            </div>
-
-                            <!--end grid-->
-                            <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap table 
-                            table-striped"
-                                    id="selected-leads-table" style="display: none;">
-                                    <thead
-                                        class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
-                                        <tr>
-                                            <th
-                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Remove</th>
-                                            <th
-                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Lead Source
-                                            </th>
-                                            <th
-                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Lead Number
-                                            </th>
-                                            <th
-                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Customer Name
-                                            </th>
-                                            <th
-                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Status
-                                            </th>
-                                            <th
-                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Specific Location
-                                            </th>
-                                            <th
-                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Specific Area
-                                            </th>
-                                            <th
-                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Preferred Landmark
-                                            </th>
-                                            <th
-                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Max Budget
-                                            </th>
-                                            <th
-                                                class="text-center px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Due Date
-                                            </th>
-                                            <th
-                                                class="text-center px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Max Area
-                                            </th>
-                                            <th
-                                                class="text-center px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
-                                                Property Type
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Selected leads will be appended here via JavaScript --><!-- Selected leads will be appended here via JavaScript -->
-
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto relative">
 
                     <div class="flex gap-5 mt-5">
@@ -291,7 +224,7 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                            </div>  
+                                            </div>
                                         </div>
                                         {{-- profile  --}}
                                         {{-- <div class="hidden tab-pane" id="profile">
@@ -396,8 +329,9 @@
                                                 <img src="./assets/admin/images/avatar-7.png" alt=""
                                                     class="h-10 rounded-full">
                                             </div>
-                                            <h6 class="mt-4 text-16">Ayush Verma</h6>
-                                            <p class="text-slate-500 dark:text-zink-200">LD-2024-07-403590</p>
+                                            <h6 class="mt-4 mb-2 text-16">Ayush Verma</h6>
+                                            <p class="text-slate-500 dark:text-zink-200 mb-2">LD-2024-07-403590</p>
+                                            <p class="text-slate-500 dark:text-zink-200">10-Aug-2024</p>
                                         </div>
                                         {{-- <div class="mt-5">
                                             <p class="mb-3 text-slate-500 dark:text-zink-200">Object</p>
@@ -412,10 +346,10 @@
                                                     class="inline-block mr-1 size-4 text-slate-500 dark:text-zink-200"></i>
                                                 <span class="align-middle">7410852963</span>
                                             </h6>
-                                            {{-- <h6 class="mb-3 font-medium"><i data-lucide="map-pin"
-                                                    class="inline-block mr-1 size-4 text-slate-500 dark:text-zink-200"></i>
-                                                <span class="align-middle">California, USA</span>
-                                            </h6> --}}
+                                            <h6 class="mb-3 font-medium"><i aria-hidden="true"
+                                                    class="fa fa-whatsapp inline-block mr-1 size-4 text-slate-500 dark:text-zink-200"></i>
+                                                <span class="align-middle">8914627085</span>
+                                            </h6>
                                             <h6 class="font-medium"><i data-lucide="mail"
                                                     class="inline-block mr-1 size-4 text-slate-500 dark:text-zink-200"></i>
                                                 <span class="align-middle">a@gmail.com</span>
@@ -423,48 +357,60 @@
                                         </div>
 
                                     </div>
-                                    <div class="lead_activity lead_dtls">
+                                    <div class=" lead_dtls">
                                         <div class="card">
                                             <h2>Lead Details</h2>
                                             <div class="timeline">
                                                 <div class="timeline-item">
-                                                    <div class="timeline-icon" style="background-color: #2196f3;"></div>
-                                                    <div class="timeline-content">
+                                                    <div class="timeline-content lead_dscrp">
                                                         <h3>
+                                                            <div class="timeline-icon" style="background-color: #2196f3;">
+                                                            </div>
                                                             Lead Descriptio
                                                             {{-- <span class="status status-done">Done</span> --}}
                                                         </h3>
-                                                        <p>The trip was an amazing and a life changing experience!!</p>
+                                                        <div data-simplebar data-simplebar-track="custom" style="max-height: 220px;"
+                                                            class="pr-2 text-slate-500 dark:text-zink-200">
+                                                            <p class="mb-2">If several languages coalesce, the grammar of
+                                                                the resulting language is more simple and regular than that
+                                                                of the individual languages. The new common language will be
+                                                                more simple and regular than the existing
+                                                                If several languages coalesce, the grammar of
+                                                                the resulting language is more simple and regular than that
+                                                                of the individual languages. The new common language will be
+                                                                more simple and regular than the existing</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="timeline-item">
-                                                    <div class="timeline-icon" style="background-color: #2196f3;">
-                                                        {{-- <i class="fas fa-rocket"></i> --}}
-                                                    </div>
                                                     <div class="timeline-content">
                                                         <h3>
+                                                            <div class="timeline-icon" style="background-color: #2196f3;">
+                                                            </div>
                                                             Property Type
                                                             {{-- <span class="status status-running">Running</span> --}}
                                                         </h3>
-                                                        <p>Free courses for all our customers at A1 Conference Room -9:00 am tomorrow!</p>
+                                                        <p>Free courses for all our customers at A1 Conference Room -9:00 am
+                                                            tomorrow!</p>
                                                     </div>
                                                 </div>
                                                 <div class="timeline-item">
-                                                    <div class="timeline-icon" style="background-color: #2196f3;">
-                                                        {{-- <i class="fas fa-hand-paper"></i> --}}
-                                                    </div>
                                                     <div class="timeline-content">
                                                         <h3>
+                                                            <div class="timeline-icon" style="background-color: #2196f3;">
+                                                            </div>
                                                             Budget
                                                             {{-- <span class="status status-pending">Pending</span> --}}
                                                         </h3>
-                                                        <p>Free courses for all our customers at A1 Conference Room -9:00 am tomorrow!</p>
+                                                        <p>Free courses for all our customers at A1 Conference Room -9:00 am
+                                                            tomorrow!</p>
                                                     </div>
                                                 </div>
                                                 <div class="timeline-item">
-                                                    <div class="timeline-icon" style="background-color: #2196f3;"></div>
                                                     <div class="timeline-content">
                                                         <h3>
+                                                            <div class="timeline-icon" style="background-color: #2196f3;">
+                                                            </div>
                                                             Location
                                                             {{-- <span class="status status-not-start">Not Start</span> --}}
                                                         </h3>
