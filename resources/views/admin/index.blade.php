@@ -177,7 +177,7 @@
                                 <h5 class="mb-3 font-normal tracking-wide text-slate-200">
                                     Welcome Paula Keenan 🎉
                                 </h5>
-                                <p class="mb-5 text-slate-400">
+                                <p class="mb-5 text-slate-400 text-white">
                                     An ecommerce dashboard has just that purpose. It
                                     provides your ecommerce team with a clear overview of
                                     key financial and website KPIs at any time.

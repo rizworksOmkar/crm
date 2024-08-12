@@ -22726,7 +22726,7 @@ div.flatpickr-day.dataTables_scrollBody
     padding-top: 11rem;
 }
 .pt-\[calc\(theme\(\'spacing\.header\'\)_\*_1\)\] {
-    padding-top: 4.375rem;
+    padding-top: 5.375rem;
 }
 .text-left {
     text-align: left;
@@ -32903,7 +32903,10 @@ td.gridjs-td:last-child {
     padding-left: 0px;
 }
 
-
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
 
 .mt_40{
     margin-top: 40px;
