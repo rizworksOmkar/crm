@@ -1,86 +1,182 @@
 @extends('layouts.admin-front')
 @section('content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Leads</h4>
-                    <div class="card-header-action">
-                        <a href="{{ route('admin-create-lead') }}" class="btn btn-primary">Add Lead</a>
-                    </div>
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
+        <div
+            class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+            <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+                <div class="grid grid-cols-12 2xl:grid-cols-12 gap-x-5">
+                    <!--end col-->
+                    <div class="col-span-12 card 2xl:col-span-12">
+                        <div class="card-body">
+                            <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
+                                <div class="xl:col-span-3">
+                                    <h4 class="text-15">Leads</h4>
+                                </div>
+                                <!--end col-->
+                                <div class="xl:col-span-3 xl:col-start-10">
+                                    <div class="flex gap-3">
+                                        <div class="relative grow">
+                                            <input type="search"
+                                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 inline-block w-auto ml-2"
+                                                placeholder="search" aria-controls="basic_tables">
+                                            {{-- <i data-lucide="search"
+                                                class="inline-block size-4 absolute ltr:left-2.5 rtl:right-2.5 
+                                                top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600"></i> --}}
+                                        </div>
+                                        {{-- <button type="button"
+                                        class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                        <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i>
+                                        Export
+                                    </button> --}}
+                                        <a href="{{ route('admin-create-lead') }}"
+                                            class="btn wht_sp_nwrp text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Add
+                                            Lead</a>
+                                    </div>
+                                </div>
+                                <!--end col-->
+                            </div>
 
-                </div>
-                <div class="card-body">
-                    <div class="col-12 mb-3">
-                        <div class="form-inline">
-                            <select id="column-select" class="form-control mr-2">
-                                <option value="">Select Column</option>
-                                <option value="1">Lead Source</option>
-                                <option value="2">Lead Number</option>
-                                <option value="3">Customer Name</option>
-                                <option value="4">Lead Date</option>
-                                <option value="5">Property Type</option>
-                                <option value="6">Specific Location</option>
-                                <option value="7">Max Budget</option>
-                                <option value="8">Max Area (Sq ft)</option>
-                            </select>
-                            <input type="text" id="column-search" class="form-control mr-2" placeholder="Search term">
-                            <button id="search-btn" class="btn btn-primary">Search</button>
-                            <button id="clear-search-btn" class="btn btn-secondary ml-2">Clear</button>
+                            <!--end grid-->
+                            <div class="overflow-x-auto">
+                                <table class="w-full whitespace-nowrap">
+                                    <thead
+                                        class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
+                                        <tr>
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                                Sl no
+                                            </th>
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                                Lead Sources
+                                            </th>
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                                Lead No.
+                                            </th>
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                                Customer Name
+                                            </th>
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                                Lead Date
+                                            </th>
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                                Property Type
+                                            </th>
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                                Specific Location
+                                            </th>
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                                Max Budget
+                                            </th>
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                                Max Area (Sq ft)
+                                            </th>
+                                            <th
+                                                class="text-center px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php $i=0; @endphp
+                                        @foreach ($leads as $lead)
+                                            @php $i++; @endphp
+                                            <tr>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    {{ $i }}</td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    {{ $lead->lead_source }}</td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    {{ $lead->lead_num }}</td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    {{ $lead->contact->name }}</td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    {{ \Carbon\Carbon::parse($lead->created_at)->format('Y-m-d') }}</td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    {{ $lead->property_type }}</td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    {{ $lead->specific_location }}</td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    {{ $lead->max_budget }}</td>
+
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    {{ $lead->max_area }}</td>
+
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
+                                                    <div class="buttons">
+                                                        <a submitid="{{ $lead->id }}"
+                                                            class="py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
+                                                             active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20 remove-item-btn"
+                                                            data-toggle="tooltip" title="Delete Lead"
+                                                            href="javascript:void(0)"
+                                                            id="deleteLead_{{ $lead->id }}"><i class="fa fa-times" aria-hidden="true"></i></a>
+
+                                                        <a href="{{ route('leads.edit', $lead->id) }}"
+                                                            class="py-1 text-xs text-white btn bg-custom-800 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white
+                                                             active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 edit-item-btn"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                                        <a href="{{ route('view.showEmpTasks', $lead->id) }}"class="py-1 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white
+                                                             active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 edit-item-btn"
+                                                            data-toggle="tooltip" title="View employee activity"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="flex flex-col items-center mt-5 md:flex-row">
+                                <div class="mb-4 grow md:mb-0">
+                                    <p class="text-slate-500 dark:text-zink-200">
+                                        Showing <b>07</b> of <b>19</b> Results
+                                    </p>
+                                </div>
+                                <ul class="flex flex-wrap items-center gap-2 shrink-0">
+                                    <li>
+                                        <a href="#!"
+                                            class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto"><i
+                                                class="mr-1 size-4 rtl:rotate-180" data-lucide="chevron-left"></i>
+                                            Prev</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!"
+                                            class="inline-flex items-center justify-center bg-white dark:bg-zink-700 w-8 h-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!"
+                                            class="inline-flex items-center justify-center bg-white dark:bg-zink-700 w-8 h-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto active">2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!"
+                                            class="inline-flex items-center justify-center bg-white dark:bg-zink-700 w-8 h-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#!"
+                                            class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">Next
+                                            <i class="ml-1 size-4 rtl:rotate-180" data-lucide="chevron-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover" style="width:100%;" id="tableLead">
-                            <thead>
-                                <tr>
-                                    <th>Sl no</th>
-                                    <th>Lead Source</th>
-                                    <th>Lead No.</th>
-                                    <th>Customer Name</th>
-                                    <th>Lead Date</th>
-                                    <th>Property Type</th>
-                                    <th>Specific Location</th>
-                                    <th>Max Budget</th>
-                                    <th>Max Area (Sq ft)</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php $i=0; @endphp
-                                @foreach ($leads as $lead)
-                                    @php $i++; @endphp
-                                    <tr>
-                                        <th>{{ $i }}</th>
-                                        <th>{{ $lead->lead_source }}</th>
-                                        <th>{{ $lead->lead_num }}</th>
-                                        <th>{{ $lead->contact->name }}</th>
-                                        <th> {{ \Carbon\Carbon::parse($lead->created_at)->format('Y-m-d') }}</th>
-                                        <th>{{ $lead->property_type }}</th>
-                                        <th>{{ $lead->specific_location }}</th>
-                                        <th>{{ $lead->max_budget }}</th>
-
-                                        <th>{{ $lead->max_area }}</th>
-
-                                        <td>
-                                            <div class="buttons">
-                                                <a submitid="{{ $lead->id }}"
-                                                    class="btn btn-icon btn-sm btn-danger delete-lead-btn"
-                                                    data-toggle="tooltip" title="Delete Lead" href="javascript:void(0)"
-                                                    id="deleteLead_{{ $lead->id }}"><i class="fas fa-times"></i></a>
-
-                                                <a href="{{ route('leads.edit', $lead->id) }}"
-                                                    class="btn btn-sm btn-warning">Edit</a>
-                                                <a href="{{ route('view.showEmpTasks', $lead->id) }}"class="btn btn-icon btn-sm btn-info"
-                                                    data-toggle="tooltip" title="View employee activity"><i
-                                                        class="far fa-eye"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-
-                            </tbody>
-                        </table>
-                    </div>
+                    <!--end col-->
                 </div>
             </div>
         </div>
@@ -88,9 +184,10 @@
 @endsection
 
 @section('scripts')
-     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    </script>
     <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
@@ -105,24 +202,24 @@
             });
 
 
-                    // Column search functionality
-        $('#search-btn').click(function() {
-            var column = $('#column-select').val();
-            var searchTerm = $('#column-search').val();
+            // Column search functionality
+            $('#search-btn').click(function() {
+                var column = $('#column-select').val();
+                var searchTerm = $('#column-search').val();
 
-            if (column !== '') {
-                table.column(column).search(searchTerm).draw();
-            } else {
-                table.search(searchTerm).draw();
-            }
-        });
+                if (column !== '') {
+                    table.column(column).search(searchTerm).draw();
+                } else {
+                    table.search(searchTerm).draw();
+                }
+            });
 
-        // Clear search filters
-        $('#clear-search-btn').click(function() {
-            $('#column-select').val('');
-            $('#column-search').val('');
-            table.search('').columns().search('').draw();
-        });
+            // Clear search filters
+            $('#clear-search-btn').click(function() {
+                $('#column-select').val('');
+                $('#column-search').val('');
+                table.search('').columns().search('').draw();
+            });
 
 
         });

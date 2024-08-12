@@ -1,99 +1,191 @@
 @extends('layouts.admin-front')
 @section('content')
-    <div class="col-12 col-md-6 col-lg-6">
-        <form id="add_employee_form">
-            {{ csrf_field() }}
+    <div
+        class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md
+ group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm
+   pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)]
+   group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0
+    group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto
+     group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 
+     group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)] pt-20">
+        <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
             <div class="card">
-                <div class="card-header">
-                    <h4>Create Employee</h4>
-                </div>
                 <div class="card-body">
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="empFirstname">First Name</label>
-                            <input type="text" class="form-control" id="empFirstname" name="empFirstname"
-                                placeholder="Enter First Name">
+                    <h6 class="mb-4 text-15">Create Employee</h6>
+                    <form id="add_employee_form">
+                        {{ csrf_field() }}
+                        <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-4">
+                            <div class="mb-4">
+                                <label for="empFirstname"
+                                    class="inline-block mb-2 text-base
+                              font-medium">First Name
+                                    <span class="text-red-500">*</span></label>
+                                <input type="text"
+                                    class="form-input border-slate-200
+                                           dark:border-zink-500 focus:outline-none 
+                                           focus:border-custom-500 disabled:bg-slate-100 
+                                           dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                            placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    id="empFirstname" name="empFirstname" placeholder="Enter First Name" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="empMidName" class="inline-block mb-2 text-base font-medium">
+                                    Middle Name
+                                    <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text"
+                                    class="form-input border-slate-200
+                                         dark:border-zink-500 focus:outline-none 
+                                         focus:border-custom-500 disabled:bg-slate-100 
+                                         dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                          placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    id="empMidName" name="empMidName" placeholder="Enter Middle Name" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="empLastName" class="inline-block mb-2 text-base font-medium">
+                                    Last Name
+                                    <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text"
+                                    class="form-input border-slate-200 dark:border-zink-500
+                                     focus:outline-none focus:border-custom-500 disabled:bg-slate-100
+                                      dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500
+                                     dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
+                                     dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                     dark:placeholder:text-zink-200"
+                                    id="empLastName" name="empLastName" placeholder="Enter Last Name" readonly>
+                            </div>
+                            <div class="mb-4">
+                                <label for="empEmailid" class="inline-block mb-2 text-base font-medium">
+                                    Email Id
+                                    <span class="text-red-500">*</span></label>
+                                <input type="email"
+                                    class="form-input border-slate-200 dark:border-zink-500
+                                     focus:outline-none focus:border-custom-500 disabled:bg-slate-100
+                                      dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500
+                                     dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
+                                     dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                     dark:placeholder:text-zink-200"
+                                    id="empEmailid" name="empEmailid" placeholder="Enter Email Id">
+                            </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="empMidName">Middle Name</label>
-                            <input type="text" class="form-control" id="empMidName" name="empMidName"
-                                placeholder="Enter Middle Name">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="empLastName">Last Name</label>
-                            <input type="text" class="form-control" id="empLastName" name="empLastName"
-                                placeholder="Enter Last Name">
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="empEmailid">Email Id</label>
-                        <input type="email" class="form-control" id="empEmailid" name="empEmailid"
-                            placeholder="Enter Email Id">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="empPhoneno">Phone Number</label>
-                            <input type="text" class="form-control" id="empPhoneno" name="empPhoneno"
-                                placeholder="Enter Phone Number">
-                        </div>
-                        <div class="form-group mt-4 col-md-4">
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="chkWhatsaappcheck"
-                                    name="chkWhatsaappcheck" value="1">
-                                <label class="form-check-label" for="chkWhatsaappcheck">
+                        <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3">
+                            <div class="mb-4">
+                                <label for="empPhoneno" class="inline-block mb-2 text-base font-medium">Customer
+                                    Phone Number
+                                    <span class="text-red-500">*</span></label>
+                                <input type="text"
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none
+                                     focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                     disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                      disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    id="empPhoneno" name="empPhoneno" placeholder="Enter Phone Number" required>
+                            </div>
+                            <div class="mb-4 mt_40">
+                                <input type="checkbox" id="chkWhatsaappcheck" name="chkWhatsaappcheck" value="1">
+                                <label for="description" class="inline-block mb-2 text-base font-medium">
                                     Check if same phone number is whatsapp number.
                                 </label>
                             </div>
+                            <div class="mb-4">
+                                <label for="empWhatsAppno" class="inline-block mb-2 text-base font-medium">
+                                    WhatsAPP Number
+                                </label>
+                                <input type="text"
+                                    class="form-input border-slate-200 dark:border-zink-500 
+                                    focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
+                                    dark:disabled:bg-zink-600 disabled:border-slate-300 
+                                    dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
+                                    dark:focus:border-custom-800
+                                     placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    id="empWhatsAppno" name="empWhatsAppno" placeholder="Enter WhatsAPP Number" required>
+                            </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="empWhatsAppno">WhatsAPP Number</label>
-                            <input type="text" class="form-control" id="empWhatsAppno" name="empWhatsAppno"
-                                placeholder="Enter WhatsAPP Number">
+                        <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-1">
+                            <div class="card-header p-0 mb-4">
+                                <h6>Create Credetial</h6>
+                            </div>
+                            {{-- <div class="mb-4">
+                                <label for="stateInput"
+                                    class="inline-block mb-2 text-base font-medium">Property
+                                    Type<span class="text-red-500">*</span></label>
+                                <select
+                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    id="property_type" name="property_type" required>
+                                        <option value="aaaa">
+                                            rrrrrr
+                                        </option>
+                                </select>
+                            </div> --}}
                         </div>
-                    </div>
-                    <div class="card-header p-0 mb-4">
-                        <h6>Create Credetial</h6>
-                    </div>
-                    <div class="form-group">
-                        <label for="empUserName">User Name</label>
-                        <input type="text" class="form-control" id="empUserName" name="empUserName"
-                            placeholder="Enter User Name">
-                        <span id="username-availability"></span>
-                    </div>
-
-
-
-
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="empPassword">Password</label>
-                            <input type="password" class="form-control" id="empPassword" name="empPassword" placeholder="Type Password">
+                        <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-4">
+                            <div class="mb-4">
+                                <label for="empUserName"
+                                    class="inline-block mb-2
+                         text-base font-medium">User
+                                    Name</label>
+                                <input type="text" id="min_budget" name="min_budget"
+                                    class="form-input border-slate-200 dark:border-zink-500 
+                                    focus:outline-none focus:border-custom-500 
+                                    disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500
+                                     dark:disabled:text-zink-200 disabled:text-slate-500 
+                                     dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    id="empUserName" name="empUserName" placeholder="Enter User Name" required>
+                                <span class="mt-1 text-xs text-slate-500 dark:text-zink-200"
+                                    id="username-availability"></span>
+                            </div>
+                            <div class="mb-4">
+                                <label for="empPassword" class="inline-block mb-2 text-base font-medium">
+                                    Password</label>
+                                <input type="password" id="max_budget" name="max_budget"
+                                    class="form-input border-slate-200 dark:border-zink-500 
+                                    focus:outline-none focus:border-custom-500 disabled:bg-slate-100
+                                     dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 
+                                     dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
+                                     dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                     dark:placeholder:text-zink-200"
+                                    id="empPassword" name="empPassword" placeholder="Type Password">
+                            </div>
+                            <div class="mb-4">
+                                <label for="empConPassword" class="inline-block mb-2 text-base font-medium">
+                                    Confirm Password
+                                </label>
+                                <input type="password" id="empConPassword" name="empConPassword"
+                                    placeholder="Enter Middle Name"
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="emptype" class="inline-block mb-2 text-base font-medium">
+                                    Employee Type
+                                </label>
+                                <select
+                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    id="emptype" name="emptype" required>
+                                    <option value="0">Choose...</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="user">User</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="empConPassword">Confirm Password</label>
-                            <input type="password" class="form-control" id="empConPassword" name="empConPassword"
-                                placeholder="Enter Middle Name">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="emptype">Employee Type</label>
-                            <select id="emptype" class="form-control" name="emptype">
-                                <option value="0">Choose...</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">User</option>
-                            </select>
-                        </div>
 
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Create</button>
-
-                    <a href="/employee" class="btn btn-danger ml-5">Back To Main Menu</a>
+                        <div class="flex justify-end gap-2">
+                            <button type="submit"
+                                class="text-white transition-all duration-200 ease-linear btn bg-custom-800 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600
+                         active:border-custom-600 active:ring active:ring-custom-100">Create</button>
+                            <a href="/employee"
+                                class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600
+                         active:border-custom-600 active:ring active:ring-custom-100">Back
+                                To Main Menu</a>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 @endsection
 

@@ -12,7 +12,7 @@ use App\Http\Controllers\CRM\AssignLeadController;
 use App\Http\Controllers\CRM\LeadImportController;
 use App\Http\Controllers\BillingController;
 
-
+use App\Http\Controllers\Admin\AdminlinkcreateController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\PropertySpecController;
@@ -155,5 +155,8 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/unbilled-leads', [ReportController::class, 'getUnbilledLeads'])->name('unbilled-leads');
         Route::get('/billed-leads', [ReportController::class, 'getBilledLeads'])->name('billed-leads');
         Route::get('/paid-leads', [ReportController::class, 'getPaidLeads'])->name('paid-leads');
+        Route::get('customer', [AdminlinkcreateController::class, 'customerIndex'])->name('admin.customer.index');
+        Route::get('customercreate', [AdminlinkcreateController::class, 'customerCreate'])->name('admin.customer.create');
+
     });
 });
