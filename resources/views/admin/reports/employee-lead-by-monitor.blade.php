@@ -46,7 +46,7 @@
 
                     <div class="flex gap-5 mt-5">
                         <div
-                            class="fixed inset-x-0 bottom-12 2xl:w-30 shrink-0 xl:relative z-[20] text-center xl:bottom-auto">
+                            class="fixed inset-x-0 bottom-12 w-54 shrink-0 xl:relative z-[20] text-center xl:bottom-auto">
                             <div
                                 class="w_100 xl:min-h-[calc(40vh_-_theme('height.header')_*_2.4)] inline-block card xl:h-[calc(40%_-_theme('spacing.5'))] shadow-lg xl:shadow-md">
                                 <div class="flex h-full p-2 2xl:p-4 xl:flex-col">
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                         </div><!--end -->
-                        <div class="block w-full xl:block xl:w-80 shrink-0 menu-content">
+                        <div class="block w-full xl:block xl:w-70 shrink-0 menu-content">
                             <div
                                 class="h-[calc(100vh_-_theme('spacing.10')_*_6)] xl:min-h-[calc(100vh_-_theme('height.header')_*_2.4)] card xl:h-[calc(100%_-_theme('spacing.5'))]">
                                 <div class="flex flex-col h-full">

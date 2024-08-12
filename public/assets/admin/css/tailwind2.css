@@ -20242,6 +20242,11 @@ div.flatpickr-day.dataTables_scrollBody
 .w-52 {
     width: 13rem;
 }
+
+.w-54 {
+    width: 14rem;
+}
+
 .w-6 {
     width: 1.5rem;
 }
@@ -30676,6 +30681,11 @@ td.gridjs-td:last-child {
     .xl\:w-3\/6 {
         width: 50%;
     }
+
+    .xl\:w-70 {
+        width: 18rem;
+    }
+
     .xl\:w-80 {
         width: 20rem;
     }
