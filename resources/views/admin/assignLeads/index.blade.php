@@ -207,7 +207,7 @@
 
                             <!--end grid-->
                             <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap">
+                                <table class="w-full whitespace-nowrap" id="available-leads-table">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
@@ -278,38 +278,44 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($leads as $lead)
-                                            <tr>
+                                            <tr data-lead-id="{{ $lead->id }}">
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     <input type="checkbox" class="select-lead-checkbox">
                                                 </td>
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                    {{ $lead->lead_source }}</td>
+                                                    {{ $lead->lead_source }}
+                                                </td>
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                    {{ $lead->lead_num }}</td>
+                                                    {{ $lead->lead_num }}
+                                                </td>
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ $lead->contact->name }}
                                                 </td>
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                    {{ $lead->status }}</td>
-                                                <td
+                                                    {{ $lead->status }}
+                                                </td>
+                                                {{-- <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                    {{ $lead->property_type }}</td>
+                                                    {{ $lead->property_type }}
+                                                </td> --}}
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ $lead->specific_location }}
                                                 </td>
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                    {{ $lead->place }}</td>
+                                                    {{ $lead->place }}
+                                                </td>
 
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                    {{ $lead->preferred_landmark }}</td>
+                                                    {{ $lead->preferred_landmark }}
+                                                </td>
 
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
@@ -366,14 +372,15 @@
                                 </ul>
                             </div>
                             <div class="prvw_slct mt-3">
-                                <button id="select-all-btn"
+                                <button id="preview-selected-leads-btn"
                                     class="text-white btn bg-custom-800 border-custom-500 
                                                         hover:text-white 
                                                     hover:bg-custom-600 hover:border-custom-600 focus:text-white 
                                                     focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100
                                                      active:text-white active:bg-custom-600 active:border-custom-600 active:ring
-                                                      active:ring-custom-100 dark:ring-custom-400/20">Preview
-                                    Selected Leads</button>
+                                                      active:ring-custom-100 dark:ring-custom-400/20">
+                                    Preview Selected Leads
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -412,7 +419,7 @@
 
                             <!--end grid-->
                             <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap">
+                                <table class="w-full whitespace-nowrap" id="selected-leads-table" style="display: none;">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
