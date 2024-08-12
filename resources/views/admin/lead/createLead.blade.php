@@ -45,22 +45,21 @@
                                     class="inline-block mb-2 text-base
                                  font-medium">Or
                                     <span class="text-red-500">*</span></label>
-                                <button type="button" data-modal-target="showModal"
+                                <button type="button"
                                     class="text-white  bg-custom-500 btn border-custom-500 
                                     hover:text-white hover:bg-custom-600 hover:border-custom-600
                                      focus:text-white focus:bg-custom-600 focus:border-custom-600
                                       focus:ring focus:ring-custom-100 active:text-white 
                                       active:bg-custom-600 active:border-custom-600 active:ring 
                                       active:ring-custom-100 dark:ring-custom-400/20 add-btn"
-                                    data-toggle="modal" id="add_new_contact_btn" data-target="#createContactModal"><i
+                                    id="add_new_contact_btn" data-modal-target="createContactModal"><i
                                         class="align-bottom ri-add-line me-1"></i> Add New Customer</button>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3">
                             <div class="mb-4">
-                                <label for="lastNameInput2" 
-                                class="inline-block mb-2 text-base font-medium">
-                                Phone Number
+                                <label for="lastNameInput2" class="inline-block mb-2 text-base font-medium">
+                                    Phone Number
                                     <span class="text-red-500">*</span></label>
                                 <input type="text"
                                     class="form-input border-slate-200
@@ -275,13 +274,96 @@
                     </form>
                 </div>
             </div>
-            <div class="modal fade" id="createContactModal" tabindex="-1" role="dialog"
+            {{-- modal start  --}}
+            <div id="createContactModal" modal-center
+                class="fixed flex flex-col hidden transition-all duration-300
+                       ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4
+                        show">
+                <meta name="csrf-token" content="{{ csrf_token() }}">
+                <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
+                    <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+                        <h5 class="modal-title text-16" id="createContactModalLabel"> Create New Contact</h5>
+                        <button data-modal-close="createContactModal"
+                            class="transition-all duration-200 ease-linear
+                 text-slate-500 hover:text-red-500 dark:text-zink-200 
+                 dark:hover:text-red-500">
+                            <i data-lucide="x" class="size-5"></i>
+                        </button>
+                    </div>
+                    <div
+                        class="max-h-[calc(theme('height.screen')_-_180px)]
+                        p-4 overflow-y-auto modal-body">
+                        <form id="create_contact_form">
+                            <div class="modal-body grid grid-cols-1 gap-5 lg:grid-cols-2 xl:grid-cols-12">
+                                <div class="xl:col-span-12">
+                                    <label for="new_contact_name">Name</label>
+                                    <input type="text"
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="new_contact_name" name="new_contact_name" placeholder="Enter Contact Name">
+                                </div>
+                                <div class="xl:col-span-12">
+                                    <label for="new_contact_email">Email</label>
+                                    <input type="email"
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="new_contact_email" name="new_contact_email"
+                                        placeholder="Enter Contact Email">
+                                </div>
+                                <div class="xl:col-span-12">
+                                    <label for="new_contact_phone">Phone</label>
+                                    <input type="text"
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="new_contact_phone" name="new_contact_phone" placeholder="Enter Phone Number">
+                                </div>
+                                <div class="xl:col-span-12">
+                                    <label for="new_contact_whatsapp_ph">WhatsApp Phone</label>
+                                    <input type="text"
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="new_contact_whatsapp_ph" name="new_contact_whatsapp_ph"
+                                        placeholder="Enter WhatsApp Phone Number">
+                                </div>
+                                <div class="xl:col-span-12">
+                                    <label for="new_contact_address">Address</label>
+                                    <textarea
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"></textarea>
+                                </div>
+                            </div>
+                            {{-- <div
+                                class="flex items-center justify-between p-4 mt-auto border-t 
+                        border-slate-200 dark:border-zink-500">
+                                <button type="button"
+                                    class="btn btn-secondary text-white btn bg-custom-800 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
+                                    data-dismiss="modal">Close</button>
+                                <button type="button"
+                                    class="btn btn-primary text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
+                                    id="save_contact_btn">Save
+                                    Contact</button>
+                            </div> --}}
+                        </form>
+                    </div>
+                    <div
+                        class="flex items-center justify-between p-4 mt-auto border-t 
+                        border-slate-200 dark:border-zink-500">
+                        <button data-modal-close="createContactModal"
+                            class="text-white btn bg-custom-800 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring 
+                            active:ring-custom-100 dark:ring-custom-400/20">
+                            Close
+                        </button>
+                        <button type="button"
+                                    class="btn btn-primary text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
+                                    id="save_contact_btn">Save
+                                    Contact</button>
+                    </div>
+                </div>
+            </div>
+            {{-- modal end  --}}
+            <div class="modal fade d-none" id="createContactModal" tabindex="-1" role="dialog"
                 aria-labelledby="createContactModalLabel" aria-hidden="true">
                 <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="createContactModalLabel">Create New Contact</h5>
+                            <h5 class="modal-title" id="createContactModalLabel">
+                                Create New Contact</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
