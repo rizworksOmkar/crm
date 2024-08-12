@@ -32386,6 +32386,11 @@ td.gridjs-td:last-child {
     background-color: #3b82f6;
 }
 
+.bg_top_hed_user{
+    /* background-color: #295aab; */
+    background-color: #0b429d;
+}
+
 .top_head_left h4 {
     color: #fff;
     font-size: 18px;
