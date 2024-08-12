@@ -33,10 +33,20 @@ class ReportController extends Controller
 
     public function getDetailsOfLeads($id)
     {
+        //echo($id);die();
         $lead = Lead::with('contact')->findOrFail($id);
+        ///echo($lead);die();
         return response()->json([
+            'name' => $lead->contact->name,
             'phone' => $lead->contact->phone,
             'whatsapp' => $lead->contact->whatsapp_ph,
+            'email'=> $lead->contact->email,
+            'deleted_at' => $lead->contact->deleted_at,
+            'description' => $lead->description,
+            'property_type' => $lead->property_type,
+            'max_budget' => $lead->max_budget,
+            'specific_location' => $lead->specific_location,
+            'lead_num'=>$lead->lead_num,
         ]);
     }
 
