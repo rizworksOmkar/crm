@@ -1,5 +1,5 @@
 @extends('layouts.admin-front')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @section('content')
 <style>
     /* body {
@@ -183,7 +183,7 @@
                                             <img src="./assets/admin/images/avatar-7.png" alt=""
                                                 class="h-10 rounded-full">
                                         </div>
-                                        <h6 class="mt-4 mb-2 text-16" id="contact-name">Ayush Verma</h6>
+                                        <h6 class="mt-4 mb-2 text-16" id="contact-name"></h6>
                                         <p class="text-slate-500 dark:text-zink-200 mb-2" id="lead-no"></p>
                                         <p class="text-slate-500 dark:text-zink-200" id="lead-creation-date"></p>
                                     </div>
@@ -276,11 +276,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="lead_activity" style="display:none;">
+                            <div class="lead_activity" id="tasks-container" style="display:none;">
                                 <div class="card">
                                     <h2>Lead Activity</h2>
-                                    <div class="timeline">
-                                        <div class="timeline-item">
+                                    <div class="timeline" id="tasks-timeline">
+                                        {{-- <div class="timeline-item">
                                             <div class="timeline-icon" style="background-color: #00c853;">20</div>
                                             <div class="timeline-content">
                                                 <h3>
@@ -325,7 +325,7 @@
                                                 </h3>
                                                 <p>Happy Hour! Free drinks at Cafe-Bar all day long!</p>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -507,7 +507,7 @@
                 //alert(leadId);
                 
                 $.ajax({
-                    url: '/leads/' + leadId + '/details',
+                    url: '/leads/' + leadId + '/detail',
                     method: 'GET',
                     success: function(data) {
                         populateLeadDetails(data);
@@ -516,19 +516,23 @@
             }
 
             function populateLeadDetails(lead) {
+                console.log(lead.phone);
                 $('#lead-details-container').show();
-                $('#contact-name').text(lead.contact.name);
-                $('#contact-email').text(lead.contact.email);
-                $('#contact-phone').text(lead.contact.phone);
+                $('#contact-name').text(lead.name);
+                $('#lead-no').text(lead.lead_num);
+                $('#lead-creation-date').text(lead.deleted_at);
+                $('#contact-email').text(lead.email);
+                $('#contact-phone').text(lead.phone);
+                $('#contact-phone-whatsapp').text(lead.whatsapp);
                 $('#lead-description').text(lead.description);
                 $('#property-type').text(lead.property_type);
                 $('#budget').text(lead.max_budget);
                 $('#location').text(lead.specific_location);
 
-                $('#show-tasks-btn').off('click').on('click', function() {
+                // $('#show-tasks-btn').off('click').on('click', function() {
                     populateTasksTable(lead.tasks);
-                    $('#tasks-container').toggle();
-                });
+                    $('#tasks-container').show();
+                // });
             }
 
             function populateTasksTable(tasks) {
@@ -539,21 +543,35 @@
                     var statusClass = 'status-' + task.status.toLowerCase().replace(/ /g, '_');
                     var modeIcon = getModeIcon(task.mode);
 
-                    var taskItem = `
-            <div class="timeline-item">
-                <div class="timeline-icon" style="background-color: ${getStatusColor(task.status)};">
-                    ${modeIcon}
-                </div>
-                <div class="timeline-content">
-                    <h3>
-                        ${task.description}
-                        <span class="status ${statusClass}">${task.status}</span>
-                    </h3>
-                    <p>${task.date}</p>
-                    <p>Mode: ${task.mode}</p>
-                </div>
-            </div>
-        `;
+        //             var taskItem = `
+        //     <div class="timeline-item">
+        //         <div class="timeline-icon" style="background-color: ${getStatusColor(task.status)};">
+        //             ${modeIcon}
+        //         </div>
+        //         <div class="timeline-content">
+        //             <h3>
+        //                 ${task.description}
+        //                 <span class="status ${statusClass}">${task.status}</span>
+        //             </h3>
+        //             <p>${task.date}</p>
+        //             <p>Mode: ${task.mode}</p>
+        //         </div>
+        //     </div>
+        // `;
+
+                    var taskItem= `
+                                 <div class="timeline-item">
+                                            <div class="timeline-icon" style="background-color:  ${getStatusColor(task.status)};"> ${modeIcon}</div>
+                                            <div class="timeline-content">
+                                                <h3>
+                                                    ${task.mode}
+                                                    <span class="status ${statusClass}">${task.status}</span>
+                                                </h3>
+                                                <p> ${task.description}</p>
+                                            </div>
+                                        </div>
+                    
+                    `;
                     tasksTimeline.append(taskItem);
                 });
             }
