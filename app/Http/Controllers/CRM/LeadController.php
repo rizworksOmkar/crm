@@ -622,19 +622,44 @@ class LeadController extends Controller
 
     public function getTasksByDateRange($startDate, $endDate)
     {
-        $tasks = Task::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
-            ->orderBy('created_at', 'desc')
-            ->with('createdBy')
-            ->get();
+        $role= auth()->user()->role_type;
+        if($role == 'admin'){
+            $tasks = Task::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
+                ->orderBy('created_at', 'desc')
+                ->with('createdBy')
+                ->get();
+
+        }else{
+
+                    $myId = auth()->user()->id;
+                    $tasks = Task::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
+                    ->orderBy('created_at', 'desc')
+                    ->where('created_by',$myId)
+                    ->with('createdBy')
+                    ->get();
+        }
         return response()->json($tasks);
     }
 
     public function getLeadsByDateRange($startDate, $endDate)
     {
-        $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
-            ->orderBy('created_at', 'desc')
-            ->with(['contact', 'assignedTo'])
-            ->get();
+
+        $role= auth()->user()->role_type;
+        if($role == 'admin'){
+
+            $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
+                ->orderBy('created_at', 'desc')
+                ->with(['contact', 'assignedTo'])
+                ->get();
+        }else{
+
+                    $myId = auth()->user()->id;
+                    $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
+                    ->orderBy('created_at', 'desc')
+                    ->where('assigned_to',$myId)
+                    ->with(['contact', 'assignedTo'])
+                    ->get();
+        }
         return response()->json($leads);
     }
 

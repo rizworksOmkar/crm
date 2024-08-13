@@ -26,8 +26,19 @@ class ReportController extends Controller
 
     public function leadReport()
     {
-        $leads = Lead::all();
-        $status = LeadStatus::all();
+        
+        $role= auth()->user()->role_type;
+        if($role == 'admin'){
+
+            $leads = Lead::all();
+            $status = LeadStatus::all();
+        }else{
+
+            $myId = auth()->user()->id;
+            $leads = Lead::where('assigned_to',$myId)->get();
+            $status = LeadStatus::all();
+        }
+        
         return view('admin.main_reports.lead_report.index', compact('leads', 'status'));
     }
 
@@ -60,34 +71,78 @@ class ReportController extends Controller
 
     public function getUnbilledLeads()
     {
-        $leadsWithoutBills = Lead::with(['contact', 'assignedTo'])
-            ->where('status', 'Closed Successfully')
-            ->doesntHave('billing')
-            ->get();
+
+        $role= auth()->user()->role_type;
+        if($role == 'admin'){
+            $leadsWithoutBills = Lead::with(['contact', 'assignedTo'])
+                ->where('status', 'Closed Successfully')
+                ->doesntHave('billing')
+                ->get();
+            
+        }else{
+
+                    $myId = auth()->user()->id;
+                    $leadsWithoutBills = Lead::with(['contact', 'assignedTo'])
+                    ->where('status', 'Closed Successfully')
+                    ->where('assigned_to',$myId)
+                    ->doesntHave('billing')
+                    ->get();
+        }
         return view('admin.main_reports.billing_report.unbilled_leads_index', compact('leadsWithoutBills'));
 
     }
 
     public function getBilledLeads()
     {
-        $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
-            ->where('status', 'Closed Successfully')
-            ->whereHas('billing', function ($query) {
-                $query->where('to_pay', '>', 0);
-            })
-            ->get();
+        $role= auth()->user()->role_type;
+        if($role == 'admin'){
+            $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
+                ->where('status', 'Closed Successfully')
+                ->whereHas('billing', function ($query) {
+                    $query->where('to_pay', '>', 0);
+                })
+                ->get();
+
+        }else{
+
+                    $myId = auth()->user()->id;
+                    $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
+                    ->where('status', 'Closed Successfully')
+                    ->where('assigned_to',$myId)
+                    ->whereHas('billing', function ($query) {
+                        $query->where('to_pay', '>', 0);
+                    })
+                    ->get();
+        }
+        
 
         return view('admin.main_reports.billing_report.billed_leads_index', compact('leadsWithBills'));
     }
 
     public function getPaidLeads()
     {
-        $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
-            ->where('status', 'Closed Successfully')
-            ->whereHas('billing', function ($query) {
-                $query->where('to_pay', 0);
-            })
-            ->get();
+
+
+        $role= auth()->user()->role_type;
+        if($role == 'admin'){
+            $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
+                ->where('status', 'Closed Successfully')                
+                ->whereHas('billing', function ($query) {
+                    $query->where('to_pay', 0);
+                })
+                ->get();
+
+        }else{
+
+                    $myId = auth()->user()->id;
+                    $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
+                    ->where('status', 'Closed Successfully')
+                    ->where('assigned_to',$myId)
+                    ->whereHas('billing', function ($query) {
+                        $query->where('to_pay', 0);
+                    })
+                    ->get();
+        }
 
         return view('admin.main_reports.billing_report.paid_bills_index', compact('leadsWithBills'));
     }
