@@ -7,6 +7,25 @@ use App\Http\Controllers\CRM\UserController;
 use App\Http\Controllers\CRM\UserMenuLinkController;
 use App\Http\Controllers\CRM\TaskController;
 
+use App\Http\Controllers\CRM\LinkController;
+use App\Http\Controllers\CRM\EmployeeController;
+use App\Http\Controllers\CRM\AssignLeadController;
+use App\Http\Controllers\CRM\LeadImportController;
+use App\Http\Controllers\BillingController;
+
+use App\Http\Controllers\Admin\AdminlinkcreateController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PropertyTypeController;
+use App\Http\Controllers\PropertySpecController;
+use App\Http\Controllers\LeadSourceController;
+use App\Http\Controllers\LeadStatusController;
+use App\Http\Controllers\ReportController;
+
+use App\Http\Controllers\CRM\EntityStatusController;
+
+use App\Models\Lead;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
+
 
 Route::group(['middleware' => ['disabled_back_button']], function () {
 
@@ -31,5 +50,29 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/leads/{id}/timeline', [LeadController::class, 'timeline'])->name('leads.timeline');
         // storeTaskByEmployee
         Route::post('/tasks', [LeadController::class, 'storeTaskByEmployee'])->name('tasks.store');
+
+
+        Route::get('/main-lead-report-user', [ReportController::class, 'leadReport'])->name('lead-report-main-user');
+        Route::get('/leads/{id}/detail', [ReportController::class, 'getDetailsOfLeads'])->name('leads.details');
+        Route::get('/leads/{id}/timelines', [ReportController::class, 'timelineOfActivity'])->name('leads.timeline');
+
+        Route::post('/tasks', [LeadController::class, 'storeTaskByEmployee'])->name('tasks.store');
+
+        //billing report
+        Route::get('/unbilled-leads', [ReportController::class, 'getUnbilledLeads'])->name('unbilled-leads');
+        Route::get('/billed-leads', [ReportController::class, 'getBilledLeads'])->name('billed-leads');
+        Route::get('/paid-leads', [ReportController::class, 'getPaidLeads'])->name('paid-leads');
+        Route::get('customer', [AdminlinkcreateController::class, 'customerIndex'])->name('admin.customer.index');
+        Route::get('customercreate', [AdminlinkcreateController::class, 'customerCreate'])->name('admin.customer.create');
+
+        Route::get('/date-range-report', [LeadController::class, 'dateRangeReport'])->name('date-range-report');
+        Route::get('/get-tasks-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getTasksByDateRange']);
+        Route::get('/get-leads-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getLeadsByDateRange']);
+
+        Route::post('/leadstatuschange/{id}/toggle-status', [EntityStatusController::class, 'toggleleadStatuschange']);
+        Route::post('/leadsourcechange/{id}/toggle-status', [EntityStatusController::class, 'toggleleadSourcechange']);
+        Route::post('/propertytypestatusechange/{id}/toggle-status', [EntityStatusController::class, 'toggleProptypeStatuschange']);
+        Route::post('/propspecstatuschange/{id}/toggle-status', [EntityStatusController::class, 'togglePropSpecStatuschange']);
+        Route::post('/rolestatuschange/{id}/toggle-status', [EntityStatusController::class, 'toggleRoleStatuschange']);
     });
 });

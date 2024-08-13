@@ -1,4 +1,4 @@
-@extends('layouts.user-dashboard-layout')
+@extends('layouts.admin-front')
 @section('content')
     <style>
         .card-timeline {
