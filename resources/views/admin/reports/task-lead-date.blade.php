@@ -111,6 +111,7 @@
                                     <th id="tableHeader3"></th>
                                     <th id="tableHeader4"></th>
                                     <th id="tableHeader5"></th>
+                                    <th id="tableHeader6"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -175,10 +176,11 @@
                         var rows = '';
                         var headers = [];
                         if (filterType === 'tasks') {
-                            headers = ['Task Description', 'Date', 'Status', 'Lead ID', 'Employee'];
+                            headers = ['My Update', 'Customer Update', 'Date', 'Status', 'Lead ID', 'Employee'];
                             $.each(response, function(index, task) {
                                 rows += '<tr>' +
-                                    '<td>' + task.description + '</td>' +
+                                    '<td>' + task.user_description + '</td>' +
+                                    '<td>' + task.customer_description + '</td>' +
                                     '<td>' + task.date + '</td>' +
                                     '<td>' + task.status + '</td>' +
                                     '<td>' + task.lead_id + '</td>' +
@@ -188,9 +190,10 @@
                             });
                         } else if (filterType === 'leads') {
                             headers = ['Lead Number', 'Customer Name', 'Description', 'Assigned To',
-                                'Lead Source'
+                                'Source','Status'
                             ];
                             $.each(response, function(index, lead) {
+
                                 rows += '<tr>' +
                                     '<td>' + lead.lead_num + '</td>' +
                                     '<td>' + lead.contact.name + '</td>' +
@@ -198,6 +201,7 @@
                                     '<td>' + (lead.assigned_to ? lead.assigned_to.first_name +
                                         ' ' + lead.assigned_to.last_name : 'N/A') + '</td>' +
                                     '<td>' + lead.lead_source + '</td>' +
+                                    '<td>' + lead.status + '</td>' +
                                     '</tr>';
                             });
                         }
@@ -206,7 +210,8 @@
                             '<th>' + headers[1] + '</th>' +
                             '<th>' + headers[2] + '</th>' +
                             '<th>' + headers[3] + '</th>' +
-                            '<th>' + headers[4] + '</th>'
+                            '<th>' + headers[4] + '</th>' +
+                            '<th>' + headers[5] + '</th>'
                         );
                         $('#resultsTable tbody').html(rows);
                     },
