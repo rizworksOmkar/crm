@@ -14,6 +14,67 @@
     .active {
         color: red;
     }
+
+    .status.status-completed {
+            background-color: #00c853;
+        }
+
+        .status.status-in_progress {
+            background-color: #2196f3;
+        }
+
+        .status.status.status-pending {
+            background-color: #ffc107;
+        }
+
+        .status.timeline-icon i {
+            line-height: 30px;
+        }
+
+        .status.status-no-response {
+            background-color: #9e9e9e;
+        }
+
+        .status.status-contact-response {
+            background-color: #2196f3;
+        }
+
+        .status.status-site-visit-done {
+            background-color: #4caf50;
+        }
+
+        .status.status-site-visit-requested {
+            background-color: #ff9800;
+        }
+
+        .status.status-visit-postponed {
+            background-color: #ff5722;
+        }
+
+        .status.status-follow-up-needed {
+            background-color: #e91e63;
+        }
+
+        .status.status-follow-up-done {
+            background-color: #8bc34a;
+        }
+
+        .status.status-not-interested {
+            background-color: #795548;
+        }
+
+        .status-closed-successfully {
+            background-color: #00c853;
+        }
+
+        .status.status-closed-with-failure {
+            background-color: #f44336;
+        }
+
+        .status.status-invalid-contact-details {
+            background-color: #ffeb3b;
+            color: #333;
+        }
 </style>
 <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
     <div
@@ -578,7 +639,7 @@
                     tasksTimeline.append(taskItem);
                 });
             }
-
+            
             function getModeIcon(mode) {
                 switch (mode) {
                     case 'Site Visit':
