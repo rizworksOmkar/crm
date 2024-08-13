@@ -32768,6 +32768,10 @@ td.gridjs-td:last-child {
     color: #000;
 }
 
+li{
+    list-style: none;
+}
+
 .lead_activity .status-done {
     background-color: #00c853;
 }

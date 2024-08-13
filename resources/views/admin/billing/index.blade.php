@@ -40,32 +40,56 @@
             border-radius: 5px;
         }
     </style>
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Billing Management</h4>
-                </div>
-                <div class="card-body">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="unbilled-tab" data-toggle="tab" href="#unbilled"
-                                role="tab">Unbilled Leads</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="billed-tab" data-toggle="tab" href="#billed" role="tab">Billed
-                                Leads</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="unbilled" role="tabpanel">
-                            @include('admin.billing.unbilled_table', ['leads' => $leadsWithoutBills])
-                        </div>
-                        <div class="tab-pane fade" id="billed" role="tabpanel">
-                            @include('admin.billing.billed_table', ['leads' => $leadsWithBills])
+    <div
+        class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+        <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+            <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-1">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="mb-4 text-15">Billing Management</h6>
+                        <div>
+                            <ul id="myTab" role="tablist"
+                                class="flex flex-wrap w-full text-sm font-medium text-center 
+                                border-b border-slate-200 dark:border-zink-500 nav-tabs">
+                                <li class="group active">
+                                    <a href="javascript:void(0);" id="unbilled-tab" data-tab-toggle data-target="unbilled"
+                                        class="active inline-block px-4 py-2 text-base transition-all
+                                 duration-300 ease-linear rounded-t-md text-slate-500 
+                                 dark:text-zink-200 border border-transparent group-[.active]:text-custom-500
+                                  group-[.active]:border-slate-200 dark:group-[.active]:border-zink-500 
+                                  group-[.active]:border-b-white dark:group-[.active]:border-b-zink-700 
+                                  hover:text-custom-500 active:text-custom-500 dark:hover:text-custom-500 
+                                  dark:active:text-custom-500 dark:group-[.active]:hover:text-white -mb-[1px]">Unbilled
+                                        Leads</a>
+                                </li>
+                                <li class="group">
+                                    <a href="javascript:void(0);" id="billed-tab" data-tab-toggle data-target="billed"
+                                        class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear 
+                                        rounded-t-md text-slate-500 dark:text-zink-200 border border-transparent 
+                                        group-[.active]:text-custom-500 group-[.active]:border-slate-200 
+                                        dark:group-[.active]:border-zink-500 group-[.active]:border-b-white 
+                                        dark:group-[.active]:border-b-zink-700 hover:text-custom-500 active:text-custom-500 
+                                        dark:hover:text-custom-500 dark:active:text-custom-500 dark:group-[.active]:hover:text-white
+                                         -mb-[1px]">Billed
+                                        Leads</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content mt-4" id="myTabContent">
+                                <div class="tab-pane fade show active" id="unbilled" role="tabpanel">
+                                    @include('admin.billing.unbilled_table', [
+                                        'leads' => $leadsWithoutBills,
+                                    ])
+                                </div>
+                                <div class="tab-pane fade" id="billed" role="tabpanel">
+                                    @include('admin.billing.billed_table', ['leads' => $leadsWithBills])
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div><!--end card-->
+
             </div>
         </div>
     </div>
@@ -117,36 +141,48 @@
     </div>
 
     <!-- Make Payment Modal -->
-    <div class="modal fade" id="makePaymentModal" tabindex="-1" role="dialog" aria-labelledby="makePaymentModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="makePaymentModalLabel">Make Payment</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+    <div id="makePaymentModal" modal-center
+        class="fixed flex flex-col hidden transition-all duration-300 
+                      ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
+        <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
+            <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+                <h5 class="text-16">Make Payment</h5>
+                <button data-modal-close="defaultModal"
+                    class="transition-all duration-200 ease-linear
+                             text-slate-500 hover:text-red-500 dark:text-zink-200 
+                             dark:hover:text-red-500">
+                    <i data-lucide="x" class="size-5"></i>
+                </button>
+            </div>
+            <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
                 <form id="makePaymentForm" method="POST">
                     @csrf
-                    <div class="modal-body">
+                    <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-2">
                         <input type="hidden" id="billId" name="bill_id">
                         <div class="form-group">
-                            <label for="billNumber">Bill Number</label>
-                            <input type="text" class="form-control" id="billNumber" readonly>
+                            <label class="inline-block mb-2 text-base font-medium" for="billNumber">Bill Number</label>
+                            <input type="text"
+                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                id="billNumber" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="amountDue">Amount Due</label>
-                            <input type="number" class="form-control" id="amountDue" readonly>
+                            <label class="inline-block mb-2 text-base font-medium" for="amountDue">Amount Due</label>
+                            <input type="number"
+                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                id="amountDue" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="paymentAmount">Payment Amount</label>
-                            <input type="number" class="form-control" id="paymentAmount" name="payment_amount"
-                                required>
+                            <label class="inline-block mb-2 text-base font-medium" for="paymentAmount">Payment
+                                Amount</label>
+                            <input type="number"
+                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                id="paymentAmount" name="payment_amount" required>
                         </div>
                         <div class="form-group">
-                            <label for="paymentMode">Payment Mode</label>
-                            <select class="form-control" id="paymentMode" name="payment_mode" required>
+                            <label class="inline-block mb-2 text-base font-medium" for="paymentMode">Payment Mode</label>
+                            <select
+                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                id="paymentMode" name="payment_mode" required>
                                 <option value="cash">Cash</option>
                                 <option value="card">Card</option>
                                 <option value="bank_transfer">Bank Transfer</option>
@@ -154,33 +190,54 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Process Payment</button>
+                        <button type="button"
+                            class="py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
+                                                             active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20 remove-item-btn"
+                            data-dismiss="modal">Close</button>
+                        <button type="submit"
+                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600
+                         active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Process
+                            Payment</button>
                     </div>
                 </form>
             </div>
+            {{-- <div class="flex items-center justify-between p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
+                <button data-modal-close="defaultModal"
+                    class="transition-all duration-200 ease-linear
+                             text-slate-500 hover:text-red-500 dark:text-zink-200 
+                             dark:hover:text-red-500">
+                    <i data-lucide="x" class="size-5"></i>
+                </button>
+            </div> --}}
         </div>
     </div>
 
     <!-- View Receipt Modal -->
-    <div class="modal fade" id="viewReceiptModal" tabindex="-1" role="dialog" aria-labelledby="viewReceiptModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="viewReceiptModalLabel">Payment Transaction Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+    <div id="viewReceiptModal" modal-center
+        class="fixed flex flex-col hidden transition-all duration-300 
+    ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
+        <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
+            <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+                <h5 class="text-16">Payment Transaction Details</h5>
+                <button data-modal-close="viewReceiptModal"
+                    class="transition-all duration-200 ease-linear
+           text-slate-500 hover:text-red-500 dark:text-zink-200 
+           dark:hover:text-red-500">
+                    <i data-lucide="x" class="size-5"></i>
+                </button>
+            </div>
+            <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+                <div class="timeline" id="receiptTimeline">
+                    <!-- Timeline content will be dynamically inserted here -->
                 </div>
-                <div class="modal-body">
-                    <div class="timeline" id="receiptTimeline">
-                        <!-- Timeline content will be dynamically inserted here -->
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+            </div>
+            <div class="flex items-center justify-between p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
+                <button data-modal-close="viewReceiptModal"
+                    class="transition-all duration-200 ease-linear
+           text-slate-500 hover:text-red-500 dark:text-zink-200 
+           dark:hover:text-red-500">
+           Close
+                </button>
             </div>
         </div>
     </div>
