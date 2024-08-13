@@ -87,7 +87,7 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
 
         Route::get('/employees-monitor', [LeadController::class, 'indexEmployeeMonitor'])->name('employees-monitor');
         Route::get('employees/{employee}/leads', [LeadController::class, 'fetchLeadsByEmp']);
-        // Route::get('leads/{lead}/details', [LeadController::class, 'fetchLeadDetailsPerEmp']);
+        Route::get('/leads/{lead}/detailx', [LeadController::class, 'fetchLeadDetailsPerEmp']);
         Route::get('/leads/{id}/timeline', [LeadController::class, 'timeline'])->name('leads.timeline');
 
 

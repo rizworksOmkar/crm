@@ -507,7 +507,7 @@
                 //alert(leadId);
                 
                 $.ajax({
-                    url: '/leads/' + leadId + '/detail',
+                    url: '/leads/' + leadId + '/detailx',
                     method: 'GET',
                     success: function(data) {
                         populateLeadDetails(data);
@@ -518,12 +518,15 @@
             function populateLeadDetails(lead) {
                 console.log(lead.phone);
                 $('#lead-details-container').show();
-                $('#contact-name').text(lead.name);
+                $('#contact-name').text(lead.contact.name);
+                $('#contact-email').text(lead.contact.email);
+                $('#contact-phone').text(lead.contact.phone);
+                // $('#contact-name').text(lead.name);
                 $('#lead-no').text(lead.lead_num);
-                $('#lead-creation-date').text(lead.deleted_at);
-                $('#contact-email').text(lead.email);
-                $('#contact-phone').text(lead.phone);
-                $('#contact-phone-whatsapp').text(lead.whatsapp);
+                // $('#lead-creation-date').text(lead.deleted_at);
+                // $('#contact-email').text(lead.email);
+                // $('#contact-phone').text(lead.phone);
+                $('#contact-phone-whatsapp').text(lead.contact.whatsapp);
                 $('#lead-description').text(lead.description);
                 $('#property-type').text(lead.property_type);
                 $('#budget').text(lead.max_budget);
@@ -567,7 +570,7 @@
                                                     ${task.mode}
                                                     <span class="status ${statusClass}">${task.status}</span>
                                                 </h3>
-                                                <p> ${task.description}</p>
+                                                <p> ${task.customer_description}</p>
                                             </div>
                                         </div>
                     
