@@ -277,12 +277,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="card card-timeline">
-                    <div class="card-body">
-                        <div class="card-header">
-                            <h4>Selected Lead Timeline</h4>
-                        </div>
-                        <div class="timeline" id="lead-timeline">
+                <div class="leadTimeline">
+                    <div class="card card-timeline">
+                        <div class="card-body">
+                            <div class="card-header">
+                                <h4>Selected Lead Timeline</h4>
+                            </div>
+                            <div class="timeline" id="lead-timeline">
+                            </div>
                         </div>
                     </div>
                 </div>
