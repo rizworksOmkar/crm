@@ -15,6 +15,8 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/user-dashboard', [UserMenuLinkController::class, 'userDashboard'])->name('User-dashboard');
 
         Route::get('/myLeads', [LeadController::class, 'empLeadIndex'])->name('my-lead-index');
+        //my closed leads
+        Route::get('/myClosedLeads', [LeadController::class, 'empClosedLeadIndex'])->name('my-closed-lead-index');
 
         Route::get('/myleads/{id}/edit', [LeadController::class, 'changeStatus'])->name('leads.changeStatus');
         Route::put('/myleads/{id}', [LeadController::class, 'updateStatus'])->name('leads.updateStatus');

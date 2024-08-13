@@ -50,14 +50,25 @@ class BillingController extends Controller
             'agent_id' => 'required|exists:users,id',
         ]);
 
+        $currYear = substr((now()->year), -2);
+        $nextYear = substr((now()->year + 1), -2);
+
+        $currentMonth = now()->format('m');
+
+        $randomNumber = mt_rand(1000, 9999);
+
+        $billNum = "BILL{$currYear}{$nextYear}{$currentMonth}{$randomNumber}";
+
+        // Create the billing record
         $billing = new Billing($validatedData);
         $billing->customerWillPay = $billing->to_pay;
         $billing->lead_num = $lead->lead_num;
-        $billing->bill_num = 'BILL-' . uniqid();
+        $billing->bill_num = $billNum;
         $billing->save();
 
         return response()->json(['success' => true, 'message' => 'Bill created successfully']);
     }
+
 
     public function raiseBill($leadId)
     {
@@ -168,19 +179,30 @@ class BillingController extends Controller
             'payment_mode' => 'required|in:cash,card,bank_transfer',
         ]);
 
+        $currYear = substr((now()->year), -2);
+        $nextYear = substr((now()->year + 1), -2);
+
+        $currentMonth = now()->format('m');
+
+        $randomNumber = mt_rand(1000, 9999);
+
+        $receipt = "RCPT{$currYear}{$nextYear}{$currentMonth}{$randomNumber}";
+
         $receipt = new PaymentReceipt([
             'bill_num' => $billing->bill_num,
             'lead_num' => $billing->lead_num,
             'amount_paid' => $validatedData['payment_amount'],
             'date' => now(),
-            'payment_receipt_num' => 'RCPT-' . uniqid(),
+            'payment_receipt_num' => $receipt,
         ]);
         $receipt->save();
+
+        $receiptNo = "TXN{$currYear}{$nextYear}{$currentMonth}{$randomNumber}";
 
         $transaction = new Transaction([
             'bill_num' => $billing->bill_num,
             'receipt_num' => $receipt->payment_receipt_num,
-            'transaction_num' => 'TXN-' . uniqid(),
+            'transaction_num' => $receiptNo,
             'mode' => $validatedData['payment_mode'],
             'payment_amount' => $validatedData['payment_amount'],
             'status' => 'completed',

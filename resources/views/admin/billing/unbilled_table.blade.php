@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Lead Number</th>
+            <th>Assigned to</th>
             <th>Customer</th>
             <th>Actions</th>
         </tr>
@@ -11,6 +12,7 @@
     <tr>
         <td>{{ $lead->lead_num }}</td>
         <td>{{ $lead->contact->name }}</td>
+        <td>{{ $lead->assignedTo->first_name. ' ' .$lead->assignedTo->last_name }}</td>
         <td>
             <button type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#raiseBillModal"

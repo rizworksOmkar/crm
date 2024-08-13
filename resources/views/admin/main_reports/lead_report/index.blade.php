@@ -160,7 +160,7 @@
                                         <td>{{ $i }}</td>
                                         <td>{{ $lead->contact->name }}</td>
                                         <td>{{ $lead->lead_num }}</td>
-                                        <td>{{ $lead->created_at }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($lead->created_at)->format('Y-m-d') }}</td>
                                         <td>
                                             @if ($lead->assignedTo == null)
                                                 Not Assigned
@@ -195,7 +195,7 @@
     <script>
         $(document).ready(function() {
 
-            
+
             $('.lead-checkbox').on('change', function() {
                 $('.lead-checkbox').not(this).prop('checked', false);
 

@@ -242,7 +242,9 @@
                                     <a href="{{ route('property-types.view') }}" class="nav-link">Property Type</a>
                                     <a href="{{ route('property-specs.view') }}" class="nav-link">Property Specs</a>
 
-
+                                    <a href="{{ route('lead-sources.view') }}" class="nav-link">Lead Source</a>
+                                    <a href="{{ route('lead-status.view') }}" class="nav-link">Lead Status
+                                        Creation</a>
                                 </li>
                             </ul>
                         </li>
@@ -252,9 +254,7 @@
                                     data-feather="clipboard"></i><span>Lead & Management</span></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ route('lead-sources.view') }}" class="nav-link">Lead Source</a>
-                                    <a href="{{ route('lead-status.view') }}" class="nav-link">Lead Status
-                                        Creation</a>
+
 
                                     <a href="{{ route('admin-lead-index') }}" class="nav-link">Leads Creation
                                         (One)</a>
@@ -312,11 +312,11 @@
                                         Monitoring</a>
                                     <a href="{{ route('date-range-report') }}" class="nav-link">Dated Monitoring
                                         Reports</a>
-                                    <a href="#" class="nav-link">Client Monitoring</a>
+                                    {{-- <a href="#" class="nav-link">Client Monitoring</a>
                                     <a href="#" class="nav-link">Specific Client Monitoring</a>
                                     <a href="#" class="nav-link">Unbilled Lead Report</a>
                                     <a href="#" class="nav-link">All Bill Report</a>
-                                    <a href="#" class="nav-link">Unpaid Bill Report</a>
+                                    <a href="#" class="nav-link">Unpaid Bill Report</a> --}}
 
                                     {{-- <a href="#" class="nav-link">Customer Lead</a>
                                     <a href="#" class="nav-link">Customer Bill Details</a>

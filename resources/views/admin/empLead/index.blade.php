@@ -144,6 +144,19 @@
                                     <th>Customer Name</th>
                                     <th>Lead Number</th>
                                     <th>Lead Date</th>
+
+                                    <th>Requirement Type</th>
+                                    <th>Property Specs</th>
+                                    <th>Customer Business Type</th>
+                                    <th>Description</th>
+                                    <th>Budget</th>
+                                    <th>Area(Sq ft)</th>
+                                    <th>Location</th>
+                                    <th>Landmark</th>
+                                    <th>Lead Source</th>
+                                    <th>Property Type</th>
+                                    <th>Status</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -157,7 +170,19 @@
                                         <td>{{ $i }}</td>
                                         <td>{{ $lead->contact->name }}</td>
                                         <td>{{ $lead->lead_num }}</td>
-                                        <td>{{ $lead->created_at }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($lead->created_at)->format('Y-m-d') }}</td>
+                                        <td>{{ $lead->requirement_type }}</td>
+                                        <td>{{ $lead->property_specs }}</td>
+                                        <td>{{ $lead->cust_business_type }}</td>
+                                        <td>{{ $lead->description }}</td>
+                                        <td>{{ $lead->min_budget }} - {{ $lead->max_budegt }}</td>
+                                        <td>{{ $lead->min_area }} - {{ $lead->max_area }}</td>
+                                        <td>{{ $lead->specific_location }}</td>
+                                        <td>{{ $lead->preferred_landmark }}</td>
+                                        <td>{{ $lead->lead_source }}</td>
+                                        <td>{{ $lead->property_type }}</td>
+                                        <td>{{ $lead->status }}</td>
+
                                     </tr>
                                 @endforeach
                             </tbody>

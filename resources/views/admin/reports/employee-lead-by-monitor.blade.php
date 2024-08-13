@@ -229,7 +229,7 @@
 
             function fetchLeadDetails(leadId) {
                 $.ajax({
-                    url: '/leads/' + leadId + '/details',
+                    url: '/leads/' + leadId + '/detailx',
                     method: 'GET',
                     success: function(data) {
                         populateLeadDetails(data);
@@ -268,7 +268,7 @@
                 </div>
                 <div class="timeline-content">
                     <h3>
-                        ${task.description}
+                        ${task.customer_description}
                         <span class="status ${statusClass}">${task.status}</span>
                     </h3>
                     <p>${task.date}</p>

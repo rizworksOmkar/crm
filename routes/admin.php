@@ -87,7 +87,7 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
 
         Route::get('/employees-monitor', [LeadController::class, 'indexEmployeeMonitor'])->name('employees-monitor');
         Route::get('employees/{employee}/leads', [LeadController::class, 'fetchLeadsByEmp']);
-        // Route::get('leads/{lead}/details', [LeadController::class, 'fetchLeadDetailsPerEmp']);
+        Route::get('leads/{lead}/detailx', [LeadController::class, 'fetchLeadDetailsPerEmp']); //-1
         Route::get('/leads/{id}/timeline', [LeadController::class, 'timeline'])->name('leads.timeline');
 
 
@@ -146,7 +146,7 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/assigned-leads', [ReportController::class, 'assignedLeads'])->name('assigned-leads');
         //lead report
         Route::get('/main-lead-report', [ReportController::class, 'leadReport'])->name('lead-report-main');
-        Route::get('/leads/{id}/detail', [ReportController::class, 'getDetailsOfLeads'])->name('leads.details');
+        Route::get('/leads/{id}/detail', [ReportController::class, 'getDetailsOfLeads'])->name('leads.detail');
         Route::get('/leads/{id}/timelines', [ReportController::class, 'timelineOfActivity'])->name('leads.timeline');
         // storeTaskByAdminToEmployee
         Route::post('/tasks', [LeadController::class, 'storeTaskByEmployee'])->name('tasks.store');

@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Lead Number</th>
+            <th>Assigned to</th>
             <th>Customer</th>
             <th>Bill Number</th>
             <th>Total Amount</th>
@@ -15,6 +16,7 @@
         @foreach ($leads as $lead)
             <tr>
                 <td>{{ $lead->lead_num }}</td>
+                <td>{{ $lead->assignedTo->first_name. ' ' .$lead->assignedTo->last_name }}</td>
                 <td>{{ $lead->contact->name }}</td>
                 <td>{{ $lead->billing->bill_num }}</td>
                 <td>{{ number_format($lead->billing->customerWillPay, 2) }}</td>
@@ -22,16 +24,22 @@
                 <td>
                     @if($lead->billing->receipts->isNotEmpty())
                         {{ $lead->billing->receipts->last()->payment_receipt_num }}
-                        <br>
+                        {{-- <br>
                         {{ number_format($lead->billing->receipts->last()->amount_paid, 2) }}
-                        ({{ $lead->billing->receipts->last()->date }})
+                        ({{ $lead->billing->receipts->last()->date }}) --}}
                     @else
                         No receipts
                     @endif
                 </td>
-                <td>{{ $lead->billing->dispute_flag ? 'Disputed' : 'Clear' }}</td>
+                <td>@if($lead->billing->to_pay > 0)
+                        <span class="badge badge-danger">Unpaid</span>
+                    @else
+                        <span class="badge badge-success">Paid</span>
+                    @endif
+
+                </td>
                 <td>
-                    <a href="{{ route('billing.show', $lead->billing->id) }}" class="btn btn-info">View Details</a>
+                    {{-- <a href="{{ route('billing.show', $lead->billing->id) }}" class="btn btn-info">View Details</a> --}}
                     @if($lead->billing->to_pay > 0)
                         <button type="button" class="btn btn-success" data-toggle="modal"
                             data-target="#makePaymentModal"
@@ -43,7 +51,7 @@
                         </button>
                     @endif
 
-                    <button type="button" class="btn btn-secondary" data-toggle="modal"
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#viewReceiptModal"
                         data-bill-id="{{ $lead->billing->id }}"
                         data-lead-num="{{ $lead->lead_num }}">

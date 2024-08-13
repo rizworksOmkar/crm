@@ -44,4 +44,9 @@ class Billing extends Model
     {
         return $this->hasOne(PaymentReceipt::class, 'bill_num', 'bill_num')->latest('date');
     }
+
+    public function assignedTo()
+    {
+        return $this->belongsTo(User::class, 'assigned_to');
+    }
 }

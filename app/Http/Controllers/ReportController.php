@@ -34,7 +34,10 @@ class ReportController extends Controller
     public function getDetailsOfLeads($id)
     {
         $lead = Lead::with('contact')->findOrFail($id);
+
         return response()->json([
+            'name' => $lead->contact->name,
+            
             'phone' => $lead->contact->phone,
             'whatsapp' => $lead->contact->whatsapp_ph,
         ]);

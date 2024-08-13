@@ -235,6 +235,7 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="{{ route('my-lead-index') }}" class="nav-link">My Leads</a>
+                                    <a href="{{ route('my-lead-index') }}" class="nav-link">My Closed Leads</a>
                                     {{-- <a href="{{ route('admin-employee-index') }}" class="nav-link">Employee</a> --}}
                                 </li>
                                 {{-- <li>

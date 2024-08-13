@@ -200,10 +200,25 @@ class LeadController extends Controller
     {
         $myId = auth()->user()->id;
 
-        $leads = Lead::where('assigned_to', $myId)->get();
+        $leads = Lead::where('assigned_to', $myId)
+            ->where('status', '!=', 'Closed Successfully', '&&', 'status', '!=', 'Closed with Failure')
+            ->get();
         $contacts = Contact::all();
         $status = LeadStatus::all();
         return view('admin.empLead.index', compact('leads', 'contacts', 'status'));
+    }
+
+    public function empClosedLeadIndex()
+    {
+        $myId = auth()->user()->id;
+
+        $leads = Lead::where('assigned_to', $myId)
+            ->where('status', 'Closed Successfully')
+            ->orWhere('status', 'Closed with Failure')
+            ->get();
+        $contacts = Contact::all();
+        $status = LeadStatus::all();
+        return view('admin.empLead.closedLeads', compact('leads', 'contacts', 'status'));
     }
     // chnageStatus
 
@@ -296,7 +311,7 @@ class LeadController extends Controller
         $lead = Lead::with(['tasks', 'contact'])->findOrFail($id);
         $user = auth()->user();
         $userLeads = Lead::where('assigned_to', $user->id)->get();
-        $contacts = Contact::all(); // Fetch all contacts
+        $contacts = Contact::all();
 
         return view('admin.empTask.addTask', compact('lead', 'id', 'userLeads', 'contacts'));
     }
@@ -659,6 +674,11 @@ class LeadController extends Controller
             'mode' => $validatedData['mode'],
             'created_by' => Auth::id(),
         ]);
+
+        $lead = Lead::findOrFail($validatedData['lead_id']);
+
+        $lead->status = $validatedData['status'];
+        $lead->save();
 
         return response()->json(['message' => 'Task created successfully', 'task' => $task]);
     }
