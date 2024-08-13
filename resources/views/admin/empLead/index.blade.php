@@ -128,109 +128,162 @@
             color: #333;
         }
     </style>
-    <div class="row">
-        <div class="col-md-5">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Leads</h4>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover" style="width:100%;" id="tableState">
-                            <thead>
-                                <tr>
-                                    <th>Select</th>
-                                    <th>Sl no</th>
-                                    <th>Customer Name</th>
-                                    <th>Lead Number</th>
-                                    <th>Lead Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php $i=0; @endphp
-                                @foreach ($leads as $lead)
-                                    @php $i++; @endphp
+    <div
+        class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+        <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3">
+                <div class="leads">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-15">Leads</h6>
+                            <table id="basic_tables" class="display stripe group" style="width: 100%">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <input type="checkbox" class="lead-checkbox" data-lead-id="{{ $lead->id }}">
-                                        </td>
-                                        <td>{{ $i }}</td>
-                                        <td>{{ $lead->contact->name }}</td>
-                                        <td>{{ $lead->lead_num }}</td>
-                                        <td>{{ $lead->created_at }}</td>
+                                        <th class="ltr:!text-left rtl:!text-right">
+                                            Select</th>
+                                        <th>Sl no</th>
+                                        <th>Customer Name</th>
+                                        <th>Lead Number</th>
+                                        <th>Lead Date</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @php $i=0; @endphp
+                                    @foreach ($leads as $lead)
+                                        @php $i++; @endphp
+                                        <tr>
+                                            <td><input data-lead-id="{{ $lead->id }}"
+                                                    class="lead-checkbox border rounded-sm appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-green-500 checked:border-green-500 dark:checked:bg-green-500 dark:checked:border-green-500 checked:disabled:bg-green-400
+                                     checked:disabled:border-green-400"
+                                                    type="checkbox" value=""></td>
+                                            <td>{{ $i }}</td>
+                                            <td>{{ $lead->contact->name }}</td>
+                                            <td>{{ $lead->lead_num }}</td>
+                                            <td>{{ $lead->created_at }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="lead-details" id="lead-details" style="display: none;">
-                        <form class="lead-form">
-                            @csrf
-                            <div class="row">
-                                {{-- <div class="col-md-12">
-                                    <h5>Customer Details</h5>
-                                    <div class="form-group">
-                                        <label>Customer Name</label>
-                                        <input type="text" class="form-control" id="customer-name" readonly>
+                <div class="lead-details" id="lead-details" style="display: none;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-4 text-15">Task Details</h6>
+                            <form id="">
+                                @csrf
+                                <div class="grid grid-cols-1 gap-x-5 md:grid-cols-1 xl:grid-cols-1">
+                                    {{-- <div class="mb-4">
+                                        <label for=""
+                                            class="inline-block mb-2 text-base
+                                          font-medium">Customer
+                                            Name</label>
+                                        <input type="text"
+                                            class="form-input border-slate-200
+                                                 dark:border-zink-500 focus:outline-none 
+                                                 focus:border-custom-500 disabled:bg-slate-100 
+                                                 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                                  placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            id="customer-name" readonly>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="text" class="form-control" id="customer-phone" readonly>
+                                    <div class="mb-4">
+                                        <label for=""
+                                            class="inline-block mb-2 text-base
+                                              font-medium">Phone</label>
+                                        <input type="text"
+                                            class="form-input border-slate-200
+                                               dark:border-zink-500 focus:outline-none 
+                                               focus:border-custom-500 disabled:bg-slate-100 
+                                               dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                                placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            id="customer-phone" readonly>
                                     </div>
-                                    <div class="form-group">
-                                        <label>WhatsApp Number</label>
-                                        <input type="text" class="form-control" id="customer-whatsapp" readonly>
+                                    <div class="mb-4">
+                                        <label for="" class="inline-block mb-2 text-base font-medium">
+                                            WhatsApp Number</label>
+                                        <input type="text"
+                                            class="form-input border-slate-200
+                                         dark:border-zink-500 focus:outline-none 
+                                         focus:border-custom-500 disabled:bg-slate-100 
+                                         dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                          placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                          id="customer-whatsapp" readonly>
+                                    </div> --}}
+                                    <div class="mb-4">
+                                        <label for="" class="inline-block mb-2 text-base font-medium">
+                                            Update Activity by Clients
+                                        </label>
+                                        <textarea
+                                            class="form-input border-slate-200 dark:border-zink-500 
+                                        focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
+                                        dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 
+                                        dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
+                                        dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                        dark:placeholder:text-zink-200"
+                                            name="client_activity" rows="3"></textarea>
                                     </div>
-                                </div> --}}
-                                <div class="col-md-12">
-                                    <h5>Task Details</h5>
-                                    <div class="form-group">
-                                        <label>Update Activity by Clients</label>
-                                        <textarea class="form-control" name="client_activity"></textarea>
+                                    <div class="mb-4">
+                                        <label for="" class="inline-block mb-2 text-base font-medium">
+                                            Update Activity by User
+                                        </label>
+                                        <textarea
+                                            class="form-input border-slate-200 dark:border-zink-500 
+                                        focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
+                                        dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 
+                                        dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
+                                        dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                        dark:placeholder:text-zink-200"
+                                            name="user_activity" rows="3"></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Update Activity by User</label>
-                                        <textarea class="form-control" name="user_activity"></textarea>
+                                    <div class="mb-4">
+                                        <label for="" class="inline-block mb-2 text-base font-medium">Requirement
+                                            Mode
+                                        </label>
+                                        <input type="text"
+                                            class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            placeholder="" id="" name="mode" required>
+
                                     </div>
-                                    <div class="form-group">
-                                        <label>Mode</label>
-                                        <input type="text" class="form-control" name="mode">
+                                    <div class="mb-4">
+                                        <label for="" class="inline-block mb-2 text-base font-medium">Requirement
+                                            Date
+                                        </label>
+                                        <input type="date"
+                                            class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            placeholder="" id="" name="date" required>
+
                                     </div>
-                                    <div class="form-group">
-                                        <label>Date</label>
-                                        <input type="date" class="form-control" name="date">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Status</label>
-                                        <select class="form-control" name="status">
+                                    <div class="mb-4">
+                                        <label for="UsernameInput"
+                                            class="inline-block mb-2 text-base 
+                                        font-medium">Status</label>
+                                        <select
+                                            class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            id="" name="status" required>
                                             @foreach ($status as $leadSatatus)
                                                 <option value="{{ $leadSatatus->status_type }}">
                                                     {{ $leadSatatus->status_type }}</option>
                                             @endforeach
-
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
-                            </div>
-                        </form>
+                                <div class="flex justify-end gap-2">
+                                    <button type="submit"
+                                        class="text-white transition-all duration-200 ease-linear btn bg-custom-800 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600
+                                     active:border-custom-600 active:ring active:ring-custom-100">Submit</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-timeline">
-                <div class="card-header">
-                    <h4>Selected Lead Timeline</h4>
-                </div>
-                <div class="card-body">
-                    <div class="timeline" id="lead-timeline">
+                <div class="card card-timeline">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h4>Selected Lead Timeline</h4>
+                        </div>
+                        <div class="timeline" id="lead-timeline">
+                        </div>
                     </div>
                 </div>
             </div>
