@@ -44,13 +44,13 @@
                                     <div class="flex flex-wrap gap-2">
                                         <div class="flex items-center gap-2">
                                             <input type="radio" name="filterType" id="closedSuccessfullyRadio"
-                                                value=""
+                                                value="Closed Successfully"
                                                 class="border rounded-full appearance-none 
                                                 cursor-pointer size-4 bg-slate-100
                                                 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-orange-500 
                                                 checked:border-orange-500 dark:checked:bg-orange-500
                                                 dark:checked:border-orange-500">
-                                            <label for="radioDisabled1" class="align-middle">
+                                            <label for="" class="align-middle">
                                                 Closed Successfully
                                             </label>
                                         </div>
@@ -72,8 +72,8 @@
 
 
                             <!--end grid-->
-                            <div class="overflow-x-auto" d="resultsTableContainer" style="display:none;">
-                                <table  id="resultsTable" class="w-full whitespace-nowrap" id="leadsTable">
+                            <div class="overflow-x-auto" id="resultsTableContainer" style="display:none;">
+                                <table  id="resultsTable" class="w-full whitespace-nowrap" id="resultsTable">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
@@ -178,15 +178,15 @@
                         leads.forEach(lead => {
                             const row = document.createElement('tr');
                             row.innerHTML = `
-                                <td>${lead.lead_num}</td>
-                                <td>${lead.description}</td>
-                                <td>${lead.min_budget} - ${lead.max_budget}</td>
-                                <td>${lead.expiry}</td>
-                                <td>${lead.contact.name}</td>
-                                <td>${lead.contact.phone}</td>
-                                <td>${(lead.assigned_to ? lead.assigned_to.first_name + ' ' +
+                                <td class="px-3.5 py-2.5">${lead.lead_num}</td>
+                                <td class="px-3.5 py-2.5">${lead.description}</td>
+                                <td class="px-3.5 py-2.5">${lead.min_budget} - ${lead.max_budget}</td>
+                                <td class="px-3.5 py-2.5">${lead.expiry}</td>
+                                <td class="px-3.5 py-2.5">${lead.contact.name}</td>
+                                <td class="px-3.5 py-2.5">${lead.contact.phone}</td>
+                                <td class="px-3.5 py-2.5">${(lead.assigned_to ? lead.assigned_to.first_name + ' ' +
                                     lead.assigned_to.last_name : 'N/A')} </td>
-                                <td>${lead.status}</td>
+                                <td class="px-3.5 py-2.5">${lead.status}</td>
                             `;
                             resultsTableBody.appendChild(row);
                         });
@@ -203,15 +203,15 @@
                         leads.forEach(lead => {
                             const row = document.createElement('tr');
                             row.innerHTML = `
-                                <td>${lead.lead_num}</td>
-                                <td>${lead.description}</td>
-                                <td>${lead.min_budget} - ${lead.max_budget}</td>
-                                <td>${lead.expiry}</td>
-                                <td>${lead.contact.name}</td>
-                                <td>${lead.contact.phone}</td>
-                                <td>${lead.assigned_to ? lead.assigned_to.first_name + ' ' +
+                                <td class="px-3.5 py-2.5">${lead.lead_num}</td>
+                                <td class="px-3.5 py-2.5">${lead.description}</td>
+                                <td class="px-3.5 py-2.5">${lead.min_budget} - ${lead.max_budget}</td>
+                                <td class="px-3.5 py-2.5">${lead.expiry}</td>
+                                <td class="px-3.5 py-2.5">${lead.contact.name}</td>
+                                <td class="px-3.5 py-2.5">${lead.contact.phone}</td>
+                                <td class="px-3.5 py-2.5">${lead.assigned_to ? lead.assigned_to.first_name + ' ' +
                                     lead.assigned_to.last_name : 'N/A'} </td>
-                                <td>${lead.status}</td>
+                                <td class="px-3.5 py-2.5">${lead.status}</td>
                             `;
                             resultsTableBody.appendChild(row);
                         });

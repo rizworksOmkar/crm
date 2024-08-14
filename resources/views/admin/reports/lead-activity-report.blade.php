@@ -83,15 +83,14 @@
                                         Date
                                         {{-- <span class="text-red-500">*</span> --}}
                                     </label>
-                                    <input type="text"
+                                    <input type="date"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
                                         focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
                                         disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
                                          disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                           placeholder:text-slate-400 dark:placeholder:text-zink-200 flatpickr-input 
                                           active"
-                                        id="startDate" data-provider="flatpickr" data-date-format="d M, Y"
-                                        readonly="readonly" placeholder="Select Date">
+                                        id="startDate" >
                                 </div>
                                 <div class="mb-4">
                                     <label for="endDate"
@@ -100,15 +99,14 @@
                                         Date
                                         {{-- <span class="text-red-500">*</span> --}}
                                     </label>
-                                    <input type="text"
+                                    <input type="date"
                                         class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
                                     focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
                                     disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
                                      disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                       placeholder:text-slate-400 dark:placeholder:text-zink-200 flatpickr-input 
                                       active"
-                                        id="endDate" data-provider="flatpickr" data-date-format="d M, Y"
-                                        readonly="readonly" placeholder="Select Date">
+                                        id="endDate" >
                                 </div>
                                 <div class="mb-4">
                                    
@@ -126,7 +124,7 @@
 
                             <!--end grid-->
                             <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap" id="leadsTable">
+                                <table class="w-full whitespace-nowrap" id="">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
@@ -170,7 +168,7 @@
                             <div class="flex flex-col items-center mt-5 md:flex-row">
                                 <div class="mb-4 grow md:mb-0">
                                     <p class="text-slate-500 dark:text-zink-200">
-                                        Showing <b>07</b> of <b>19</b> Results
+                                        Showing <b>01</b> of <b>10</b> Results
                                     </p>
                                 </div>
                                 <ul class="flex flex-wrap items-center gap-2 shrink-0">

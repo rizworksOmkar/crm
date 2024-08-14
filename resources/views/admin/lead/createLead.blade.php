@@ -142,7 +142,7 @@
                                     Budget <span class="text-red-500">*</span></label>
                                 <input type="text" id="min_budget" name="min_budget"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="Enter zip code" required>
+                                    placeholder="" required>
                             </div>
                             <div class="mb-4">
                                 <label for="max_budget"
@@ -299,27 +299,27 @@
                                     <label for="new_contact_name">Name</label>
                                     <input type="text"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="new_contact_name" name="new_contact_name" placeholder="Enter Contact Name">
+                                        id="new_contact_name" name="new_contact_name" placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_email">Email</label>
                                     <input type="email"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         id="new_contact_email" name="new_contact_email"
-                                        placeholder="Enter Contact Email">
+                                        placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_phone">Phone</label>
                                     <input type="text"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="new_contact_phone" name="new_contact_phone" placeholder="Enter Phone Number">
+                                        id="new_contact_phone" name="new_contact_phone" placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_whatsapp_ph">WhatsApp Phone</label>
                                     <input type="text"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         id="new_contact_whatsapp_ph" name="new_contact_whatsapp_ph"
-                                        placeholder="Enter WhatsApp Phone Number">
+                                        placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_address">Address</label>
@@ -374,27 +374,27 @@
                                     <label for="new_contact_name">Name</label>
                                     <input type="text"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="new_contact_name" name="new_contact_name" placeholder="Enter Contact Name">
+                                        id="new_contact_name" name="new_contact_name" placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_email">Email</label>
                                     <input type="email"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         id="new_contact_email" name="new_contact_email"
-                                        placeholder="Enter Contact Email">
+                                        placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_phone">Phone</label>
                                     <input type="text"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="new_contact_phone" name="new_contact_phone" placeholder="Enter Phone Number">
+                                        id="new_contact_phone" name="new_contact_phone" placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_whatsapp_ph">WhatsApp Phone</label>
                                     <input type="text"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                         id="new_contact_whatsapp_ph" name="new_contact_whatsapp_ph"
-                                        placeholder="Enter WhatsApp Phone Number">
+                                        placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_address">Address</label>

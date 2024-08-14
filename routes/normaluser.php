@@ -59,13 +59,13 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::post('/tasks', [LeadController::class, 'storeTaskByEmployee'])->name('tasks.store');
 
         //billing report
-        Route::get('/unbilled-leads', [ReportController::class, 'getUnbilledLeads'])->name('unbilled-leads');
-        Route::get('/billed-leads', [ReportController::class, 'getBilledLeads'])->name('billed-leads');
-        Route::get('/paid-leads', [ReportController::class, 'getPaidLeads'])->name('paid-leads');
-        Route::get('customer', [AdminlinkcreateController::class, 'customerIndex'])->name('admin.customer.index');
-        Route::get('customercreate', [AdminlinkcreateController::class, 'customerCreate'])->name('admin.customer.create');
+        Route::get('/unbilled-leads-user', [ReportController::class, 'getUnbilledLeads'])->name('unbilled-leadsuser');
+        Route::get('/billed-leads-user', [ReportController::class, 'getBilledLeads'])->name('billed-leadsuser');
+        Route::get('/paid-leads-user', [ReportController::class, 'getPaidLeads'])->name('paid-leadsuser');
+        // Route::get('/customer-user', [AdminlinkcreateController::class, 'customerIndex'])->name('admin.customer.index');
+        // Route::get('customercreate', [AdminlinkcreateController::class, 'customerCreate'])->name('admin.customer.create');
 
-        Route::get('/date-range-report', [LeadController::class, 'dateRangeReport'])->name('date-range-report');
+        Route::get('/date-range-report-user', [LeadController::class, 'dateRangeReport'])->name('date-range-reportuser');
         Route::get('/get-tasks-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getTasksByDateRange']);
         Route::get('/get-leads-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getLeadsByDateRange']);
 

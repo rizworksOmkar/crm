@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <button type="submit" id="filterButton"
+                    <button type="button" id="filterButton"
                         class="text-white btn bg-custom-500 border-custom-500 hover:text-white 
                       hover:bg-custom-600 hover:border-custom-600 focus:text-white 
                      focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100
@@ -115,10 +115,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
                                  <!-- Results will be dynamically inserted here -->
-                            </tr>
-                        </tbody>
+                            </tbody>
 
                     </table>
                 </div>

@@ -136,6 +136,8 @@
 
                                     </tbody>
                                 </table>
+                                <button id="preview-selected-leads-btn" class="btn btn-info ml-2">
+                                    Preview Selected Leads</button>
                             </div>
                         </div>
                     </div>
@@ -165,8 +167,7 @@
 
                             <!--end grid-->
                             <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap table 
-                                table-striped"
+                                <table class="w-full whitespace-nowrap table table-striped"
                                     id="selected-leads-table" style="display: none;">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">

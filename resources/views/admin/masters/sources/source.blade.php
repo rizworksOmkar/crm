@@ -74,7 +74,7 @@
                                                         for="lead_source">Add Lead Source <span
                                                             class="text-red-500">*</span></label>
                                                     <input type="password" id="lead_source" name="lead_source"
-                                                        placeholder="Enter Lead Source"
+                                                        placeholder=""
                                                         class="form-input border-slate-200 dark:border-zink-500 
                                                         focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
                                                         dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 

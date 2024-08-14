@@ -126,33 +126,33 @@
                                     <h4 class="text-15">Available Leads</h4>
                                 </div>
                                 <!--end col-->
-                                <div class="xl:col-span-3 xl:col-start-11">
+                                {{-- <div class="xl:col-span-3 xl:col-start-11">
                                     <div class="flex gap-3">
                                         <div class="relative grow">
                                             <input type="search"
                                                 class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 inline-block w-auto ml-2"
                                                 placeholder="search" aria-controls="basic_tables">
-                                            {{-- <i data-lucide="search"
+                                            <i data-lucide="search"
                                                 class="inline-block size-4 absolute 
                                                 ltr:left-2.5 rtl:right-2.5 top-2.5
                                                  text-slate-500 dark:text-zink-200 
-                                                 fill-slate-100 dark:fill-zink-600"></i> --}}
+                                                 fill-slate-100 dark:fill-zink-600"></i>
                                         </div>
-                                        {{-- <button type="button"
-                                    class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
-                                    <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i>
-                                    Export
-                                </button> --}}
-                                        {{-- <a href="{{ route('admin-create-lead') }}"
+                                        <button type="button"
+                                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                                            <i class="align-baseline ltr:pr-1 rtl:pl-1 ri-download-2-line"></i>
+                                            Export
+                                        </button>
+                                        <a href="{{ route('admin-create-lead') }}"
                                             class="btn wht_sp_nwrp text-white btn bg-custom-500 border-custom-500
                                              hover:text-white hover:bg-custom-600 hover:border-custom-600 
                                              focus:text-white focus:bg-custom-600 focus:border-custom-600 
                                              focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600
                                               active:border-custom-600 active:ring active:ring-custom-100
                                                dark:ring-custom-400/20">Add
-                                            Lead</a> --}}
+                                            Lead</a>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!--end col-->
                             </div>
                             <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3 mb-4">
@@ -206,7 +206,7 @@
 
 
                             <!--end grid-->
-                            <div class="overflow-x-auto">
+                            {{-- <div class="overflow-x-auto"> --}}
                                 <table class="w-full whitespace-nowrap" id="available-leads-table">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
@@ -338,39 +338,8 @@
 
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="flex flex-col items-center mt-5 md:flex-row">
-                                <div class="mb-4 grow md:mb-0">
-                                    <p class="text-slate-500 dark:text-zink-200">
-                                        Showing <b>07</b> of <b>19</b> Results
-                                    </p>
-                                </div>
-                                <ul class="flex flex-wrap items-center gap-2 shrink-0">
-                                    <li>
-                                        <a href="#!"
-                                            class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto"><i
-                                                class="mr-1 size-4 rtl:rotate-180" data-lucide="chevron-left"></i>
-                                            Prev</a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"
-                                            class="inline-flex items-center justify-center bg-white dark:bg-zink-700 w-8 h-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"
-                                            class="inline-flex items-center justify-center bg-white dark:bg-zink-700 w-8 h-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto active">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"
-                                            class="inline-flex items-center justify-center bg-white dark:bg-zink-700 w-8 h-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#!"
-                                            class="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-50 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-custom-500 dark:[&.active]:text-custom-500 [&.active]:bg-custom-50 dark:[&.active]:bg-custom-500/10 [&.active]:border-custom-50 dark:[&.active]:border-custom-500/10 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">Next
-                                            <i class="ml-1 size-4 rtl:rotate-180" data-lucide="chevron-right"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+                            {{-- </div> --}}
+                            
                             <div class="prvw_slct mt-3">
                                 <button id="preview-selected-leads-btn"
                                     class="text-white btn bg-custom-800 border-custom-500 

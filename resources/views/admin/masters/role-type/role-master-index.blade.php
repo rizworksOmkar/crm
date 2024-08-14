@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="xl:col-span-3">
-                                    <h4 class="text-15">Roles</h4>
+                                    <h4 class="text-16">Roles </h4>
                                 </div>
                                 <!--end col-->
                                 <div class="xl:col-span-3 xl:col-start-12">
@@ -42,11 +42,12 @@
                                 </button> --}}
                                         <a href="#" id="addRoleTypeBtn"
                                             class="btn wht_sp_nwrp text-white btn bg-custom-500 border-custom-500 
-                                        hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white 
-                                        focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 
-                                        active:text-white active:bg-custom-600 active:border-custom-600 active:ring 
-                                        active:ring-custom-100 dark:ring-custom-400/20">
-                                            Add Role Type</a>
+                                            hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white 
+                                            focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 
+                                            active:text-white active:bg-custom-600 active:border-custom-600 active:ring 
+                                            active:ring-custom-100 dark:ring-custom-400/20">
+                                            Add Role Type
+                                        </a>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -63,11 +64,10 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="inline-block mb-2 text-base font-medium"
-                                                        for="role_type">Add Role 
+                                                        for="role_type">Add Role
                                                         {{-- <span class="text-red-500">*</span> --}}
                                                     </label>
-                                                    <input type="text" id="role_type" name="role_type"
-                                                        placeholder="Enter Role"
+                                                    <input type="text" id="role_type" name="role_type" placeholder=""
                                                         class="form-input border-slate-200 dark:border-zink-500 
                                                     focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
                                                     dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 
@@ -143,7 +143,7 @@
                                                  dark:ring-custom-400/20 edit-item-btn">Active</span>
                                                     @else
                                                         <span
-                                                            class="toggle-status py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
+                                                            class="py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
                                                  active:border-red-600 active:ring active:ring-red-100
                                                   dark:ring-custom-400/20 remove-item-btn">InActive</span>
                                                     @endif
@@ -152,11 +152,13 @@
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     <div class="buttons">
                                                         <button id="toggle-status" data-status-id="{{ $role->id }}"
-                                                            class="toggle-status py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
-                                                         active:border-red-600 active:ring active:ring-red-100
-                                                          dark:ring-custom-400/20 remove-item-btn">
-                                                            Change Status</button>
-
+                                                            class="toggle-status py-1 text-xs text-white bg-red-500 border-red-500 
+                                                            btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white 
+                                                            focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white
+                                                            active:bg-red-600 active:border-red-600 active:ring active:ring-red-100
+                                                            dark:ring-custom-400/20 remove-item-btn">
+                                                            Change Status
+                                                        </button>
                                                     </div>
                                                 </td>
                                                 <td
@@ -168,24 +170,22 @@
                                                             @method('DELETE')
                                                             <button type="submit"
                                                                 class="py-1 text-xs text-white btn bg-custom-800 border-custom-500 
-                                                        hover:text-white hover:bg-custom-600 hover:border-custom-600 
-                                                        focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
-                                                        focus:ring-custom-100 active:text-white
-                                                         active:bg-custom-600 active:border-custom-600 active:ring 
-                                                         active:ring-custom-100 
-                                                         dark:ring-custom-400/20 edit-item-btn"
+                                                                hover:text-white hover:bg-custom-600 hover:border-custom-600 
+                                                                focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
+                                                                focus:ring-custom-100 active:text-white active:bg-custom-600 
+                                                                active:border-custom-600 active:ring active:ring-custom-100 
+                                                                dark:ring-custom-400/20 edit-item-btn"
                                                                 onclick="return confirm('Are you sure you 
-                                                                want to delete this property type?')">Delete</button>
+                                                                want to delete this property type?')">Delete
+                                                            </button>
                                                         </form>
                                                     </div>
                                                 </td>
                                             </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
                     </div>
                     <!--end col-->
