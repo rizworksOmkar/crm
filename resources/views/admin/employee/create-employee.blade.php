@@ -6,7 +6,7 @@
    pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)]
    group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0
     group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto
-     group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 
+     group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3
      group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)] pt-20">
         <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
             <div class="card">
@@ -22,11 +22,11 @@
                                     <span class="text-red-500">*</span></label>
                                 <input type="text"
                                     class="form-input border-slate-200
-                                           dark:border-zink-500 focus:outline-none 
-                                           focus:border-custom-500 disabled:bg-slate-100 
+                                           dark:border-zink-500 focus:outline-none
+                                           focus:border-custom-500 disabled:bg-slate-100
                                            dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                             placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="empFirstname" name="empFirstname" placeholder="" >
+                                    id="empFirstname" name="empFirstname" placeholder="">
                             </div>
                             <div class="mb-4">
                                 <label for="empMidName" class="inline-block mb-2 text-base font-medium">
@@ -35,11 +35,11 @@
                                 </label>
                                 <input type="text"
                                     class="form-input border-slate-200
-                                         dark:border-zink-500 focus:outline-none 
-                                         focus:border-custom-500 disabled:bg-slate-100 
+                                         dark:border-zink-500 focus:outline-none
+                                         focus:border-custom-500 disabled:bg-slate-100
                                          dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                           placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="empMidName" name="empMidName" placeholder="" >
+                                    id="empMidName" name="empMidName" placeholder="">
                             </div>
                             <div class="mb-4">
                                 <label for="empLastName" class="inline-block mb-2 text-base font-medium">
@@ -50,10 +50,10 @@
                                     class="form-input border-slate-200 dark:border-zink-500
                                      focus:outline-none focus:border-custom-500 disabled:bg-slate-100
                                       dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500
-                                     dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
-                                     dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                     dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100
+                                     dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
                                      dark:placeholder:text-zink-200"
-                                    id="empLastName" name="empLastName" placeholder="" >
+                                    id="empLastName" name="empLastName" placeholder="">
                             </div>
                             <div class="mb-4">
                                 <label for="empEmailid" class="inline-block mb-2 text-base font-medium">
@@ -63,8 +63,8 @@
                                     class="form-input border-slate-200 dark:border-zink-500
                                      focus:outline-none focus:border-custom-500 disabled:bg-slate-100
                                       dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500
-                                     dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
-                                     dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                     dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100
+                                     dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
                                      dark:placeholder:text-zink-200"
                                     id="empEmailid" name="empEmailid" placeholder="">
                             </div>
@@ -76,9 +76,9 @@
                                     <span class="text-red-500">*</span></label>
                                 <input type="text"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none
-                                     focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                     focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600
                                      disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
-                                      disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                      disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                       placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     id="empPhoneno" name="empPhoneno" placeholder="" required>
                             </div>
@@ -93,11 +93,11 @@
                                     WhatsAPP Number
                                 </label>
                                 <input type="text"
-                                    class="form-input border-slate-200 dark:border-zink-500 
-                                    focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
-                                    dark:disabled:bg-zink-600 disabled:border-slate-300 
-                                    dark:disabled:border-zink-500 dark:disabled:text-zink-200 
-                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
+                                    class="form-input border-slate-200 dark:border-zink-500
+                                    focus:outline-none focus:border-custom-500 disabled:bg-slate-100
+                                    dark:disabled:bg-zink-600 disabled:border-slate-300
+                                    dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700
                                     dark:focus:border-custom-800
                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     id="empWhatsAppno" name="empWhatsAppno" placeholder="" required>
@@ -127,11 +127,11 @@
                          text-base font-medium">User
                                     Name</label>
                                 <input type="text"
-                                    class="form-input border-slate-200 dark:border-zink-500 
-                                    focus:outline-none focus:border-custom-500 
-                                    disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    class="form-input border-slate-200 dark:border-zink-500
+                                    focus:outline-none focus:border-custom-500
+                                    disabled:bg-slate-100 dark:disabled:bg-zink-600
                                     disabled:border-slate-300 dark:disabled:border-zink-500
-                                     dark:disabled:text-zink-200 disabled:text-slate-500 
+                                     dark:disabled:text-zink-200 disabled:text-slate-500
                                      dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                       placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     id="empUserName" name="empUserName" placeholder="" required>
@@ -142,11 +142,11 @@
                                 <label for="empPassword" class="inline-block mb-2 text-base font-medium">
                                     Password</label>
                                 <input type="password"
-                                    class="form-input border-slate-200 dark:border-zink-500 
+                                    class="form-input border-slate-200 dark:border-zink-500
                                     focus:outline-none focus:border-custom-500 disabled:bg-slate-100
-                                     dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 
-                                     dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
-                                     dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                     dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500
+                                     dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100
+                                     dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
                                      dark:placeholder:text-zink-200"
                                     id="empPassword" name="empPassword" placeholder="">
                             </div>
@@ -154,8 +154,7 @@
                                 <label for="empConPassword" class="inline-block mb-2 text-base font-medium">
                                     Confirm Password
                                 </label>
-                                <input type="password" id="empConPassword" name="empConPassword"
-                                    placeholder=""
+                                <input type="password" id="empConPassword" name="empConPassword" placeholder=""
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     required>
                             </div>
@@ -245,54 +244,45 @@
                     type: "POST",
                     data: formData,
                     success: function(response) {
-                        if (response.message == 'success') {
+                        if (response.message === 'success') {
                             swal({
                                 title: "Success",
                                 text: "Data Updated Successfully.",
                                 icon: "success",
-                                button: "OK",
-                            }).then((willconfirm) => {
-                                if (willconfirm) {
+                                button: "OK"
+                            }).then((willConfirm) => {
+                                if (willConfirm) {
                                     swal({
-                                            title: "Do you want Create more Employee?",
-                                            //text: "Once deleted, you will never get this CITY back. It will have to be rebuilt a new ",
-                                            icon: "warning",
-                                            // buttons: true,
-                                            buttons: ["No ! Go to Main menu",
-                                                "Yes ! I want to"
-                                            ],
-                                            showCancelButton: true,
-                                            dangerMode: true,
-                                            // confirmButtonColor: "#0D83DA",
-                                            // confirmButtonText: "Yes ! I want ",
-                                            // cancelButtonColor: "#E21A4F ",
-                                            // cancelButtonText: "No ! Go to Main menu",
-                                            closeOnConfirm: false,
-                                            closeOnCancel: false
-                                        })
-                                        .then((willok) => {
-                                            if (willok) {
-                                                $('#empFirstname').val('');
-                                                $('#empMidName').val('');
-                                                $('#empLastName').val('');
-
-                                                $('#empEmailid').val('');
-                                                $('#empPhoneno').val('');
-                                                $('#empWhatsAppno').val('');
-
-                                                $('#empUserName').val('');
-                                                $('#empPassword').val('');
-                                                $('#empConPassword').val('');
-                                                $('#emptype').val(0);
-                                                $('#chkWhatsaappcheck').prop(
-                                                    "checked", false);
-                                            } else {
-                                                // swal("Your file is safe!");
-                                                window.location.replace(
-                                                    "/employee")
-                                            }
-                                        });
-
+                                        title: "Do you want to create more Employee?",
+                                        text: "Once created, you will not be able to undo, unless superadmin approves!",
+                                        icon: "warning",
+                                        showCancelButton: true,
+                                        confirmButtonColor: "#0D83DA",
+                                        cancelButtonColor: "#E21A4F",
+                                        confirmButtonText: "Yes ! I want ",
+                                        cancelButtonText: "No ! Go to Main menu",
+                                        closeOnConfirm: false,
+                                        closeOnCancel: false
+                                    }).then((willOk) => {
+                                        if (willOk) {
+                                            $('#empFirstname').val('');
+                                            $('#empMidName').val('');
+                                            $('#empLastName').val('');
+                                            $('#empEmailid').val('');
+                                            $('#empPhoneno').val('');
+                                            $('#empWhatsAppno').val('');
+                                            $('#empUserName').val('');
+                                            $('#empPassword').val('');
+                                            $('#empConPassword').val('');
+                                            $('#emptype').val(0);
+                                            $('#chkWhatsaappcheck').prop("checked",
+                                                false);
+                                        } else {
+                                            window.location.replace("/employee");
+                                        }
+                                    });
+                                } else {
+                                    window.location.replace("/employee");
                                 }
                             });
                         } else {
@@ -300,7 +290,7 @@
                                 title: "Error",
                                 text: "Error Occured. Please try again later.",
                                 icon: "error",
-                                button: "OK",
+                                button: "OK"
                             });
                         }
                     }
