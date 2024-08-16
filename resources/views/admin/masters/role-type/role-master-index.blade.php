@@ -56,8 +56,7 @@
                                 <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-2 mt-2">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form id="add_role_form" action="{{ route('roles.store') }}" method="POST"
-                                                method="POST">
+                                            <form id="add_role_form" action="{{ route('roles.store') }}" method="POST">
                                                 {{ csrf_field() }}
                                                 <div class="card-header mb-3">
                                                     <h4>Create Role</h4>
