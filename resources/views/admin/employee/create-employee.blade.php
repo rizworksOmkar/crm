@@ -245,26 +245,63 @@
                     data: formData,
                     success: function(response) {
                         if (response.message === 'success') {
-                            swal({
+                            Swal.fire({
                                 title: "Success",
                                 text: "Data Updated Successfully.",
                                 icon: "success",
-                                button: "OK"
+                                showCancelButton: false,
+                                customClass: {
+                                    confirmButton: 'text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 ltr:mr-1 rtl:ml-1',
+                                    cancelButton: 'text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20',
+                                },
+                                buttonsStyling: false,
+                                showCloseButton: true
                             }).then((willConfirm) => {
                                 if (willConfirm) {
-                                    swal({
-                                        title: "Do you want to create more Employee?",
-                                        text: "Once created, you will not be able to undo, unless superadmin approves!",
+                                    // swal({
+                                    //     title: "Do you want to create more Employee?",
+                                    //     text: "Once created, you will not be able to undo, unless superadmin approves!",
+                                    //     icon: "warning",
+                                    //     showCancelButton: true,
+                                    //     confirmButtonColor: "#0D83DA",
+                                    //     cancelButtonColor: "#E21A4F",
+                                    //     confirmButtonText: "Yes ! I want ",
+                                    //     cancelButtonText: "No ! Go to Main menu",
+                                    //     closeOnConfirm: true,
+                                    //     closeOnCancel: false
+                                    // }).then((willOk) => {
+                                    //     if (willOk) {
+                                            // $('#empFirstname').val('');
+                                            // $('#empMidName').val('');
+                                            // $('#empLastName').val('');
+                                            // $('#empEmailid').val('');
+                                            // $('#empPhoneno').val('');
+                                            // $('#empWhatsAppno').val('');
+                                            // $('#empUserName').val('');
+                                            // $('#empPassword').val('');
+                                            // $('#empConPassword').val('');
+                                            // $('#emptype').val(0);
+                                            // $('#chkWhatsaappcheck').prop("checked",
+                                            //     false);
+                                    //     } else {
+                                    //         window.location.replace("/employee");
+                                    //     }
+                                    // });
+                                    Swal.fire({
+                                        title: "Are you sure?",
+                                        text: "You won't be able to revert this!",
                                         icon: "warning",
                                         showCancelButton: true,
-                                        confirmButtonColor: "#0D83DA",
-                                        cancelButtonColor: "#E21A4F",
-                                        confirmButtonText: "Yes ! I want ",
-                                        cancelButtonText: "No ! Go to Main menu",
-                                        closeOnConfirm: false,
-                                        closeOnCancel: false
-                                    }).then((willOk) => {
-                                        if (willOk) {
+                                        confirmButtonColor: "#3085d6",
+                                        cancelButtonColor: "#d33",
+                                        confirmButtonText: "Yes ! Yes ! Yes ! Yes ! I want !"
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // Swal.fire({
+                                            //     title: "Deleted!",
+                                            //     text: "Your file has been deleted.",
+                                            //     icon: "success"
+                                            // });
                                             $('#empFirstname').val('');
                                             $('#empMidName').val('');
                                             $('#empLastName').val('');
@@ -277,8 +314,6 @@
                                             $('#emptype').val(0);
                                             $('#chkWhatsaappcheck').prop("checked",
                                                 false);
-                                        } else {
-                                            window.location.replace("/employee");
                                         }
                                     });
                                 } else {

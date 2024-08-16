@@ -1368,7 +1368,7 @@
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> --}}
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> --}}
     <script src="{{ asset('assets/admin/js/layout.js') }}"></script>
     <script src="{{ asset('assets/admin/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
     <script src="{{ asset('assets/admin/libs/@popperjs/core/umd/popper.min.js') }}"></script>
@@ -1380,6 +1380,7 @@
     {{-- <script src="{{ asset('assets/admin/libs/apexcharts/apexcharts.min.js') }}"></script> --}}
     <script src="https://apexcharts.com/samples/assets/stock-prices.js"></script>
     <script src="{{ asset('assets/admin/js/pages/dashboards-ecommerce.init.js') }}"></script>
+    <script src={{ asset('assets/admin/libs/sweetalert2/sweetalert2.min.js') }}></script>
 
     <script src="{{ asset('assets/admin/js/datatables/jquery-3.7.0.js') }}"></script>
     <script src="{{ asset('assets/admin/js/datatables/data-tables.min.js') }}"></script>
