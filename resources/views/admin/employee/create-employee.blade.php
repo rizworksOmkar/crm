@@ -135,7 +135,7 @@
                                      dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                       placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     id="empUserName" name="empUserName" placeholder="" required>
-                                <span class="mt-1 text-xs text-slate-500 dark:text-zink-200"
+                                <span class="mt-1 text-xs text-slate-500 dark:text-zink-200 red"
                                     id="username-availability"></span>
                             </div>
                             <div class="mb-4">
