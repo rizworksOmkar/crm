@@ -288,13 +288,12 @@
                                     //     }
                                     // });
                                     Swal.fire({
-                                        title: "Are you sure?",
-                                        text: "You won't be able to revert this!",
+                                        title: "Do you want to create more Employee?",
                                         icon: "warning",
                                         showCancelButton: true,
                                         confirmButtonColor: "#3085d6",
                                         cancelButtonColor: "#d33",
-                                        confirmButtonText: "Yes ! Yes ! Yes ! Yes ! I want !"
+                                        confirmButtonText: "Yes !"
                                     }).then((result) => {
                                         if (result.isConfirmed) {
                                             // Swal.fire({
@@ -314,6 +313,9 @@
                                             $('#emptype').val(0);
                                             $('#chkWhatsaappcheck').prop("checked",
                                                 false);
+                                        }
+                                        else {
+                                            window.location.replace("/employee");
                                         }
                                     });
                                 } else {
