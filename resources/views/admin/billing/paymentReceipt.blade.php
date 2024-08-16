@@ -12,7 +12,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="paid_amount">Paid Amount by Customer</label>
-                            <input type="number" class="form-control" name="paid_amount" required value="{{ $billing->paid_amount }}" readonly>
+                            <input type="number" class="form-control" name="paid_amount" required value="{{ $billing->paid_amount }}" >
                         </div>
                         <div class="form-group">
                             <label for="payment_date_to_agent">Payment Date to Agent</label>

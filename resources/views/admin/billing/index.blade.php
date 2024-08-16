@@ -111,7 +111,7 @@
                         <input type="hidden" id="leadId" name="lead_id">
                         <div class="form-group">
                             <label for="leadNumber">Lead Number</label>
-                            <input type="text" class="form-control" id="leadNumber" readonly>
+                            <input type="text" class="form-control" id="leadNumber" >
                         </div>
                         <div class="form-group">
                             <label for="expectedAmount">Expected Amount</label>
@@ -127,7 +127,7 @@
                         </div>
                         <div class="form-group">
                             <label for="agent_id">Agent</label>
-                            <input type="text" name="agent_name" id="agent_name" class="form-control" readonly>
+                            <input type="text" name="agent_name" id="agent_name" class="form-control" >
                             <input type="hidden" name="agent_id" id="agent_id">
                         </div>
                     </div>
@@ -163,13 +163,13 @@
                             <label class="inline-block mb-2 text-base font-medium" for="billNumber">Bill Number</label>
                             <input type="text"
                                 class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                id="billNumber" readonly>
+                                id="billNumber" >
                         </div>
                         <div class="form-group">
                             <label class="inline-block mb-2 text-base font-medium" for="amountDue">Amount Due</label>
                             <input type="number"
                                 class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                id="amountDue" readonly>
+                                id="amountDue" >
                         </div>
                         <div class="form-group">
                             <label class="inline-block mb-2 text-base font-medium" for="paymentAmount">Payment

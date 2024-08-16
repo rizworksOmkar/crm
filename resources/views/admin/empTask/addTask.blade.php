@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
                         <input type="text" class="form-control" id="phone" name="phone"
-                            value="{{ $lead->contact->phone }}" readonly>
+                            value="{{ $lead->contact->phone }}" >
                     </div>
 
                     <div class="form-group">

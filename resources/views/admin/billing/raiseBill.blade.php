@@ -24,7 +24,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="expected_amount">Expected Amount</label>
-                        <input type="number" name="expected_amount" id="expected_amount" class="form-control" value="{{ $lead->max_budget }}" readonly>
+                        <input type="number" name="expected_amount" id="expected_amount" class="form-control" value="{{ $lead->max_budget }}" >
                     </div>
                     <div class="form-group">
                         <label for="to_pay">To Pay</label>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group">
                         <label for="agent_id">Agent</label>
-                        <input type="text" name="agent_name" id="agent_name" class="form-control" value="{{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}" readonly>
+                        <input type="text" name="agent_name" id="agent_name" class="form-control" value="{{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}" >
                         <input type="hidden" name="agent_id" value="{{ $lead->assignedTo->id }}">
                     </div>
                     <button type="submit" class="btn btn-primary">Raise Bill</button>
