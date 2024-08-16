@@ -23834,9 +23834,9 @@ div.flatpickr-day.dataTables_scrollBody
 .forced-color-adjust-none {
     forced-color-adjust: none;
 }
-.\[-\:\=\] {
+/* .\[-\:\=\] {
     -: =;
-}
+} */
 .gridjs-container {
     --tw-text-opacity: 1;
     color: rgb(30 41 59 / var(--tw-text-opacity));
