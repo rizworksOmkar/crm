@@ -13,7 +13,6 @@
                 <div class="card-body">
                     <h6 class="mb-4 text-16">Create Customer</h6>
                     <form id="add_customer_form">
-                        {{-- {{ csrf_field() }} --}}
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-4">
                             <div class="mb-4">
                                 <label for="empFirstname"
