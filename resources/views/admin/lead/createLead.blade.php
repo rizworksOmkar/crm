@@ -33,7 +33,7 @@
                                     disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
                                     dark:focus:border-custom-800 placeholder:text-slate-400 
                                     dark:placeholder:text-zink-200 "
-                                    id="contact_id" name="contact_id" required>
+                                    id="contact_id" name="contact_id">
                                     <option value="">Select Customer</option>
                                     @foreach ($contacts as $contact)
                                         <option value="{{ $contact->id }}">{{ $contact->name }}</option>
@@ -41,7 +41,7 @@
                                 </select>
                             </div>
                             <div class="mb-4 cstrm_add">
-                                <label for="firstNameInput2"
+                                <label for=""
                                     class="inline-block mb-2 text-base
                                  font-medium">Or
                                     <span class="text-red-500">*</span></label>
@@ -52,13 +52,14 @@
                                       focus:ring focus:ring-custom-100 active:text-white 
                                       active:bg-custom-600 active:border-custom-600 active:ring 
                                       active:ring-custom-100 dark:ring-custom-400/20 add-btn"
-                                    id="add_new_contact_btn" data-modal-target="createContactModal"><i
-                                        class="align-bottom ri-add-line me-1"></i> Add New Customer</button>
+                                    id="add_new_contact_btn" data-modal-target="createContactModal">
+                                    <i class="align-bottom ri-add-line me-1"></i> Add New Customer
+                                </button>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3">
                             <div class="mb-4">
-                                <label for="lastNameInput2" class="inline-block mb-2 text-base font-medium">
+                                <label for="phone" class="inline-block mb-2 text-base font-medium">
                                     Phone Number
                                     <span class="text-red-500">*</span></label>
                                 <input type="text"
@@ -67,21 +68,27 @@
                                      focus:border-custom-500 disabled:bg-slate-100 
                                      dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                       placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="phone" name="phone" placeholder="" value="" >
+                                    id="phone" name="phone" placeholder="" value="">
                             </div>
                             <div class="mb-4">
-                                <label for="lastNameInput2" class="inline-block mb-2 text-base font-medium">Whatsapp
+                                <label for="whatsapp_ph" class="inline-block mb-2 text-base font-medium">Whatsapp
                                     Number<span class="text-red-500">*</span></label>
                                 <input type="text"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" id="whatsapp_ph" name="whatsapp_ph" value="" >
+                                    placeholder="" id="whatsapp_ph" name="whatsapp_ph" value="">
                             </div>
+                            {{-- Lead Details --}}
                             <div class="mb-4">
-                                <label for="stateInput" class="inline-block mb-2 text-base font-medium">Requirement Type
+                                <label for="requirement_type" class="inline-block mb-2 text-base font-medium">Requirement
+                                    Type
                                     <span class="text-red-500">*</span></label>
                                 <select
-                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="requirement_type" name="requirement_type" required>
+                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                     disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                     placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    id="requirement_type" name="requirement_type">
                                     <option value="Buy" selected="">Buy</option>
                                     <option value="Rent">Rent</option>
                                     <option value="Sell">Sell</option>
@@ -89,20 +96,29 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="UsernameInput" class="inline-block mb-2 text-base font-medium">Customer Business
+                                <label for="cust_business_type" class="inline-block mb-2 text-base font-medium">Customer
+                                    Business
                                     Type <span class="text-red-500">*</span></label>
                                 <input type="text"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" id="cust_business_type" name="cust_business_type" required>
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                     disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="" id="cust_business_type" name="cust_business_type">
                             </div>
                             <div class="mb-4">
-                                <label for="stateInput"
+                                <label for="property_type"
                                     class="inline-block
                                  mb-2 text-base font-medium">Property
                                     Type<span class="text-red-500">*</span></label>
                                 <select
-                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="property_type" name="property_type" required>
+                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 
+                                    disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
+                                    dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 
+                                    dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
+                                     dark:placeholder:text-zink-200"
+                                    id="property_type" name="property_type">
                                     @foreach ($propertyTypes as $propertyType)
                                         <option value="{{ $propertyType->property_type }}">
                                             {{ $propertyType->property_type }}
@@ -111,11 +127,15 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="stateInput" class="inline-block mb-2 text-base font-medium">Property Specs<span
-                                        class="text-red-500">*</span></label>
+                                <label for="property_specs" class="inline-block mb-2 text-base font-medium">Property
+                                    Specs<span class="text-red-500">*</span></label>
                                 <select
-                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="property_specs" name="property_specs" required>
+                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                     disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    id="property_specs" name="property_specs">
                                     <@foreach ($propertySpecs as $propertySpec)
                                         <option value="{{ $propertySpec->property_spec }}">
                                             {{ $propertySpec->property_spec }}
@@ -141,8 +161,12 @@
                                  text-base font-medium">Min
                                     Budget <span class="text-red-500">*</span></label>
                                 <input type="text" id="min_budget" name="min_budget"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" required>
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500
+                                     disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
+                                     dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500
+                                      dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="">
                             </div>
                             <div class="mb-4">
                                 <label for="max_budget"
@@ -150,28 +174,36 @@
                                 text-base font-medium">Max
                                     Budget<span class="text-red-500">*</span></label>
                                 <input type="text" id="max_budget" name="max_budget"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" required>
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500
+                                     disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
+                                     dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500
+                                      dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="">
                             </div>
                             <div class="mb-4">
                                 <label for="min_area"
                                     class="inline-block mb-2
-                                 text-base font-medium">Min
-                                    Area
-                                    (Sq.ft)<span class="text-red-500">*</span></label>
+                                 text-base font-medium">
+                                    Min Area (Sq.ft)
+                                    <span class="text-red-500">*</span>
+                                </label>
                                 <input type="text" id="min_area" name="min_area"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" required>
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500
+                                     disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300
+                                      dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 
+                                      dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="">
                             </div>
                             <div class="mb-4">
-                                <label for="max_area"
-                                    class="inline-block mb-2 
-                                text-base font-medium">Max
-                                    Area
-                                    (Sq.ft)<span class="text-red-500">*</span></label>
+                                <label for="max_area" class="inline-block mb-2 text-base font-medium">
+                                    Max Area (Sq.ft)
+                                    <span class="text-red-500">*</span>
+                                </label>
                                 <input type="text" id="max_area" name="max_area"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" required>
+                                    placeholder="">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-1">
@@ -182,7 +214,7 @@
                                     Location<span class="text-red-500">*</span></label>
                                 <input type="text" id="specific_location" name="specific_location"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" required>
+                                    placeholder="">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-1">
@@ -193,8 +225,12 @@
                                     (Broad
                                     Level)<span class="text-red-500">*</span></label>
                                 <input type="text" id="place" name="place"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" required>
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                    placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="">
 
                             </div>
                         </div>
@@ -206,7 +242,7 @@
                                     Landmark<span class="text-red-500">*</span></label>
                                 <input type="text" id="preferred_landmark" name="preferred_landmark"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" required>
+                                    placeholder="">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
@@ -218,7 +254,7 @@
                                     Date<span class="text-red-500">*</span></label>
                                 <input type="date" id="expiry" name="expiry"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" required>
+                                    placeholder="">
                             </div>
                             <div class="mb-4">
                                 <label for="lead_source"
@@ -226,8 +262,13 @@
                                  font-medium">Lead
                                     Source<span class="text-red-500">*</span></label>
                                 <select
-                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="stateInput" required>
+                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600
+                                     disabled:border-slate-300 dark:disabled:border-zink-500
+                                      dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
+                                      dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
+                                       dark:placeholder:text-zink-200"
+                                    id="lead_source" name="lead_source">
                                     <option value="" selected="">Select Lead Source</option>
                                     @foreach ($sources as $source)
                                         <option value="{{ $source->lead_source }}">
@@ -237,6 +278,28 @@
                                 </select>
                             </div>
 
+                            {{-- <div class="mb-4">
+                                <label for="assigned_to"
+                                    class="inline-block mb-2 text-base
+                                 font-medium">Lead
+                                    Source<span class="text-red-500">*</span></label>
+                                <select
+                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600
+                                     disabled:border-slate-300 dark:disabled:border-zink-500
+                                      dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
+                                      dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
+                                       dark:placeholder:text-zink-200"
+                                    id="assigned_to" name="assigned_to">
+                                    <option value="">Select Employee</option>
+                                    @foreach ($employees as $employee)
+                                        <option value="{{ $employee->id }}">
+                                            {{ $employee->first_name }} {{ $employee->last_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div> --}}
+
                             <div class="mb-4">
                                 <label for="refrence_description"
                                     class="inline-block mb-2 text-base 
@@ -244,7 +307,7 @@
                                     Description<span class="text-red-500">*</span></label>
                                 <input type="text" id="refrence_description" name="refrence_description"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="" required>
+                                    placeholder="">
                             </div>
                             <div class="mb-4">
                                 <label for="status"
@@ -253,7 +316,7 @@
                                         class="text-red-500">*</span></label>
                                 <select
                                     class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="status" name="status" required>
+                                    id="status" name="status">
                                     @foreach ($statuses as $status)
                                         <option value="{{ $status->status_type }}">
                                             {{ $status->status_type }}
@@ -298,15 +361,20 @@
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_name">Name</label>
                                     <input type="text"
-                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 
+                                        focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
+                                        dark:disabled:bg-zink-600 disabled:border-slate-300
+                                         dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                          disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
+                                          dark:focus:border-custom-800 placeholder:text-slate-400 
+                                          dark:placeholder:text-zink-200"
                                         id="new_contact_name" name="new_contact_name" placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_email">Email</label>
                                     <input type="email"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="new_contact_email" name="new_contact_email"
-                                        placeholder="">
+                                        id="new_contact_email" name="new_contact_email" placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_phone">Phone</label>
@@ -318,13 +386,18 @@
                                     <label for="new_contact_whatsapp_ph">WhatsApp Phone</label>
                                     <input type="text"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="new_contact_whatsapp_ph" name="new_contact_whatsapp_ph"
-                                        placeholder="">
+                                        id="new_contact_whatsapp_ph" name="new_contact_whatsapp_ph" placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_address">Address</label>
-                                    <textarea
-                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"></textarea>
+                                    <textarea id="new_contact_address" name="new_contact_address"
+                                        class="form-input mt-2 border-slate-200 dark:border-zink-500 
+                                        focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
+                                        dark:disabled:bg-zink-600 disabled:border-slate-300 
+                                        dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                         disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
+                                         dark:focus:border-custom-800 placeholder:text-slate-400 
+                                         dark:placeholder:text-zink-200"></textarea>
                                 </div>
                             </div>
                             {{-- <div
@@ -349,9 +422,13 @@
                             Close
                         </button>
                         <button type="button"
-                                    class="btn btn-primary text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
-                                    id="save_contact_btn">Save
-                                    Contact</button>
+                            class="btn btn-primary text-white btn bg-custom-500 border-custom-500
+                             hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white 
+                             focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 
+                             active:text-white active:bg-custom-600 active:border-custom-600 active:ring 
+                             active:ring-custom-100 dark:ring-custom-400/20"
+                            id="save_contact_btn">
+                            Save Contact</button>
                     </div>
                 </div>
             </div>
@@ -380,8 +457,7 @@
                                     <label for="new_contact_email">Email</label>
                                     <input type="email"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="new_contact_email" name="new_contact_email"
-                                        placeholder="">
+                                        id="new_contact_email" name="new_contact_email" placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_phone">Phone</label>
@@ -393,8 +469,7 @@
                                     <label for="new_contact_whatsapp_ph">WhatsApp Phone</label>
                                     <input type="text"
                                         class="form-input mt-2 border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="new_contact_whatsapp_ph" name="new_contact_whatsapp_ph"
-                                        placeholder="">
+                                        id="new_contact_whatsapp_ph" name="new_contact_whatsapp_ph" placeholder="">
                                 </div>
                                 <div class="xl:col-span-12">
                                     <label for="new_contact_address">Address</label>
@@ -420,7 +495,7 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
     <!-- Select2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
