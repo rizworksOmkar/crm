@@ -245,6 +245,21 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+            $('#billed').hide();
+
+            $('#billed-tab').click(function() {
+
+                $('#billed').show();
+                $('#unbilled').hide();
+
+            });
+
+            $('#unbilled-tab').click(function() {
+
+                $('#billed').hide();
+                $('#unbilled').show();
+
+            });
             $('#raiseBillModal').on('show.bs.modal', function(event) {
                 var button = $(event.relatedTarget);
                 var leadId = button.data('lead-id');

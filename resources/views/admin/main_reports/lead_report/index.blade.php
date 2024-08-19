@@ -229,7 +229,7 @@
                     $('.lead-form').data('lead-id', leadId);
 
                     $.ajax({
-                        url: '/leads/' + leadId + '/detail',
+                        url: '/admin/leads/' + leadId + '/detail',
                         method: 'GET',
                         success: function(response) {
                             $('#customer-phone').val(response.phone);
@@ -270,7 +270,7 @@
 
             function loadLeadTimeline(leadId) {
                 $.ajax({
-                    url: '/leads/' + leadId + '/timelines',
+                    url: '/admin/leads/' + leadId + '/timelines',
                     method: 'GET',
                     success: function(response) {
                         var timeline = $('#lead-timeline');
