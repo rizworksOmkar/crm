@@ -73,6 +73,27 @@
                                     </select>
                                 </div> --}}
                             </div>
+                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3 mb-4"
+                                id="filterValueContainer" style="display:none;">
+                                <div class="mb-4">
+                                    <label for="filterValue"
+                                        class="inline-block mb-2 text-base
+                                      font-medium">Select
+                                        Value</label>
+                                    <select
+                                        class="form-select border-slate-200 
+                                           dark:border-zink-500 focus:outline-none 
+                                           focus:border-custom-500 disabled:bg-slate-100 
+                                           dark:disabled:bg-zink-600 disabled:border-slate-300 
+                                           dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                           disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
+                                           dark:focus:border-custom-800 placeholder:text-slate-400 
+                                           dark:placeholder:text-zink-200 select2 "
+                                        id="filterValue">
+                                        <option value="">Select Value</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 
                                    xl:grid-cols-3 mb-4"
                                 id="dateRangeContainer" style="display:none;">
@@ -90,7 +111,7 @@
                                          disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                           placeholder:text-slate-400 dark:placeholder:text-zink-200 flatpickr-input 
                                           active"
-                                        id="startDate" >
+                                        id="startDate">
                                 </div>
                                 <div class="mb-4">
                                     <label for="endDate"
@@ -106,10 +127,10 @@
                                      disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                       placeholder:text-slate-400 dark:placeholder:text-zink-200 flatpickr-input 
                                       active"
-                                        id="endDate" >
+                                        id="endDate">
                                 </div>
                                 <div class="mb-4">
-                                   
+
                                     <button id="searchButton"
                                         class="srchButton btn btn-primary btn wht_sp_nwrp text-white btn bg-custom-500 
                                         border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600

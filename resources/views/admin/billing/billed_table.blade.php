@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         {{-- <h6 class="mb-4 text-15">Basic</h6> --}}
-        <table id="" class="display stripe group" style="width: 100%">
+        <table id="" class="table stripe group" style="width: 100%">
             <thead>
                 <tr>
                     <th class="ltr:!text-left rtl:!text-right">Lead Number</th>
@@ -34,7 +34,7 @@
                         </td>
                         <td
                             class="text-white bg-green-500 border-green-500 btn hover:text-white hover:bg-green-600 hover:border-green-600 focus:text-white focus:bg-green-600 focus:border-green-600 focus:ring focus:ring-green-100 active:text-white active:bg-green-600
-                 active:border-green-600 active:ring active:ring-green-100 dark:ring-green-400/10">
+                                active:border-green-600 active:ring active:ring-green-100 dark:ring-green-400/10">
                             {{ $lead->billing->dispute_flag ? 'Disputed' : 'Clear' }}</td>
                         <td>
                             {{-- <a href="{{ route('billing.show', $lead->billing->id) }}"

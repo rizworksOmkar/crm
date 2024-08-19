@@ -52,7 +52,7 @@
                                 class="flex flex-wrap w-full text-sm font-medium text-center 
                                 border-b border-slate-200 dark:border-zink-500 nav-tabs">
                                 <li class="group active">
-                                    <a href="javascript:void(0);" id="unbilled-tab" data-tab-toggle data-target="unbilled"
+                                    <a href="#unbilled" id="unbilled-tab" data-tab-toggle data-target="unbilled"
                                         class="active inline-block px-4 py-2 text-base transition-all
                                  duration-300 ease-linear rounded-t-md text-slate-500 
                                  dark:text-zink-200 border border-transparent group-[.active]:text-custom-500
@@ -63,7 +63,7 @@
                                         Leads</a>
                                 </li>
                                 <li class="group">
-                                    <a href="javascript:void(0);" id="billed-tab" data-tab-toggle data-target="billed"
+                                    <a href="#billed" id="billed-tab" data-tab-toggle data-target="billed"
                                         class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear 
                                         rounded-t-md text-slate-500 dark:text-zink-200 border border-transparent 
                                         group-[.active]:text-custom-500 group-[.active]:border-slate-200 
@@ -78,8 +78,7 @@
 
                             <div class="tab-content mt-4" id="myTabContent">
                                 <div class="tab-pane fade show active" id="unbilled" role="tabpanel">
-                                    @include('admin.billing.unbilled_table', [
-                                        'leads' => $leadsWithoutBills,
+                                    @include('admin.billing.unbilled_table', ['leads' => $leadsWithoutBills,
                                     ])
                                 </div>
                                 <div class="tab-pane fade" id="billed" role="tabpanel">
@@ -215,7 +214,7 @@
     <!-- View Receipt Modal -->
     <div id="viewReceiptModal" modal-center
         class="fixed flex flex-col hidden transition-all duration-300 
-    ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
+               ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
         <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
             <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
                 <h5 class="text-16">Payment Transaction Details</h5>

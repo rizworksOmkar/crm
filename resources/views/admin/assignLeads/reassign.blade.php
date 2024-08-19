@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <!--end col-->
-                    <div class="col-span-12 card 2xl:col-span-12" style="display: none;">
+                    <div class="col-span-12 card 2xl:col-span-12" id="assigned-leads-section" style="display: none;">
                         <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 
                         mb-5 2xl:grid-cols-1">
@@ -77,8 +77,9 @@
                             </div>
 
                             <!--end grid-->
-                            <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap table table-striped" id="assigned-leads-table">
+                            <div class="">
+                                <table class="w-full whitespace-nowrap table table-striped" 
+                                id="assigned-leads-table">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
@@ -136,7 +137,13 @@
 
                                     </tbody>
                                 </table>
-                                <button id="preview-selected-leads-btn" class="btn btn-info ml-2">
+                                <button id="preview-selected-leads-btn" class="text-white transition-all duration-200 ease-linear btn bg-custom-800
+                                 border-custom-500 hover:text-white hover:bg-custom-600 
+                                 hover:border-custom-600 focus:text-white focus:bg-custom-600
+                                  focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white 
+                                  active:bg-custom-600
+                             active:border-custom-600 active:ring 
+                             active:ring-custom-100">
                                     Preview Selected Leads</button>
                             </div>
                         </div>
@@ -341,7 +348,7 @@
                     var leadId = $(this).data('lead-id');
                     var row = '<tr data-lead-id="' + leadId + '">';
                     row +=
-                        '<td><button type="button" class="btn btn-danger btn-sm remove-lead-btn">Remove</button></td>';
+                        '<td><button type="button" class="text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20 my-1 remove-lead-btn remove-lead-btn">Remove</button></td>';
                     for (var i = 1; i < leadRow.children().length; i++) {
                         row += '<td>' + leadRow.children().eq(i).text() + '</td>';
                     }

@@ -750,7 +750,7 @@
 
                     var row = '<tr data-lead-id="' + leadId + '">';
                     row +=
-                        '<td><button type="button" class="btn btn-danger btn-sm remove-lead-btn">Remove</button></td>';
+                        '<td><button type="button" class="text-red-500 bg-red-100 btn hover:text-white hover:bg-red-600 focus:text-white focus:bg-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:ring active:ring-red-100 dark:bg-red-500/20 dark:text-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:text-white dark:active:bg-red-500 dark:active:text-white dark:ring-red-400/20 my-1 remove-lead-btn">Remove</button></td>';
                     row += '<td>' + leadSource + '</td>';
                     row += '<td>' + leadNum + '</td>';
                     row += '<td>' + customerName + '</td>';

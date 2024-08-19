@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         {{-- <h6 class="mb-4 text-15">Basic</h6> --}}
-        <table id="" class="display stripe group" style="width: 100%">
+        <table id="" class="table stripe group" style="width: 100%">
             <thead>
                 <tr>
                     <th class="ltr:!text-left rtl:!text-right">Lead Number</th>
