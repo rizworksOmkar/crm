@@ -103,7 +103,7 @@
                         <!--end grid-->
 
                         <div class="overflow-x-auto">
-                            <table class="w-full whitespace-nowrap">
+                            <table class="w-full whitespace-nowrap" id="tableState">
                                 <thead
                                     class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                     <tr>
@@ -247,8 +247,8 @@
 <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-            $('#tableCity').DataTable({
-                "scrollX": true,
+            $('#tableState').DataTable({
+                "scrollX": false,
                 stateSave: true,
                 "paging": true,
                 "ordering": false,

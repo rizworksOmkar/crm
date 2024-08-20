@@ -15,7 +15,7 @@
                     <form id="add_customer_form">
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-4">
                             <div class="mb-4">
-                                <label for="empFirstname"
+                                <label for="cusFirstname"
                                     class="inline-block mb-2 text-base
                               font-medium">Name
                                     <span class="text-red-500">*</span></label>
@@ -25,11 +25,11 @@
                                            focus:border-custom-500 disabled:bg-slate-100
                                            dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                             placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="name" name="name" placeholder="" >
+                                    id="cusFirstname" name="cusFirstname" placeholder="" >
                             </div>
 
                             <div class="mb-4">
-                                <label for="email" class="inline-block mb-2 text-base font-medium">
+                                <label for="cusemail" class="inline-block mb-2 text-base font-medium">
                                     Email Id
                                     <span class="text-red-500">*</span></label>
                                 <input type="email"
@@ -39,12 +39,12 @@
                                      dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100
                                      dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
                                      dark:placeholder:text-zink-200"
-                                    id="email" name="email" placeholder="">
+                                    id="cusemail" name="cusemail" placeholder="">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3">
                             <div class="mb-4">
-                                <label for="phone" class="inline-block mb-2 text-base font-medium">Customer
+                                <label for="cusphone" class="inline-block mb-2 text-base font-medium">Customer
                                     Phone Number
                                     <span class="text-red-500">*</span></label>
                                 <input type="text"
@@ -53,7 +53,7 @@
                                      disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
                                       disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                       placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    id="phone" name="phone" placeholder="" required>
+                                    id="cusphone" name="cusphone" placeholder="" required>
                             </div>
                             <div class="mb-4 mt_40">
                                 <input type="checkbox" id="chkWhatsaappcheck" name="chkWhatsaappcheck" value="1">
@@ -62,7 +62,7 @@
                                 </label>
                             </div>
                             <div class="mb-4">
-                                <label for="empWhatsAppno" class="inline-block mb-2 text-base font-medium">
+                                <label for="cusWhatsAppno" class="inline-block mb-2 text-base font-medium">
                                     WhatsAPP Number
                                 </label>
                                 <input type="text"
