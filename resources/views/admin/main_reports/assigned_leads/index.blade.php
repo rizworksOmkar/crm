@@ -1,4 +1,9 @@
 @extends('layouts.admin-front')
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
 @section('content')
     <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
         <div
@@ -123,7 +128,7 @@
                                 </div>
                             </div>
 
-                            <table class="w-full display stripe group" id="basic_tables">
+                            <table class="w-full display stripe group" id="tableLead">
                                 <thead
                                     class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                     <tr>
@@ -230,11 +235,11 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var table = $('#tableLead').DataTable({
-                "scrollX": true,
-                stateSave: true,
-                "paging": true,
-                "ordering": true,
-                "info": true,
+                "scrollX": false,
+                stateSave: false,
+                "paging": false,
+                "ordering": false,
+                "info": false,
             });
 
             // Column search functionality

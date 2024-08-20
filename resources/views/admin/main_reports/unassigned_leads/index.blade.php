@@ -1,4 +1,9 @@
 @extends('layouts.admin-front')
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
 @section('content')
     <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
         <div
@@ -123,37 +128,46 @@
                                 </div>
                             </div>
 
-                            
                             <!--end grid-->
-                            <div class="">
-                                <table class="whitespace-nowrap display stripe group" id="basic_tables">
-                                    <thead>
+                            <div class="overflow-x-auto">
+                                <table class="w-full whitespace-nowrap" id="tableLead">
+                                    <thead
+                                        class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
-                                            <th class="ltr:!text-left rtl:!text-right">
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
                                                 Sl no
                                             </th>
-                                            <th class="">
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
                                                 Lead Source
                                             </th>
-                                            <th class="">
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
                                                 Lead Number
                                             </th>
-                                            <th class="">
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
                                                 Customer Name
                                             </th>
-                                            <th class="">
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
                                                 Lead Date
                                             </th>
-                                            <th class="">
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
                                                 Property Type
                                             </th>
-                                            <th class="">
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
                                                 Specific Location
                                             </th>
-                                            <th class="">
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
                                                 Budget
                                             </th>
-                                            <th class="">
+                                            <th
+                                                class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">
                                                 Area (Sq ft)
                                             </th>
                                         </tr>
@@ -163,32 +177,41 @@
                                         @foreach ($leads as $lead)
                                             @php $i++; @endphp
                                             <tr>
-                                                <td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ $i }}
                                                 </td>
-                                                <td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ $lead->lead_source }}
                                                 </td>
-                                                <td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ $lead->lead_num }}
                                                 </td>
-                                                <td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ $lead->contact->name }}
                                                 </td>
-                                                <td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ \Carbon\Carbon::parse($lead->created_at)->format('Y-m-d') }}
                                                 </td>
-                                                <td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ $lead->property_type }}
                                                 </td>
-                                                <td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ $lead->specific_location }}
                                                 </td>
-                                                <td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ $lead->min_budget }}-{{ $lead->max_budget }}
                                                 </td>
 
-                                                <td>
+                                                <td
+                                                    class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     {{ $lead->min_area }}-{{ $lead->max_area }}
                                                 </td>
                                             </tr>
@@ -197,7 +220,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                        {{-- <div class="flex flex-col items-center mt-5 md:flex-row">
+                            {{-- <div class="flex flex-col items-center mt-5 md:flex-row">
                             <div class="mb-4 grow md:mb-0">
                                 <p class="text-slate-500 dark:text-zink-200">
                                     Showing <b>07</b> of <b>19</b> Results
@@ -228,7 +251,8 @@
                                         <i class="ml-1 size-4 rtl:rotate-180" data-lucide="chevron-right"></i></a>
                                 </li>
                             </ul>
-                       </div> --}}
+                        </div> --}}
+
                         </div>
                     </div>
                 </div>
@@ -240,19 +264,20 @@
 
 @section('scripts')
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script>
+    <script
+        src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
     </script>
-    <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             var table = $('#tableLead').DataTable({
-                "scrollX": true,
-                stateSave: true,
-                "paging": true,
-                "ordering": true,
-                "info": true,
+                "scrollX": false,
+                stateSave: false,
+                "paging": false,
+                "ordering": false,
+                "info": false,
             });
 
             // Column search functionality
