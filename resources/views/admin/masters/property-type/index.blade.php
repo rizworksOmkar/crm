@@ -57,7 +57,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <form id="add_property_type_form" action="{{ route('property-types.store') }}"
-                                                method="POST" method="POST">
+                                                method="POST">
                                                 {{ csrf_field() }}
                                                 <div class="card-header mb-3">
                                                     <h4>Create Property Type</h4>
@@ -67,15 +67,13 @@
                                                         for="property_type">Add Property Type
                                                         {{-- <span class="text-red-500">*</span> --}}
                                                     </label>
-                                                    <input id="property_type" name="property_type"
-                                                        placeholder=""
+                                                    <input id="property_type" name="property_type" placeholder=""
                                                         class="form-input border-slate-200 dark:border-zink-500 
                                                 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
                                                 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 
                                                 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
                                                 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
-                                                dark:placeholder:text-zink-200"
-                                                        required="">
+                                                dark:placeholder:text-zink-200">
                                                 </div>
                                                 <div class="lead_sourc_btn">
                                                     <button type="submit"
@@ -164,7 +162,7 @@
                                                     class="text-center px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     <div class="buttons">
                                                         <form style="display: inline-block;" method="POST"
-                                                        action="{{ route('property-types.destroy', $proptype->id) }}">
+                                                            action="{{ route('property-types.destroy', $proptype->id) }}">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
@@ -176,7 +174,9 @@
                                                                       active:ring-custom-100 
                                                                      dark:ring-custom-400/20 edit-item-btn"
                                                                      onclick="return 
-                                                                     confirm('Are you sure you want to delete this property type?')">Delete</button>
+                                                                     confirm('Are you sure you want to delete this property type?')">
+                                                                Delete
+                                                            </button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -198,11 +198,11 @@
 
 @section('scripts')
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
     </script>
-    <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tableCity').DataTable({

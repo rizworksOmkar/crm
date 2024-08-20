@@ -8,6 +8,8 @@
     <meta content="Minimal Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
     <title>CRM</title>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href={{ asset('assets/admin/images/crm_4.png') }}>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/tailwind.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/tailwind2.css') }}">
@@ -103,10 +105,10 @@
                 <a href="index.html"
                     class="d-flex logo_top group-data-[sidebar=dark]:hidden group-data-[sidebar=brand]:hidden group-data-[sidebar=modern]:hidden">
                     <span class="hidden group-data-[sidebar-size=sm]:block">
-                        <img src="{{ asset('assets/admin/img/logo.png') }}" alt="" class="h-6 mx-auto" />
+                        <img src="{{ asset('assets/admin/images/crm_1.png') }}" alt="" class="h-9 mx-auto" />
                     </span>
                     <span class="group-data-[sidebar-size=sm]:hidden">
-                        <img src="{{ asset('/assets/admin/OldAssets/img/logo.png') }}" alt="" class="h-6 mx-auto" />
+                        <img src="{{ asset('assets/admin/images/crm_1.png') }}" alt="" class="h-9 mx-auto" />
                     </span>
                     @if (Auth::user()->role_type == 'admin')
                     <span class="logo-name">CRM Admin</span>
@@ -118,10 +120,10 @@
                 <a href="index.html"
                     class="hidden group-data-[sidebar=dark]:block group-data-[sidebar=brand]:block group-data-[sidebar=modern]:block">
                     <span class="hidden group-data-[sidebar-size=sm]:block">
-                        <img src="{{ asset('assets/admin/img/logo.png') }}" alt="" class="h-6 mx-auto" />
+                        <img src="{{ asset('assets/admin/images/crm_1.png') }}" alt="" class="h-9 mx-auto" />
                     </span>
                     <span class="group-data-[sidebar-size=sm]:hidden">
-                        <img src="{{ asset('assets/admin/img/logo.png') }}" alt="" class="h-6 mx-auto" />
+                        <img src="{{ asset('assets/admin/images/crm_1.png') }}" alt="" class="h-9 mx-auto" />
                     </span>
                 </a>
                 <button type="button" class="hidden p-0 float-end" id="vertical-hover">
