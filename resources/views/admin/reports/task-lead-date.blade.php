@@ -19,8 +19,7 @@
                                  disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
                                  dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 
                                  dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
-                                 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                            data-provider="flatpickr">
+                                 placeholder:text-slate-400 dark:placeholder:text-zink-200">
                         <input type="checkbox" id="singleDateCheckbox"> Filter by single date
                     </div>
                 </div>
@@ -37,8 +36,7 @@
                                  disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
                                  dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 
                                  dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
-                                 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                            data-provider="flatpickr">
+                                 placeholder:text-slate-400 dark:placeholder:text-zink-200">
                     </div>
 
                     <div class="card-body">
@@ -52,8 +50,7 @@
                                  disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
                                  dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 
                                  dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
-                                 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                            data-provider="flatpickr">
+                                 placeholder:text-slate-400 dark:placeholder:text-zink-200">
                     </div>
                 </div>
                 <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 
@@ -81,9 +78,9 @@
                             <div class="flex items-center gap-2">
                                 <input type="radio" name="filterType" value="leads" id="leadsRadio"
                                     class="border rounded-full appearance-none cursor-pointer size-4 bg-slate-100
-                                                border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-orange-500 
-                                                checked:border-orange-500 dark:checked:bg-orange-500
-                                                dark:checked:border-orange-500">
+                                           border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-orange-500 
+                                           checked:border-orange-500 dark:checked:bg-orange-500
+                                           dark:checked:border-orange-500">
                                 <label for="" class="align-middle">
                                     Leads
                                 </label>
@@ -101,22 +98,22 @@
                 </div>
             </div><!--end card-->
             <div class="card" id="resultsTableContainer" style="display:none;">
-                <div class="card-body" >
+                <div class="card-body">
                     {{-- <h6 class="mb-4 text-15">Basic</h6> --}}
                     <table id="resultsTable" class="display stripe group" style="width: 100%">
                         <thead>
                             <tr>
                                 <th class="ltr:!text-left rtl:!text-right" id="tableHeader1"></th>
                                 <th id="tableHeader2"></th>
-                                    <th id="tableHeader3"></th>
-                                    <th id="tableHeader4"></th>
-                                    <th id="tableHeader5"></th>
-                                    <th id="tableHeader6"></th>
+                                <th id="tableHeader3"></th>
+                                <th id="tableHeader4"></th>
+                                <th id="tableHeader5"></th>
+                                <th id="tableHeader6"></th>
                             </tr>
                         </thead>
                         <tbody>
-                                 <!-- Results will be dynamically inserted here -->
-                            </tbody>
+                            <!-- Results will be dynamically inserted here -->
+                        </tbody>
 
                     </table>
                 </div>
@@ -130,12 +127,12 @@
 
 @section('scripts')
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script>
     <script
         src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
     </script>
-    <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#singleDateCheckbox').change(function() {
@@ -174,7 +171,9 @@
                         var rows = '';
                         var headers = [];
                         if (filterType === 'tasks') {
-                            headers = ['My Update', 'Customer Update', 'Date', 'Status', 'Lead ID', 'Employee'];
+                            headers = ['My Update', 'Customer Update', 'Date', 'Status', 'Lead ID',
+                                'Employee'
+                            ];
                             $.each(response, function(index, task) {
                                 rows += '<tr>' +
                                     '<td>' + task.user_description + '</td>' +
@@ -188,7 +187,7 @@
                             });
                         } else if (filterType === 'leads') {
                             headers = ['Lead Number', 'Customer Name', 'Description', 'Assigned To',
-                                'Source','Status'
+                                'Source', 'Status'
                             ];
                             $.each(response, function(index, lead) {
 
