@@ -1,4 +1,9 @@
 @extends('layouts.admin-front')
+<style>
+    .dataTables_filter {
+    display: none;
+}
+</style>
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
@@ -73,9 +78,8 @@
                                     </select>
                                 </div> --}}
                             </div>
-                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3 mb-4"
-                                id="filterValueContainer" style="display:none;">
-                                <div class="mb-4">
+                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-3 mb-4">
+                                <div class="mb-4" id="filterValueContainer" style="display:none;">
                                     <label for="filterValue"
                                         class="inline-block mb-2 text-base
                                       font-medium">Select
@@ -145,7 +149,7 @@
 
                             <!--end grid-->
                             <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap" id="">
+                                <table class="w-full whitespace-nowrap" id="leadsTable">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
@@ -251,11 +255,11 @@
 
 @section('scripts')
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
     </script>
-    <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
 
@@ -264,9 +268,9 @@
             });
 
             $('#leadsTable').DataTable({
-                "scrollX": true,
-                stateSave: true,
-                "paging": true,
+                "scrollX": false,
+                stateSave: false,
+                "paging": false,
                 "ordering": false,
                 "info": false,
             });
@@ -340,14 +344,13 @@
                         $.each(response, function(index, lead) {
 
                             rows += '<tr>' +
-                                '<td>' + lead.lead_num + '</td>' +
-                                '<td>' + lead.contact.name + '</td>' +
-                                '<td>' + (lead.assigned_to ? lead.assigned_to.first_name + ' ' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + lead.lead_num + '</td>' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + lead.contact.name + '</td>' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + (lead.assigned_to ? lead.assigned_to.first_name + ' ' +
                                     lead.assigned_to.last_name : 'N/A') + '</td>' +
-                                '<td>' + lead.lead_source + '</td>' +
-                                '<td>' + lead.created_at + '</td>' +
-                                '<td><button class="btn btn-sm btn-primary view-tasks-btn" data-lead-id="' +
-                                lead.id + '">View Tasks</button></td>' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + lead.lead_source + '</td>' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + lead.created_at + '</td>' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><button class="py-1 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 edit-item-btn view-tasks-btn" data-lead-id="' + lead.id + '">View Tasks</button></td>' +
                                 '</tr>';
                         });
                         $('#leadsTable tbody').html(rows);
