@@ -33,7 +33,7 @@
                             <!--end grid-->
 
                             <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap">
+                                <table id="tableCity" class="w-full whitespace-nowrap">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
@@ -124,19 +124,19 @@
 
 @section('scripts')
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
     </script>
-    <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tableCity').DataTable({
-                "scrollX": true,
+                "scrollX": false,
                 stateSave: true,
                 "paging": true,
-                "ordering": false,
-                "info": false,
+                "ordering": true,
+                "info": true,
                 // dom: 'Bfrtip',
                 // buttons: [
                 //     'excel', 'pdf'

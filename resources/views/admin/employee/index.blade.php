@@ -235,8 +235,8 @@
                 "scrollX": false,
                 stateSave: true,
                 "paging": true,
-                "ordering": false,
-                "info": false,
+                "ordering": true,
+                "info": true,
                 // dom: 'Bfrtip',
                 // buttons: [
                 //     'excel', 'pdf'

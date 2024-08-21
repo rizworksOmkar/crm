@@ -133,7 +133,7 @@
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     @if ($role->state_role_type == 1)
                                                         <span
-                                                            class="py-1 text-xs text-white btn bg-custom-800 border-custom-500 
+                                                            class="badge badge-success py-1 text-xs text-white btn bg-custom-800 border-custom-500 
                                                 hover:text-white hover:bg-custom-600 hover:border-custom-600 
                                                 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
                                                 focus:ring-custom-100 active:text-white
@@ -142,7 +142,7 @@
                                                  dark:ring-custom-400/20 edit-item-btn">Active</span>
                                                     @else
                                                         <span
-                                                            class="py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
+                                                            class="badge badge-danger py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
                                                  active:border-red-600 active:ring active:ring-red-100
                                                   dark:ring-custom-400/20 remove-item-btn">InActive</span>
                                                     @endif
@@ -196,11 +196,11 @@
 
 @section('scripts')
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
     </script>
-    <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tableCity').DataTable({
@@ -229,7 +229,6 @@
                     "_token": "{{ csrf_token() }}",
                 },
                 success: function(response) {
-
                     alert(response.message);
                     location.reload();
                 }
