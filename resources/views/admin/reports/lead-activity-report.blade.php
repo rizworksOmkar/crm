@@ -1,8 +1,8 @@
 @extends('layouts.admin-front')
 <style>
     .dataTables_filter {
-    display: none;
-}
+        display: none;
+    }
 </style>
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -231,8 +231,36 @@
         </div>
     </div>
 
+    {{-- new modal  --}}
+    <div id="taskModal" modal-center aria-labelledby="taskModalLabel" aria-hidden="true"
+        class="modal fixed flex flex-col hidden transition-all duration-300 
+                      ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
+        <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
+            <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+                <h5 class="text-16" id="taskModalLabel">Task Details</h5>
+                <button data-modal-close="taskModal"
+                    class="transition-all duration-200 ease-linear
+                             text-slate-500 hover:text-red-500 dark:text-zink-200 
+                             dark:hover:text-red-500">
+                    <i data-lucide="x" class="size-5"></i>
+                </button>
+            </div>
+            <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto modal-body">
+               <!-- Task details will be dynamically inserted here -->
+            </div>
+            <div class="flex items-center justify-between p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
+                <button data-modal-close="taskModal"
+                    class="transition-all duration-200 ease-linear
+                             text-slate-500 hover:text-red-500 dark:text-zink-200 
+                             dark:hover:text-red-500">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal for Task Details -->
-    <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel"
+    {{-- <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -243,23 +271,24 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Task details will be dynamically inserted here -->
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 @section('scripts')
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    {{-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    <script
+        src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
     </script>
     <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
 
@@ -344,13 +373,19 @@
                         $.each(response, function(index, lead) {
 
                             rows += '<tr>' +
-                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + lead.lead_num + '</td>' +
-                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + lead.contact.name + '</td>' +
-                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + (lead.assigned_to ? lead.assigned_to.first_name + ' ' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' +
+                                lead.lead_num + '</td>' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' +
+                                lead.contact.name + '</td>' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' +
+                                (lead.assigned_to ? lead.assigned_to.first_name + ' ' +
                                     lead.assigned_to.last_name : 'N/A') + '</td>' +
-                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + lead.lead_source + '</td>' +
-                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + lead.created_at + '</td>' +
-                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><button class="py-1 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 edit-item-btn view-tasks-btn" data-lead-id="' + lead.id + '">View Tasks</button></td>' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' +
+                                lead.lead_source + '</td>' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' +
+                                lead.created_at + '</td>' +
+                                '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500"><button data-modal-target="taskModal"  type="button" class="py-1 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 edit-item-btn view-tasks-btn" data-lead-id="' +
+                                lead.id + '">View Tasks</button></td>' +
                                 '</tr>';
                         });
                         $('#leadsTable tbody').html(rows);

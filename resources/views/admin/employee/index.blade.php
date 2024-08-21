@@ -196,16 +196,16 @@
                                                             data-toggle="tooltip" title="view and Edit Your Employee"><i
                                                                 class="fa fa-eye"></i></a>
 
-                                                        {{-- <a submitid="{{ $us->id }}"
+                                                        <a submitid="{{ $us->id }}"
                                                             class="py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
                                                              active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20 remove-item-btn"
                                                             data-toggle="tooltip" title="Delete your City"
                                                             href="javacript:void(0)"
                                                             id="deleteCountry_{{ $us->id }}"><i
-                                                                class="fa fa-times"></i></a> --}}
-                                                                <a submitid="{{ $us->id }}" class="btn btn-icon btn-sm btn-danger"
+                                                                class="fa fa-times"></i></a>
+                                                                {{-- <a submitid="{{ $us->id }}" class="btn btn-icon btn-sm btn-danger"
                                                                     data-toggle="tooltip" title="Delete your City" href="javacript:void(0)"
-                                                                    id="deleteCountry_{{ $us->id }}"><i class="fas fa-times"></i></a>
+                                                                    id="deleteCountry_{{ $us->id }}"><i class="fas fa-times"></i></a> --}}
                                                     </div>
                                                 </td>
                                             </tr>
