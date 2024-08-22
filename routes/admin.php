@@ -121,11 +121,11 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/get-tasks-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getTasksByDateRange']);
         Route::get('/get-leads-by-date-range/{startDate}/{endDate}', [LeadController::class, 'getLeadsByDateRange']);
 
-        Route::post('/leadstatuschange/{id}/toggle-status', [EntityStatusController::class, 'toggleleadStatuschange']);
-        Route::post('/leadsourcechange/{id}/toggle-status', [EntityStatusController::class, 'toggleleadSourcechange']);
-        Route::post('/propertytypestatusechange/{id}/toggle-status', [EntityStatusController::class, 'toggleProptypeStatuschange']);
-        Route::post('/propspecstatuschange/{id}/toggle-status', [EntityStatusController::class, 'togglePropSpecStatuschange']);
-        Route::post('/rolestatuschange/{id}/toggle-status', [EntityStatusController::class, 'toggleRoleStatuschange']);
+        Route::post('/leadstatuschange/{id}/STtoggle-status', [EntityStatusController::class, 'toggleleadStatuschange']);
+        Route::post('/leadsourcechange/{id}/Stoggle-status', [EntityStatusController::class, 'toggleleadSourcechange']);
+        Route::post('/propertytypestatusechange/{id}/Ptoggle-status', [EntityStatusController::class, 'toggleProptypeStatuschange']);
+        Route::post('/propspecstatuschange/{id}/PStoggle-status', [EntityStatusController::class, 'togglePropSpecStatuschange']);
+        Route::post('/rolestatuschange/{id}/Atoggle-status', [EntityStatusController::class, 'toggleRoleStatuschange']);
 
 
             Route::get('/billing', [BillingController::class, 'index'])->name('billing.index');

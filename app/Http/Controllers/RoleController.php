@@ -26,6 +26,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-        return redirect()->route('property-types.view')->with('success', 'Property Type deleted successfully!');
+        return redirect()->route('get-all-roles')->with('success', 'Property Type deleted successfully!');
     }
 }

@@ -94,7 +94,7 @@
 
                             <!--end grid-->
                             <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap" id="tableState">
+                                <table class="w-full whitespace-nowrap" id="tableCity">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
@@ -206,7 +206,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tableCity').DataTable({
-                "scrollX": true,
+                "scrollX": false,
                 stateSave: true,
                 "paging": true,
                 "ordering": false,
@@ -225,7 +225,7 @@
         $('.toggle-status').click(function() {
             var propid = $(this).data('status-id');
             $.ajax({
-                url: '/propertytypestatusechange/' + propid + '/toggle-status',
+                url: '/propertytypestatusechange/' + propid + '/Ptoggle-status',
                 type: 'POST',
                 data: {
                     "_token": "{{ csrf_token() }}",

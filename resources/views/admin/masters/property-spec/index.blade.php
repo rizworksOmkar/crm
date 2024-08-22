@@ -96,7 +96,7 @@
 
                             <!--end grid-->
                             <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap" id="tableState">
+                                <table class="w-full whitespace-nowrap" id="tableCity">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
@@ -123,7 +123,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($propertySpecs as $propSpec)
+                                        @foreach ($propertySpecs as $propSpec)
                                             <tr>
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
@@ -133,7 +133,7 @@
                                                     {{ $propSpec->property_spec }}</td>
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
-                                                    @if ($propSpec->state_property_spec	 == 1)
+                                                    @if ($propSpec->state_property_spec == 1)
                                                         <span
                                                             class="py-1 text-xs text-white btn bg-custom-800 border-custom-500 
                                                             hover:text-white hover:bg-custom-600 hover:border-custom-600 
@@ -164,20 +164,20 @@
                                                     class="text-center px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     <div class="buttons">
                                                         <form style="display: inline-block;" method="POST"
-                                                        action="{{ route('property-specs.destroy', $propSpec->id) }}">
+                                                            action="{{ route('property-specs.destroy', $propSpec->id) }}">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
                                                                 class="py-1 text-xs text-white btn bg-custom-800 border-custom-500 
-                                                                       hover:text-white hover:bg-custom-600 hover:border-custom-600 
-                                                                       focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
-                                                                       focus:ring-custom-100 active:text-white
-                                                                        active:bg-custom-600 active:border-custom-600 active:ring 
-                                                                        active:ring-custom-100 
-                                                                        dark:ring-custom-400/20 edit-item-btn"
-                                                                        onclick="return 
-                                                                        confirm('Are you sure you want to delete this property type?')">
-                                                                        Delete</button>
+                                                                    hover:text-white hover:bg-custom-600 hover:border-custom-600 
+                                                                    focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
+                                                                    focus:ring-custom-100 active:text-white
+                                                                     active:bg-custom-600 active:border-custom-600 active:ring 
+                                                                      active:ring-custom-100 
+                                                                     dark:ring-custom-400/20 edit-item-btn"
+                                                                onclick="return 
+                                                                        confirm('Are you sure you want to delete this Property Specification?')">
+                                                                Delete</button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -206,7 +206,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tableCity').DataTable({
-                "scrollX": true,
+                "scrollX": false,
                 stateSave: true,
                 "paging": true,
                 "ordering": false,
@@ -226,7 +226,7 @@
         $('.toggle-status').click(function() {
             var propid = $(this).data('status-id');
             $.ajax({
-                url: '/propspecstatuschange/' + propid + '/toggle-status',
+                url: '/propspecstatuschange/' + propid + '/PStoggle-status',
                 type: 'POST',
                 data: {
                     "_token": "{{ csrf_token() }}",

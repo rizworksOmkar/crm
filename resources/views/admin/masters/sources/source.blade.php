@@ -101,7 +101,7 @@
                             </div>
                             <!--end grid-->
                             <div class="overflow-x-auto">
-                                <table class="w-full whitespace-nowrap">
+                                <table class="w-full whitespace-nowrap" id="tableCity">
                                     <thead
                                         class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                         <tr>
@@ -139,9 +139,17 @@
                                                 <td
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     @if ($source->state_lead_source == 1)
-                                                        <span class="badge badge-success">Active</span>
+                                                        <span class="badge badge-success py-1 text-xs text-white btn bg-custom-800 border-custom-500 
+                                                            hover:text-white hover:bg-custom-600 hover:border-custom-600 
+                                                            focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
+                                                            focus:ring-custom-100 active:text-white
+                                                             active:bg-custom-600 active:border-custom-600 active:ring 
+                                                             active:ring-custom-100 
+                                                             dark:ring-custom-400/20 edit-item-btn">Active</span>
                                                     @else
-                                                        <span class="badge badge-danger">InActive</span>
+                                                        <span class="badge badge-danger py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
+                                                             active:border-red-600 active:ring active:ring-red-100
+                                                              dark:ring-custom-400/20 remove-item-btn">InActive</span>
                                                     @endif
                                                 </td>
                                                 <td
@@ -221,7 +229,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tableCity').DataTable({
-                "scrollX": true,
+                "scrollX": false,
                 stateSave: true,
                 "paging": true,
                 "ordering": false,
@@ -240,7 +248,7 @@
         $('.toggle-status').click(function() {
             var statusid = $(this).data('status-id');
             $.ajax({
-                url: '/leadsourcechange/' + statusid + '/toggle-status',
+                url: '/leadsourcechange/' + statusid + '/Stoggle-status',
                 type: 'POST',
                 data: {
                     "_token": "{{ csrf_token() }}",
