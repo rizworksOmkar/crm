@@ -122,18 +122,30 @@
                                                     class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">
                                                     <div class="buttons">
                                                         <a submitid="{{ $lead->id }}"
-                                                            class="py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
-                                                             active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20 remove-item-btn"
+                                                            class="delete-lead-btn py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white 
+                                                            hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 
+                                                            focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
+                                                             active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20 
+                                                             remove-item-btn"
                                                             data-toggle="tooltip" title="Delete Lead"
                                                             href="javascript:void(0)"
                                                             id="deleteLead_{{ $lead->id }}"><i class="fa fa-times" aria-hidden="true"></i></a>
 
                                                         <a href="{{ route('leads.edit', $lead->id) }}"
-                                                            class="py-1 text-xs text-white btn bg-custom-800 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white
-                                                             active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 edit-item-btn"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                                                        <a href="{{ route('view.showEmpTasks', $lead->id) }}"class="py-1 text-xs text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white
-                                                             active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 edit-item-btn"
-                                                            data-toggle="tooltip" title="View employee activity"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                            class="py-1 text-xs text-white btn bg-custom-800 border-custom-500 hover:text-white 
+                                                            hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 
+                                                            focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white
+                                                             active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 
+                                                             dark:ring-custom-400/20 edit-item-btn">
+                                                             <i class="fa fa-edit" aria-hidden="true"></i></a>
+                                                        <a href="{{ route('view.showEmpTasks', $lead->id) }}"class="py-1 text-xs text-white btn 
+                                                            bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 
+                                                            hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600
+                                                             focus:ring focus:ring-custom-100 active:text-white
+                                                             active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100
+                                                              dark:ring-custom-400/20 edit-item-btn"
+                                                            data-toggle="tooltip" title="View employee activity"><i class="fa fa-eye"
+                                                             aria-hidden="true"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -184,12 +196,15 @@
 @endsection
 
 @section('scripts')
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
-    <script src="{{ asset('assets/admin/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/page/datatables.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             var table = $('#tableLead').DataTable({

@@ -52,7 +52,7 @@
                                       focus:ring focus:ring-custom-100 active:text-white 
                                       active:bg-custom-600 active:border-custom-600 active:ring 
                                       active:ring-custom-100 dark:ring-custom-400/20 add-btn"
-                                    id="add_new_contact_btn" data-modal-target="createContactModal">
+                                    id="add_new_contact_btn" data-toggle="modal">
                                     <i class="align-bottom ri-add-line me-1"></i> Add New Customer
                                 </button>
                             </div>
@@ -592,11 +592,23 @@
                     data: formData,
                     success: function(response) {
                         if (response.message == 'success') {
-                            swal({
+                            // swal({
+                            //     title: "Success",
+                            //     text: "Lead Created Successfully.",
+                            //     icon: "success",
+                            //     button: "OK",
+                            // })
+                            Swal.fire({
                                 title: "Success",
                                 text: "Lead Created Successfully.",
                                 icon: "success",
-                                button: "OK",
+                                showCancelButton: false,
+                                customClass: {
+                                    confirmButton: 'text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 ltr:mr-1 rtl:ml-1',
+                                    cancelButton: 'text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20',
+                                },
+                                buttonsStyling: false,
+                                showCloseButton: true
                             }).then((willconfirm) => {
                                 if (willconfirm) {
                                     $('#contact_id').val('');
@@ -618,11 +630,18 @@
                                 }
                             });
                         } else {
-                            swal({
+                            Swal.fire({
                                 title: "Error",
                                 text: "Error Occurred. Please try again later.",
                                 icon: "error",
-                                button: "OK",
+
+                                showCancelButton: false,
+                                customClass: {
+                                    confirmButton: 'text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20 ltr:mr-1 rtl:ml-1',
+                                    cancelButton: 'text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20',
+                                },
+                                buttonsStyling: false,
+                                showCloseButton: true
                             });
                         }
                     }
