@@ -155,5 +155,9 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/unbilled-leads', [ReportController::class, 'getUnbilledLeads'])->name('unbilled-leads');
         Route::get('/billed-leads', [ReportController::class, 'getBilledLeads'])->name('billed-leads');
         Route::get('/paid-leads', [ReportController::class, 'getPaidLeads'])->name('paid-leads');
+
+        //notification report
+        Route::get('/notification', [ReportController::class, 'notificationTasks'])->name('tasks.notification');
+        Route::post('/notifcation/filter', [ReportController::class, 'filterNotificationTasks'])->name('tasks.notification.filter');
     });
 });

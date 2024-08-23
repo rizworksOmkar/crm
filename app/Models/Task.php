@@ -28,7 +28,7 @@ class Task extends Model
     {
         parent::boot();
         static::creating(function ($model) {
-            $model->id = Str::uuid(); // Generate UUID
+            $model->id = Str::uuid();
         });
     }
 
@@ -46,3 +46,4 @@ class Task extends Model
 
 }
 
+//To fetch the data, of tasks created today or any cetrain day upon leads. There will be a date picker, upon cahnge it'll fetch leads. You ave to fetch leads no(from leads table), task date(created at, from task table), customer name(from contacts table), customer phone(from contacts table), customer email(from contacts table), task description(from task table), task status(from task table), task mode(from task table), task created by(from task table).

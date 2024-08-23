@@ -5,7 +5,7 @@ use App\Models\Lead;
 use App\Models\User;
 use App\Models\Contact;
 use App\Models\LeadStatus;
-use App\Models\Tasks;
+use App\Models\Task;
 
 use Illuminate\Http\Request;
 
@@ -37,7 +37,7 @@ class ReportController extends Controller
 
         return response()->json([
             'name' => $lead->contact->name,
-            
+
             'phone' => $lead->contact->phone,
             'whatsapp' => $lead->contact->whatsapp_ph,
         ]);
@@ -83,6 +83,24 @@ class ReportController extends Controller
             ->get();
 
         return view('admin.main_reports.billing_report.paid_bills_index', compact('leadsWithBills'));
+    }
+
+    public function notificationTasks()
+    {
+        return view('admin.main_reports.activity-notifications.index');
+    }
+
+    public function filterNotificationTasks(Request $request)
+    {
+        $date = $request->input('date');
+
+        $tasks = Task::whereHas('lead', function ($query) use ($date) {
+            $query->whereDate('created_at', $date);
+        })
+        ->with('lead.contact', 'createdBy')
+        ->get();
+
+        return response()->json(['tasks' => $tasks]);
     }
 
 
