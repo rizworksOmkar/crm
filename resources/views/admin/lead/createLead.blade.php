@@ -23,7 +23,7 @@
                                 <label for="contact_id"
                                     class="inline-block mb-2 text-base
                                       font-medium">Customer
-                                    <span class="text-red-500">*</span></label>
+                                </label>
                                 <select
                                     class=" form-select border-slate-200 
                                     dark:border-zink-500 focus:outline-none 
@@ -44,7 +44,7 @@
                                 <label for=""
                                     class="inline-block mb-2 text-base
                                  font-medium">Or
-                                    <span class="text-red-500">*</span></label>
+                                </label>
                                 <button type="button"
                                     class="text-white  bg-custom-500 btn border-custom-500 
                                     hover:text-white hover:bg-custom-600 hover:border-custom-600
@@ -61,7 +61,7 @@
                             <div class="mb-4">
                                 <label for="phone" class="inline-block mb-2 text-base font-medium">
                                     Phone Number
-                                    <span class="text-red-500">*</span></label>
+                                </label>
                                 <input type="text"
                                     class="form-input border-slate-200
                                      dark:border-zink-500 focus:outline-none 
@@ -72,16 +72,16 @@
                             </div>
                             <div class="mb-4">
                                 <label for="whatsapp_ph" class="inline-block mb-2 text-base font-medium">Whatsapp
-                                    Number<span class="text-red-500">*</span></label>
+                                    Number</label>
                                 <input type="text"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="" id="whatsapp_ph" name="whatsapp_ph" value="">
                             </div>
                             {{-- Lead Details --}}
                             <div class="mb-4">
-                                <label for="requirement_type" class="inline-block mb-2 text-base font-medium">Requirement
-                                    Type
-                                    <span class="text-red-500">*</span></label>
+                                <label for="requirement_type" class="inline-block mb-2 text-base font-medium">
+                                    Requirement Type
+                                </label>
                                 <select
                                     class="form-select border-slate-200 dark:border-zink-500 focus:outline-none 
                                     focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
@@ -96,9 +96,9 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="cust_business_type" class="inline-block mb-2 text-base font-medium">Customer
-                                    Business
-                                    Type <span class="text-red-500">*</span></label>
+                                <label for="cust_business_type" class="inline-block mb-2 text-base font-medium">
+                                    Customer Business Type
+                                </label>
                                 <input type="text"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
                                     focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
@@ -108,10 +108,9 @@
                                     placeholder="" id="cust_business_type" name="cust_business_type">
                             </div>
                             <div class="mb-4">
-                                <label for="property_type"
-                                    class="inline-block
-                                 mb-2 text-base font-medium">Property
-                                    Type<span class="text-red-500">*</span></label>
+                                <label for="property_type" class="inline-block mb-2 text-base font-medium">
+                                    Property Type
+                                </label>
                                 <select
                                     class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 
                                     disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
@@ -127,8 +126,9 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="property_specs" class="inline-block mb-2 text-base font-medium">Property
-                                    Specs<span class="text-red-500">*</span></label>
+                                <label for="property_specs" class="inline-block mb-2 text-base font-medium">
+                                    Property Specs
+                                </label>
                                 <select
                                     class="form-select border-slate-200 dark:border-zink-500 focus:outline-none 
                                     focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
@@ -146,49 +146,48 @@
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-1">
                             <div class="mb-4">
-                                <label for="description" class="inline-block mb-2 text-base font-medium">Lead Description
-                                    (Requirement of client/customer) <span class="text-red-500">*</span></label>
+                                <label for="description" class="inline-block mb-2 text-base font-medium">
+                                    Lead Description (Requirement of client/customer)
+                                </label>
                                 <textarea id="description" name="description" rows="3" rows="2"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
-                                     placeholder:text-slate-400 dark:placeholder:text-zink-200"></textarea>
-
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                     placeholder:text-slate-400 dark:placeholder:text-zink-200">
+                               </textarea>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-4">
                             <div class="mb-4">
-                                <label for="min_budget"
-                                    class="inline-block mb-2
-                                 text-base font-medium">Min
-                                    Budget <span class="text-red-500">*</span></label>
-                                <input type="text" id="min_budget" name="min_budget"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500
-                                     disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
-                                     dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500
-                                      dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
-                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="">
-                            </div>
-                            <div class="mb-4">
-                                <label for="max_budget"
-                                    class="inline-block mb-2 
-                                text-base font-medium">Max
-                                    Budget<span class="text-red-500">*</span></label>
-                                <input type="text" id="max_budget" name="max_budget"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500
-                                     disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
-                                     dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500
-                                      dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
-                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                    placeholder="">
-                            </div>
-                            <div class="mb-4">
-                                <label for="min_area"
-                                    class="inline-block mb-2
-                                 text-base font-medium">
-                                    Min Area (Sq.ft)
-                                    <span class="text-red-500">*</span>
+                                <label for="min_budget" class="inline-block mb-2 text-base font-medium">
+                                    Min Budget
                                 </label>
-                                <input type="text" id="min_area" name="min_area"
+                                <input type="number" id="min_budget" name="min_budget"
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500
+                                     disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
+                                     dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500
+                                      dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="">
+                            </div>
+                            <div class="mb-4">
+                                <label for="max_budget" class="inline-block mb-2 text-base font-medium">
+                                    Max Budget
+                                </label>
+                                <input type="number" id="max_budget" name="max_budget"
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500
+                                     disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 
+                                     dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500
+                                      dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="">
+                            </div>
+                            <div class="mb-4">
+                                <label for="min_area" class="inline-block mb-2 text-base font-medium">
+                                    Min Area (Sq.ft)
+                                </label>
+                                <input type="number" id="min_area" name="min_area"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500
                                      disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300
                                       dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 
@@ -199,31 +198,35 @@
                             <div class="mb-4">
                                 <label for="max_area" class="inline-block mb-2 text-base font-medium">
                                     Max Area (Sq.ft)
-                                    <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" id="max_area" name="max_area"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                <input type="number" id="max_area" name="max_area"
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                    placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-1">
                             <div class="mb-4">
-                                <label for="specific_location"
-                                    class="inline-block mb-2 
-                                text-base font-medium">Specific
-                                    Location<span class="text-red-500">*</span></label>
+                                <label for="specific_location" class="inline-block mb-2 text-base font-medium">
+                                    Specific Location
+                                </label>
                                 <input type="text" id="specific_location" name="specific_location"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                    placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-1">
                             <div class="mb-4">
-                                <label for="place"
-                                    class="inline-block mb-2 text-base
-                                 font-medium">Area
-                                    (Broad
-                                    Level)<span class="text-red-500">*</span></label>
+                                <label for="place" class="inline-block mb-2 text-base font-medium">
+                                    Area (Broad Level)
+                                </label>
                                 <input type="text" id="place" name="place"
                                     class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
                                     focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
@@ -231,43 +234,46 @@
                                     disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
                                     placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="">
-
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-1">
                             <div class="mb-4">
-                                <label for="preferred_landmark"
-                                    class="inline-block mb-2 text-base
-                                 font-medium">Preferred
-                                    Landmark<span class="text-red-500">*</span></label>
+                                <label for="preferred_landmark" class="inline-block mb-2 text-base font-medium">
+                                    Preferred Landmark
+                                </label>
                                 <input type="text" id="preferred_landmark" name="preferred_landmark"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                     disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
                             <div class="mb-4">
-                                <label for="expiry"
-                                    class="inline-block mb-2 text-base
-                                 font-medium">Possession
-                                    Due
-                                    Date<span class="text-red-500">*</span></label>
+                                <label for="expiry" class="inline-block mb-2 text-base font-medium">
+                                    Possession Due Date
+                                </label>
                                 <input type="date" id="expiry" name="expiry"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                    placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="">
                             </div>
                             <div class="mb-4">
-                                <label for="lead_source"
-                                    class="inline-block mb-2 text-base
-                                 font-medium">Lead
-                                    Source<span class="text-red-500">*</span></label>
+                                <label for="lead_source" class="inline-block mb-2 text-base font-medium">
+                                    Lead Source
+                                </label>
                                 <select
                                     class="form-select border-slate-200 dark:border-zink-500 focus:outline-none 
                                     focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600
-                                     disabled:border-slate-300 dark:disabled:border-zink-500
-                                      dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
-                                      dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
-                                       dark:placeholder:text-zink-200"
+                                    disabled:border-slate-300 dark:disabled:border-zink-500
+                                    dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
+                                    dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
+                                    dark:placeholder:text-zink-200"
                                     id="lead_source" name="lead_source">
                                     <option value="" selected="">Select Lead Source</option>
                                     @foreach ($sources as $source)
@@ -282,7 +288,7 @@
                                 <label for="assigned_to"
                                     class="inline-block mb-2 text-base
                                  font-medium">Lead
-                                    Source<span class="text-red-500">*</span></label>
+                                    Source</label>
                                 <select
                                     class="form-select border-slate-200 dark:border-zink-500 focus:outline-none 
                                     focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600
@@ -301,21 +307,26 @@
                             </div> --}}
 
                             <div class="mb-4">
-                                <label for="refrence_description"
-                                    class="inline-block mb-2 text-base 
-                                font-medium">Refrence
-                                    Description<span class="text-red-500">*</span></label>
+                                <label for="refrence_description" class="inline-block mb-2 text-base font-medium">
+                                    Refrence Description
+                                </label>
                                 <input type="text" id="refrence_description" name="refrence_description"
-                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                    placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="">
                             </div>
                             <div class="mb-4">
-                                <label for="status"
-                                    class="inline-block mb-2 text-base 
-                                font-medium">Status<span
-                                        class="text-red-500">*</span></label>
+                                <label for="status" class="inline-block mb-2 text-base font-medium">Status
+                                </label>
                                 <select
-                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    class="form-select border-slate-200 dark:border-zink-500 focus:outline-none 
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                    disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                    disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 
+                                    placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     id="status" name="status">
                                     @foreach ($statuses as $status)
                                         <option value="{{ $status->status_type }}">
@@ -327,29 +338,35 @@
                         </div>
                         <div class="flex justify-end gap-2">
                             <button type="submit"
-                                class="text-white transition-all duration-200 ease-linear btn bg-custom-800 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600
-                                 active:border-custom-600 active:ring active:ring-custom-100">Create</button>
+                                class="text-white transition-all duration-200 ease-linear btn bg-custom-800 
+                                border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 
+                                focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
+                                focus:ring-custom-100 active:text-white active:bg-custom-600
+                                active:border-custom-600 active:ring active:ring-custom-100">Create</button>
                             <a href="/leads"
-                                class="text-white transition-all duration-200 ease-linear btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600
-                                 active:border-custom-600 active:ring active:ring-custom-100">Back
-                                To Main Menu</a>
+                                class="text-white transition-all duration-200 ease-linear btn btn-danger bg-custom-500 
+                                border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 
+                                focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
+                                focus:ring-custom-100 active:text-white active:bg-custom-600
+                                active:border-custom-600 active:ring active:ring-custom-100">
+                                Back To Main Menu
+                            </a>
                         </div>
                     </form>
                 </div>
             </div>
             {{-- modal start  --}}
-            <div id="createContactModal" modal-center
+            {{-- <div id="createContactModal" modal-center
                 class="fixed flex flex-col hidden transition-all duration-300
-                       ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4
-                        show">
+                       ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
                 <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
                     <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
                         <h5 class="modal-title text-16" id="createContactModalLabel"> Create New Contact</h5>
                         <button data-modal-close="createContactModal"
                             class="transition-all duration-200 ease-linear
-                 text-slate-500 hover:text-red-500 dark:text-zink-200 
-                 dark:hover:text-red-500">
+                            text-slate-500 hover:text-red-500 dark:text-zink-200 
+                            dark:hover:text-red-500">
                             <i data-lucide="x" class="size-5"></i>
                         </button>
                     </div>
@@ -400,17 +417,7 @@
                                          dark:placeholder:text-zink-200"></textarea>
                                 </div>
                             </div>
-                            {{-- <div
-                                class="flex items-center justify-between p-4 mt-auto border-t 
-                        border-slate-200 dark:border-zink-500">
-                                <button type="button"
-                                    class="btn btn-secondary text-white btn bg-custom-800 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
-                                    data-dismiss="modal">Close</button>
-                                <button type="button"
-                                    class="btn btn-primary text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
-                                    id="save_contact_btn">Save
-                                    Contact</button>
-                            </div> --}}
+                            
                         </form>
                     </div>
                     <div
@@ -431,16 +438,17 @@
                             Save Contact</button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             {{-- modal end  --}}
-            <div class="modal fade d-none" id="createContactModal" tabindex="-1" role="dialog"
+            <div class="modal fade pt-4" id="createContactModal" tabindex="-1" role="dialog"
                 aria-labelledby="createContactModalLabel" aria-hidden="true">
                 <meta name="csrf-token" content="{{ csrf_token() }}">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="createContactModalLabel">
-                                Create New Contact</h5>
+                                Create New Contact
+                            </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -497,17 +505,20 @@
 @section('scripts')
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
     <!-- Select2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> --}}
+    {{-- <script>
         $(".select2").select2({
             placeholder: "Select a programming language",
             allowClear: true
         });
-        //   $("#multiple").select2({
-        //       placeholder: "Select a programming language",
-        //       allowClear: true
-        //   });
-    </script>
+          $("#multiple").select2({
+              placeholder: "Select a programming language",
+              allowClear: true
+          });
+    </script> --}}
     <script>
         $(document).ready(function() {
 
