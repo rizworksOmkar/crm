@@ -312,6 +312,7 @@
                                         Monitoring</a>
                                     <a href="{{ route('date-range-report') }}" class="nav-link">Dated Monitoring
                                         Reports</a>
+                                    <a href="{{ route('tasks.notification') }}" class="nav-link">Task Notifcation</a>
                                     {{-- <a href="#" class="nav-link">Client Monitoring</a>
                                     <a href="#" class="nav-link">Specific Client Monitoring</a>
                                     <a href="#" class="nav-link">Unbilled Lead Report</a>

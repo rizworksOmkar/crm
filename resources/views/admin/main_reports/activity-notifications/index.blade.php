@@ -25,7 +25,8 @@
                                         <th>Customer Name</th>
                                         <th>Customer Phone</th>
                                         <th>Customer Email</th>
-                                        <th>Task Description</th>
+                                        <th>Customer Description</th>
+                                        <th>Emp Feedback</th>
                                         <th>Task Status</th>
                                         <th>Task Mode</th>
                                         <th>Task Created By</th>
@@ -46,9 +47,17 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
             $('#date').change(function() {
                 var date = $('#date').val();
                 $.ajax({
+
                     url: '{{ route('tasks.notification.filter') }}',
                     type: 'POST',
                     data: { date: date },
@@ -58,11 +67,12 @@
                         $.each(response.tasks, function(index, task) {
                             var row = '<tr>' +
                                 '<td>' + task.lead.lead_num + '</td>' +
-                                '<td>' + moment(task.created_at).format('YYYY-MM-DD') + '</td>' +
+                                '<td>' + moment(task.date).format('YYYY-MM-DD') + '</td>' +
                                 '<td>' + task.lead.contact.name + '</td>' +
                                 '<td>' + task.lead.contact.phone + '</td>' +
                                 '<td>' + task.lead.contact.email + '</td>' +
                                 '<td>' + task.customer_description + '</td>' +
+                                '<td>' + task.user_description + '</td>' +
                                 '<td>' + task.status + '</td>' +
                                 '<td>' + task.mode + '</td>' +
                                 '<td>' + task.created_by.first_name +' '+ task.created_by.last_name +'</td>' +

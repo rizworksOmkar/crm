@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Lead;
 use App\Models\User;
 use App\Models\Contact;
@@ -58,7 +59,6 @@ class ReportController extends Controller
             ->doesntHave('billing')
             ->get();
         return view('admin.main_reports.billing_report.unbilled_leads_index', compact('leadsWithoutBills'));
-
     }
 
     public function getBilledLeads()
@@ -90,19 +90,26 @@ class ReportController extends Controller
         return view('admin.main_reports.activity-notifications.index');
     }
 
+    // public function filterNotificationTasks(Request $request)
+    // {
+    //     $date = $request->input('date');
+
+    //     $tasks = Task::whereHas('lead', function ($query) use ($date) {
+    //         $query->whereDate('date', $date);
+    //     })
+    //     ->with('lead.contact', 'createdBy')
+    //     ->get();
+
+    //     return response()->json(['tasks' => $tasks]);
+    // }
     public function filterNotificationTasks(Request $request)
     {
         $date = $request->input('date');
 
-        $tasks = Task::whereHas('lead', function ($query) use ($date) {
-            $query->whereDate('created_at', $date);
-        })
-        ->with('lead.contact', 'createdBy')
-        ->get();
+        $tasks = Task::whereDate('date', $date)
+            ->with(['lead.contact', 'createdBy'])
+            ->get();
 
         return response()->json(['tasks' => $tasks]);
     }
-
-
-
 }
