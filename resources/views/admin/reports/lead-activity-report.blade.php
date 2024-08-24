@@ -28,9 +28,9 @@
                                                 class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 inline-block w-auto ml-2"
                                                 placeholder="search" aria-controls="basic_tables">
                                             {{-- <i data-lucide="search"
-                                                class="inline-block size-4 absolute 
+                                                class="inline-block size-4 absolute
                                             ltr:left-2.5 rtl:right-2.5 top-2.5
-                                             text-slate-500 dark:text-zink-200 
+                                             text-slate-500 dark:text-zink-200
                                              fill-slate-100 dark:fill-zink-600"></i> --}}
                                         </div>
 
@@ -47,13 +47,13 @@
                                         {{-- <span class="text-red-500">*</span> --}}
                                     </label>
                                     <select id="filterType"
-                                        class="form-select border-slate-200 
-                                       dark:border-zink-500 focus:outline-none 
-                                       focus:border-custom-500 disabled:bg-slate-100 
-                                       dark:disabled:bg-zink-600 disabled:border-slate-300 
-                                       dark:disabled:border-zink-500 dark:disabled:text-zink-200 
-                                       disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
-                                       dark:focus:border-custom-800 placeholder:text-slate-400 
+                                        class="form-select border-slate-200
+                                       dark:border-zink-500 focus:outline-none
+                                       focus:border-custom-500 disabled:bg-slate-100
+                                       dark:disabled:bg-zink-600 disabled:border-slate-300
+                                       dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                       disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700
+                                       dark:focus:border-custom-800 placeholder:text-slate-400
                                        dark:placeholder:text-zink-200">
                                         <option value="">Select Filter</option>
                                         <option value="customer">Customer Name</option>
@@ -68,13 +68,13 @@
                                         Value
                                     </label>
                                     <select id="filterValue"
-                                        class="form-select border-slate-200 
-                                       dark:border-zink-500 focus:outline-none 
-                                       focus:border-custom-500 disabled:bg-slate-100 
-                                       dark:disabled:bg-zink-600 disabled:border-slate-300 
-                                       dark:disabled:border-zink-500 dark:disabled:text-zink-200 
-                                       disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
-                                       dark:focus:border-custom-800 placeholder:text-slate-400 
+                                        class="form-select border-slate-200
+                                       dark:border-zink-500 focus:outline-none
+                                       focus:border-custom-500 disabled:bg-slate-100
+                                       dark:disabled:bg-zink-600 disabled:border-slate-300
+                                       dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                       disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700
+                                       dark:focus:border-custom-800 placeholder:text-slate-400
                                        dark:placeholder:text-zink-200">
                                         <option value="">Select Value</option>
                                     </select>
@@ -87,20 +87,20 @@
                                       font-medium">Select
                                         Value</label>
                                     <select
-                                        class="form-select border-slate-200 
-                                           dark:border-zink-500 focus:outline-none 
-                                           focus:border-custom-500 disabled:bg-slate-100 
-                                           dark:disabled:bg-zink-600 disabled:border-slate-300 
-                                           dark:disabled:border-zink-500 dark:disabled:text-zink-200 
-                                           disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 
-                                           dark:focus:border-custom-800 placeholder:text-slate-400 
+                                        class="form-select border-slate-200
+                                           dark:border-zink-500 focus:outline-none
+                                           focus:border-custom-500 disabled:bg-slate-100
+                                           dark:disabled:bg-zink-600 disabled:border-slate-300
+                                           dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                           disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700
+                                           dark:focus:border-custom-800 placeholder:text-slate-400
                                            dark:placeholder:text-zink-200 select2 "
                                         id="filterValue">
                                         <option value="">Select Value</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 
+                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2
                                    xl:grid-cols-3 mb-4"
                                 id="dateRangeContainer" style="display:none;">
                                 <div class="mb-4">
@@ -111,11 +111,11 @@
                                         {{-- <span class="text-red-500">*</span> --}}
                                     </label>
                                     <input type="date"
-                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
-                                        focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none
+                                        focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600
                                         disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
                                          disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
-                                          placeholder:text-slate-400 dark:placeholder:text-zink-200 flatpickr-input 
+                                          placeholder:text-slate-400 dark:placeholder:text-zink-200 flatpickr-input
                                           active"
                                         id="startDate">
                                 </div>
@@ -127,22 +127,22 @@
                                         {{-- <span class="text-red-500">*</span> --}}
                                     </label>
                                     <input type="date"
-                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
-                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none
+                                    focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600
                                     disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
                                      disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
-                                      placeholder:text-slate-400 dark:placeholder:text-zink-200 flatpickr-input 
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200 flatpickr-input
                                       active"
                                         id="endDate">
                                 </div>
                                 <div class="mb-4">
 
                                     <button id="searchButton"
-                                        class="srchButton btn btn-primary btn wht_sp_nwrp text-white btn bg-custom-500 
+                                        class="srchButton btn btn-primary btn wht_sp_nwrp text-white btn bg-custom-500
                                         border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600
-                                         focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
-                                         focus:ring-custom-100 active:text-white active:bg-custom-600 
-                                         active:border-custom-600 active:ring 
+                                         focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring
+                                         focus:ring-custom-100 active:text-white active:bg-custom-600
+                                         active:border-custom-600 active:ring
                                         active:ring-custom-100 dark:ring-custom-400/20">Search</button>
                                 </div>
 
@@ -235,14 +235,14 @@
 
     {{-- new modal  --}}
     {{-- <div id="taskModal" modal-center aria-labelledby="taskModalLabel" aria-hidden="true"
-        class="modal fixed flex flex-col hidden transition-all duration-300 
+        class="modal fixed flex flex-col hidden transition-all duration-300
                       ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
         <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
             <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
                 <h5 class="text-16" id="taskModalLabel">Task Details</h5>
                 <button data-modal-close="taskModal"
                     class="transition-all duration-200 ease-linear
-                             text-slate-500 hover:text-red-500 dark:text-zink-200 
+                             text-slate-500 hover:text-red-500 dark:text-zink-200
                              dark:hover:text-red-500">
                     <i data-lucide="x" class="size-5"></i>
                 </button>
@@ -253,7 +253,7 @@
             <div class="flex items-center justify-between p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
                 <button data-modal-close="taskModal"
                     class="transition-all duration-200 ease-linear
-                             text-slate-500 hover:text-red-500 dark:text-zink-200 
+                             text-slate-500 hover:text-red-500 dark:text-zink-200
                              dark:hover:text-red-500">
                     Close
                 </button>
@@ -419,7 +419,7 @@
                     success: function(response) {
                         var taskDetails = '';
                         $.each(response, function(index, task) {
-                            taskDetails += '<p>' + task.description + ' - ' + task.date +
+                            taskDetails += '<p>' + task.user_description + task.customer_description + ' - ' + task.date +
                                 ' - ' + task.status + '</p>';
                         });
                         $('#taskModal .modal-body').html(taskDetails);
