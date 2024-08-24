@@ -39,11 +39,17 @@
             padding: 15px;
             border-radius: 5px;
         }
+
+        table tr th,
+        table tr td{
+white-space: nowrap;
+padding: 5px 10px;
+        }
     </style>
     <div
         class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
         <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
-            <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-1">
+            <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-2">
                 <div class="card">
                     <div class="card-body">
                         <h6 class="mb-4 text-15">Billing Management</h6>
@@ -54,13 +60,14 @@
                                 <li class="group active">
                                     <a href="#unbilled" id="unbilled-tab" data-tab-toggle data-target="unbilled"
                                         class="active inline-block px-4 py-2 text-base transition-all
-                                 duration-300 ease-linear rounded-t-md text-slate-500 
-                                 dark:text-zink-200 border border-transparent group-[.active]:text-custom-500
-                                  group-[.active]:border-slate-200 dark:group-[.active]:border-zink-500 
-                                  group-[.active]:border-b-white dark:group-[.active]:border-b-zink-700 
-                                  hover:text-custom-500 active:text-custom-500 dark:hover:text-custom-500 
-                                  dark:active:text-custom-500 dark:group-[.active]:hover:text-white -mb-[1px]">Unbilled
-                                        Leads</a>
+                                           duration-300 ease-linear rounded-t-md text-slate-500 
+                                           dark:text-zink-200 border border-transparent group-[.active]:text-custom-500
+                                            group-[.active]:border-slate-200 dark:group-[.active]:border-zink-500 
+                                            group-[.active]:border-b-white dark:group-[.active]:border-b-zink-700 
+                                            hover:text-custom-500 active:text-custom-500 dark:hover:text-custom-500 
+                                            dark:active:text-custom-500 dark:group-[.active]:hover:text-white -mb-[1px]">
+                                        Unbilled Leads
+                                    </a>
                                 </li>
                                 <li class="group">
                                     <a href="#billed" id="billed-tab" data-tab-toggle data-target="billed"
@@ -70,15 +77,17 @@
                                         dark:group-[.active]:border-zink-500 group-[.active]:border-b-white 
                                         dark:group-[.active]:border-b-zink-700 hover:text-custom-500 active:text-custom-500 
                                         dark:hover:text-custom-500 dark:active:text-custom-500 dark:group-[.active]:hover:text-white
-                                         -mb-[1px]">Billed
-                                        Leads</a>
+                                         -mb-[1px]">
+                                        Billed Leads
+                                    </a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content mt-4" id="myTabContent">
                                 <div class="tab-pane fade show active" id="unbilled" role="tabpanel">
-                                    @include('admin.billing.unbilled_table', ['leads' => $leadsWithoutBills,
+                                    @include('admin.billing.unbilled_table', [
+                                        'leads' => $leadsWithoutBills,
                                     ])
                                 </div>
                                 <div class="tab-pane fade" id="billed" role="tabpanel">
@@ -89,12 +98,170 @@
                     </div>
                 </div><!--end card-->
 
+                {{-- raise Bill box --}}
+                <div class="card" id="raiseBillModal">
+                    <div class="card-body">
+                        <h6 class="mb-4 text-15">Raise Bill</h6>
+                        <form id="raiseBillForm" method="POST">
+                            @csrf
+                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
+                                <input type="hidden" id="leadId" name="lead_id">
+                                <div class="mb-4">
+                                    <label for="leadNumber"
+                                        class="inline-block mb-2 text-base
+                                          font-medium">Lead
+                                        Number
+                                    </label>
+                                    <input type="text"
+                                        class="form-input border-slate-200
+                                     dark:border-zink-500 focus:outline-none 
+                                     focus:border-custom-500 disabled:bg-slate-100 
+                                     dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="leadNumber" name="leadNumber" placeholder="" value="">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="expectedAmount" class="inline-block mb-2 text-base font-medium">
+                                        Expected Amount
+                                    </label>
+                                    <input type="text"
+                                        class="form-input border-slate-200
+                                         dark:border-zink-500 focus:outline-none 
+                                         focus:border-custom-500 disabled:bg-slate-100 
+                                         dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                          placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="expectedAmount" name="expected_amount" placeholder="" value="">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="toPay" class="inline-block mb-2 text-base font-medium">
+                                        To Pay
+                                    </label>
+                                    <input type="Number"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        placeholder="" id="toPay" name="to_pay" value="">
+                                </div>
+                                {{-- Lead Details --}}
+                                <div class="mb-4">
+                                    <label for="billDate" class="inline-block mb-2 text-base font-medium">
+                                        Date
+                                    </label>
+                                    <input type="date"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        placeholder="" id="billDate" name="date" value="">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="agent_id" class="inline-block mb-2 text-base font-medium">
+                                        Agent
+                                    </label>
+                                    <input type="text"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                        focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                        disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                         disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                          placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        placeholder="" id="agent_name" name="agent_name">
+                                    <input type="text"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                        focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                        disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
+                                         disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                          placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        placeholder="" id="agent_id" name="agent_id">
+                                </div>
+                            </div>
+
+                            <div class="flex justify-end gap-2">
+                                <button type="submit"
+                                    class="text-white transition-all duration-200 ease-linear btn bg-custom-800 
+                                    border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 
+                                    focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
+                                    focus:ring-custom-100 active:text-white active:bg-custom-600
+                                    active:border-custom-600 active:ring active:ring-custom-100">
+                                    Raise Bill
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                {{-- view Receiptbox --}}
+                <div class="card" id="viewReceiptModal">
+                    <div class="card-body">
+                        <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
+                            <div class="timeline" id="receiptTimeline">
+                                <!-- Timeline content will be dynamically inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- make Payment box --}}
+                <div class="card" id="makePaymentModal">
+                    <div class="card-body">
+                        <h6 class="mb-4 text-15">Make Payment</h6>
+                        <form id="makePaymentForm" method="POST">
+                            @csrf
+                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
+                                <input type="hidden" id="leadId" name="lead_id">
+                                <div class="mb-4">
+                                    <label class="inline-block mb-2 text-base font-medium" for="billNumber">Bill Number</label>
+                            <input type="text"
+                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                id="billNumber">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="inline-block mb-2 text-base font-medium" for="amountDue">Amount Due</label>
+                                    <input type="number"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="amountDue">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="inline-block mb-2 text-base font-medium" for="paymentAmount">Payment
+                                        Amount</label>
+                                    <input type="number"
+                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                        id="paymentAmount" name="payment_amount" required>
+                                </div>
+                                {{-- Lead Details --}}
+                                <div class="mb-4">
+                                    <label class="inline-block mb-2 text-base font-medium" for="paymentMode">Payment Mode</label>
+                            <select
+                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                id="paymentMode" name="payment_mode" required>
+                                <option value="cash">Cash</option>
+                                <option value="card">Card</option>
+                                <option value="bank_transfer">Bank Transfer</option>
+                            </select>
+                                </div>
+                               
+                            </div>
+
+                            <div class="flex justify-end gap-2">
+                                <button type="submit"
+                                    class="text-white transition-all duration-200 ease-linear btn bg-custom-800 
+                                    border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 
+                                    focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
+                                    focus:ring-custom-100 active:text-white active:bg-custom-600
+                                    active:border-custom-600 active:ring active:ring-custom-100">
+                                    Process Payment
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Raise Bill Modal -->
-    <div class="modal fade" id="raiseBillModal" tabindex="-1" role="dialog" aria-labelledby="raiseBillModalLabel"
+    {{-- <div class="modal fade" id="raiseBillModal" tabindex="-1" role="dialog" aria-labelledby="raiseBillModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -110,7 +277,7 @@
                         <input type="hidden" id="leadId" name="lead_id">
                         <div class="form-group">
                             <label for="leadNumber">Lead Number</label>
-                            <input type="text" class="form-control" id="leadNumber" >
+                            <input type="text" class="form-control" id="leadNumber">
                         </div>
                         <div class="form-group">
                             <label for="expectedAmount">Expected Amount</label>
@@ -126,7 +293,7 @@
                         </div>
                         <div class="form-group">
                             <label for="agent_id">Agent</label>
-                            <input type="text" name="agent_name" id="agent_name" class="form-control" >
+                            <input type="text" name="agent_name" id="agent_name" class="form-control">
                             <input type="hidden" name="agent_id" id="agent_id">
                         </div>
                     </div>
@@ -137,10 +304,10 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Make Payment Modal -->
-    <div id="makePaymentModal" modal-center
+    {{-- <div id="makePaymentModal" modal-center
         class="fixed flex flex-col hidden transition-all duration-300 
                       ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
         <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
@@ -161,14 +328,18 @@
                         <div class="form-group">
                             <label class="inline-block mb-2 text-base font-medium" for="billNumber">Bill Number</label>
                             <input type="text"
-                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                id="billNumber" >
+                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
+                                focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
+                                disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 
+                                disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
+                                 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                id="billNumber">
                         </div>
                         <div class="form-group">
                             <label class="inline-block mb-2 text-base font-medium" for="amountDue">Amount Due</label>
                             <input type="number"
                                 class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                id="amountDue" >
+                                id="amountDue">
                         </div>
                         <div class="form-group">
                             <label class="inline-block mb-2 text-base font-medium" for="paymentAmount">Payment
@@ -200,19 +371,12 @@
                     </div>
                 </form>
             </div>
-            {{-- <div class="flex items-center justify-between p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
-                <button data-modal-close="defaultModal"
-                    class="transition-all duration-200 ease-linear
-                             text-slate-500 hover:text-red-500 dark:text-zink-200 
-                             dark:hover:text-red-500">
-                    <i data-lucide="x" class="size-5"></i>
-                </button>
-            </div> --}}
+            
         </div>
-    </div>
+    </div> --}}
 
     <!-- View Receipt Modal -->
-    <div id="viewReceiptModal" modal-center
+    {{-- <div id="viewReceiptModal" modal-center
         class="fixed flex flex-col hidden transition-all duration-300 
                ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
         <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
@@ -227,7 +391,7 @@
             </div>
             <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
                 <div class="timeline" id="receiptTimeline">
-                    <!-- Timeline content will be dynamically inserted here -->
+                  Timeline content will be dynamically inserted here
                 </div>
             </div>
             <div class="flex items-center justify-between p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
@@ -235,22 +399,44 @@
                     class="transition-all duration-200 ease-linear
            text-slate-500 hover:text-red-500 dark:text-zink-200 
            dark:hover:text-red-500">
-           Close
+                    Close
                 </button>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 
 @section('scripts')
     <script>
         $(document).ready(function() {
+            $('#raiseBillModal').hide();
+            $('#unbilledRaiseBill').click(function() {
+                $('#raiseBillModal').show();
+                $('#viewReceiptModal').hide();
+                $('#makePaymentModal').hide();
+            });
+
+            $('#viewReceiptModal').hide();
+            $('#billedReceiptBill').click(function() {
+                $('#viewReceiptModal').show();
+                $('#raiseBillModal').hide();
+                $('#makePaymentModal').hide();
+            });
+
+            $('#makePaymentModal').hide();
+            $('#makePaymentForm').click(function() {
+                $('#makePaymentModal').show();
+                $('#raiseBillModal').hide();
+                $('#viewReceiptModal').hide();
+            });
+
             $('#billed').hide();
 
             $('#billed-tab').click(function() {
 
                 $('#billed').show();
                 $('#unbilled').hide();
+                $('#raiseBillModal').hide();
 
             });
 
@@ -258,6 +444,7 @@
 
                 $('#billed').hide();
                 $('#unbilled').show();
+                $('#viewReceiptModal').hide();
 
             });
             $('#raiseBillModal').on('show.bs.modal', function(event) {

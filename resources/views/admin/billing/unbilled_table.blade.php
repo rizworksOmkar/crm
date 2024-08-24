@@ -22,8 +22,9 @@
                               focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
                               focus:ring-custom-100 active:text-white active:bg-custom-600 
                             active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20" 
-                            data-toggle="modal"
-                            data-target="#raiseBillModal"
+                            {{-- data-toggle="modal"
+                            data-target="#raiseBillModal" --}}
+                            id="unbilledRaiseBill"
                             data-lead-id="{{ $lead->id }}"
                             data-lead-num="{{ $lead->lead_num }}"
                             data-max-budget="{{ $lead->max_budget }}"
