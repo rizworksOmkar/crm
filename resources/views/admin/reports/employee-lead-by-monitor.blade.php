@@ -1,21 +1,36 @@
 @extends('layouts.admin-front')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @section('content')
-<style>
-    /* body {
-                            font-family: Arial, sans-serif;
-                            background-color: #f0f0f0;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            height: 100vh;
-                            margin: 0;
-                        } */
-    .active {
-        color: red;
-    }
+    <style>
+        /* body {
+                                    font-family: Arial, sans-serif;
+                                    background-color: #f0f0f0;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    height: 100vh;
+                                    margin: 0;
+                                } */
+        .active {
+            color: red;
+        }
 
-    .status.status-completed {
+        .lead_activity .status {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .status-new{
+            background-color: #00c853;
+        }
+
+        .timeline-icon i {
+            line-height: 30px;
+        }
+
+        .status.status-completed {
             background-color: #00c853;
         }
 
@@ -26,6 +41,11 @@
         .status.status.status-pending {
             background-color: #ffc107;
         }
+
+        .status-visit_postponed {
+            background-color: #ff5722;
+        }
+
 
         .status.timeline-icon i {
             line-height: 30px;
@@ -75,12 +95,12 @@
             background-color: #ffeb3b;
             color: #333;
         }
-</style>
-<div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
-    <div
-        class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
-        <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
-            {{-- <div class="grid grid-cols-12 2xl:grid-cols-12 gap-x-5">
+    </style>
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm">
+        <div
+            class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+            <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+                {{-- <div class="grid grid-cols-12 2xl:grid-cols-12 gap-x-5">
 
                 <div class="col-span-12 card 2xl:col-span-12">
                     <div class="card-body">
@@ -104,102 +124,103 @@
                     </div>
                 </div>
             </div> --}}
-            <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto relative">
+                <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto relative">
 
-                <div class="flex gap-5 mt-5">
-                    <div class="fixed inset-x-0 bottom-12 w-52 shrink-0 xl:relative z-[20] text-center xl:bottom-auto">
-                        <div
-                            class="w_100 xl:min-h-[calc(40vh_-_theme('height.header')_*_2.4)] inline-block card xl:h-[calc(40%_-_theme('spacing.5'))] shadow-lg xl:shadow-md">
-                            <div class="flex h-full p-2 2xl:p-4 xl:flex-col" id="employee-list">
-                                <h4 class="text-left">Employees</h4>
-                                <ul class="w_100 flex gap-2  xl:pt-4 xl:flex-col nav-tabs">
-                                    @foreach ($employees as $employee)
-                                    <li class="group/item tabs chatTab">
-                                        <a href="#!" data-tab-toggle data-target="mainChatList"
-                                            data-id="{{ $employee->id }}"
-                                            class="w_100 employee inline-flex items-center w-12 h-12 transition-all duration-200 ease-linear rounded-md mainChatList">
-                                            {{ $employee->first_name }} {{ $employee->last_name }}
-                                        </a>
-                                    </li>
-                                    @endforeach
-                                    {{-- <li class="group/item tabs">
+                    <div class="flex gap-5 mt-5">
+                        <div class="fixed inset-x-0 bottom-12 w-52 shrink-0 xl:relative z-[20] text-center xl:bottom-auto">
+                            <div
+                                class="w_100 xl:min-h-[calc(40vh_-_theme('height.header')_*_2.4)] inline-block card xl:h-[calc(40%_-_theme('spacing.5'))] shadow-lg xl:shadow-md">
+                                <div class="flex h-full p-2 2xl:p-4 xl:flex-col" id="employee-list">
+                                    <h4 class="text-left">Employees</h4>
+                                    <ul class="w_100 flex gap-2  xl:pt-4 xl:flex-col nav-tabs">
+                                        @foreach ($employees as $employee)
+                                            <li class="group/item tabs chatTab">
+                                                <a href="#!" data-tab-toggle data-target="mainChatList"
+                                                    data-id="{{ $employee->id }}"
+                                                    class="w_100 employee inline-flex items-center w-12 h-12 transition-all duration-200 ease-linear rounded-md mainChatList">
+                                                    {{ $employee->first_name }} {{ $employee->last_name }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                        {{-- <li class="group/item tabs">
                                         <a href="#!" data-tab-toggle data-target="contactList"
                                             class="w_100 inline-flex items-center w-12 h-12 transition-all duration-200 ease-linear rounded-md">Ayush
                                             Verma</a>
                                     </li> --}}
 
-                                </ul>
+                                    </ul>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--end -->
-                    <div class="block w-full xl:block xl:w-70 shrink-0 menu-content">
-                        <div
-                            class="h-[calc(100vh_-_theme('spacing.10')_*_6)] xl:min-h-[calc(100vh_-_theme('height.header')_*_2.4)] card xl:h-[calc(100%_-_theme('spacing.5'))]">
-                            <div class="flex flex-col h-full">
-                                <div class="tab-content">
-                                    <div class="block tab-pane" id="mainChatList">
-                                        <div class="card-body">
-                                            <div class="flex items-center gap-3">
-                                                {{-- <button
+                        <!--end -->
+                        <div class="block w-full xl:block xl:w-70 shrink-0 menu-content">
+                            <div
+                                class="h-[calc(100vh_-_theme('spacing.10')_*_6)] xl:min-h-[calc(100vh_-_theme('height.header')_*_2.4)] card xl:h-[calc(100%_-_theme('spacing.5'))]">
+                                <div class="flex flex-col h-full">
+                                    <div class="tab-content">
+                                        <div class="block tab-pane" id="mainChatList">
+                                            <div class="card-body">
+                                                <div class="flex items-center gap-3">
+                                                    {{-- <button
                                                     class="inline-flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 shrink-0 bg-slate-100 text-slate-500 dark:bg-zink-600 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500"><i
                                                         data-lucide="chevrons-left" class="mx-auto size-4"></i></button>
                                                 --}}
-                                                <h6 class="text-15 grow">Lead Report</h6>
-                                                {{-- <button data-modal-target="addContactModal"
+                                                    <h6 class="text-15 grow">Lead Report</h6>
+                                                    {{-- <button data-modal-target="addContactModal"
                                                     class="inline-flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 shrink-0 bg-slate-100 text-slate-500 dark:bg-zink-600 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500"><i
                                                         data-lucide="plus" class="mx-auto size-4"></i></button> --}}
-                                            </div>
-                                            {{-- <div class="relative mt-5">
+                                                </div>
+                                                {{-- <div class="relative mt-5">
                                                 <input type="text"
                                                     class="ltr:pl-8 rtl:pr-8 search form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                                     placeholder="Search for ..." autocomplete="off">
                                                 <i data-lucide="search"
                                                     class="inline-block size-4 absolute ltr:left-2.5 rtl:right-2.5 top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600"></i>
                                             </div> --}}
-                                        </div>
-                                        <div data-simplebar
-                                            class="max-h-[calc(100vh_-_380px)] xl:max-h-[calc(100vh_-_300px)]" id="leads-container" style="display:none;">
-                                            <ul class="flex flex-col gap-1" id="leadreportlist">
+                                            </div>
+                                            <div data-simplebar
+                                                class="max-h-[calc(100vh_-_380px)] xl:max-h-[calc(100vh_-_300px)]"
+                                                id="leads-container" style="display:none;">
+                                                <ul class="flex flex-col gap-1" id="leadreportlist">
 
-                                                <li style="display: none">
-                                                    <div
-                                                        class="flex items-center gap-3 px-5 py-2 [&amp;.active]:bg-slate-50 group/item dark:[&amp;.active]:bg-zink-600 offline">
+                                                    <li style="display: none">
                                                         <div
-                                                            class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
-                                                            <img src="./assets/admin/images/avatar-7.png" alt=""
-                                                                class="rounded-full h-9">
-                                                            <span
-                                                                class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
-                                                        </div>
-                                                        <a href="#!" class="overflow-hidden grow">
-                                                            <h6 class="mb-1">Ayush Verma</h6>
-                                                            <p
-                                                                class="text-sm truncate text-slate-700 dark:text-zink-200">
-                                                                LD-2024-07-403592</p>
-                                                            <p
-                                                                class="text-sm truncate text-slate-700 dark:text-zink-200">
-                                                                House/Villa</p>
-                                                        </a>
-                                                        <div class="relative dropdown shrink-0">
-                                                            <button type="button" class="dropdown-toggle"
-                                                                id="contactListDropdown1" data-bs-toggle="dropdown"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                    height="24" viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2"
-                                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                                    data-lucide="more-vertical"
-                                                                    class="lucide lucide-more-vertical inline-block ml-1 size-4">
-                                                                    <circle cx="12" cy="12" r="1">
-                                                                    </circle>
-                                                                    <circle cx="12" cy="5" r="1">
-                                                                    </circle>
-                                                                    <circle cx="12" cy="19" r="1">
-                                                                    </circle>
-                                                                </svg></button>
+                                                            class="flex items-center gap-3 px-5 py-2 [&amp;.active]:bg-slate-50 group/item dark:[&amp;.active]:bg-zink-600 offline">
+                                                            <div
+                                                                class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">
+                                                                <img src="./assets/admin/images/avatar-7.png" alt=""
+                                                                    class="rounded-full h-9">
+                                                                <span
+                                                                    class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500"></span>
+                                                            </div>
+                                                            <a href="#!" class="overflow-hidden grow">
+                                                                <h6 class="mb-1">Ayush Verma</h6>
+                                                                <p
+                                                                    class="text-sm truncate text-slate-700 dark:text-zink-200">
+                                                                    LD-2024-07-403592</p>
+                                                                <p
+                                                                    class="text-sm truncate text-slate-700 dark:text-zink-200">
+                                                                    House/Villa</p>
+                                                            </a>
+                                                            <div class="relative dropdown shrink-0">
+                                                                <button type="button" class="dropdown-toggle"
+                                                                    id="contactListDropdown1" data-bs-toggle="dropdown"><svg
+                                                                        xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        data-lucide="more-vertical"
+                                                                        class="lucide lucide-more-vertical inline-block ml-1 size-4">
+                                                                        <circle cx="12" cy="12" r="1">
+                                                                        </circle>
+                                                                        <circle cx="12" cy="5" r="1">
+                                                                        </circle>
+                                                                        <circle cx="12" cy="19" r="1">
+                                                                        </circle>
+                                                                    </svg></button>
 
-                                                            {{-- <ul
+                                                                {{-- <ul
                                                                 class="absolute z-50 py-2 mt-1 ltr:text-left rtl:text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600 hidden"
                                                                 aria-labelledby="contactListDropdown1"
                                                                 data-popper-placement="bottom-start"
@@ -217,131 +238,135 @@
                                                                         href="#!">Delete</a>
                                                                 </li>
                                                             </ul> --}}
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--end -->
+                        <!--end -->
 
-                    <div class=" card w-full hidden [&.show]:block [&.active]:xl:block active chat-content" >
-                        <div class="relative flex  h-full">
-                            <div class="max-h-[calc(100vh_-_250px)] xl:max-h-full xl:w-80 card-body"  id="lead-details-container" style="display:none;">
-                                <div class="lead_prsnl_dtls">
-                                    {{-- <div class="flex items-center gap-3">
+                        <div class=" card w-full hidden [&.show]:block [&.active]:xl:block active chat-content">
+                            <div class="relative flex  h-full">
+                                <div class="max-h-[calc(100vh_-_250px)] xl:max-h-full xl:w-80 card-body"
+                                    id="lead-details-container" style="display:none;">
+                                    <div class="lead_prsnl_dtls">
+                                        {{-- <div class="flex items-center gap-3">
                                         <h6 class="text-15 grow">Profile</h6>
                                         <button
                                             class="inline-flex items-center justify-center transition-all duration-200 ease-linear rounded-md size-8 shrink-0 bg-slate-100 text-slate-500 hover:text-red-500 dark:bg-zink-600 dark:text-zink-200 dark:hover:text-red-500"><i
                                                 data-lucide="x" class="mx-auto size-4 "></i></button>
                                     </div> --}}
-                                    <div class="text-center">
-                                        <div class="mx-auto mt-0 rounded-full size-10 bg-slate-100 dark:bg-zink-600">
-                                            <img src="./assets/admin/images/avatar-7.png" alt=""
-                                                class="h-10 rounded-full">
+                                        <div class="text-center">
+                                            <div class="mx-auto mt-0 rounded-full size-10 bg-slate-100 dark:bg-zink-600">
+                                                <img src="./assets/admin/images/avatar-7.png" alt=""
+                                                    class="h-10 rounded-full">
+                                            </div>
+                                            <h6 class="mt-4 mb-2 text-16" id="contact-name"></h6>
+                                            <p class="text-slate-500 dark:text-zink-200 mb-2" id="lead-no"></p>
+                                            <p class="text-slate-500 dark:text-zink-200" id="lead-creation-date"></p>
                                         </div>
-                                        <h6 class="mt-4 mb-2 text-16" id="contact-name"></h6>
-                                        <p class="text-slate-500 dark:text-zink-200 mb-2" id="lead-no"></p>
-                                        <p class="text-slate-500 dark:text-zink-200" id="lead-creation-date"></p>
-                                    </div>
-                                    {{-- <div class="mt-5">
+                                        {{-- <div class="mt-5">
                                         <p class="mb-3 text-slate-500 dark:text-zink-200">Object</p>
                                         <p>If several languages coalesce, the grammar of the resulting
                                             language is more simple and regular than that of the individual.
                                         </p>
                                     </div> --}}
-                                    <div class="mt-5 text-center">
-                                        {{-- <p class="mb-4 text-slate-500 dark:text-zink-200">Personal
+                                        <div class="mt-5 text-center">
+                                            {{-- <p class="mb-4 text-slate-500 dark:text-zink-200">Personal
                                             Information</p> --}}
-                                        <h6 class="mb-3 font-medium"><i data-lucide="phone"
-                                                class="inline-block mr-1 size-4 text-slate-500 dark:text-zink-200"></i>
-                                            <span class="align-middle" id="contact-phone"></span>
-                                        </h6>
-                                        <h6 class="mb-3 font-medium"><i aria-hidden="true"
-                                                class="fa fa-whatsapp inline-block mr-1 size-4 text-slate-500 dark:text-zink-200"></i>
-                                            <span class="align-middle" id="contact-phone-whatsapp"></span>
-                                        </h6>
-                                        <h6 class="font-medium"><i data-lucide="mail"
-                                                class="inline-block mr-1 size-4 text-slate-500 dark:text-zink-200"></i>
-                                            <span class="align-middle" id="contact-email"></span>
-                                        </h6>
-                                    </div>
+                                            <h6 class="mb-3 font-medium"><i data-lucide="phone"
+                                                    class="inline-block mr-1 size-4 text-slate-500 dark:text-zink-200"></i>
+                                                <span class="align-middle" id="contact-phone"></span>
+                                            </h6>
+                                            <h6 class="mb-3 font-medium"><i aria-hidden="true"
+                                                    class="fa fa-whatsapp inline-block mr-1 size-4 text-slate-500 dark:text-zink-200"></i>
+                                                <span class="align-middle" id="contact-phone-whatsapp"></span>
+                                            </h6>
+                                            <h6 class="font-medium"><i data-lucide="mail"
+                                                    class="inline-block mr-1 size-4 text-slate-500 dark:text-zink-200"></i>
+                                                <span class="align-middle" id="contact-email"></span>
+                                            </h6>
+                                        </div>
 
-                                </div>
-                                <div class=" lead_dtls">
-                                    <div class="card">
-                                        <h2>Lead Details</h2>
-                                        <div class="timeline">
-                                            <div class="timeline-item">
-                                                <div class="timeline-content lead_dscrp">
-                                                    <h3>
-                                                        <div class="timeline-icon" style="background-color: #2196f3;">
+                                    </div>
+                                    <div class=" lead_dtls">
+                                        <div class="card">
+                                            <h2>Lead Details</h2>
+                                            <div class="timeline">
+                                                <div class="timeline-item">
+                                                    <div class="timeline-content lead_dscrp">
+                                                        <h3>
+                                                            <div class="timeline-icon" style="background-color: #2196f3;">
+                                                            </div>
+                                                            Lead Descriptio
+                                                            {{-- <span class="status status-done">Done</span> --}}
+                                                        </h3>
+                                                        <div data-simplebar data-simplebar-track="custom"
+                                                            style="max-height: 220px;"
+                                                            class="pr-2 text-slate-500 dark:text-zink-200">
+                                                            <p class="mb-2" id="lead-description">If several languages
+                                                                coalesce, the grammar of
+                                                                the resulting language is more simple and regular than that
+                                                                of the individual languages. The new common language will be
+                                                                more simple and regular than the existing
+                                                                If several languages coalesce, the grammar of
+                                                                the resulting language is more simple and regular than that
+                                                                of the individual languages. The new common language will be
+                                                                more simple and regular than the existing</p>
                                                         </div>
-                                                        Lead Descriptio
-                                                        {{-- <span class="status status-done">Done</span> --}}
-                                                    </h3>
-                                                    <div data-simplebar data-simplebar-track="custom"
-                                                        style="max-height: 220px;"
-                                                        class="pr-2 text-slate-500 dark:text-zink-200">
-                                                        <p class="mb-2" id="lead-description">If several languages coalesce, the grammar of
-                                                            the resulting language is more simple and regular than that
-                                                            of the individual languages. The new common language will be
-                                                            more simple and regular than the existing
-                                                            If several languages coalesce, the grammar of
-                                                            the resulting language is more simple and regular than that
-                                                            of the individual languages. The new common language will be
-                                                            more simple and regular than the existing</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-content">
-                                                    <h3>
-                                                        <div class="timeline-icon" style="background-color: #2196f3;">
-                                                        </div>
-                                                        Property Type
-                                                        {{-- <span class="status status-running">Running</span> --}}
-                                                    </h3>
-                                                    <p id="property-type">Free courses for all our customers at A1 Conference Room -9:00 am
-                                                        tomorrow!</p>
+                                                <div class="timeline-item">
+                                                    <div class="timeline-content">
+                                                        <h3>
+                                                            <div class="timeline-icon" style="background-color: #2196f3;">
+                                                            </div>
+                                                            Property Type
+                                                            {{-- <span class="status status-running">Running</span> --}}
+                                                        </h3>
+                                                        <p id="property-type">Free courses for all our customers at A1
+                                                            Conference Room -9:00 am
+                                                            tomorrow!</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-content">
-                                                    <h3>
-                                                        <div class="timeline-icon" style="background-color: #2196f3;">
-                                                        </div>
-                                                        Budget
-                                                        {{-- <span class="status status-pending">Pending</span> --}}
-                                                    </h3>
-                                                    <p id="budget">Free courses for all our customers at A1 Conference Room -9:00 am
-                                                        tomorrow!</p>
+                                                <div class="timeline-item">
+                                                    <div class="timeline-content">
+                                                        <h3>
+                                                            <div class="timeline-icon" style="background-color: #2196f3;">
+                                                            </div>
+                                                            Budget
+                                                            {{-- <span class="status status-pending">Pending</span> --}}
+                                                        </h3>
+                                                        <p id="budget">Free courses for all our customers at A1
+                                                            Conference Room -9:00 am
+                                                            tomorrow!</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-content">
-                                                    <h3>
-                                                        <div class="timeline-icon" style="background-color: #2196f3;">
-                                                        </div>
-                                                        Location
-                                                        {{-- <span class="status status-not-start">Not Start</span> --}}
-                                                    </h3>
-                                                    <p id="location">Shaila Towers</p>
+                                                <div class="timeline-item">
+                                                    <div class="timeline-content">
+                                                        <h3>
+                                                            <div class="timeline-icon" style="background-color: #2196f3;">
+                                                            </div>
+                                                            Location
+                                                            {{-- <span class="status status-not-start">Not Start</span> --}}
+                                                        </h3>
+                                                        <p id="location">Shaila Towers</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="lead_activity" id="tasks-container" style="display:none;">
-                                <div class="card">
-                                    <h2>Lead Activity</h2>
-                                    <div class="timeline" id="tasks-timeline">
-                                        {{-- <div class="timeline-item">
+                                <div class="lead_activity" id="tasks-container" style="display:none;">
+                                    <div class="card">
+                                        <h2>Lead Activity</h2>
+                                        <div class="timeline" id="tasks-timeline">
+                                            {{-- <div class="timeline-item">
                                             <div class="timeline-icon" style="background-color: #00c853;">20</div>
                                             <div class="timeline-content">
                                                 <h3>
@@ -387,14 +412,14 @@
                                                 <p>Happy Hour! Free drinks at Cafe-Bar all day long!</p>
                                             </div>
                                         </div> --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--end-->
-                {{-- <div
+                    <!--end-->
+                    {{-- <div
                     class="h-[calc(100vh_-_theme('spacing.10')_*_6)] xl:min-h-[calc(100vh_-_theme('height.header')_*_2.4)] card w-full hidden [&.show]:block [&.active]:xl:block bot-content">
                     <div class="relative">
                         <div data-simplebar class="h-[calc(100vh_-_320px)] xl:h-[calc(100vh_-_250px)]">
@@ -476,25 +501,25 @@
                         </div>
                     </div>
                 </div> --}}
+                </div>
             </div>
+            <!--end col-->
         </div>
-        <!--end col-->
     </div>
-</div>
-</div>
+    </div>
 @endsection
 
 @section('scripts')
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
             $('#employee-list .employee').on('click', function() {
                 var employeeId = $(this).data('id');
                 //alert(employeeId);
                 //return false;
                 $('#employee-list .employee').removeClass('active');
                 $(this).addClass('active');
-                 $('#lead-details-container').hide();
-                 $('#tasks-container').hide();
+                $('#lead-details-container').hide();
+                $('#tasks-container').hide();
                 fetchLeads(employeeId);
             });
 
@@ -521,44 +546,44 @@
                     //     '<td><button class="btn btn-info btn-sm view-lead-details" data-id="' + lead.id +
                     //     '">View Details</button></td>' +
                     //     '</tr>';
-                    var row = '<li class="view-lead-details" data-id="' + lead.id +'">'+                    
-                                    '<div class="flex items-center gap-3 px-5 py-2 [&amp;.active]:bg-slate-50 group/item dark:[&amp;.active]:bg-zink-600 offline">'+
-                                        '<div class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">'+
-                                            '<img src="./assets/admin/images/avatar-7.png" alt="" class="rounded-full h-9">'+
-                                            '<span class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500">'+
-                                                '</span>'+
-                                        '</div>'+
-                                        '<a href="#!" class="overflow-hidden grow">'+
-                                            '<h6 class="mb-1">'+
-                                                lead.contact.name +
-                                            '</h6>'+
-                                            '<p class="text-sm truncate text-slate-700 dark:text-zink-200">'+
-                                                lead.lead_num +
-                                            '</p>'+
-                                            '<p class="text-sm truncate text-slate-700 dark:text-zink-200">'+
-                                                lead.property_type+
-                                            '</p>'
-                                        '</a>'+
-                                        '<div class="relative dropdown shrink-0">'+
-                                            '<button type="button" class="dropdown-toggle" id="contactListDropdown1" data-bs-toggle="dropdown">'+
-                                                '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="more-vertical" class="lucide lucide-more-vertical inline-block ml-1 size-4">'+
-                                                    '<circle cx="12" cy="12" r="1">'+
-                                                    '</circle>'+
-                                                    '<circle cx="12" cy="5" r="1">'+
-                                                    '</circle>'+
-                                                    '<circle cx="12" cy="19" r="1">'+
-                                                    '</circle>'+
-                                                '</svg>'+
-                                            '</button>'+                                           
-                                        '</div>'+
-                                    '</div>'+
-                               '</li>' 
+                    var row = '<li class="view-lead-details" data-id="' + lead.id + '">' +
+                        '<div class="flex items-center gap-3 px-5 py-2 [&amp;.active]:bg-slate-50 group/item dark:[&amp;.active]:bg-zink-600 offline">' +
+                        '<div class="relative flex items-center justify-center font-semibold rounded-full text-slate-500 dark:text-zink-200 size-9 bg-slate-100 dark:bg-zink-600">' +
+                        '<img src="./assets/admin/images/avatar-7.png" alt="" class="rounded-full h-9">' +
+                        '<span class="absolute bottom-0 ltr:right-0 rtl:left-0 w-2.5 h-2.5 border-2 border-white dark:border-zink-700 rounded-full group-[.online]/item:bg-green-400 group-[.offline]/item:bg-slate-400 dark:group-[.offline]/item:bg-zink-500 bg-red-500">' +
+                        '</span>' +
+                        '</div>' +
+                        '<a href="#!" class="overflow-hidden grow">' +
+                        '<h6 class="mb-1">' +
+                        lead.contact.name +
+                        '</h6>' +
+                        '<p class="text-sm truncate text-slate-700 dark:text-zink-200">' +
+                        lead.lead_num +
+                        '</p>' +
+                        '<p class="text-sm truncate text-slate-700 dark:text-zink-200">' +
+                        lead.property_type +
+                        '</p>'
+                    '</a>' +
+                    '<div class="relative dropdown shrink-0">' +
+                    '<button type="button" class="dropdown-toggle" id="contactListDropdown1" data-bs-toggle="dropdown">' +
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="more-vertical" class="lucide lucide-more-vertical inline-block ml-1 size-4">' +
+                    '<circle cx="12" cy="12" r="1">' +
+                    '</circle>' +
+                    '<circle cx="12" cy="5" r="1">' +
+                    '</circle>' +
+                    '<circle cx="12" cy="19" r="1">' +
+                    '</circle>' +
+                    '</svg>' +
+                    '</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>'
                     leadreportlist.append(row);
                 });
 
                 $('.view-lead-details').on('click', function() {
                     var leadId = $(this).data('id');
-                    
+
                     $('#tasks-container').hide();
                     fetchLeadDetails(leadId);
                 });
@@ -566,7 +591,7 @@
 
             function fetchLeadDetails(leadId) {
                 //alert(leadId);
-                
+
                 $.ajax({
                     url: '/leads/' + leadId + '/detailx',
                     method: 'GET',
@@ -594,8 +619,8 @@
                 $('#location').text(lead.specific_location);
 
                 // $('#show-tasks-btn').off('click').on('click', function() {
-                    populateTasksTable(lead.tasks);
-                    $('#tasks-container').show();
+                populateTasksTable(lead.tasks);
+                $('#tasks-container').show();
                 // });
             }
 
@@ -607,23 +632,23 @@
                     var statusClass = 'status-' + task.status.toLowerCase().replace(/ /g, '_');
                     var modeIcon = getModeIcon(task.mode);
 
-        //             var taskItem = `
-        //     <div class="timeline-item">
-        //         <div class="timeline-icon" style="background-color: ${getStatusColor(task.status)};">
-        //             ${modeIcon}
-        //         </div>
-        //         <div class="timeline-content">
-        //             <h3>
-        //                 ${task.description}
-        //                 <span class="status ${statusClass}">${task.status}</span>
-        //             </h3>
-        //             <p>${task.date}</p>
-        //             <p>Mode: ${task.mode}</p>
-        //         </div>
-        //     </div>
-        // `;
+                    //             var taskItem = `
+                //     <div class="timeline-item">
+                //         <div class="timeline-icon" style="background-color: ${getStatusColor(task.status)};">
+                //             ${modeIcon}
+                //         </div>
+                //         <div class="timeline-content">
+                //             <h3>
+                //                 ${task.description}
+                //                 <span class="status ${statusClass}">${task.status}</span>
+                //             </h3>
+                //             <p>${task.date}</p>
+                //             <p>Mode: ${task.mode}</p>
+                //         </div>
+                //     </div>
+                // `;
 
-                    var taskItem= `
+                    var taskItem = `
                                  <div class="timeline-item">
                                             <div class="timeline-icon" style="background-color:  ${getStatusColor(task.status)};"> ${modeIcon}</div>
                                             <div class="timeline-content">
@@ -639,17 +664,17 @@
                     tasksTimeline.append(taskItem);
                 });
             }
-            
+
             function getModeIcon(mode) {
                 switch (mode) {
                     case 'Site Visit':
-                        return '<i class="fas fa-home"></i>';
+                        return '<i class="fa fa-home"></i>';
                     case 'Phone Call':
-                        return '<i class="fas fa-phone"></i>';
+                        return '<i class="fa fa-phone"></i>';
                     case 'Discussion':
-                        return '<i class="fas fa-comments"></i>';
+                        return '<i class="fa fa-comments"></i>';
                     default:
-                        return '<i class="fas fa-tasks"></i>';
+                        return '<i class="fa fa-tasks"></i>';
                 }
             }
 
@@ -683,5 +708,5 @@
             }
 
         });
-</script>
+    </script>
 @endsection

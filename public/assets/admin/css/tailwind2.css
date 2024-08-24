@@ -32991,3 +32991,18 @@ li {
     background-color: #fff;
     padding: 20px;
 }
+
+.text_white{
+    color: white;
+}
+
+.text_red{
+    color: red;
+}
+
+
+@media screen and (max-width: 480px) {
+    .logo_top {
+      flex-direction: column;
+    }
+  }
