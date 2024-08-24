@@ -158,5 +158,9 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/customer-admin', [AdminlinkcreateController::class, 'customerIndex'])->name('admin.customer.index');
         Route::get('customercreate', [AdminlinkcreateController::class, 'customerCreate'])->name('admin.customer.create');
 
+        //notification report
+        Route::get('/notification', [ReportController::class, 'notificationTasks'])->name('tasks.notification');
+        Route::post('/notifcation/filter', [ReportController::class, 'filterNotificationTasks'])->name('tasks.notification.filter');
+
     });
 });

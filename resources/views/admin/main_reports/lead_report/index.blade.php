@@ -311,52 +311,52 @@
                 switch (status.toLowerCase()) {
                     case 'no response':
                         return {
-                            icon: 'fas fa-comment-slash', color: '#9e9e9e', class: 'status-no-response'
+                            icon: 'fa fa-comment-slash', color: '#9e9e9e', class: 'status-no-response'
                         };
                     case 'contact & response':
                         return {
-                            icon: 'fas fa-comments', color: '#2196f3', class: 'status-contact-response'
+                            icon: 'fa fa-comments', color: '#2196f3', class: 'status-contact-response'
                         };
                     case 'site visit done':
                         return {
-                            icon: 'fas fa-map-marker-alt', color: '#4caf50', class: 'status-site-visit-done'
+                            icon: 'fa fa-map-marker', color: '#4caf50', class: 'status-site-visit-done'
                         };
                     case 'site visit requested':
                         return {
-                            icon: 'fas fa-calendar-alt', color: '#ff9800', class: 'status-site-visit-requested'
+                            icon: 'fa fa-calendar-o', color: '#ff9800', class: 'status-site-visit-requested'
                         };
                     case 'visit postponed':
                         return {
-                            icon: 'fas fa-calendar-times', color: '#ff5722', class: 'status-visit-postponed'
+                            icon: 'fa fa-calendar-times-o', color: '#ff5722', class: 'status-visit-postponed'
                         };
                     case 'follow up needed':
                         return {
-                            icon: 'fas fa-bell', color: '#e91e63', class: 'status-follow-up-needed'
+                            icon: 'fa fa-bell', color: '#e91e63', class: 'status-follow-up-needed'
                         };
                     case 'follow up done':
                         return {
-                            icon: 'fas fa-check-circle', color: '#8bc34a', class: 'status-follow-up-done'
+                            icon: 'fa fa-check-circle', color: '#8bc34a', class: 'status-follow-up-done'
                         };
                     case 'not interested':
                         return {
-                            icon: 'fas fa-thumbs-down', color: '#795548', class: 'status-not-interested'
+                            icon: 'fa fa-thumbs-down', color: '#795548', class: 'status-not-interested'
                         };
                     case 'closed successfully':
                         return {
-                            icon: 'fas fa-check', color: '#00c853', class: 'status-closed-successfully'
+                            icon: 'fa fa-check', color: '#00c853', class: 'status-closed-successfully'
                         };
                     case 'closed with failure':
                         return {
-                            icon: 'fas fa-times', color: '#f44336', class: 'status-closed-with-failure'
+                            icon: 'fa fa-times', color: '#f44336', class: 'status-closed-with-failure'
                         };
                     case 'invalid contact details':
                         return {
-                            icon: 'fas fa-exclamation-triangle', color: '#ffeb3b', class:
+                            icon: 'fa  fa-exclamation-triangle', color: '#ffeb3b', class:
                                 'status-invalid-contact-details'
                         };
                     default:
                         return {
-                            icon: 'fas fa-question', color: '#607d8b', class: 'status-unknown'
+                            icon: 'fa fa-question', color: '#607d8b', class: 'status-unknown'
                         };
                 }
             }
