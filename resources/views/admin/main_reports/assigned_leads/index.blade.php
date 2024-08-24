@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <div class="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                                 <div class="xl:col-span-3">
-                                    <h4 class="text-15">Unassigned Leads</h4>
+                                    <h4 class="text-15">Assigned Leads</h4>
                                 </div>
                                 <!--end col-->
                                 <div class="xl:col-span-3 xl:col-start-11">
