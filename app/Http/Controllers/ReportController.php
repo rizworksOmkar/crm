@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Lead;
 use App\Models\User;
 use App\Models\Contact;
@@ -26,19 +27,19 @@ class ReportController extends Controller
 
     public function leadReport()
     {
-        
-        $role= auth()->user()->role_type;
-        if($role == 'admin'){
+
+        $role = auth()->user()->role_type;
+        if ($role == 'admin') {
 
             $leads = Lead::all();
             $status = LeadStatus::all();
-        }else{
+        } else {
 
             $myId = auth()->user()->id;
-            $leads = Lead::where('assigned_to',$myId)->get();
+            $leads = Lead::where('assigned_to', $myId)->get();
             $status = LeadStatus::all();
         }
-        
+
         return view('admin.main_reports.lead_report.index', compact('leads', 'status'));
     }
 
@@ -51,13 +52,13 @@ class ReportController extends Controller
             'name' => $lead->contact->name,
             'phone' => $lead->contact->phone,
             'whatsapp' => $lead->contact->whatsapp_ph,
-            'email'=> $lead->contact->email,
+            'email' => $lead->contact->email,
             'deleted_at' => $lead->contact->deleted_at,
             'description' => $lead->description,
             'property_type' => $lead->property_type,
             'max_budget' => $lead->max_budget,
             'specific_location' => $lead->specific_location,
-            'lead_num'=>$lead->lead_num,
+            'lead_num' => $lead->lead_num,
         ]);
     }
 
@@ -72,49 +73,46 @@ class ReportController extends Controller
     public function getUnbilledLeads()
     {
 
-        $role= auth()->user()->role_type;
-        if($role == 'admin'){
+        $role = auth()->user()->role_type;
+        if ($role == 'admin') {
             $leadsWithoutBills = Lead::with(['contact', 'assignedTo'])
                 ->where('status', 'Closed Successfully')
                 ->doesntHave('billing')
                 ->get();
-            
-        }else{
+        } else {
 
-                    $myId = auth()->user()->id;
-                    $leadsWithoutBills = Lead::with(['contact', 'assignedTo'])
-                    ->where('status', 'Closed Successfully')
-                    ->where('assigned_to',$myId)
-                    ->doesntHave('billing')
-                    ->get();
+            $myId = auth()->user()->id;
+            $leadsWithoutBills = Lead::with(['contact', 'assignedTo'])
+                ->where('status', 'Closed Successfully')
+                ->where('assigned_to', $myId)
+                ->doesntHave('billing')
+                ->get();
         }
         return view('admin.main_reports.billing_report.unbilled_leads_index', compact('leadsWithoutBills'));
-
     }
 
     public function getBilledLeads()
     {
-        $role= auth()->user()->role_type;
-        if($role == 'admin'){
+        $role = auth()->user()->role_type;
+        if ($role == 'admin') {
             $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
                 ->where('status', 'Closed Successfully')
                 ->whereHas('billing', function ($query) {
                     $query->where('to_pay', '>', 0);
                 })
                 ->get();
+        } else {
 
-        }else{
-
-                    $myId = auth()->user()->id;
-                    $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
-                    ->where('status', 'Closed Successfully')
-                    ->where('assigned_to',$myId)
-                    ->whereHas('billing', function ($query) {
-                        $query->where('to_pay', '>', 0);
-                    })
-                    ->get();
+            $myId = auth()->user()->id;
+            $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
+                ->where('status', 'Closed Successfully')
+                ->where('assigned_to', $myId)
+                ->whereHas('billing', function ($query) {
+                    $query->where('to_pay', '>', 0);
+                })
+                ->get();
         }
-        
+
 
         return view('admin.main_reports.billing_report.billed_leads_index', compact('leadsWithBills'));
     }
@@ -123,30 +121,26 @@ class ReportController extends Controller
     {
 
 
-        $role= auth()->user()->role_type;
-        if($role == 'admin'){
+        $role = auth()->user()->role_type;
+        if ($role == 'admin') {
             $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
-                ->where('status', 'Closed Successfully')                
+                ->where('status', 'Closed Successfully')
                 ->whereHas('billing', function ($query) {
                     $query->where('to_pay', 0);
                 })
                 ->get();
+        } else {
 
-        }else{
-
-                    $myId = auth()->user()->id;
-                    $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
-                    ->where('status', 'Closed Successfully')
-                    ->where('assigned_to',$myId)
-                    ->whereHas('billing', function ($query) {
-                        $query->where('to_pay', 0);
-                    })
-                    ->get();
+            $myId = auth()->user()->id;
+            $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
+                ->where('status', 'Closed Successfully')
+                ->where('assigned_to', $myId)
+                ->whereHas('billing', function ($query) {
+                    $query->where('to_pay', 0);
+                })
+                ->get();
         }
 
         return view('admin.main_reports.billing_report.paid_bills_index', compact('leadsWithBills'));
     }
-
-
-
 }
