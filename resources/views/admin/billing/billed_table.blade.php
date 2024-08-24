@@ -1,6 +1,19 @@
 <div class="card">
     <div class="card-body">
-        {{-- <h6 class="mb-4 text-15">Basic</h6> --}}
+        <div class="grid items-center grid-cols-1 gap-3 mb-5 xl:grid-cols-13">
+            <div class="xl:col-span-3">
+                {{-- <h6 class="mb-4 text-15">Raise Bill</h6> --}}
+            </div>
+            <div class="xl:col-span-5 xl:col-start-12">
+                <button type="button"
+                    class="text-red-500 bg-white border-red-500 btn hover:text-red-500 hover:bg-red-100 
+                           focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-700 
+                           dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">
+                    <span class="align-middle">Close
+                    </span>
+                </button>
+            </div>
+        </div>
         <div class="overflow-x-auto">
             <table id="" class="table stripe group" style="width: 100%">
                 <thead>

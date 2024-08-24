@@ -1,0 +1,56 @@
+<div id="parentDiv" class="grid grid-cols-1 transition-all duration-300">
+    <!-- Main Content Div -->
+    <div id="contentDiv" class="col-span-1 p-4 bg-gray-200">
+        <p>This is the main content.</p>
+        <button
+            id="expandButton"
+            class="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+        >
+            Expand
+        </button>
+    </div>
+</div>
+
+<!-- Hidden Form Div -->
+<div id="formDiv" class="hidden col-span-2 p-4 bg-gray-100 mt-4">
+    <h3 class="text-lg font-bold">New Form</h3>
+    <form>
+        <label for="name" class="block mt-2">Name:</label>
+        <input
+            type="text"
+            id="name"
+            class="w-full px-2 py-1 border rounded"
+            placeholder="Enter your name"
+        />
+
+        <label for="email" class="block mt-4">Email:</label>
+        <input
+            type="email"
+            id="email"
+            class="w-full px-2 py-1 border rounded"
+            placeholder="Enter your email"
+        />
+
+        <button
+            type="submit"
+            class="mt-4 px-4 py-2 bg-green-500 text-white rounded"
+        >
+            Submit
+        </button>
+    </form>
+</div>
+<script>
+    document
+        .getElementById('expandButton')
+        .addEventListener('click', function () {
+            const parentDiv = document.getElementById('parentDiv')
+            const formDiv = document.getElementById('formDiv')
+
+            // Change the parent div's grid to col-span-2
+            parentDiv.classList.remove('grid-cols-1')
+            parentDiv.classList.add('grid-cols-2')
+
+            // Display the hidden form div
+            formDiv.classList.remove('hidden')
+        })
+</script>
