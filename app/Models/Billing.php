@@ -44,4 +44,9 @@ class Billing extends Model
     {
         return $this->hasOne(PaymentReceipt::class, 'bill_num', 'bill_num')->latest('date');
     }
+
+    public function lead()
+    {
+        return $this->belongsTo(Lead::class, 'lead_num', 'lead_num');
+    }
 }

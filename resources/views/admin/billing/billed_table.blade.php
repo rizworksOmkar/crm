@@ -456,7 +456,8 @@
                                 <h6 class="mb-4 text-15">Reciept </h6>
                             </div>
                             <div class="xl:col-span-5 xl:col-start-12">
-                                <button type="button" id="closeReciept" class="text-red-500 btn bg-white border-red-500">
+                                <button type="button" id="closeReciept"
+                                    class="text-red-500 btn bg-white border-red-500">
                                     Close
                                 </button>
                             </div>
@@ -594,6 +595,20 @@
                             var timeline = document.getElementById('receiptTimeline');
                             timeline.innerHTML = '';
 
+                            var customerDetails = `
+                    <div >
+                        <div>
+                            <h6>Customer Details</h6>
+                            <p>Name: ${response.contact.name}</p>
+                            <p>Email: ${response.contact.email}</p>
+                            <p>Phone: ${response.contact.phone}</p>
+                            <p>WhatsApp: ${response.contact.whatsapp_ph}</p>
+                            <p>Address: ${response.contact.address}</p>
+                        </div>
+                    </div>
+                `;
+                            timeline.innerHTML += customerDetails;
+
                             response.transactions.forEach(transaction => {
                                 var timelineItem = `
                                     <div class="timeline-item">
@@ -643,16 +658,16 @@
 
             //             response.transactions.forEach(function(transaction) {
             //                 var timelineItem = `
-            //         <div class="timeline-item">
-            //             <div class="timeline-content">
-            //                 <h6>Transaction #${transaction.transaction_num}</h6>
-            //                 <p>Receipt Number: ${transaction.receipt_num}</p>
-            //                 <p>Amount Paid: ${transaction.payment_amount}</p>
-            //                 <p>Payment Mode: ${transaction.mode}</p>
-            //                 <p>Status: ${transaction.status}</p>
-            //             </div>
-            //         </div>
-            //     `;
+        //         <div class="timeline-item">
+        //             <div class="timeline-content">
+        //                 <h6>Transaction #${transaction.transaction_num}</h6>
+        //                 <p>Receipt Number: ${transaction.receipt_num}</p>
+        //                 <p>Amount Paid: ${transaction.payment_amount}</p>
+        //                 <p>Payment Mode: ${transaction.mode}</p>
+        //                 <p>Status: ${transaction.status}</p>
+        //             </div>
+        //         </div>
+        //     `;
             //                 timeline.append(timelineItem);
             //             });
             //         },

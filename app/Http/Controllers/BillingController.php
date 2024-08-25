@@ -26,7 +26,22 @@ class BillingController extends Controller
             ->has('billing')
             ->get();
 
-        return view('admin.billing.index', compact('leadsWithoutBills', ));
+        return view('admin.billing.index', compact('leadsWithBills'));
+    }
+    public function unbilled()
+    {
+        $leadsWithoutBills = Lead::with(['contact', 'assignedTo'])
+            ->where('status', 'Closed Successfully')
+            ->doesntHave('billing')
+            ->get();
+            // dd($leadsWithoutBills);
+
+        $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
+            ->where('status', 'Closed Successfully')
+            ->has('billing')
+            ->get();
+
+        return view('admin.billing.unbilled_table', compact('leadsWithoutBills', ));
     }
     public function billed()
     {
@@ -47,7 +62,13 @@ class BillingController extends Controller
     public function getTransactions(Billing $billing)
     {
         $transactions = $billing->transactions()->orderBy('created_at', 'desc')->get();
-        return response()->json(['transactions' => $transactions]);
+
+        $contact = $billing->lead->contact;
+
+        return response()->json([
+            'transactions' => $transactions,
+            'contact' => $contact,
+        ]);
     }
 
 // leadId: 2a11e22f-a398-4151-b879-26b3922c559a

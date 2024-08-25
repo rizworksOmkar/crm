@@ -129,6 +129,7 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
 
 
             Route::get('/billing', [BillingController::class, 'index'])->name('billing.index');
+            Route::get('/lead/billing/', [BillingController::class, 'unbilled'])->name('raise.bill');
             Route::get('/billed', [BillingController::class, 'billed'])->name('billed.index');
             Route::get('/billing/create/{lead}', [BillingController::class, 'create'])->name('billing.create');
             Route::post('/billing/{lead}', [BillingController::class, 'store'])->name('billing.store');
