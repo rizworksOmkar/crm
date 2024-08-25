@@ -19,13 +19,23 @@ class BillingController extends Controller
             ->where('status', 'Closed Successfully')
             ->doesntHave('billing')
             ->get();
+            // dd($leadsWithoutBills);
 
         $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
             ->where('status', 'Closed Successfully')
             ->has('billing')
             ->get();
 
-        return view('admin.billing.index', compact('leadsWithoutBills', 'leadsWithBills'));
+        return view('admin.billing.index', compact('leadsWithoutBills', ));
+    }
+    public function billed()
+    {
+        $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
+            ->where('status', 'Closed Successfully')
+            ->has('billing')
+            ->get();
+
+        return view('admin.billing.billed_table', compact('leadsWithBills'));
     }
 
     public function getReceipts(Billing $billing)
@@ -40,24 +50,48 @@ class BillingController extends Controller
         return response()->json(['transactions' => $transactions]);
     }
 
+// leadId: 2a11e22f-a398-4151-b879-26b3922c559a
+// custName: Sheikh Shaimul Rana
+// custAddress: Kjhgdsjk
+// custPhone: 7410852972
+// custWhatsApp: 7410852972
+// leadNumber: LD-2024-07-403599
+// leadDate: 2024-07-24 09:30:16
+// propertyType: House/Villa
+// finalizedProperty: acsasd
+// billDate: 2024-08-25
+// billAmount: 34567
+// narration: sdadsf
     public function store(Request $request, $leadId)
     {
         $lead = Lead::findOrFail($leadId);
         $validatedData = $request->validate([
-            'expected_amount' => 'required|numeric',
-            'to_pay' => 'required|numeric',
-            'date' => 'required|date',
+
+            'billAmount' => 'required|numeric',
+            'billDate' => 'required|date',
             'agent_id' => 'required|exists:users,id',
         ]);
 
+        $currYear = substr((now()->year), -2);
+        $nextYear = substr((now()->year + 1), -2);
+
+        $currentMonth = now()->format('m');
+
+        $randomNumber = mt_rand(1000, 9999);
+
+        $billNum = "BILL{$currYear}{$nextYear}{$currentMonth}{$randomNumber}";
+
         $billing = new Billing($validatedData);
-        $billing->customerWillPay = $billing->to_pay;
+        $billing->to_pay = $validatedData['billAmount'];
+        $billing->customerWillPay = $validatedData['billAmount'];
+        $billing->date = $validatedData['billDate'];
         $billing->lead_num = $lead->lead_num;
-        $billing->bill_num = 'BILL-' . uniqid();
+        $billing->bill_num = $billNum;
         $billing->save();
 
         return response()->json(['success' => true, 'message' => 'Bill created successfully']);
     }
+
 
     public function raiseBill($leadId)
     {
@@ -164,32 +198,44 @@ class BillingController extends Controller
         $billing = Billing::findOrFail($billId);
 
         $validatedData = $request->validate([
-            'payment_amount' => 'required|numeric|max:' . $billing->to_pay,
-            'payment_mode' => 'required|in:cash,card,bank_transfer',
+            'paymentAmount' => 'required|numeric|max:' . $billing->to_pay,
+            'paymentMode' => 'required|in:cash,card,bank_transfer',
         ]);
+
+        $currYear = substr((now()->year), -2);
+        $nextYear = substr((now()->year + 1), -2);
+
+        $currentMonth = now()->format('m');
+
+        $randomNumber = mt_rand(1000, 9999);
+
+        $receipt = "RCPT{$currYear}{$nextYear}{$currentMonth}{$randomNumber}";
 
         $receipt = new PaymentReceipt([
             'bill_num' => $billing->bill_num,
             'lead_num' => $billing->lead_num,
-            'amount_paid' => $validatedData['payment_amount'],
+            'amount_paid' => $validatedData['paymentAmount'],
             'date' => now(),
-            'payment_receipt_num' => 'RCPT-' . uniqid(),
+            'payment_receipt_num' => $receipt,
         ]);
         $receipt->save();
+
+        $receiptNo = "TXN{$currYear}{$nextYear}{$currentMonth}{$randomNumber}";
 
         $transaction = new Transaction([
             'bill_num' => $billing->bill_num,
             'receipt_num' => $receipt->payment_receipt_num,
-            'transaction_num' => 'TXN-' . uniqid(),
-            'mode' => $validatedData['payment_mode'],
-            'payment_amount' => $validatedData['payment_amount'],
+            'transaction_num' => $receiptNo,
+            'mode' => $validatedData['paymentMode'],
+            'payment_amount' => $validatedData['paymentAmount'],
             'status' => 'completed',
         ]);
         $transaction->save();
 
-        $billing->to_pay -= $validatedData['payment_amount'];
+        $billing->to_pay -= $validatedData['paymentAmount'];
         $billing->save();
 
         return response()->json(['success' => true, 'message' => 'Payment processed successfully']);
     }
+
 }

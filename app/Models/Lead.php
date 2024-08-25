@@ -33,7 +33,12 @@ class Lead extends Model
         'status',
         'assigned_to',
         'created_by',
-        'reference_description'
+        'reference_description',
+        'finalized_property',
+        'rent',
+        'advance',
+        'payment_terms'
+
     ];
 
     protected $keyType = 'string';
@@ -82,7 +87,7 @@ class Lead extends Model
     {
         return $this->hasMany(Task::class);
     }
-    
+
     public function billing()
     {
         return $this->hasOne(Billing::class, 'lead_num', 'lead_num');

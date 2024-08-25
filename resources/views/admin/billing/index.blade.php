@@ -49,499 +49,345 @@
     <div
         class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
         <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
-            <div class="grid grid-cols-1 gap-x-5 " id="billingManagementBox">
-                <div class="card">
+            <div class="grid grid-cols-1 gap-x-5 " id="billingGrid">
+                <div class="card col-span-3">
                     <div class="card-body">
                         <h6 class="mb-4 text-15">Billing Management</h6>
                         <div>
-                            <ul id="myTab" role="tablist"
-                                class="flex flex-wrap w-full text-sm font-medium text-center 
-                                border-b border-slate-200 dark:border-zink-500 nav-tabs">
-                                <li class="group active">
-                                    <a href="#unbilled" id="unbilled-tab" data-tab-toggle data-target="unbilled"
-                                        class="active inline-block px-4 py-2 text-base transition-all
-                                           duration-300 ease-linear rounded-t-md text-slate-500 
-                                           dark:text-zink-200 border border-transparent group-[.active]:text-custom-500
-                                            group-[.active]:border-slate-200 dark:group-[.active]:border-zink-500 
-                                            group-[.active]:border-b-white dark:group-[.active]:border-b-zink-700 
-                                            hover:text-custom-500 active:text-custom-500 dark:hover:text-custom-500 
-                                            dark:active:text-custom-500 dark:group-[.active]:hover:text-white -mb-[1px]">
-                                        Unbilled Leads
-                                    </a>
-                                </li>
-                                <li class="group ">
-                                    <a href="#billed" id="billed-tab" data-tab-toggle data-target="billed"
-                                        class="inline-block px-4 py-2 text-base transition-all duration-300 ease-linear 
-                                        rounded-t-md text-slate-500 dark:text-zink-200 border border-transparent 
-                                        group-[.active]:text-custom-500 group-[.active]:border-slate-200 
-                                        dark:group-[.active]:border-zink-500 group-[.active]:border-b-white 
-                                        dark:group-[.active]:border-b-zink-700 hover:text-custom-500 active:text-custom-500 
-                                        dark:hover:text-custom-500 dark:active:text-custom-500 dark:group-[.active]:hover:text-white
-                                         -mb-[1px]">
-                                        Billed Leads
-                                    </a>
-                                </li>
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="" class="table stripe group" style="width: 100%">
+                                        <thead>
+                                            <tr>
+                                                <th class="ltr:!text-left rtl:!text-right">Lead Number</th>
+                                                <th class="ltr:!text-left rtl:!text-right">Customer</th>
+                                                <th class="ltr:!text-left rtl:!text-right">Phone</th>
+                                                <th class="ltr:!text-left rtl:!text-right">WhatsApp</th>
+                                                <th class="ltr:!text-left rtl:!text-right">Property</th>
+                                                <th class="ltr:!text-left rtl:!text-right">Employee</th>
+                                                <th class="ltr:!text-left rtl:!text-right">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($leadsWithoutBills as $lead)
+                                                <tr>
+                                                    <td>{{ $lead->lead_num }}</td>
+                                                    <td>{{ $lead->contact->name }}</td>
+                                                    <td>{{ $lead->contact->phone }}</td>
+                                                    <td>{{ $lead->contact->whatsapp_ph }}</td>
+                                                    <td>{{ $lead->property_type }}</td>
+                                                    <td>{{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}
+                                                    </td>
 
-                            </ul>
 
-                            <div class="tab-content mt-4" id="myTabContent">
-                                <div class="tab-pane fade show active" id="unbilled" role="tabpanel">
-                                    @include('admin.billing.unbilled_table', [
-                                        'leads' => $leadsWithoutBills,
-                                    ])
-                                </div>
-                                <div class="tab-pane fade " id="billed" role="tabpanel">
-                                    @include('admin.billing.billed_table', ['leads' => $leadsWithBills])
+                                                    <td>
+
+                                                        <button type="button"
+                                                            class="btn btn-success text-white btn bg-custom-500
+                                                         border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600
+                                                          focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring
+                                                          focus:ring-custom-100 active:text-white active:bg-custom-600
+                                                        active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
+                                                            id="unbilledRaiseBill" data-lead-id="{{ $lead->id }}"
+                                                            data-lead-num="{{ $lead->lead_num }}"
+                                                            data-max-budget="{{ $lead->max_budget }}"
+                                                            data-cust-name="{{ $lead->contact->name }}"
+                                                            data-lead-date="{{ $lead->created_at }}"
+                                                            data-property-type="{{ $lead->property_type }}"
+                                                            data-cust-address="{{ $lead->contact->address }}"
+                                                            data-cust-phone="{{ $lead->contact->phone }}"
+                                                            data-cust-whatsapp="{{ $lead->contact->whatsapp_ph }}"
+                                                            data-agent-name="{{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}"
+                                                            data-agent-id="{{ $lead->assignedTo->id }}"
+                                                            data-finalized-property="{{ $lead->finalized_property }}"
+                                                            data-rent="{{ $lead->rent }}"
+                                                            data-advance="{{ $lead->advance }}"
+                                                            data-payment-terms="{{ $lead->payment_terms }}">
+                                                            Raise Bill
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div><!--end card-->
 
                 {{-- raise Bill box --}}
-                <div class="card" id="raiseBillModal">
+                <div class="card hidden" id="raiseBillPart">
                     <div class="card-body">
                         <div class="grid items-center grid-cols-1 gap-3 mb-5 xl:grid-cols-13">
                             <div class="xl:col-span-3">
                                 <h6 class="mb-4 text-15">Raise Bill</h6>
                             </div>
                             <div class="xl:col-span-5 xl:col-start-12">
-                                <button type="button"
-                                    class="text-red-500 bg-white border-red-500 btn hover:text-red-500 hover:bg-red-100 
-                                           focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-700 
-                                           dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">
-                                    <span class="align-middle">Close
-                                    </span>
+                                <button type="button" id="close" class="text-red-500 btn bg-white border-red-500">
+                                    Close
                                 </button>
                             </div>
                         </div>
                         <form id="raiseBillForm" method="POST">
                             @csrf
                             <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
-                                <input type="hidden" id="leadId" name="lead_id">
+                                <input type="hidden" id="leadId" name="leadId">
+                                <input type="hidden" id="agent_id" name="agent_id">
                                 <div class="mb-4">
-                                    <label for="leadNumber"
-                                        class="inline-block mb-2 text-base
-                                          font-medium">Lead
-                                        Number
+                                    <label for="custName" class="inline-block mb-2 text-base font-medium">
+                                        Customer Name
                                     </label>
-                                    <input type="text"
-                                        class="form-input border-slate-200
-                                     dark:border-zink-500 focus:outline-none 
-                                     focus:border-custom-500 disabled:bg-slate-100 
-                                     dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
-                                      placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="leadNumber" name="leadNumber" placeholder="" value="">
-                                </div>
-
-                                <div class="mb-4">
-                                    <label for="expectedAmount" class="inline-block mb-2 text-base font-medium">
-                                        Expected Amount
-                                    </label>
-                                    <input type="text"
-                                        class="form-input border-slate-200
-                                         dark:border-zink-500 focus:outline-none 
-                                         focus:border-custom-500 disabled:bg-slate-100 
-                                         dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
-                                          placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="expectedAmount" name="expected_amount" placeholder="" value="">
+                                    <input type="text" id="custName" name="custName" class="form-input">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="toPay" class="inline-block mb-2 text-base font-medium">
-                                        To Pay
+                                    <label for="custAddress" class="inline-block mb-2 text-base font-medium">
+                                        Address
                                     </label>
-                                    <input type="Number"
-                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        placeholder="" id="toPay" name="to_pay" value="">
+                                    <input type="text" id="custAddress" name="custAddress" class="form-input">
                                 </div>
-                                {{-- Lead Details --}}
+                                <div class="mb-4">
+                                    <label for="custPhone" class="inline-block mb-2 text-base font-medium">
+                                        Phone
+                                    </label>
+                                    <input type="text" id="custPhone" name="custPhone" class="form-input">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="custWhatsApp" class="inline-block mb-2 text-base font-medium">
+                                        WhatsApp
+                                    </label>
+                                    <input type="text" id="custWhatsApp" name="custWhatsApp" class="form-input">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="leadNumber" class="inline-block mb-2 text-base font-medium">
+                                        Lead Number
+                                    </label>
+                                    <input type="text" id="leadNumber" name="leadNumber" class="form-input">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="leadDate" class="inline-block mb-2 text-base font-medium">
+                                        Lead Date
+                                    </label>
+                                    <input type="text" id="leadDate" name="leadDate" class="form-input">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="propertyType" class="inline-block mb-2 text-base font-medium">
+                                        Property Type
+                                    </label>
+                                    <input type="text" id="propertyType" name="propertyType" class="form-input">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="finalizedProperty" class="inline-block mb-2 text-base font-medium">
+                                        Finalized Property
+                                    </label>
+                                    <input type="text" id="finalizedProperty" name="finalizedProperty"
+                                        class="form-input">
+                                </div>
                                 <div class="mb-4">
                                     <label for="billDate" class="inline-block mb-2 text-base font-medium">
-                                        Date
+                                        Bill Date
                                     </label>
-                                    <input type="date"
-                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        placeholder="" id="billDate" name="date" value="">
+                                    <input type="date" id="billDate" name="billDate" class="form-input" required>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="agent_id" class="inline-block mb-2 text-base font-medium">
-                                        Agent
+                                    <label for="billAmount" class="inline-block mb-2 text-base font-medium">
+                                        Bill Amount
                                     </label>
-                                    <input type="text"
-                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
-                                        focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
-                                        disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
-                                         disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
-                                          placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        placeholder="" id="agent_name" name="agent_name">
-                                    <input type="hidden"
-                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
-                                        focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
-                                        disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200
-                                         disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
-                                          placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        placeholder="" id="agent_id" name="agent_id">
+                                    <input type="text" id="billAmount" name="billAmount" class="form-input">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="narration" class="inline-block mb-2 text-base font-medium">
+                                        Narration
+                                    </label>
+                                    <input type="text" id="narration" name="narration" class="form-input">
                                 </div>
                             </div>
-
                             <div class="flex justify-end gap-2">
-                                <button type="submit"
-                                    class="text-white transition-all duration-200 ease-linear btn bg-custom-800 
-                                    border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 
-                                    focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
-                                    focus:ring-custom-100 active:text-white active:bg-custom-600
-                                    active:border-custom-600 active:ring active:ring-custom-100">
+                                <button type="submit" class="btn bg-custom-800 text-white" id ="raiseBillForm">
                                     Raise Bill
                                 </button>
-
                             </div>
                         </form>
                     </div>
                 </div>
 
-                {{-- view Receiptbox --}}
-                <div class="card" id="viewReceiptModal">
-                    <div class="card-body">
-                        <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
-                            <div class="timeline" id="receiptTimeline">
-                                <!-- Timeline content will be dynamically inserted here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- make Payment box --}}
-                <div class="card" id="makePaymentModal">
-                    <div class="card-body">
-                        <div class="grid items-center grid-cols-1 gap-3 mb-5 xl:grid-cols-13">
-                            <div class="xl:col-span-3">
-                                <h6 class="mb-4 text-15">Make Payment</h6>
-                            </div>
-                            <div class="xl:col-span-5 xl:col-start-12">
-                                <button type="button"
-                                    class="text-red-500 bg-white border-red-500 btn hover:text-red-500 hover:bg-red-100 
-                                           focus:text-red-500 focus:bg-red-100 active:text-red-500 active:bg-red-100 dark:bg-zink-700 
-                                           dark:hover:bg-red-500/10 dark:focus:bg-red-500/10 dark:active:bg-red-500/10">
-                                    <span class="align-middle">Close
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                        <form id="makePaymentForm" method="POST">
-                            @csrf
-                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
-                                <input type="hidden" id="leadId" name="lead_id">
-                                <div class="mb-4">
-                                    <label class="inline-block mb-2 text-base font-medium" for="billNumber">Bill
-                                        Number</label>
-                                    <input type="text"
-                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
-                                focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
-                                disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 
-                                disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
-                                 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="billNumber">
-                                </div>
 
-                                <div class="mb-4">
-                                    <label class="inline-block mb-2 text-base font-medium" for="amountDue">Amount
-                                        Due</label>
-                                    <input type="number"
-                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="amountDue">
-                                </div>
-                                <div class="mb-4">
-                                    <label class="inline-block mb-2 text-base font-medium" for="paymentAmount">Payment
-                                        Amount</label>
-                                    <input type="number"
-                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="paymentAmount" name="payment_amount" required>
-                                </div>
-                                {{-- Lead Details --}}
-                                <div class="mb-4">
-                                    <label class="inline-block mb-2 text-base font-medium" for="paymentMode">Payment
-                                        Mode</label>
-                                    <select
-                                        class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                        id="paymentMode" name="payment_mode" required>
-                                        <option value="cash">Cash</option>
-                                        <option value="card">Card</option>
-                                        <option value="bank_transfer">Bank Transfer</option>
-                                    </select>
-                                </div>
 
-                            </div>
-
-                            <div class="flex justify-end gap-2">
-                                <button type="submit"
-                                    class="text-white transition-all duration-200 ease-linear btn bg-custom-800 
-                                    border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 
-                                    focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring 
-                                    focus:ring-custom-100 active:text-white active:bg-custom-600
-                                    active:border-custom-600 active:ring active:ring-custom-100">
-                                    Process Payment
-                                </button>
-
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-
-    <!-- Raise Bill Modal -->
-    {{-- <div class="modal fade" id="raiseBillModal" tabindex="-1" role="dialog" aria-labelledby="raiseBillModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="raiseBillModalLabel">Raise Bill</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form id="raiseBillForm" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <input type="hidden" id="leadId" name="lead_id">
-                        <div class="form-group">
-                            <label for="leadNumber">Lead Number</label>
-                            <input type="text" class="form-control" id="leadNumber">
-                        </div>
-                        <div class="form-group">
-                            <label for="expectedAmount">Expected Amount</label>
-                            <input type="number" class="form-control" id="expectedAmount" name="expected_amount" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="toPay">To Pay</label>
-                            <input type="number" class="form-control" id="toPay" name="to_pay" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="billDate">Date</label>
-                            <input type="date" class="form-control" id="billDate" name="date" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="agent_id">Agent</label>
-                            <input type="text" name="agent_name" id="agent_name" class="form-control">
-                            <input type="hidden" name="agent_id" id="agent_id">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Raise Bill</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> --}}
-
-    <!-- Make Payment Modal -->
-    {{-- <div id="makePaymentModal" modal-center
-        class="fixed flex flex-col hidden transition-all duration-300 
-                      ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
-        <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
-            <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
-                <h5 class="text-16">Make Payment</h5>
-                <button data-modal-close="defaultModal"
-                    class="transition-all duration-200 ease-linear
-                             text-slate-500 hover:text-red-500 dark:text-zink-200 
-                             dark:hover:text-red-500">
-                    <i data-lucide="x" class="size-5"></i>
-                </button>
-            </div>
-            <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
-                <form id="makePaymentForm" method="POST">
-                    @csrf
-                    <div class="grid grid-cols-1 gap-x-5 xl:grid-cols-2">
-                        <input type="hidden" id="billId" name="bill_id">
-                        <div class="form-group">
-                            <label class="inline-block mb-2 text-base font-medium" for="billNumber">Bill Number</label>
-                            <input type="text"
-                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none 
-                                focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 
-                                disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 
-                                disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
-                                 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                id="billNumber">
-                        </div>
-                        <div class="form-group">
-                            <label class="inline-block mb-2 text-base font-medium" for="amountDue">Amount Due</label>
-                            <input type="number"
-                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                id="amountDue">
-                        </div>
-                        <div class="form-group">
-                            <label class="inline-block mb-2 text-base font-medium" for="paymentAmount">Payment
-                                Amount</label>
-                            <input type="number"
-                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                id="paymentAmount" name="payment_amount" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="inline-block mb-2 text-base font-medium" for="paymentMode">Payment Mode</label>
-                            <select
-                                class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                id="paymentMode" name="payment_mode" required>
-                                <option value="cash">Cash</option>
-                                <option value="card">Card</option>
-                                <option value="bank_transfer">Bank Transfer</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button"
-                            class="py-1 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600
-                                                             active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20 remove-item-btn"
-                            data-dismiss="modal">Close</button>
-                        <button type="submit"
-                            class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600
-                         active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Process
-                            Payment</button>
-                    </div>
-                </form>
-            </div>
-            
-        </div>
-    </div> --}}
-
-    <!-- View Receipt Modal -->
-    {{-- <div id="viewReceiptModal" modal-center
-        class="fixed flex flex-col hidden transition-all duration-300 
-               ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 show">
-        <div class="w-screen md:w-[30rem] bg-white shadow rounded-md dark:bg-zink-600 flex flex-col h-full">
-            <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
-                <h5 class="text-16">Payment Transaction Details</h5>
-                <button data-modal-close="viewReceiptModal"
-                    class="transition-all duration-200 ease-linear
-           text-slate-500 hover:text-red-500 dark:text-zink-200 
-           dark:hover:text-red-500">
-                    <i data-lucide="x" class="size-5"></i>
-                </button>
-            </div>
-            <div class="max-h-[calc(theme('height.screen')_-_180px)] p-4 overflow-y-auto">
-                <div class="timeline" id="receiptTimeline">
-                  Timeline content will be dynamically inserted here
-                </div>
-            </div>
-            <div class="flex items-center justify-between p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
-                <button data-modal-close="viewReceiptModal"
-                    class="transition-all duration-200 ease-linear
-           text-slate-500 hover:text-red-500 dark:text-zink-200 
-           dark:hover:text-red-500">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div> --}}
 @endsection
 
 @section('scripts')
     <script>
         $(document).ready(function() {
-            document.getElementById('unbilledRaiseBill').addEventListener('click', function() {
-                const parentDiv = document.getElementById('billingManagementBox')
-                const formDiv = document.getElementById('raiseBillModal')
-                const formDiv1 = document.getElementById('viewReceiptModal')
-                const formDiv2 = document.getElementById('unbilledRaiseBill')
 
-                // Change the parent div's grid to col-span-2
-                parentDiv.classList.remove('xl:grid-cols-1')
-                parentDiv.classList.add('xl:grid-cols-2')
+            document.querySelectorAll('[id="unbilledRaiseBill"]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const grid = document.getElementById('billingGrid');
+                    const raiseBillPart = document.getElementById('raiseBillPart');
 
-                // Display the hidden form div
-                formDiv.classList.remove('hidden')
-                formDiv.classList1.remove('hidden')
-                formDiv.classList2.remove('hidden')
+                    grid.classList.remove('grid-cols-1');
+                    grid.classList.add('grid-cols-2');
+                    raiseBillPart.classList.remove('hidden');
+
+
+
+                    document.getElementById('leadId').value = this.getAttribute('data-lead-id');
+                    document.getElementById('agent_id').value = this.getAttribute('data-agent-id');
+                    document.getElementById('custName').value = this.getAttribute('data-cust-name');
+                    document.getElementById('custAddress').value = this.getAttribute(
+                        'data-cust-address');
+                    document.getElementById('custPhone').value = this.getAttribute(
+                        'data-cust-phone');
+                    document.getElementById('custWhatsApp').value = this.getAttribute(
+                        'data-cust-whatsapp');
+                    document.getElementById('leadNumber').value = this.getAttribute(
+                        'data-lead-num');
+                    document.getElementById('leadDate').value = this.getAttribute('data-lead-date');
+                    document.getElementById('propertyType').value = this.getAttribute(
+                        'data-property-type');
+                    document.getElementById('finalizedProperty').value = this.getAttribute(
+                        'data-finalized-property');
+                    document.getElementById('billAmount').value = this.getAttribute('data-rent');
+                    document.getElementById('narration').value = this.getAttribute(
+                        'data-payment-terms');
+
+                });
             });
 
-            document.getElementById('billedReceiptBill').addEventListener('click', function() {
-                const parentDiv = document.getElementById('billingManagementBox')
-                const formDiv = document.getElementById('raiseBillModal')
-                const formDiv1 = document.getElementById('viewReceiptModal')
-                const formDiv2 = document.getElementById('unbilledRaiseBill')
+            // Event listener for closing the raise bill form
+            document.getElementById('close').addEventListener('click', function() {
+                const grid = document.getElementById('billingGrid');
+                const raiseBillPart = document.getElementById('raiseBillPart');
 
-                // Change the parent div's grid to col-span-2
-                parentDiv.classList.remove('xl:grid-cols-1')
-                parentDiv.classList.add('xl:grid-cols-2')
-
-                // Display the hidden form div
-                formDiv.classList.remove('hidden')
-                formDiv.classList1.remove('hidden')
-                formDiv.classList2.remove('hidden')
+                // Hide the raise bill part and reset the grid layout
+                grid.classList.remove('grid-cols-2');
+                grid.classList.add('grid-cols-1');
+                raiseBillPart.classList.add('hidden');
             });
 
 
-            $('#raiseBillModal').hide();
-            $('#unbilledRaiseBill').click(function() {
-                $('#raiseBillModal').show();
-                $('#viewReceiptModal').hide();
-                $('#makePaymentModal').hide();
-            });
+            // document.getElementById('unbilledRaiseBill').addEventListener('click', function() {
+            //     const parentDiv = document.getElementById('billingManagementBox')
+            //     const formDiv = document.getElementById('raiseBillModal')
+            //     const formDiv1 = document.getElementById('viewReceiptModal')
+            //     const formDiv2 = document.getElementById('unbilledRaiseBill')
 
-            $('#viewReceiptModal').hide();
-            $('#billedReceiptBill').click(function() {
-                $('#viewReceiptModal').show();
-                $('#raiseBillModal').hide();
-                $('#makePaymentModal').hide();
-            });
+            // Change the parent div's grid to col-span-2
+            // parentDiv.classList.remove('xl:grid-cols-1')
+            // parentDiv.classList.add('xl:grid-cols-2')
 
-            $('#makePaymentModal').hide();
-            $('#makePaymentForm').click(function() {
-                $('#makePaymentModal').show();
-                $('#raiseBillModal').hide();
-                $('#viewReceiptModal').hide();
-            });
+            // // Display the hidden form div
+            // formDiv.classList.remove('hidden')
+            // formDiv.classList1.remove('hidden')
+            // formDiv.classList2.remove('hidden')
+            // });
 
-            $('#billed').hide();
+            // document.getElementById('billedReceiptBill').addEventListener('click', function() {
+            //     const parentDiv = document.getElementById('billingManagementBox')
+            //     const formDiv = document.getElementById('raiseBillModal')
+            //     const formDiv1 = document.getElementById('viewReceiptModal')
+            //     const formDiv2 = document.getElementById('unbilledRaiseBill')
 
-            $('#billed-tab').click(function() {
+            //     // Change the parent div's grid to col-span-2
+            //     parentDiv.classList.remove('xl:grid-cols-1')
+            //     parentDiv.classList.add('xl:grid-cols-2')
 
-                $('#billed').show();
-                $('#unbilled').hide();
-                $('#raiseBillModal').hide();
+            //     // Display the hidden form div
+            //     formDiv.classList.remove('hidden')
+            //     formDiv.classList1.remove('hidden')
+            //     formDiv.classList2.remove('hidden')
+            // });
 
-            });
 
-            $('#unbilled-tab').click(function() {
+            // $('#raiseBillModal').hide();
+            // $('#unbilledRaiseBill').click(function() {
+            //     $('#raiseBillModal').show();
+            //     $('#viewReceiptModal').hide();
+            //     $('#makePaymentModal').hide();
+            // });
 
-                $('#billed').hide();
-                $('#unbilled').show();
-                $('#viewReceiptModal').hide();
+            // $('#viewReceiptModal').hide();
+            // $('#billedReceiptBill').click(function() {
+            //     $('#viewReceiptModal').show();
+            //     $('#raiseBillModal').hide();
+            //     $('#makePaymentModal').hide();
+            // });
 
-            });
-            $('#raiseBillModal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget);
-                var leadId = button.data('lead-id');
-                var leadNum = button.data('lead-num');
-                var maxBudget = button.data('max-budget');
-                var agentName = button.data('agent-name');
-                var agentId = button.data('agent-id');
-                var modal = $(this);
-                modal.find('.modal-title').text('Raise Bill for Lead #' + leadNum);
-                modal.find('#leadId').val(leadId);
-                modal.find('#leadNumber').val(leadNum);
-                modal.find('#expectedAmount').val(maxBudget);
-                modal.find('#toPay').val(maxBudget);
-                modal.find('#billDate').val(new Date().toISOString().substr(0, 10));
-                modal.find('#agent_name').val(agentName);
-                modal.find('#agent_id').val(agentId);
+            // $('#makePaymentModal').hide();
+            // $('#makePaymentForm').click(function() {
+            //     $('#makePaymentModal').show();
+            //     $('#raiseBillModal').hide();
+            //     $('#viewReceiptModal').hide();
+            // });
 
-                $('#raiseBillForm').attr('action', '/billing/' + leadId);
-            });
+            // $('#billed').hide();
+
+            // $('#billed-tab').click(function() {
+
+            //     $('#billed').show();
+            //     $('#unbilled').hide();
+            //     $('#raiseBillModal').hide();
+
+            // });
+
+            // $('#unbilled-tab').click(function() {
+
+            //     $('#billed').hide();
+            //     $('#unbilled').show();
+            //     $('#viewReceiptModal').hide();
+
+            // });
+
+
+            // $('#raiseBillModal').on('show.bs.modal', function(event) {
+            //     var button = $(event.relatedTarget);
+            //     var leadId = button.data('lead-id');
+            //     var leadNum = button.data('lead-num');
+            //     var maxBudget = button.data('max-budget');
+            //     var agentName = button.data('agent-name');
+            //     var agentId = button.data('agent-id');
+            //     var modal = $(this);
+            //     modal.find('.modal-title').text('Raise Bill for Lead #' + leadNum);
+            //     modal.find('#leadId').val(leadId);
+            //     modal.find('#leadNumber').val(leadNum);
+            //     modal.find('#expectedAmount').val(maxBudget);
+            //     modal.find('#toPay').val(maxBudget);
+            //     modal.find('#billDate').val(new Date().toISOString().substr(0, 10));
+            //     modal.find('#agent_name').val(agentName);
+            //     modal.find('#agent_id').val(agentId);
+
+            //     $('#raiseBillForm').attr('action', '/billing/' + leadId);
+            // });
 
             $('#raiseBillForm').on('submit', function(e) {
                 e.preventDefault();
+
+                var leadId = $('#leadId').val();
+
+                var url = '/billing/' + leadId;
+                alert(url);
+
                 var form = $(this);
                 $.ajax({
-                    url: form.attr('action'),
+                    url: url,
                     method: 'POST',
                     data: form.serialize(),
                     success: function(response) {
-                        $('#raiseBillModal').modal('hide');
-                        $.get(window.location.href, function(data) {
-                            $('#unbilled').html($(data).find('#unbilled').html());
-                            $('#billed').html($(data).find('#billed').html());
+                        console.log('Bill raised successfully:', response);
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Bill raised successfully.',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
                         });
+
                     },
                     error: function(xhr) {
                         console.log(xhr.responseText);
@@ -549,75 +395,76 @@
                 });
             });
 
-            $('#makePaymentModal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget);
-                var billId = button.data('bill-id');
-                var leadNum = button.data('lead-num');
-                var billNum = button.data('bill-num');
-                var amountDue = button.data('amount-due');
-                var modal = $(this);
-                modal.find('.modal-title').text('Make Payment for Bill #' + billNum);
-                modal.find('#billId').val(billId);
-                modal.find('#billNumber').val(billNum);
-                modal.find('#amountDue').val(amountDue);
-                modal.find('#paymentAmount').attr('max', amountDue);
 
-                $('#makePaymentForm').attr('action', '/billing/payment/' + billId);
-            });
+            // $('#makePaymentModal').on('show.bs.modal', function(event) {
+            //     var button = $(event.relatedTarget);
+            //     var billId = button.data('bill-id');
+            //     var leadNum = button.data('lead-num');
+            //     var billNum = button.data('bill-num');
+            //     var amountDue = button.data('amount-due');
+            //     var modal = $(this);
+            //     modal.find('.modal-title').text('Make Payment for Bill #' + billNum);
+            //     modal.find('#billId').val(billId);
+            //     modal.find('#billNumber').val(billNum);
+            //     modal.find('#amountDue').val(amountDue);
+            //     modal.find('#paymentAmount').attr('max', amountDue);
 
-            $('#makePaymentForm').on('submit', function(e) {
-                e.preventDefault();
-                var form = $(this);
-                $.ajax({
-                    url: form.attr('action'),
-                    method: 'POST',
-                    data: form.serialize(),
-                    success: function(response) {
-                        $('#makePaymentModal').modal('hide');
-                        $.get(window.location.href, function(data) {
-                            $('#billed').html($(data).find('#billed').html());
-                        });
-                    },
-                    error: function(xhr) {
-                        console.log(xhr.responseText);
-                    }
-                });
-            });
+            //     $('#makePaymentForm').attr('action', '/billing/payment/' + billId);
+            // });
 
-            $('#viewReceiptModal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget);
-                var billId = button.data('bill-id');
-                var leadNum = button.data('lead-num');
-                var modal = $(this);
-                modal.find('.modal-title').text('Payment Transaction Details for Lead #' + leadNum);
+            // $('#makePaymentForm').on('submit', function(e) {
+            //     e.preventDefault();
+            //     var form = $(this);
+            //     $.ajax({
+            //         url: form.attr('action'),
+            //         method: 'POST',
+            //         data: form.serialize(),
+            //         success: function(response) {
+            //             $('#makePaymentModal').modal('hide');
+            //             $.get(window.location.href, function(data) {
+            //                 $('#billed').html($(data).find('#billed').html());
+            //             });
+            //         },
+            //         error: function(xhr) {
+            //             console.log(xhr.responseText);
+            //         }
+            //     });
+            // });
 
-                $.ajax({
-                    url: '/billing/' + billId + '/transactions',
-                    method: 'GET',
-                    success: function(response) {
-                        var timeline = $('#receiptTimeline');
-                        timeline.empty();
+            // $('#viewReceiptModal').on('show.bs.modal', function(event) {
+            //     var button = $(event.relatedTarget);
+            //     var billId = button.data('bill-id');
+            //     var leadNum = button.data('lead-num');
+            //     var modal = $(this);
+            //     modal.find('.modal-title').text('Payment Transaction Details for Lead #' + leadNum);
 
-                        response.transactions.forEach(function(transaction) {
-                            var timelineItem = `
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <h6>Transaction #${transaction.transaction_num}</h6>
-                                <p>Receipt Number: ${transaction.receipt_num}</p>
-                                <p>Amount Paid: ${transaction.payment_amount}</p>
-                                <p>Payment Mode: ${transaction.mode}</p>
-                                <p>Status: ${transaction.status}</p>
-                            </div>
-                        </div>
-                    `;
-                            timeline.append(timelineItem);
-                        });
-                    },
-                    error: function(xhr) {
-                        console.log(xhr.responseText);
-                    }
-                });
-            });
+            //     $.ajax({
+            //         url: '/billing/' + billId + '/transactions',
+            //         method: 'GET',
+            //         success: function(response) {
+            //             var timeline = $('#receiptTimeline');
+            //             timeline.empty();
+
+            //             response.transactions.forEach(function(transaction) {
+            //                 var timelineItem = `
+        //             <div class="timeline-item">
+        //                 <div class="timeline-content">
+        //                     <h6>Transaction #${transaction.transaction_num}</h6>
+        //                     <p>Receipt Number: ${transaction.receipt_num}</p>
+        //                     <p>Amount Paid: ${transaction.payment_amount}</p>
+        //                     <p>Payment Mode: ${transaction.mode}</p>
+        //                     <p>Status: ${transaction.status}</p>
+        //                 </div>
+        //             </div>
+        //         `;
+            //                 timeline.append(timelineItem);
+            //             });
+            //         },
+            //         error: function(xhr) {
+            //             console.log(xhr.responseText);
+            //         }
+            //     });
+            // });
         });
     </script>
 @endsection
