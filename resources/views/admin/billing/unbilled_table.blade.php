@@ -56,60 +56,62 @@
                         <div>
                             <div class="card">
                                 <div class="card-body">
-                                    <table id="" class="table stripe group" style="width: 100%">
-                                        <thead>
-                                            <tr>
-                                                <th class="ltr:!text-left rtl:!text-right">Lead Number</th>
-                                                <th class="ltr:!text-left rtl:!text-right">Customer</th>
-                                                <th class="ltr:!text-left rtl:!text-right">Phone</th>
-                                                <th class="ltr:!text-left rtl:!text-right">WhatsApp</th>
-                                                <th class="ltr:!text-left rtl:!text-right">Property</th>
-                                                <th class="ltr:!text-left rtl:!text-right">Employee</th>
-                                                <th class="ltr:!text-left rtl:!text-right">Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($leadsWithoutBills as $lead)
+                                    <div class="overflow-x-auto">
+                                        <table id="" class="table stripe group" style="width: 100%">
+                                            <thead>
                                                 <tr>
-                                                    <td>{{ $lead->lead_num }}</td>
-                                                    <td>{{ $lead->contact->name }}</td>
-                                                    <td>{{ $lead->contact->phone }}</td>
-                                                    <td>{{ $lead->contact->whatsapp_ph }}</td>
-                                                    <td>{{ $lead->property_type }}</td>
-                                                    <td>{{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}
-                                                    </td>
+                                                    <th class="ltr:!text-left rtl:!text-right">Lead Number</th>
+                                                    <th class="ltr:!text-left rtl:!text-right">Customer</th>
+                                                    <th class="ltr:!text-left rtl:!text-right">Phone</th>
+                                                    <th class="ltr:!text-left rtl:!text-right">WhatsApp</th>
+                                                    <th class="ltr:!text-left rtl:!text-right">Property</th>
+                                                    <th class="ltr:!text-left rtl:!text-right">Employee</th>
+                                                    <th class="ltr:!text-left rtl:!text-right">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($leadsWithoutBills as $lead)
+                                                    <tr>
+                                                        <td>{{ $lead->lead_num }}</td>
+                                                        <td>{{ $lead->contact->name }}</td>
+                                                        <td>{{ $lead->contact->phone }}</td>
+                                                        <td>{{ $lead->contact->whatsapp_ph }}</td>
+                                                        <td>{{ $lead->property_type }}</td>
+                                                        <td>{{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}
+                                                        </td>
 
 
-                                                    <td>
+                                                        <td>
 
-                                                        <button type="button"
-                                                            class="btn btn-success text-white btn bg-custom-500
+                                                            <button type="button"
+                                                                class="btn btn-success text-white btn bg-custom-500
                                                          border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600
                                                           focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring
                                                           focus:ring-custom-100 active:text-white active:bg-custom-600
                                                         active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20"
-                                                            id="unbilledRaiseBill" data-lead-id="{{ $lead->id }}"
-                                                            data-lead-num="{{ $lead->lead_num }}"
-                                                            data-max-budget="{{ $lead->max_budget }}"
-                                                            data-cust-name="{{ $lead->contact->name }}"
-                                                            data-lead-date="{{ $lead->created_at }}"
-                                                            data-property-type="{{ $lead->property_type }}"
-                                                            data-cust-address="{{ $lead->contact->address }}"
-                                                            data-cust-phone="{{ $lead->contact->phone }}"
-                                                            data-cust-whatsapp="{{ $lead->contact->whatsapp_ph }}"
-                                                            data-agent-name="{{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}"
-                                                            data-agent-id="{{ $lead->assignedTo->id }}"
-                                                            data-finalized-property="{{ $lead->finalized_property }}"
-                                                            data-rent="{{ $lead->rent }}"
-                                                            data-advance="{{ $lead->advance }}"
-                                                            data-payment-terms="{{ $lead->payment_terms }}">
-                                                            Raise Bill
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                                                id="unbilledRaiseBill" data-lead-id="{{ $lead->id }}"
+                                                                data-lead-num="{{ $lead->lead_num }}"
+                                                                data-max-budget="{{ $lead->max_budget }}"
+                                                                data-cust-name="{{ $lead->contact->name }}"
+                                                                data-lead-date="{{ $lead->created_at }}"
+                                                                data-property-type="{{ $lead->property_type }}"
+                                                                data-cust-address="{{ $lead->contact->address }}"
+                                                                data-cust-phone="{{ $lead->contact->phone }}"
+                                                                data-cust-whatsapp="{{ $lead->contact->whatsapp_ph }}"
+                                                                data-agent-name="{{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}"
+                                                                data-agent-id="{{ $lead->assignedTo->id }}"
+                                                                data-finalized-property="{{ $lead->finalized_property }}"
+                                                                data-rent="{{ $lead->rent }}"
+                                                                data-advance="{{ $lead->advance }}"
+                                                                data-payment-terms="{{ $lead->payment_terms }}">
+                                                                Raise Bill
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
 
@@ -132,75 +134,95 @@
                         </div>
                         <form id="raiseBillForm" method="POST">
                             @csrf
-                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
-                                <input type="hidden" id="leadId" name="leadId">
-                                <input type="hidden" id="agent_id" name="agent_id">
-                                <div class="mb-4">
-                                    <label for="custName" class="inline-block mb-2 text-base font-medium">
-                                        Customer Name
-                                    </label>
-                                    <input type="text" id="custName" name="custName" class="form-input">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
+                                        <input type="hidden" id="leadId" name="leadId">
+                                        <input type="hidden" id="agent_id" name="agent_id">
+
+                                        <div class="mb-4">
+                                            <label for="custName" class="inline-block mb-2 text-base font-medium">
+                                                Customer Name
+                                            </label>
+                                            <input type="text" id="custName" name="custName" class="form-input" disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="custAddress" class="inline-block mb-2 text-base font-medium">
+                                                Address
+                                            </label>
+                                            <input type="text" id="custAddress" name="custAddress" class="form-input" disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="custPhone" class="inline-block mb-2 text-base font-medium">
+                                                Phone
+                                            </label>
+                                            <input type="text" id="custPhone" name="custPhone" class="form-input" disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="custWhatsApp" class="inline-block mb-2 text-base font-medium">
+                                                WhatsApp
+                                            </label>
+                                            <input type="text" id="custWhatsApp" name="custWhatsApp" class="form-input" disabled>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="custAddress" class="inline-block mb-2 text-base font-medium">
-                                        Address
-                                    </label>
-                                    <input type="text" id="custAddress" name="custAddress" class="form-input">
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
+                                        <div class="mb-4">
+                                            <label for="leadNumber" class="inline-block mb-2 text-base font-medium">
+                                                Lead Number
+                                            </label>
+                                            <input type="text" id="leadNumber" name="leadNumber" class="form-input" disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="leadDate" class="inline-block mb-2 text-base font-medium">
+                                                Lead Date
+                                            </label>
+                                            <input type="text" id="leadDate" name="leadDate" class="form-input" disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="propertyType" class="inline-block mb-2 text-base font-medium">
+                                                Property Type
+                                            </label>
+                                            <input type="text" id="propertyType" name="propertyType"
+                                                class="form-input" disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="finalizedProperty"
+                                                class="inline-block mb-2 text-base font-medium">
+                                                Finalized Property
+                                            </label>
+                                            <input type="text" id="finalizedProperty" name="finalizedProperty"
+                                                class="form-input" disabled>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="custPhone" class="inline-block mb-2 text-base font-medium">
-                                        Phone
-                                    </label>
-                                    <input type="text" id="custPhone" name="custPhone" class="form-input">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="custWhatsApp" class="inline-block mb-2 text-base font-medium">
-                                        WhatsApp
-                                    </label>
-                                    <input type="text" id="custWhatsApp" name="custWhatsApp" class="form-input">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="leadNumber" class="inline-block mb-2 text-base font-medium">
-                                        Lead Number
-                                    </label>
-                                    <input type="text" id="leadNumber" name="leadNumber" class="form-input">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="leadDate" class="inline-block mb-2 text-base font-medium">
-                                        Lead Date
-                                    </label>
-                                    <input type="text" id="leadDate" name="leadDate" class="form-input">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="propertyType" class="inline-block mb-2 text-base font-medium">
-                                        Property Type
-                                    </label>
-                                    <input type="text" id="propertyType" name="propertyType" class="form-input">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="finalizedProperty" class="inline-block mb-2 text-base font-medium">
-                                        Finalized Property
-                                    </label>
-                                    <input type="text" id="finalizedProperty" name="finalizedProperty"
-                                        class="form-input">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="billDate" class="inline-block mb-2 text-base font-medium">
-                                        Bill Date
-                                    </label>
-                                    <input type="date" id="billDate" name="billDate" class="form-input" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="billAmount" class="inline-block mb-2 text-base font-medium">
-                                        Bill Amount
-                                    </label>
-                                    <input type="text" id="billAmount" name="billAmount" class="form-input">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="narration" class="inline-block mb-2 text-base font-medium">
-                                        Narration
-                                    </label>
-                                    <input type="text" id="narration" name="narration" class="form-input">
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
+                                        <div class="mb-4">
+                                            <label for="billDate" class="inline-block mb-2 text-base font-medium">
+                                                Bill Date
+                                            </label>
+                                            <input type="date" id="billDate" name="billDate" class="form-input"
+                                                required>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="billAmount" class="inline-block mb-2 text-base font-medium">
+                                                Bill Amount
+                                            </label>
+                                            <input type="text" id="billAmount" name="billAmount" class="form-input">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="narration" class="inline-block mb-2 text-base font-medium">
+                                                Narration
+                                            </label>
+                                            <input type="text" id="narration" name="narration" class="form-input">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex justify-end gap-2">

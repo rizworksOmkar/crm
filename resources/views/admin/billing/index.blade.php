@@ -69,26 +69,26 @@
                         <div>
                             <div class="card">
                                 <div class="card-body">
-                                    <table id="" class="table stripe group" style="width: 100%">
-                                        <thead>
+                                    <table id="tableState" class="table stripe group" style="width: 100%">
+                                        <thead  class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                             <tr>
-                                                <th class="ltr:!text-left rtl:!text-right">Lead Number</th>
-                                                <th class="ltr:!text-left rtl:!text-right">Customer</th>
-                                                <th class="ltr:!text-left rtl:!text-right">Phone</th>
-                                                <th class="ltr:!text-left rtl:!text-right">WhatsApp</th>
-                                                <th class="ltr:!text-left rtl:!text-right">Property</th>
-                                                <th class="ltr:!text-left rtl:!text-right">Employee</th>
+                                                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500"">Lead Number</th>
+                                                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500"">Customer</th>
+                                                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500"">Phone</th>
+                                                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500"">WhatsApp</th>
+                                                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500"">Property</th>
+                                                <th class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500"">Employee</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($leadsWithBills as $lead)
                                                 <tr>
-                                                    <td>{{ $lead->lead_num }}</td>
-                                                    <td>{{ $lead->contact->name }}</td>
-                                                    <td>{{ $lead->contact->phone }}</td>
-                                                    <td>{{ $lead->contact->whatsapp_ph }}</td>
-                                                    <td>{{ $lead->property_type }}</td>
-                                                    <td>{{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">{{ $lead->lead_num }}</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">{{ $lead->contact->name }}</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">{{ $lead->contact->phone }}</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">{{ $lead->contact->whatsapp_ph }}</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">{{ $lead->property_type }}</td>
+                                                    <td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">{{ $lead->assignedTo->first_name . ' ' . $lead->assignedTo->last_name }}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -103,3 +103,27 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('assets/admin/OldAssets/bundles/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/OldAssets/js/page/datatables.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#tableState').DataTable({
+                "scrollX": false,
+                stateSave: true,
+                "paging": true,
+                "ordering": true,
+                "info": true,
+                // dom: 'Bfrtip',
+                // buttons: [
+                //     'excel', 'pdf'
+                // ]
+            });
+        });
+    </script>
+    @endsection

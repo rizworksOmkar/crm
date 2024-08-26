@@ -186,7 +186,7 @@
         .timeline:before {
             content: '';
             position: absolute;
-            top: 0;
+            top: 22px;
             left: 50px;
             height: 100%;
             width: 2px;
@@ -220,6 +220,17 @@
         table tr td {
             white-space: nowrap;
             padding: 5px 10px;
+        }
+
+        .cuusDtls-content {
+            margin-left: 45px;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .rowActive{
+            background-color: #e5e5e5
         }
     </style>
     <div
@@ -260,7 +271,7 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($leadsWithBills as $lead)
-                                                    <tr>
+                                                    <tr id="bllngRowActive">
                                                         <td>{{ $lead->lead_num }}</td>
                                                         <td>{{ $lead->contact->name }}</td>
                                                         <td>{{ $lead->billing->bill_num }}</td>
@@ -355,90 +366,116 @@
                         </div>
                         <form id="makePaymentform">
                             @csrf
-                            <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
-                                <input type="hidden" id="billId" name="billId">
-                                <input type="hidden" id="agent_id" name="agent_id">
-                                <div class="mb-4">
-                                    <label for="custName" class="inline-block mb-2 text-base font-medium">
-                                        Customer Name
-                                    </label>
-                                    <input type="text" id="custName" name="custName" class="form-input">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
+                                        <input type="hidden" id="billId" name="billId">
+                                        <input type="hidden" id="agent_id" name="agent_id">
+                                        <div class="mb-4">
+                                            <label for="custName" class="inline-block mb-2 text-base font-medium">
+                                                Customer Name
+                                            </label>
+                                            <input type="text" id="custName" name="custName" class="form-input"
+                                                disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="custAddress" class="inline-block mb-2 text-base font-medium">
+                                                Address
+                                            </label>
+                                            <input type="text" id="custAddress" name="custAddress" class="form-input"
+                                                disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="custPhone" class="inline-block mb-2 text-base font-medium">
+                                                Phone
+                                            </label>
+                                            <input type="text" id="custPhone" name="custPhone" class="form-input"
+                                                disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="custWhatsApp" class="inline-block mb-2 text-base font-medium">
+                                                WhatsApp
+                                            </label>
+                                            <input type="text" id="custWhatsApp" name="custWhatsApp" class="form-input"
+                                                disabled>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="custAddress" class="inline-block mb-2 text-base font-medium">
-                                        Address
-                                    </label>
-                                    <input type="text" id="custAddress" name="custAddress" class="form-input">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="custPhone" class="inline-block mb-2 text-base font-medium">
-                                        Phone
-                                    </label>
-                                    <input type="text" id="custPhone" name="custPhone" class="form-input">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="custWhatsApp" class="inline-block mb-2 text-base font-medium">
-                                        WhatsApp
-                                    </label>
-                                    <input type="text" id="custWhatsApp" name="custWhatsApp" class="form-input">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="billNumber" class="inline-block mb-2 text-base font-medium">
-                                        Bill Number
-                                    </label>
-                                    <input type="text" id="billNumber" name="billNumber" class="form-input">
-                                </div>
+                            </div>
 
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
+                                        <div class="mb-4">
+                                            <label for="billNumber" class="inline-block mb-2 text-base font-medium">
+                                                Bill Number
+                                            </label>
+                                            <input type="text" id="billNumber" name="billNumber" class="form-input"
+                                                disabled>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="billDate" class="inline-block mb-2 text-base font-medium">
+                                                Bill Date
+                                            </label>
+                                            <input type="text" id="billDate" name="billDate" class="form-input"
+                                                required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-1">
+                                        <div class="mb-4">
+                                            <label for="billAmount" class="inline-block mb-2 text-base font-medium">
+                                                Bill Amount
+                                            </label>
+                                            <input type="text" id="billAmount" name="billAmount"
+                                                class="form-input" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-1">
+                                        {{-- due amount div --}}
+                                        <div class="mb-4">
+                                            <label for="dueAmount" class="inline-block mb-2 text-base font-medium">
+                                                Due Amount
+                                            </label>
+                                            <input type="text" id="dueAmount" name="dueAmount" class="form-input"
+                                                disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="grid grid-cols-1 gap-x-5 md:grid-cols-2 xl:grid-cols-2">
 
+                                        {{-- payment amount div --}}
+                                        <div class="mb-4">
+                                            <label for="paymentAmount" class="inline-block mb-2 text-base font-medium">
+                                                Payment Amount
+                                            </label>
+                                            <input type="number" id="paymentAmount" name="paymentAmount"
+                                                class="form-input" required>
+                                        </div>
+                                        {{-- payment mode div --}}
+                                        <div class="mb-4">
+                                            <label for="paymentMode" class="inline-block mb-2 text-base font-medium">
+                                                Payment Mode
+                                            </label>
+                                            <select id="paymentMode" name="paymentMode" class="form-input" required>
+                                                <option value="cash">Cash</option>
+                                                <option value="card">Card</option>
+                                                <option value="bank_transfer">Bank Transfer</option>
+                                            </select>
+                                        </div>
+                                        {{-- date  --}}
+                                        <div class="mb-4">
+                                            <label for="paymentDate" class="inline-block mb-2 text-base font-medium">
+                                                Payment Date
+                                            </label>
+                                            <input type="date" id="paymentDate" name="paymentDate" class="form-input"
+                                                required>
+                                        </div>
 
-                                <div class="mb-4">
-                                    <label for="billDate" class="inline-block mb-2 text-base font-medium">
-                                        Bill Date
-                                    </label>
-                                    <input type="text" id="billDate" name="billDate" class="form-input" required>
+                                    </div>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="billAmount" class="inline-block mb-2 text-base font-medium">
-                                        Bill Amount
-                                    </label>
-                                    <input type="text" id="billAmount" name="billAmount" class="form-input">
-                                </div>
-                                {{-- due amount div --}}
-                                <div class="mb-4">
-                                    <label for="dueAmount" class="inline-block mb-2 text-base font-medium">
-                                        Due Amount
-                                    </label>
-                                    <input type="text" id="dueAmount" name="dueAmount" class="form-input">
-                                </div>
-
-                                {{-- payment amount div --}}
-                                <div class="mb-4">
-                                    <label for="paymentAmount" class="inline-block mb-2 text-base font-medium">
-                                        Payment Amount
-                                    </label>
-                                    <input type="number" id="paymentAmount" name="paymentAmount" class="form-input"
-                                        required>
-                                </div>
-                                {{-- payment mode div --}}
-                                <div class="mb-4">
-                                    <label for="paymentMode" class="inline-block mb-2 text-base font-medium">
-                                        Payment Mode
-                                    </label>
-                                    <select id="paymentMode" name="paymentMode" class="form-input" required>
-                                        <option value="cash">Cash</option>
-                                        <option value="card">Card</option>
-                                        <option value="bank_transfer">Bank Transfer</option>
-                                    </select>
-                                </div>
-                                {{-- date  --}}
-                                <div class="mb-4">
-                                    <label for="paymentDate" class="inline-block mb-2 text-base font-medium">
-                                        Payment Date
-                                    </label>
-                                    <input type="date" id="paymentDate" name="paymentDate" class="form-input"
-                                        required>
-                                </div>
-
                             </div>
                             <div class="flex justify-end gap-2">
                                 <button type="submit" class="btn bg-custom-800 text-white" id ="processPayment">
@@ -462,6 +499,9 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="cusData" id="cusData">
+
+                        </div>
                         <div class="timeline" id="receiptTimeline">
                         </div>
                     </div>
@@ -483,6 +523,10 @@
                 button.addEventListener('click', function() {
                     const grid = document.getElementById('billingGrid');
                     const raiseBillPart = document.getElementById('makePaymentPart');
+                    // var bllngRowActive = document.getElementById('bllngRowActive');
+                    
+                    // bllngRowActive.classList.add('rowActive');
+
 
                     grid.classList.remove('grid-cols-1');
                     grid.classList.add('grid-cols-2');
@@ -580,6 +624,9 @@
                 button.addEventListener('click', function() {
                     const grid = document.getElementById('billingGrid');
                     const viewReceipt = document.getElementById('viewReciept');
+                    // var bllngRowActive = document.getElementById('bllngRowActive');
+                    // alert("Hello! I am an alert box!!");
+                    // bllngRowActive.classList.add('rowActive');
 
                     grid.classList.remove('grid-cols-1');
                     grid.classList.add('grid-cols-2');
@@ -592,22 +639,25 @@
                         url: url,
                         method: 'GET',
                         success: function(response) {
+                            var cusData = document.getElementById('cusData');
+                            cusData.innerHTML = '';
+
                             var timeline = document.getElementById('receiptTimeline');
                             timeline.innerHTML = '';
 
                             var customerDetails = `
-                    <div >
-                        <div>
-                            <h6>Customer Details</h6>
-                            <p>Name: ${response.contact.name}</p>
-                            <p>Email: ${response.contact.email}</p>
-                            <p>Phone: ${response.contact.phone}</p>
-                            <p>WhatsApp: ${response.contact.whatsapp_ph}</p>
-                            <p>Address: ${response.contact.address}</p>
+                    <div class="card cuusDtls-content bg_white">
+                        <div class="card-body">
+                            <h4>Customer Details</h4>
+                            <p class="mt-2 cusDtlscntn">Name: <span>${response.contact.name}</span></p>
+                            <p class="mt-2 cusDtlscntn">Email: <span>${response.contact.email}</span></p>
+                            <p class="mt-2 cusDtlscntn">Phone: <span>${response.contact.phone}</span></p>
+                            <p class="mt-2 cusDtlscntn">WhatsApp:<span> ${response.contact.whatsapp_ph}</span></p>
+                            <p class="mt-2 cusDtlscntn">Address: <span>${response.contact.address}</span></p>
                         </div>
                     </div>
                 `;
-                            timeline.innerHTML += customerDetails;
+                            cusData.innerHTML += customerDetails;
 
                             response.transactions.forEach(transaction => {
                                 var timelineItem = `

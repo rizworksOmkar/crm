@@ -33000,6 +33000,20 @@ li {
     color: red;
 }
 
+.cusDtlscntn{
+    font-size: 16px;
+}
+
+.cusDtlscntn span{
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.bg_white{
+    background-color: #ffffff !important;
+}
+
 
 @media screen and (max-width: 480px) {
     .logo_top {
