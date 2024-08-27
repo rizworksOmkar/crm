@@ -17,6 +17,8 @@ class Task extends Model
         'date',
         'status',
         'mode',
+        'follow_up_type',
+        'next_follow_up_date',
         'created_by',
     ];
 
@@ -28,7 +30,7 @@ class Task extends Model
     {
         parent::boot();
         static::creating(function ($model) {
-            $model->id = Str::uuid(); // Generate UUID
+            $model->id = Str::uuid();
         });
     }
 
