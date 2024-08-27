@@ -263,7 +263,7 @@
                                         Assignment</a>
                                     <a href="{{ route('admin-reassignlead-index') }}" class="nav-link">Lead
                                         Re-Assignment</a>
-                                    <a href="{{ route('monitor-report') }}" class="nav-link">Lead Activity</a>
+                                    <a href="{{ route('add-activity-admin') }}" class="nav-link">Lead Activity</a>
                                     <a href="{{ route('lead-completion-filter.view') }}" class="nav-link">Lead
                                         Completion</a>
 

@@ -159,5 +159,13 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         //notification report
         Route::get('/notification', [ReportController::class, 'notificationTasks'])->name('tasks.notification');
         Route::post('/notifcation/filter', [ReportController::class, 'filterNotificationTasks'])->name('tasks.notification.filter');
+
+
+        //admin will add activities to leads and assign to employees
+        Route::get('/add-activity-admin', [LeadController::class, 'addActivityAdmin'])->name('add-activity-admin');
+        Route::get('/adminleads/{id}/details', [LeadController::class, 'getDetails'])->name('adminleads.details');
+        Route::get('/adminleads/{id}/timeline', [LeadController::class, 'timeline'])->name('adminleads.timeline');
+        Route::post('/adminStoreActivityForEmp', [LeadController::class, 'storeTaskByAdminForEmployee'])->name('admin.store.activity.for.employee');
+
     });
 });

@@ -661,6 +661,7 @@ class LeadController extends Controller
             'client_activity' => 'required|string',
             'user_activity' => 'required|string',
             'mode' => 'required|string',
+
             'date' => 'required|date',
             'status' => 'required|string',
         ]);
@@ -672,6 +673,55 @@ class LeadController extends Controller
             'date' => $validatedData['date'],
             'status' => $validatedData['status'],
             'mode' => $validatedData['mode'],
+            'next_follow_up_date' => $request->input('next_follow_up_date'),
+            'follow_up_type' => $request->input('follow_up_type'),
+            'created_by' => Auth::id(),
+        ]);
+
+        $lead = Lead::findOrFail($validatedData['lead_id']);
+
+        $lead->status = $validatedData['status'];
+        $lead->save();
+
+        return response()->json(['message' => 'Task created successfully', 'task' => $task]);
+    }
+
+    // addActivityAdmin
+
+    public function addActivityAdmin()
+    {
+        $leads = Lead::where('status', '!=', 'Closed Successfully')
+            ->where('status', '!=', 'Closed with Failure')
+            ->whereNotNull('assigned_to')
+            ->get();
+
+        $contacts = Contact::all();
+        $status = LeadStatus::all();
+
+        return view('admin.adminActivityAssign.index', compact('leads', 'contacts', 'status'));
+    }
+
+    public function storeTaskByAdminForEmployee(Request $request)
+    {
+        $validatedData = $request->validate([
+            'lead_id' => 'required|exists:leads,id',
+            'client_activity' => 'required|string',
+            'user_activity' => 'required|string',
+            'mode' => 'required|string',
+
+            'date' => 'required|date',
+            'status' => 'required|string',
+        ]);
+
+        $task = Task::create([
+            'lead_id' => $validatedData['lead_id'],
+            'customer_description' => $validatedData['client_activity'],
+            'user_description' => $validatedData['user_activity'],
+            'date' => $validatedData['date'],
+            'status' => $validatedData['status'],
+            'mode' => $validatedData['mode'],
+            'next_follow_up_date' => $request->input('next_follow_up_date'),
+            'follow_up_type' => $request->input('follow_up_type'),
             'created_by' => Auth::id(),
         ]);
 

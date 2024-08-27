@@ -32,6 +32,6 @@ Route::group(['middleware' => ['disabled_back_button']], function () {
         Route::get('/leads/{id}/details', [LeadController::class, 'getDetails'])->name('leads.details');
         Route::get('/leads/{id}/timeline', [LeadController::class, 'timeline'])->name('leads.timeline');
         // storeTaskByEmployee
-        Route::post('/tasks', [LeadController::class, 'storeTaskByEmployee'])->name('tasks.store');
+        Route::post('/emptasks', [LeadController::class, 'storeTaskByEmployee'])->name('tasks.store');
     });
 });

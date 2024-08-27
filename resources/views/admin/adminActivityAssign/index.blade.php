@@ -1,4 +1,4 @@
-@extends('layouts.user-dashboard-layout')
+@extends('layouts.admin-front')
 @section('content')
     <style>
         .card-timeline {
@@ -367,7 +367,7 @@
                     $('.lead-form').data('lead-id', leadId);
 
                     $.ajax({
-                        url: '/leads/' + leadId + '/details',
+                        url: '/adminleads/' + leadId + '/details',
                         method: 'GET',
                         success: function(response) {
                             $('#customer-phone').val(response.phone);
@@ -391,7 +391,7 @@
                 var formData = $(this).serialize();
 
                 $.ajax({
-                    url: '/emptasks',
+                    url: '/adminStoreActivityForEmp',
                     method: 'POST',
                     data: formData + '&lead_id=' + leadId,
                     success: function(response) {
@@ -407,7 +407,7 @@
 
             function loadLeadTimeline(leadId) {
                 $.ajax({
-                    url: '/leads/' + leadId + '/timeline',
+                    url: '/adminleads/' + leadId + '/timeline',
                     method: 'GET',
                     success: function(response) {
                         var timeline = $('#lead-timeline');

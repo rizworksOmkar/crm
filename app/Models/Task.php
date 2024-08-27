@@ -17,6 +17,8 @@ class Task extends Model
         'date',
         'status',
         'mode',
+        'next_follow_up_date',
+        'follow_up_type',
         'created_by',
     ];
 
