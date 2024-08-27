@@ -214,7 +214,7 @@
                                     </div>
                                 </div> --}}
                                 <div class="col-md-12">
-                                    <h5>Task Details</h5>
+                                    <h5>Activity Details</h5>
                                     <div class="form-group">
                                         <label>Update Activity by Clients</label>
                                         <textarea class="form-control" name="client_activity"></textarea>
@@ -227,6 +227,31 @@
                                         <label>Mode</label>
                                         <input type="text" class="form-control" name="mode">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Next Follow Up Date</label>
+                                        <input type="text" class="form-control" name="next_follow_up_type">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Next Follow Up Type</label>
+                                        <select class="form-control" name="next_follow_up_type">
+                                            <option value="Phone Call">Phone Call</option>
+                                            <option value="Email Follow-Up">Email Follow-Up</option>
+                                            <option value="In-Person Meeting">In-Person Meeting</option>
+                                            <option value="Video Call">Video Call</option>
+                                            <option value="WhatsApp Message">WhatsApp Message</option>
+                                            <option value="SMS Follow-Up">SMS Follow-Up</option>
+                                            <option value="Reminder Email">Reminder Email</option>
+                                            <option value="Follow-Up on Quotation">Follow-Up on Quotation</option>
+                                            <option value="Contract Renewal">Contract Renewal</option>
+                                            <option value="Feedback Request">Feedback Request</option>
+                                            <option value="Payment Reminder">Payment Reminder</option>
+                                            <option value="Project Status Check">Project Status Check</option>
+                                            <option value="Offer Follow-Up">Offer Follow-Up</option>
+                                            <option value="Event Invitation">Event Invitation</option>
+                                            <option value="Thank You Follow-Up">Thank You Follow-Up</option>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Date</label>
                                         <input type="date" class="form-control" name="date">
@@ -241,6 +266,7 @@
 
                                         </select>
                                     </div>
+
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
