@@ -34,7 +34,7 @@ class BillingController extends Controller
             ->where('status', 'Closed Successfully')
             ->doesntHave('billing')
             ->get();
-            // dd($leadsWithoutBills);
+            //dd($leadsWithoutBills);
 
         $leadsWithBills = Lead::with(['contact', 'assignedTo', 'billing'])
             ->where('status', 'Closed Successfully')
