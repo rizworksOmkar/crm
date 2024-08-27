@@ -151,7 +151,8 @@
                                 @foreach ($leads as $lead)
                                     @php $i++; @endphp
                                     <tr>
-                                        <td><input type="checkbox" class="lead-checkbox" data-lead-id="{{ $lead->id }}">
+                                        <td><input type="checkbox" class="lead-checkbox border rounded-sm appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-green-500 checked:border-green-500 dark:checked:bg-green-500 dark:checked:border-green-500 checked:disabled:bg-green-400
+                                     checked:disabled:border-green-400" data-lead-id="{{ $lead->id }}">
                                         </td>
                                         <td>{{ $i }}</td>
                                         <td>{{ $lead->contact->name }}</td>
@@ -197,11 +198,11 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tableState').DataTable({
-                "scrollX": true,
-                stateSave: true,
-                "paging": true,
-                "ordering": false,
-                "info": false,
+                "scrollX": false,
+            stateSave: true,
+            "paging": true,
+            "ordering": true,
+            "info": true,
                 // "lengthChange": false // Disable length options
                 // dom: 'Bfrtip',
                 // buttons: [
@@ -357,7 +358,7 @@
                         };
                     case 'invalid contact details':
                         return {
-                            icon: 'fa  fa-exclamation-triangle', color: '#ffeb3b', class:
+                            icon: 'fa fa-exclamation-triangle', color: '#ffeb3b', class:
                                 'status-invalid-contact-details'
                         };
                     default:
