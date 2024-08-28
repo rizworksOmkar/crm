@@ -199,7 +199,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mb-4">Activity Details</h4>
-                            <form id="">
+                            <form class="lead-form">
                                 @csrf
                                 <div class="grid grid-cols-1 gap-x-5 md:grid-cols-1 xl:grid-cols-1">
                                     {{-- <div class="mb-4">
@@ -312,7 +312,7 @@
                                             placeholder="" id="" name="date">
                                     </div>
                                     <div class="mb-4">
-                                        <label for="UsernameInput"
+                                        <label for=""
                                             class="inline-block mb-2 text-base 
                                         font-medium">Status</label>
                                         <select
@@ -334,7 +334,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="leadTimeline">
+                <div class="">
                     <div class="card card-timeline">
                         <div class="card-body">
                             <div class="card-header">

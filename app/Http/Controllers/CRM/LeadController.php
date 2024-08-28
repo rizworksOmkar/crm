@@ -200,10 +200,25 @@ class LeadController extends Controller
     {
         $myId = auth()->user()->id;
 
-        $leads = Lead::where('assigned_to', $myId)->get();
+        $leads = Lead::where('assigned_to', $myId)
+            ->where('status', '!=', 'Closed Successfully', '&&', 'status', '!=', 'Closed with Failure')
+            ->get();
         $contacts = Contact::all();
         $status = LeadStatus::all();
         return view('admin.empLead.index', compact('leads', 'contacts', 'status'));
+    }
+
+    public function empClosedLeadIndex()
+    {
+        $myId = auth()->user()->id;
+
+        $leads = Lead::where('assigned_to', $myId)
+            ->where('status', 'Closed Successfully')
+            ->orWhere('status', 'Closed with Failure')
+            ->get();
+        $contacts = Contact::all();
+        $status = LeadStatus::all();
+        return view('admin.empLead.closedLeads', compact('leads', 'contacts', 'status'));
     }
     // chnageStatus
 
@@ -296,7 +311,7 @@ class LeadController extends Controller
         $lead = Lead::with(['tasks', 'contact'])->findOrFail($id);
         $user = auth()->user();
         $userLeads = Lead::where('assigned_to', $user->id)->get();
-        $contacts = Contact::all(); // Fetch all contacts
+        $contacts = Contact::all();
 
         return view('admin.empTask.addTask', compact('lead', 'id', 'userLeads', 'contacts'));
     }
@@ -622,44 +637,19 @@ class LeadController extends Controller
 
     public function getTasksByDateRange($startDate, $endDate)
     {
-        $role= auth()->user()->role_type;
-        if($role == 'admin'){
-            $tasks = Task::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
-                ->orderBy('created_at', 'desc')
-                ->with('createdBy')
-                ->get();
-
-        }else{
-
-                    $myId = auth()->user()->id;
-                    $tasks = Task::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
-                    ->orderBy('created_at', 'desc')
-                    ->where('created_by',$myId)
-                    ->with('createdBy')
-                    ->get();
-        }
+        $tasks = Task::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
+            ->orderBy('created_at', 'desc')
+            ->with('createdBy')
+            ->get();
         return response()->json($tasks);
     }
 
     public function getLeadsByDateRange($startDate, $endDate)
     {
-
-        $role= auth()->user()->role_type;
-        if($role == 'admin'){
-
-            $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
-                ->orderBy('created_at', 'desc')
-                ->with(['contact', 'assignedTo'])
-                ->get();
-        }else{
-
-                    $myId = auth()->user()->id;
-                    $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
-                    ->orderBy('created_at', 'desc')
-                    ->where('assigned_to',$myId)
-                    ->with(['contact', 'assignedTo'])
-                    ->get();
-        }
+        $leads = Lead::whereBetween('created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
+            ->orderBy('created_at', 'desc')
+            ->with(['contact', 'assignedTo'])
+            ->get();
         return response()->json($leads);
     }
 
@@ -671,6 +661,7 @@ class LeadController extends Controller
             'client_activity' => 'required|string',
             'user_activity' => 'required|string',
             'mode' => 'required|string',
+
             'date' => 'required|date',
             'status' => 'required|string',
         ]);
@@ -682,8 +673,62 @@ class LeadController extends Controller
             'date' => $validatedData['date'],
             'status' => $validatedData['status'],
             'mode' => $validatedData['mode'],
+            'next_follow_up_date' => $request->input('next_follow_up_date'),
+            'follow_up_type' => $request->input('follow_up_type'),
             'created_by' => Auth::id(),
         ]);
+
+        $lead = Lead::findOrFail($validatedData['lead_id']);
+
+        $lead->status = $validatedData['status'];
+        $lead->save();
+
+        return response()->json(['message' => 'Task created successfully', 'task' => $task]);
+    }
+
+    // addActivityAdmin
+
+    public function addActivityAdmin()
+    {
+        $leads = Lead::where('status', '!=', 'Closed Successfully')
+            ->where('status', '!=', 'Closed with Failure')
+            ->whereNotNull('assigned_to')
+            ->get();
+
+        $contacts = Contact::all();
+        $status = LeadStatus::all();
+
+        return view('admin.adminActivityAssign.index', compact('leads', 'contacts', 'status'));
+    }
+
+    public function storeTaskByAdminForEmployee(Request $request)
+    {
+        $validatedData = $request->validate([
+            'lead_id' => 'required|exists:leads,id',
+            'client_activity' => 'required|string',
+            'user_activity' => 'required|string',
+            'mode' => 'required|string',
+
+            'date' => 'required|date',
+            'status' => 'required|string',
+        ]);
+
+        $task = Task::create([
+            'lead_id' => $validatedData['lead_id'],
+            'customer_description' => $validatedData['client_activity'],
+            'user_description' => $validatedData['user_activity'],
+            'date' => $validatedData['date'],
+            'status' => $validatedData['status'],
+            'mode' => $validatedData['mode'],
+            'next_follow_up_date' => $request->input('next_follow_up_date'),
+            'follow_up_type' => $request->input('follow_up_type'),
+            'created_by' => Auth::id(),
+        ]);
+
+        $lead = Lead::findOrFail($validatedData['lead_id']);
+
+        $lead->status = $validatedData['status'];
+        $lead->save();
 
         return response()->json(['message' => 'Task created successfully', 'task' => $task]);
     }

@@ -145,7 +145,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="mb-4">Leads</h4>
-                                <div class="">
+                                <div class="table-responsive">
                                     <table id="tableState" class="display stripe group" style="width: 100%">
                                         <thead>
                                             <tr>
@@ -208,7 +208,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="mb-4">Activity Details</h4>
-                                <form id="">
+                                <form class="lead-form">
                                     @csrf
                                     <div class="grid grid-cols-1 gap-x-5 md:grid-cols-1 xl:grid-cols-1">
                                         {{-- <div class="mb-4">
@@ -346,7 +346,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="leadTimeline">
+                    <div class="">
                         <div class="card card-timeline">
                             <div class="card-body">
                                 <div class="card-header">
