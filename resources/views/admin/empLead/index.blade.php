@@ -135,8 +135,9 @@
                 <div class="leads">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="mb-4 text-15">Leads</h6>
-                            <table id="basic_tables" class="display stripe group" style="width: 100%">
+                            <h4 class="mb-4">Leads</h4>
+                            <div class="">
+                            <table id="tableState" class="display stripe group" style="width: 100%">
                                 <thead>
                                     <tr>
                                         <th class="ltr:!text-left rtl:!text-right">
@@ -145,6 +146,18 @@
                                         <th>Customer Name</th>
                                         <th>Lead Number</th>
                                         <th>Lead Date</th>
+
+                                        <th>Requirement Type</th>
+                                        <th>Property Specs</th>
+                                        <th>Customer Business Type</th>
+                                        <th>Description</th>
+                                        <th>Budget</th>
+                                        <th>Area(Sq ft)</th>
+                                        <th>Location</th>
+                                        <th>Landmark</th>
+                                        <th>Lead Source</th>
+                                        <th>Property Type</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -152,25 +165,40 @@
                                     @foreach ($leads as $lead)
                                         @php $i++; @endphp
                                         <tr>
-                                            <td><input data-lead-id="{{ $lead->id }}"
+                                            <td>
+                                                <input type="checkbox"
                                                     class="lead-checkbox border rounded-sm appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-green-500 checked:border-green-500 dark:checked:bg-green-500 dark:checked:border-green-500 checked:disabled:bg-green-400
-                                     checked:disabled:border-green-400"
-                                                    type="checkbox" value=""></td>
+                                                checked:disabled:border-green-400"
+                                                    data-lead-id="{{ $lead->id }}">
+                                            </td>
+
                                             <td>{{ $i }}</td>
                                             <td>{{ $lead->contact->name }}</td>
                                             <td>{{ $lead->lead_num }}</td>
-                                            <td>{{ $lead->created_at }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($lead->created_at)->format('Y-m-d') }}</td>
+                                            <td>{{ $lead->requirement_type }}</td>
+                                            <td>{{ $lead->property_specs }}</td>
+                                            <td>{{ $lead->cust_business_type }}</td>
+                                            <td>{{ $lead->description }}</td>
+                                            <td>{{ $lead->min_budget }} - {{ $lead->max_budegt }}</td>
+                                            <td>{{ $lead->min_area }} - {{ $lead->max_area }}</td>
+                                            <td>{{ $lead->specific_location }}</td>
+                                            <td>{{ $lead->preferred_landmark }}</td>
+                                            <td>{{ $lead->lead_source }}</td>
+                                            <td>{{ $lead->property_type }}</td>
+                                            <td>{{ $lead->status }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="lead-details" id="lead-details" style="display: none;">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="mb-4 text-15">Task Details</h6>
+                            <h4 class="mb-4">Activity Details</h4>
                             <form id="">
                                 @csrf
                                 <div class="grid grid-cols-1 gap-x-5 md:grid-cols-1 xl:grid-cols-1">
@@ -242,17 +270,46 @@
                                         </label>
                                         <input type="text"
                                             class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                            placeholder="" id="" name="mode" required>
+                                            placeholder="" id="" name="mode">
 
                                     </div>
                                     <div class="mb-4">
                                         <label for="" class="inline-block mb-2 text-base font-medium">Requirement
+                                            Next Follow Up Date
+                                        </label>
+                                        <input type="date"
+                                            class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            placeholder="" id="" name="next_follow_up_date">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="inline-block mb-2 text-base font-medium">Next Follow Up Type</label>
+                                        <select
+                                            class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            name="follow_up_type">
+                                            <option value="Phone Call">Phone Call</option>
+                                            <option value="Email Follow-Up">Email Follow-Up</option>
+                                            <option value="In-Person Meeting">In-Person Meeting</option>
+                                            <option value="Video Call">Video Call</option>
+                                            <option value="WhatsApp Message">WhatsApp Message</option>
+                                            <option value="SMS Follow-Up">SMS Follow-Up</option>
+                                            <option value="Reminder Email">Reminder Email</option>
+                                            <option value="Follow-Up on Quotation">Follow-Up on Quotation</option>
+                                            <option value="Contract Renewal">Contract Renewal</option>
+                                            <option value="Feedback Request">Feedback Request</option>
+                                            <option value="Payment Reminder">Payment Reminder</option>
+                                            <option value="Project Status Check">Project Status Check</option>
+                                            <option value="Offer Follow-Up">Offer Follow-Up</option>
+                                            <option value="Event Invitation">Event Invitation</option>
+                                            <option value="Thank You Follow-Up">Thank You Follow-Up</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="" class="inline-block mb-2 text-base font-medium">
                                             Date
                                         </label>
                                         <input type="date"
                                             class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                            placeholder="" id="" name="date" required>
-
+                                            placeholder="" id="" name="date">
                                     </div>
                                     <div class="mb-4">
                                         <label for="UsernameInput"
@@ -260,7 +317,7 @@
                                         font-medium">Status</label>
                                         <select
                                             class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                            id="" name="status" required>
+                                            id="" name="status">
                                             @foreach ($status as $leadSatatus)
                                                 <option value="{{ $leadSatatus->status_type }}">
                                                     {{ $leadSatatus->status_type }}</option>
@@ -357,6 +414,19 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+            $('#tableState').DataTable({
+                "scrollX": false,
+                stateSave: true,
+                "paging": true,
+                "ordering": true,
+                "info": true,
+                // dom: 'Bfrtip',
+                // buttons: [
+                //     'excel', 'pdf'
+                // ]
+            });
+        });
+        $(document).ready(function() {
             $('.lead-checkbox').on('change', function() {
                 $('.lead-checkbox').not(this).prop('checked', false);
 
@@ -395,11 +465,10 @@
                 var formData = $(this).serialize();
 
                 $.ajax({
-                    url: '/tasks',
+                    url: '/emptasks',
                     method: 'POST',
                     data: formData + '&lead_id=' + leadId,
                     success: function(response) {
-                        // $('#lead-form')[0].reset();
                         alert('Task added successfully');
                         loadLeadTimeline(leadId);
                     },
@@ -437,6 +506,10 @@
                             content.append($('<p>').text('Employee Update: ' + task
                                 .user_description));
                             content.append($('<p>').text('Mode: ' + task.mode));
+                            content.append($('<p>').text('Next Follow Up Date: ' + task
+                                .next_follow_up_date));
+                            content.append($('<p>').text('Next Follow Up Type: ' + task
+                                .follow_up_type));
 
                             item.append(icon);
                             item.append(content);
