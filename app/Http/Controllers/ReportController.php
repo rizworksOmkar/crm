@@ -6,7 +6,7 @@ use App\Models\Lead;
 use App\Models\User;
 use App\Models\Contact;
 use App\Models\LeadStatus;
-use App\Models\Tasks;
+use App\Models\Task;
 
 use Illuminate\Http\Request;
 
@@ -145,7 +145,7 @@ class ReportController extends Controller
     }
 
 
-   
+
     public function notificationTasks()
     {
         return view('admin.main_reports.activity-notifications.index');
