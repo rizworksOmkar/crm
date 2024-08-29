@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Contact;
 use App\Models\LeadStatus;
 use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -167,11 +168,39 @@ class ReportController extends Controller
     {
         $date = $request->input('date');
 
-        $tasks = Task::whereDate('date', $date)
+        $tasks = Task::whereDate('next_follw_up_date', $date)
             ->with(['lead.contact', 'createdBy'])
             ->get();
 
         return response()->json(['tasks' => $tasks]);
     }
 
+    public function notificationTasksEmployee()
+    {
+        $today = now()->format('Y-m-d');
+        $upcomingTasks = Task::whereDate('next_follow_up_date', '>=', $today)
+            ->whereHas('lead', function ($query) {
+                $query->where('assigned_to', Auth::id())
+                    ->whereNotIn('status', ['Closed Successfully', 'Closed with Failure']);
+            })
+            ->with(['lead.contact', 'createdBy'])
+            ->orderBy('next_follow_up_date')
+            ->get();
+
+        return view('admin.empNotification.index', compact('upcomingTasks'));
+    }
+    public function filterNotificationTasksOfEmployee(Request $request)
+    {
+        $date = $request->input('date');
+
+        $tasks = Task::whereDate('next_follow_up_date', $date)
+            ->whereHas('lead', function ($query) {
+                $query->where('assigned_to', Auth::id())
+                    ->whereNotIn('status', ['Closed Successfully', 'Closed with Failure']);
+            })
+            ->with(['lead.contact', 'createdBy'])
+            ->get();
+
+        return response()->json(['tasks' => $tasks]);
+    }
 }

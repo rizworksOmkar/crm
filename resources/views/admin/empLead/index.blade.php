@@ -209,8 +209,8 @@
                                             Name</label>
                                         <input type="text"
                                             class="form-input border-slate-200
-                                                 dark:border-zink-500 focus:outline-none 
-                                                 focus:border-custom-500 disabled:bg-slate-100 
+                                                 dark:border-zink-500 focus:outline-none
+                                                 focus:border-custom-500 disabled:bg-slate-100
                                                  dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                                   placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                             id="customer-name" >
@@ -221,8 +221,8 @@
                                               font-medium">Phone</label>
                                         <input type="text"
                                             class="form-input border-slate-200
-                                               dark:border-zink-500 focus:outline-none 
-                                               focus:border-custom-500 disabled:bg-slate-100 
+                                               dark:border-zink-500 focus:outline-none
+                                               focus:border-custom-500 disabled:bg-slate-100
                                                dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                                 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                             id="customer-phone" >
@@ -232,8 +232,8 @@
                                             WhatsApp Number</label>
                                         <input type="text"
                                             class="form-input border-slate-200
-                                         dark:border-zink-500 focus:outline-none 
-                                         focus:border-custom-500 disabled:bg-slate-100 
+                                         dark:border-zink-500 focus:outline-none
+                                         focus:border-custom-500 disabled:bg-slate-100
                                          dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800
                                           placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                           id="customer-whatsapp" >
@@ -243,29 +243,29 @@
                                             Update Activity by Clients
                                         </label>
                                         <textarea
-                                            class="form-input border-slate-200 dark:border-zink-500 
-                                        focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
-                                        dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 
-                                        dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
-                                        dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                            class="form-input border-slate-200 dark:border-zink-500
+                                        focus:outline-none focus:border-custom-500 disabled:bg-slate-100
+                                        dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500
+                                        dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100
+                                        dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
                                         dark:placeholder:text-zink-200"
                                             name="client_activity" rows="3"></textarea>
                                     </div>
                                     <div class="mb-4">
                                         <label for="" class="inline-block mb-2 text-base font-medium">
-                                            Update Activity by User
+                                            Update Activity by Employee
                                         </label>
                                         <textarea
-                                            class="form-input border-slate-200 dark:border-zink-500 
-                                        focus:outline-none focus:border-custom-500 disabled:bg-slate-100 
-                                        dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 
-                                        dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 
-                                        dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 
+                                            class="form-input border-slate-200 dark:border-zink-500
+                                        focus:outline-none focus:border-custom-500 disabled:bg-slate-100
+                                        dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500
+                                        dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100
+                                        dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400
                                         dark:placeholder:text-zink-200"
                                             name="user_activity" rows="3"></textarea>
                                     </div>
                                     <div class="mb-4">
-                                        <label for="" class="inline-block mb-2 text-base font-medium">Requirement
+                                        <label for="" class="inline-block mb-2 text-base font-medium">Meeting
                                             Mode
                                         </label>
                                         <input type="text"
@@ -274,7 +274,28 @@
 
                                     </div>
                                     <div class="mb-4">
-                                        <label for="" class="inline-block mb-2 text-base font-medium">Requirement
+                                        <label for="" class="inline-block mb-2 text-base font-medium">
+                                            Date
+                                        </label>
+                                        <input type="date"
+                                            class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            placeholder="" id="" name="date">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for=""
+                                            class="inline-block mb-2 text-base
+                                        font-medium">Lead Status</label>
+                                        <select
+                                            class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                            id="" name="status">
+                                            @foreach ($status as $leadSatatus)
+                                                <option value="{{ $leadSatatus->status_type }}">
+                                                    {{ $leadSatatus->status_type }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="" class="inline-block mb-2 text-base font-medium">
                                             Next Follow Up Date
                                         </label>
                                         <input type="date"
@@ -303,27 +324,7 @@
                                             <option value="Thank You Follow-Up">Thank You Follow-Up</option>
                                         </select>
                                     </div>
-                                    <div class="mb-4">
-                                        <label for="" class="inline-block mb-2 text-base font-medium">
-                                            Date
-                                        </label>
-                                        <input type="date"
-                                            class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                            placeholder="" id="" name="date">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for=""
-                                            class="inline-block mb-2 text-base 
-                                        font-medium">Status</label>
-                                        <select
-                                            class="form-select border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
-                                            id="" name="status">
-                                            @foreach ($status as $leadSatatus)
-                                                <option value="{{ $leadSatatus->status_type }}">
-                                                    {{ $leadSatatus->status_type }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+
                                 </div>
                                 <div class="flex justify-end gap-2">
                                     <button type="submit"
