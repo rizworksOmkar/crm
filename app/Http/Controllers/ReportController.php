@@ -143,4 +143,35 @@ class ReportController extends Controller
 
         return view('admin.main_reports.billing_report.paid_bills_index', compact('leadsWithBills'));
     }
+
+
+   
+    public function notificationTasks()
+    {
+        return view('admin.main_reports.activity-notifications.index');
+    }
+
+    // public function filterNotificationTasks(Request $request)
+    // {
+    //     $date = $request->input('date');
+
+    //     $tasks = Task::whereHas('lead', function ($query) use ($date) {
+    //         $query->whereDate('date', $date);
+    //     })
+    //     ->with('lead.contact', 'createdBy')
+    //     ->get();
+
+    //     return response()->json(['tasks' => $tasks]);
+    // }
+    public function filterNotificationTasks(Request $request)
+    {
+        $date = $request->input('date');
+
+        $tasks = Task::whereDate('date', $date)
+            ->with(['lead.contact', 'createdBy'])
+            ->get();
+
+        return response()->json(['tasks' => $tasks]);
+    }
+
 }
