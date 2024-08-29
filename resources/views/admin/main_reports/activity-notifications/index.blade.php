@@ -33,7 +33,7 @@
 
                                 </div>
                                 <div class="overflow-x-auto">
-                                    <table class="table table-striped w-full display stripe group" id="tableLead">
+                                    <table class="table table-striped w-full display stripe group" id="taskstable">
                                         <thead class="ltr:text-left rtl:text-right bg-slate-100 text-slate-500 dark:text-zink-200 dark:bg-zink-600">
                                             <tr>
                                                 <th  class="px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold border-y border-slate-200 dark:border-zink-500">Lead No.</th>
@@ -63,9 +63,10 @@
 @endsection
 
 @section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script>
         $(document).ready(function() {
-            var table = $('#tableLead').DataTable({
+            var table = $('#taskstable').DataTable({
                 "scrollX": false,
                 stateSave: false,
                 "paging": false,
@@ -94,6 +95,7 @@
                         var tasksTable = $('#tasks-table');
                         tasksTable.empty();
                         $.each(response.tasks, function(index, task) {
+                            console.log(task.lead.lead_num);
                             var row = '<tr>' +
                                 '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + task.lead.lead_num + '</td>' +
                                 '<td class="px-3.5 py-2.5 first:pl-5 last:pr-5 border-y border-slate-200 dark:border-zink-500">' + moment(task.date).format('YYYY-MM-DD') + '</td>' +
